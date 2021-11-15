@@ -1,0 +1,116 @@
+baseURL = 'https://blog.alphabravo.io'
+languageCode = 'en'
+defaultContentLanguage = 'en'
+defaultTheme = "auto"
+title = 'AB Engineering Blog'
+images = ["/assets/ablogo.png"]
+dateFormat = '01-01-2021'
+theme = 'FeelIt'
+publishDir = "docs"
+
+[blackfriday]
+    extensions = ["hardLineBreak"]
+
+[params]
+  version = "1.0.X"
+
+  [params.header]
+    # desktop header mode ("fixed", "normal", "auto")
+    desktopMode = "fixed"
+    # mobile header mode ("fixed", "normal", "auto")
+    mobileMode = "auto"
+    [params.header.title]
+      logo = "https://images.squarespace-cdn.com/content/v1/604fa2cb79525313bac61fd0/934a2a16-6def-4d2b-abac-af8a6f244702/whitepng.png?format=1500w"
+      name = "AB Engineering Blog"
+      typeit = true
+      rss = true
+
+[menu]
+  [[menu.main]]
+    identifier = "main-site"
+    name = "Main Site"
+    url = "https://alphabravo.io"
+    # title will be shown when you hover on this menu link
+    title = "AlphaBravo Website"
+    weight = 1
+  [[menu.main]]
+    identifier = "posts"
+    # you can add extra information before the name (HTML format is supported), such as icons
+    pre = ""
+    # you can add extra information after the name (HTML format is supported), such as icons
+    post = ""
+    name = "Posts"
+    url = "/posts/"
+    # title will be shown when you hover on this menu link
+    title = ""
+    weight = 1
+  [[menu.main]]
+    identifier = "categories"
+    pre = ""
+    post = ""
+    name = "Categories"
+    url = "/categories/"
+    title = ""
+    weight = 3
+
+  [params.home]
+    rss = 100
+    [params.home.profile]
+      enable = true
+      typeit = true
+      social = true
+    [params.home.posts]
+      enable = true
+      paginate = 10
+      imagePreview = true
+      defaultHiddenFromHomePage = false
+
+  [params.social]
+    Github = "alphabravocompany"
+    Linkedin = "company/alphabravogov/"
+    Twitter = "alphabravogov"
+    Youtubechannel = ""
+    DockerHub = "alphabravocompany"
+    Email = "info@alphabravo.io"
+
+  [params.footer]
+    enable = true
+    hugo = false
+    copyright = true
+    custom = 'AlphaBravo'
+
+[languages]
+  [languages.en]
+    [languages.en.params]
+      # site description
+      description = "AlphaBravo Engineering Blog"
+      # site keywords
+      keywords = ["DevOps", "Kubernetes", "Containers", "Cloud", "Docker", "DevSecOps", "Cyber Security"]
+      # Search config
+      [languages.en.params.search]
+        enable = true
+        # type of search engine ("lunr", "algolia")
+        type = "lunr"
+        # max index length of the chunked content
+        contentLength = 4000
+        # placeholder of the search bar
+        placeholder = "Search"
+        # max number of results length
+        maxResultLength = 10
+        # snippet length of the result
+        snippetLength = 30
+        # HTML tag name of the highlight part in results
+        highlightTag = "em"
+        # whether to use the absolute URL based on the baseURL in search index
+        absoluteURL = false
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+
+# Markup related configuration in Hugo
+[markup]
+  # Syntax Highlighting (https://gohugo.io/content-management/syntax-highlighting)
+  [markup.highlight]
+    # false is a necessary configuration (https://github.com/khusika/FeelIt/issues/158)
+    noClasses = false

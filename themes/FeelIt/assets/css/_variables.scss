@@ -61,7 +61,7 @@ $selection-color-dark: rgba(50, 112, 194, 0.4) !default;
 $header-height: 3.5rem !default;
 
 // Color of the header background
-$header-background-color: #ddd !default;
+$header-background-color: rgb(212, 212, 212) !default;
 $header-background-color-dark: #252627 !default;
 
 // Font style of the header title
@@ -87,7 +87,7 @@ $single-link-color: #147da4 !default;
 $single-link-color-dark: #55bde2 !default;
 
 // Color of the hover single link
-$single-link-hover-color: #ef3982 !default;
+$single-link-hover-color: #ff0000 !default;
 $single-link-hover-color-dark: #bdebfc !default;
 
 // Color of the table background

@@ -39,7 +39,7 @@ publishDir = "docs"
     url = "https://alphabravo.io"
     # title will be shown when you hover on this menu link
     title = "AlphaBravo Website"
-    weight = 1
+    weight = 2
   [[menu.main]]
     identifier = "posts"
     # you can add extra information before the name (HTML format is supported), such as icons
@@ -50,7 +50,7 @@ publishDir = "docs"
     url = "/posts/"
     # title will be shown when you hover on this menu link
     title = ""
-    weight = 2
+    weight = 3
   [[menu.main]]
     identifier = "categories"
     pre = ""
@@ -58,7 +58,7 @@ publishDir = "docs"
     name = "Categories"
     url = "/categories/"
     title = ""
-    weight = 3
+    weight = 4
   [[menu.main]]
     identifier = "github"
     pre = "<i class='fab fa-github fa-fw'></i>"
@@ -66,7 +66,7 @@ publishDir = "docs"
     name = ""
     url = "https://github.com/AlphaBravoCompany"
     title = ""
-    weight = 4
+    weight = 5
   [[menu.main]]
     identifier = "linkedin"
     pre = "<i class='fab fa-linkedin fa-fw'></i>"
@@ -74,7 +74,7 @@ publishDir = "docs"
     name = ""
     url = "https://linkedin.com/company/alphabravogov/"
     title = ""
-    weight = 4
+    weight = 6
 
 
   [params.home]

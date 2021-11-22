@@ -27,8 +27,15 @@ publishDir = "docs"
 
 [menu]
   [[menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "https://blog.alphabravo.io"
+    # title will be shown when you hover on this menu link
+    title = "Blog Homepage"
+    weight = 1
+  [[menu.main]]
     identifier = "main-site"
-    name = "Main Site"
+    name = "AB Website"
     url = "https://alphabravo.io"
     # title will be shown when you hover on this menu link
     title = "AlphaBravo Website"

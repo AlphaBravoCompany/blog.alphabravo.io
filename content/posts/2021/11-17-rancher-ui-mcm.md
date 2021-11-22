@@ -2,7 +2,7 @@
 title: "Rancher Multi-Cluster Management UI"
 slug: "rancher-multi-cluster-management-ui"
 date: 2021-11-17T13:00:00Z
-draft: true
+draft: false
 featuredImage: /assets/rancher-ui-full.png
 featuredImagePreview: /assets/rancher-ui-small.png
 ---

@@ -3,7 +3,16 @@
         <title>All Posts - AB Engineering Blog</title>
         <link>https://blog.alphabravo.io/posts/</link>
         <description>All Posts | AB Engineering Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 15 Nov 2021 11:35:58 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 17 Nov 2021 13:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Rancher Multi-Cluster Management UI</title>
+    <link>https://blog.alphabravo.io/posts/2021/rancher-multi-cluster-management-ui/</link>
+    <pubDate>Wed, 17 Nov 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/rancher-multi-cluster-management-ui/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/assets/rancher-ui-full.png" referrerpolicy="no-referrer">
+            </div>What is Rancher Multi-Cluster Management If you have ventured into container management and Kubernetes for your organization (or even for yourself), you have quickly realized that you need a robust way to manage more than one cluster easily. In fact, you probably want an easier way to manage a single cluster.
+The official Kubernetes dashboard is&hellip; sub-optimal. There are a few other open-source options out there, but they lack in many areas.]]></description>
+</item>
+<item>
     <title>Why We Use Rancher</title>
     <link>https://blog.alphabravo.io/posts/2021/why-we-use-rancher/</link>
     <pubDate>Mon, 15 Nov 2021 11:35:58 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/why-we-use-rancher/</guid>
@@ -22,7 +31,7 @@ We are not those things because we are corpo shills. We partnered with Rancher b
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/welcome-full1.png" referrerpolicy="no-referrer">
             </div>Welcome To The Blog We are excited to have you here.
-As Technology enthusiast with a broad range of experiences, we hope to convey some tales, some tech, and some thoughts around the current state of DevSecOps.
+As technology enthusiasts with a broad range of experiences, we hope to convey some tales, some tech, and some thoughts around the current state of DevSecOps.
 Our focus is mainly on building robust platforms using open-source software. But don&rsquo;t be confused if we talk about non-open source software too. We are a small team and we understand very well that sometimes you need a product or tool that &ldquo;just works&rdquo;.]]></description>
 </item>
 </channel>

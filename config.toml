@@ -43,7 +43,7 @@ publishDir = "docs"
     url = "/posts/"
     # title will be shown when you hover on this menu link
     title = ""
-    weight = 1
+    weight = 2
   [[menu.main]]
     identifier = "categories"
     pre = ""
@@ -52,6 +52,23 @@ publishDir = "docs"
     url = "/categories/"
     title = ""
     weight = 3
+  [[menu.main]]
+    identifier = "github"
+    pre = "<i class='fab fa-github fa-fw'></i>"
+    post = ""
+    name = ""
+    url = "https://github.com/AlphaBravoCompany"
+    title = ""
+    weight = 4
+  [[menu.main]]
+    identifier = "linkedin"
+    pre = "<i class='fab fa-linkedin fa-fw'></i>"
+    post = ""
+    name = ""
+    url = "https://linkedin.com/company/alphabravogov/"
+    title = ""
+    weight = 4
+
 
   [params.home]
     rss = 100
@@ -64,6 +81,13 @@ publishDir = "docs"
       paginate = 10
       imagePreview = true
       defaultHiddenFromHomePage = false
+
+  [params.page]
+    [params.page.code]
+      # whether to show the copy button of the code block
+      copy = true
+      # the maximum number of lines of displayed code by default
+      maxShownLines = 100
 
   [params.social]
     Github = "alphabravocompany"

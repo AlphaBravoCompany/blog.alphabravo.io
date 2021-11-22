@@ -2,8 +2,9 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://blog.alphabravo.io/</loc><lastmod>2021-11-15T11:35:58&#43;00:00</lastmod></url><url>
-            <loc>https://blog.alphabravo.io/posts/</loc><lastmod>2021-11-15T11:35:58&#43;00:00</lastmod></url><url>
+            <loc>https://blog.alphabravo.io/</loc><lastmod>2021-11-17T13:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.alphabravo.io/posts/</loc><lastmod>2021-11-17T13:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.alphabravo.io/posts/2021/rancher-multi-cluster-management-ui/</loc><lastmod>2021-11-17T13:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.alphabravo.io/posts/2021/why-we-use-rancher/</loc><lastmod>2021-11-15T11:35:58&#43;00:00</lastmod></url><url>
             <loc>https://blog.alphabravo.io/posts/2021/welcome-to-the-blog/</loc><lastmod>2021-11-15T10:35:58&#43;00:00</lastmod></url><url>
             <loc>https://blog.alphabravo.io/categories/</loc></url><url>

@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>helm - Tag - AB Engineering Blog</title>
+        <link>https://blog.alphabravo.io/tags/helm/</link>
+        <description>helm - Tag - AB Engineering Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 26 Nov 2021 13:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/tags/helm/" rel="self" type="application/rss+xml" /><item>
+    <title>Powerful Single Node RKE2 on Hetzner for CHEAP! (Part 1)</title>
+    <link>https://blog.alphabravo.io/posts/2021/single-node-rke2-pt1/</link>
+    <pubDate>Fri, 26 Nov 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/single-node-rke2-pt1/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/assets/single-node-rke2-full.png" referrerpolicy="no-referrer">
+            </div>The RKE2 Cluster In this blog, we will explain how to deploy a powerful, single node RKE2 cluster on Hetzner. It will provide the following resources.
+ Single Node RKE2 Kubernetes Cluster NGINX Ingress into your cluster Rancher Multi Cluster Manager Web UI to manage your cluster  Why Hetzner? Want an easy, powerful, single node, publically accessible Kubernetes cluster? Well, do we have a deal for you! (said in my best Billy Mays voice.]]></description>
+</item>
+</channel>
+</rss>

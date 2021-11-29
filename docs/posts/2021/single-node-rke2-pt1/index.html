@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Powerful Single Node RKE2 on Hetzner for CHEAP! (Part 1) - AB Engineering Blog</title><meta name="description" content="Instructions on deploying RKE2, Helm, cert-manager and Rancher on a single node Hetzner server."><meta property="og:title" content="Powerful Single Node RKE2 on Hetzner for CHEAP! (Part 1)" />
+<meta property="og:description" content="Instructions on deploying RKE2, Helm, cert-manager and Rancher on a single node Hetzner server." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.alphabravo.io/posts/2021/single-node-rke2-pt1/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-11-26T13:00:00+00:00" />
+<meta property="article:modified_time" content="2021-11-26T13:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Powerful Single Node RKE2 on Hetzner for CHEAP! (Part 1)"/>
+<meta name="twitter:description" content="Instructions on deploying RKE2, Helm, cert-manager and Rancher on a single node Hetzner server."/>
+<meta name="application-name" content="AB Engineering Blog">
+<meta name="apple-mobile-web-app-title" content="AB Engineering Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.alphabravo.io/posts/2021/single-node-rke2-pt1/" /><link rel="prev" href="https://blog.alphabravo.io/posts/2021/why-we-chose-nifi-over-databrew/" /><link rel="stylesheet" href="/css/page.min.css"><link rel="stylesheet" href="/css/home.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Powerful Single Node RKE2 on Hetzner for CHEAP! (Part 1)",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.alphabravo.io\/posts\/2021\/single-node-rke2-pt1\/"
+        },"genre": "posts","keywords": "rancher, kubernetes, rke2, helm, hetzner","wordcount":  1090 ,
+        "url": "https:\/\/blog.alphabravo.io\/posts\/2021\/single-node-rke2-pt1\/","datePublished": "2021-11-26T13:00:00+00:00","dateModified": "2021-11-26T13:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "AB Engineering"},"author": {
+                "@type": "Person",
+                "name": "AB Engineering"
+            },"description": "Instructions on deploying RKE2, Helm, cert-manager and Rancher on a single node Hetzner server."
+    }
+    </script></head><body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="AB Engineering Blog"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="https://images.squarespace-cdn.com/content/v1/604fa2cb79525313bac61fd0/934a2a16-6def-4d2b-abac-af8a6f244702/whitepng.png?format=1500w"
+        data-srcset="https://images.squarespace-cdn.com/content/v1/604fa2cb79525313bac61fd0/934a2a16-6def-4d2b-abac-af8a6f244702/whitepng.png?format=1500w, https://images.squarespace-cdn.com/content/v1/604fa2cb79525313bac61fd0/934a2a16-6def-4d2b-abac-af8a6f244702/whitepng.png?format=1500w 1.5x, https://images.squarespace-cdn.com/content/v1/604fa2cb79525313bac61fd0/934a2a16-6def-4d2b-abac-af8a6f244702/whitepng.png?format=1500w 2x"
+        data-sizes="auto"
+        alt="https://images.squarespace-cdn.com/content/v1/604fa2cb79525313bac61fd0/934a2a16-6def-4d2b-abac-af8a6f244702/whitepng.png?format=1500w"
+        title="https://images.squarespace-cdn.com/content/v1/604fa2cb79525313bac61fd0/934a2a16-6def-4d2b-abac-af8a6f244702/whitepng.png?format=1500w" /><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/" title="Blog Homepage"> Home </a><a class="menu-item" href="https://alphabravo.io" title="AlphaBravo Website" rel="noopener noreffer" target="_blank"> AB Website </a><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="https://github.com/AlphaBravoCompany" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><a class="menu-item" href="https://linkedin.com/company/alphabravogov/" rel="noopener noreffer" target="_blank"><i class='fab fa-linkedin fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search" id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a class="menu-item" href="/index.xml" title="RSS"><i class="fas fa-rss fa-fw" title="RSS"></i> </a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="AB Engineering Blog"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="https://images.squarespace-cdn.com/content/v1/604fa2cb79525313bac61fd0/934a2a16-6def-4d2b-abac-af8a6f244702/whitepng.png?format=1500w"
+        data-srcset="https://images.squarespace-cdn.com/content/v1/604fa2cb79525313bac61fd0/934a2a16-6def-4d2b-abac-af8a6f244702/whitepng.png?format=1500w, https://images.squarespace-cdn.com/content/v1/604fa2cb79525313bac61fd0/934a2a16-6def-4d2b-abac-af8a6f244702/whitepng.png?format=1500w 1.5x, https://images.squarespace-cdn.com/content/v1/604fa2cb79525313bac61fd0/934a2a16-6def-4d2b-abac-af8a6f244702/whitepng.png?format=1500w 2x"
+        data-sizes="auto"
+        alt="https://images.squarespace-cdn.com/content/v1/604fa2cb79525313bac61fd0/934a2a16-6def-4d2b-abac-af8a6f244702/whitepng.png?format=1500w"
+        title="https://images.squarespace-cdn.com/content/v1/604fa2cb79525313bac61fd0/934a2a16-6def-4d2b-abac-af8a6f244702/whitepng.png?format=1500w" /><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search" id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/" title="Blog Homepage">Home</a><a class="menu-item" href="https://alphabravo.io" title="AlphaBravo Website" rel="noopener noreffer" target="_blank">AB Website</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="https://github.com/AlphaBravoCompany" title="" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a class="menu-item" href="https://linkedin.com/company/alphabravogov/" title="" rel="noopener noreffer" target="_blank"><i class='fab fa-linkedin fa-fw'></i></a><div class="menu-item"><a href="/index.xml" title="RSS"><i class="fas fa-rss fa-fw" title="RSS"></i> </a>
+                <span>&nbsp;|&nbsp;</span><a href="javascript:void(0);" class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div></div>
+    </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single" data-toc="disable"><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/single-node-rke2-full.png"
+        data-srcset="/assets/single-node-rke2-full.png, /assets/single-node-rke2-full.png 1.5x, /assets/single-node-rke2-full.png 2x"
+        data-sizes="auto"
+        alt="/assets/single-node-rke2-full.png"
+        title="Instructions on deploying RKE2, Helm, cert-manager and Rancher on a single node Hetzner server." /></div><div class="single-card" data-image="true"><h2 class="single-title animated flipInX">Powerful Single Node RKE2 on Hetzner for CHEAP! (Part 1)</h2><div class="post-meta">
+                <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>AB Engineering</a></span></div>
+                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-11-26">2021-11-26</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1090 words</span>&nbsp;
+                    <span><i class="far fa-clock fa-fw"></i>&nbsp;6 minutes</span>&nbsp;</div>
+            </div>
+            
+            <hr><div class="details toc" id="toc-static"  data-kept="">
+                    <div class="details-summary toc-title">
+                        <span>Contents</span>
+                        <span><i class="details-icon fas fa-angle-right"></i></span>
+                    </div>
+                    <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-rke2-cluster">The RKE2 Cluster</a></li>
+    <li><a href="#why-hetzner">Why Hetzner?</a></li>
+    <li><a href="#why-rke2">Why RKE2</a>
+      <ul>
+        <li><a href="#how-is-this-different-from-rke-or-k3s">How is this different from RKE or K3s?</a></li>
+      </ul>
+    </li>
+    <li><a href="#deploying-a-vm">Deploying a VM</a></li>
+    <li><a href="#install-rke2-kubernetes">Install RKE2 Kubernetes</a></li>
+    <li><a href="#configure-dns-optional">Configure DNS (Optional)</a></li>
+    <li><a href="#install-helm">Install Helm</a></li>
+    <li><a href="#deploy-rancher">Deploy Rancher</a></li>
+    <li><a href="#closing">Closing</a></li>
+  </ul>
+</nav></div>
+                </div><div class="content" id="content"><h2 id="the-rke2-cluster">The RKE2 Cluster</h2>
+<p>In this blog, we will explain how to deploy a powerful, single node RKE2 cluster on Hetzner. It will provide the following resources.</p>
+<ul>
+<li>Single Node RKE2 Kubernetes Cluster</li>
+<li>NGINX Ingress into your cluster</li>
+<li>Rancher Multi Cluster Manager Web UI to manage your cluster</li>
+</ul>
+<h2 id="why-hetzner">Why Hetzner?</h2>
+<p>Want an easy, powerful, single node, publically accessible Kubernetes cluster? Well, do we have a deal for you! (said in my best Billy Mays voice.)</p>
+<p>For this, you can use any cloud service. We are recommending <a href="https://hetzner.cloud/?ref=JRGtolHM4Qdb" target="_blank" rel="noopener noreffer">Hetzner</a> because they are a reliable and reputable company with many of years of experience operating in the EU and they just opened a data center in US East (Northern Virgina).</p>
+<p>For the below specs, just look at the price difference.</p>
+<p><strong>Hetzner:</strong></p>
+<ul>
+<li>16 vCPU (AMD)</li>
+<li>32GB RAM</li>
+<li>360GB SSD</li>
+<li>20TB Traffic</li>
+</ul>
+<p><strong>Hetnzer Price:</strong> 49.90/mo Euro ($57.00/mo USD)</p>
+<p><strong>DigitalOcean:</strong></p>
+<ul>
+<li>16 vCPU (Intel)</li>
+<li>32GB RAM</li>
+<li>50GB SSD</li>
+<li>7TB Traffic</li>
+</ul>
+<p><strong>DigitalOcean Price:</strong> $320/mo USD</p>
+<p>That is a SIGNIFICANT difference in price vs specs. You could run a 5 node cluster in Hetzner for the same price as a single Digital Ocean node. This makes Hetzner ideal for development environments.</p>
+<h2 id="why-rke2">Why RKE2</h2>
+<p>We will be using <a href="https://docs.rke2.io/" target="_blank" rel="noopener noreffer">RKE2</a> by Rancher. RKE2 is like <a href="https://k3s.io/" target="_blank" rel="noopener noreffer">K3s</a> in that it is a CNCF certified, single binary Kubernetes installation.</p>
+<p>RKE2, also known as RKE Government, is Rancher&rsquo;s next-generation Kubernetes distribution.</p>
+<p>It is a fully conformant Kubernetes distribution that focuses on security and compliance within the U.S. Federal Government sector.</p>
+<p>To meet these goals, RKE2 does the following:</p>
+<ul>
+<li>Provides defaults and configuration options that allow clusters to pass the CIS Kubernetes Benchmark v1.5 or v1.6with minimal operator intervention</li>
+<li>Enables FIPS 140-2 compliance</li>
+<li>Regularly scans components for CVEs using trivy in our build pipeline</li>
+</ul>
+<h3 id="how-is-this-different-from-rke-or-k3s">How is this different from RKE or K3s?</h3>
+<p>RKE2 combines the best-of-both-worlds from the 1.x version of RKE (hereafter referred to as RKE1) and K3s.</p>
+<p>From K3s, it inherits the usability, ease-of-operations, and deployment model.</p>
+<p>From RKE1, it inherits close alignment with upstream Kubernetes. In places K3s has diverged from upstream Kubernetes in order to optimize for edge deployments, but RKE1 and RKE2 can stay closely aligned with upstream.</p>
+<p>Importantly, RKE2 does not rely on Docker as RKE1 does. RKE1 leveraged Docker for deploying and managing the control plane components as well as the container runtime for Kubernetes. RKE2 launches control plane components as static pods, managed by the kubelet. The embedded container runtime is containerd.</p>
+<h2 id="deploying-a-vm">Deploying a VM</h2>
+<p><strong>IMPORTANT</strong> Make sure you keep your SSH keys safe, lock the system down with appropriate firewall rules, and keep the OS updated.</p>
+<p>So, let&rsquo;s get started. If you don&rsquo;t already have a Hetzner account, go sign up here: <a href="https://hetzner.cloud/?ref=JRGtolHM4Qdb" target="_blank" rel="noopener noreffer">Hetzner Signup</a>*</p>
+<p>Once you are signed up:</p>
+<ol>
+<li>Log in to <a href="https://accounts.hetzner.com/login" target="_blank" rel="noopener noreffer">Hetzner Cloud</a></li>
+<li>Click on <code>Default</code> project, or create a new project if you like</li>
+<li>Click <code>Add Server</code> and select the following options
+<ul>
+<li>Location: <code>Ashburn, VA</code> (or your desired region)</li>
+<li>Image: <code>Ubuntu 20.04</code></li>
+<li>Type: <code>Standard</code> and <code>CPX51</code></li>
+<li>Volume: <code>None</code></li>
+<li>Network: Create a new one if you like</li>
+<li>Firewalls: Create a new one that allows all access from your IP and only 80/443 from All IPs</li>
+<li>SSH Key: Create a new SSH key to use or use an existing one</li>
+<li>Name: <code>RKE2-Dev</code></li>
+</ul>
+</li>
+<li>Click <code>Create &amp; Buy Now</code></li>
+</ol>
+<p>This will provision this new server and provide you and external IP Address that you can use to connect to the node.</p>
+<h2 id="install-rke2-kubernetes">Install RKE2 Kubernetes</h2>
+<p>Once the node is provisioned, get the IP and login to the cluster using the SSH key you configured.</p>
+<ol>
+<li>In a terminal, run</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ssh -i /path/to/key/id_rsa root@YOURSERVERIP
+</code></pre></div><ol start="2">
+<li>Update the OS</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">apt update <span class="o">&amp;&amp;</span> apt upgrade -y
+</code></pre></div><ol start="3">
+<li>Install RKE2:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">curl -sfL https://get.rke2.io <span class="p">|</span> sh -
+systemctl <span class="nb">enable</span> --now rke2-server.service
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>/var/lib/rancher/rke2/bin:<span class="nv">$PATH</span>
+</code></pre></div><ol start="4">
+<li>Export the kubeconfig file. We can use this file to connect from our local machine using the <code>kubectl</code> command line or <a href="https://k8slens.dev/" target="_blank" rel="noopener noreffer">Lens</a></li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">mkdir ~/.kube
+cp /etc/rancher/rke2/rke2.yaml ~/.kube/config
+</code></pre></div><ol start="5">
+<li>Run <code>kubectl get nodes</code> to verify that the RKE2 node is up and running</li>
+</ol>
+<pre tabindex="0"><code>root@rke2-test:~# kubectl get nodes
+NAME        STATUS   ROLES                       AGE   VERSION
+rke2-dev   Ready    control-plane,etcd,master   12d   v1.21.6+rke2r1
+</code></pre><p>You now have a single node RKE2 cluster up and running.</p>
+<h2 id="configure-dns-optional">Configure DNS (Optional)</h2>
+<p>If you would like the cluster to have a DNS name and be able to pull valid Let&rsquo;s Encrypt keys, you will need to point some DNS names to your cluster. Add the following to you public DNS records for your desired domain. (We use Cloudflare at AB. Reach out if you have questions.)</p>
+<ul>
+<li>rancher.YOURDOMAIN.tld -&gt; IP of your Hetzner Server (This will let you reach the Rancher interface we configure in the next steps)</li>
+<li>*.apps.YOURDOMAIN.tld -&gt; IP of your Hetzner Server (This will let you reach apps running in Kubernetes via NGINX Ingress)</li>
+</ul>
+<h2 id="install-helm">Install Helm</h2>
+<p>We will use <a href="https://helm.sh/" target="_blank" rel="noopener noreffer">Helm</a> on the Hetzner machine to deploy Rancher (and other applications if you want).</p>
+<p>Run the following commands to install Helm:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod <span class="m">700</span> get_helm.sh
+./get_helm.sh
+</code></pre></div><h2 id="deploy-rancher">Deploy Rancher</h2>
+<p>We can now deploy Rancher 2.6 on the cluster. We will use Rancher as the Management UI for the cluster.</p>
+<p>Official documentation: <a href="https://rancher.com/docs/rancher/v2.6/en/installation/install-rancher-on-k8s/" target="_blank" rel="noopener noreffer">https://rancher.com/docs/rancher/v2.6/en/installation/install-rancher-on-k8s/</a></p>
+<ol>
+<li>Add the Rancher Stable Helm Repo</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">helm repo add rancher-stable https://releases.rancher.com/server-charts/stable
+</code></pre></div><ol start="2">
+<li>Create a namespace for Rancher</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">kubectl create namespace cattle-system
+</code></pre></div><ol start="3">
+<li>Install <code>cert-manager</code> for management of SSL certificates in cluster</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Install cert-manager CRDs</span>
+kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v1.5.1/cert-manager.crds.yaml
+
+<span class="c1"># Add the Jetstack Helm repository</span>
+helm repo add jetstack https://charts.jetstack.io
+
+<span class="c1"># Update your local Helm chart repository cache</span>
+helm repo update
+
+<span class="c1"># Install the cert-manager Helm chart</span>
+helm install cert-manager jetstack/cert-manager <span class="se">\
+</span><span class="se"></span>  --namespace cert-manager <span class="se">\
+</span><span class="se"></span>  --create-namespace <span class="se">\
+</span><span class="se"></span>  --version v1.5.1
+</code></pre></div><ol start="4">
+<li>Install Rancher using Helm. This assumes you have configured DNS to get a valid certificate.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">helm install rancher rancher-stable/rancher <span class="se">\
+</span><span class="se"></span>  --namespace cattle-system <span class="se">\
+</span><span class="se"></span>  --set <span class="nv">hostname</span><span class="o">=</span>rancher.YOURDOMAIN.tld <span class="se">\
+</span><span class="se"></span>  --set <span class="nv">bootstrapPassword</span><span class="o">=</span>SUPERSECRETADMINPASSWORD
+</code></pre></div><ol start="5">
+<li>Verify rancher deployed successfully</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">kubectl -n cattle-system rollout status deploy/rancher
+</code></pre></div><ol start="6">
+<li>Once Rancher has been fully deployed, visit <code>https://rancher.YOURDOMAIN.tld</code> in your browser to login to your Rancher UI and interact with your cluster. Now you should have a fully functioning RKE2 Single Node Cluster with Rancher Management Interface installed.</li>
+</ol>
+<figure><a class="lightgallery" href="/assets/11-29-rancher-ui.png" title="/assets/11-29-rancher-ui.png" data-thumbnail="/assets/11-29-rancher-ui.png" data-sub-html="<h2>Rancher UI on RKE2</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/assets/11-29-rancher-ui.png"
+            data-srcset="/assets/11-29-rancher-ui.png, /assets/11-29-rancher-ui.png 1.5x, /assets/11-29-rancher-ui.png 2x"
+            data-sizes="auto"
+            alt="/assets/11-29-rancher-ui.png" />
+    </a><figcaption class="image-caption">Rancher UI on RKE2</figcaption>
+    </figure>
+<h2 id="closing">Closing</h2>
+<p>Based on the instructions above, you should now have a powerful RKE2 Kubernetes cluster you can use for testing and development work.</p>
+<p>In Part 2 of this blog series, we will install Monitoring and Longhorn for persistent volumes in the cluster.</p>
+<p>If you have any questions, please reach out to us at <a href="mailto:devops@alphabravo.io" rel="">devops@alphabravo.io</a>.</p>
+<p>Thanks for reading!</p>
+<hr>
+<p><em>The AB Engineering Team</em></p>
+<p><strong>Website:</strong> <a href="https://alphabravo.io" target="_blank" rel="noopener noreffer">https://alphabravo.io</a></p>
+<p><strong>Contact Us:</strong> <a href="https://alphabravo.io/contact-us" target="_blank" rel="noopener noreffer">https://alphabravo.io/contact-us</a></p>
+<p><em>Note: Some links included here are affiliate links. If you use the link to sign up, AB may get a small referral credit on our account.</em></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info"><div class="post-info-tag"><span><a href="/tags/rancher/">rancher</a>
+                </span><span><a href="/tags/kubernetes/">kubernetes</a>
+                </span><span><a href="/tags/rke2/">rke2</a>
+                </span><span><a href="/tags/helm/">helm</a>
+                </span><span><a href="/tags/hetzner/">hetzner</a>
+                </span></div><div class="post-info-line"><div class="post-info-mod">
+                <span>Updated on 2021-11-26</span>
+            </div><div class="post-info-mod"></div>
+        </div></div><div class="post-nav"><a href="/posts/2021/why-we-chose-nifi-over-databrew/" class="prev" rel="prev" title="Why We Chose Nifi Over Databrew"><i class="fas fa-angle-left fa-fw"></i>Previous Post</a></div></div>
+</div></article></div>
+            </main>
+            <footer class="footer"><div class="footer-container"><div class="footer-line">AlphaBravo</div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/"></a></span></div>
+</div>
+</footer>
+        </div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-chevron-up fa-fw"></i>
+            </a></div><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/typeit/typeit.min.js"></script><script src="/lib/lightgallery/lightgallery.min.js"></script><script src="/lib/lightgallery/lg-thumbnail.min.js"></script><script src="/lib/lightgallery/lg-zoom.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{},"data":{"id-1":"AB Engineering Blog","id-2":"AB Engineering Blog"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"typeit":{"cursorChar":null,"cursorSpeed":null,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":null,"speed":null}};</script><script src="/js/theme.min.js"></script></body></html>

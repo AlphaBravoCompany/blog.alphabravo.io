@@ -5,6 +5,9 @@ date: 2021-11-17T13:00:00Z
 draft: false
 featuredImage: /assets/rancher-ui-full.png
 featuredImagePreview: /assets/rancher-ui-small.png
+lightgallery: true
+tags: [rancher, kubernetes, rancher mcm]
+author: AB Engineering
 ---
 ## What is Rancher Multi-Cluster Management
 

@@ -1,0 +1,37 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>kubernetes - Tag - AB Engineering Blog</title>
+        <link>https://blog.alphabravo.io/tags/kubernetes/</link>
+        <description>kubernetes - Tag - AB Engineering Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 26 Nov 2021 13:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/tags/kubernetes/" rel="self" type="application/rss+xml" /><item>
+    <title>Powerful Single Node RKE2 on Hetzner for CHEAP! (Part 1)</title>
+    <link>https://blog.alphabravo.io/posts/2021/single-node-rke2-pt1/</link>
+    <pubDate>Fri, 26 Nov 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/single-node-rke2-pt1/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/assets/single-node-rke2-full.png" referrerpolicy="no-referrer">
+            </div>The RKE2 Cluster In this blog, we will explain how to deploy a powerful, single node RKE2 cluster on Hetzner. It will provide the following resources.
+ Single Node RKE2 Kubernetes Cluster NGINX Ingress into your cluster Rancher Multi Cluster Manager Web UI to manage your cluster  Why Hetzner? Want an easy, powerful, single node, publically accessible Kubernetes cluster? Well, do we have a deal for you! (said in my best Billy Mays voice.]]></description>
+</item>
+<item>
+    <title>Rancher Multi-Cluster Management UI</title>
+    <link>https://blog.alphabravo.io/posts/2021/rancher-multi-cluster-management-ui/</link>
+    <pubDate>Wed, 17 Nov 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/rancher-multi-cluster-management-ui/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/assets/rancher-ui-full.png" referrerpolicy="no-referrer">
+            </div>What is Rancher Multi-Cluster Management If you have ventured into container management and Kubernetes for your organization (or even for yourself), you have quickly realized that you need a robust way to manage more than one cluster easily. In fact, you probably want an easier way to manage a single cluster.
+The official Kubernetes dashboard is&hellip; sub-optimal. There are a few other open-source options out there, but they lack in many areas.]]></description>
+</item>
+<item>
+    <title>Why We Use Rancher</title>
+    <link>https://blog.alphabravo.io/posts/2021/why-we-use-rancher/</link>
+    <pubDate>Mon, 15 Nov 2021 11:35:58 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/why-we-use-rancher/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/assets/ab-uses-rancher-full.png" referrerpolicy="no-referrer">
+            </div>Why We Use Rancher Ok, let&rsquo;s get this out of the way. Yes, we are a Rancher Gold Partner and yes, we provide Rancher Training.
+We are not those things because we are corpo shills. We partnered with Rancher because we use their products anyway.
+  We use them in production (RKE2 and K3s).
+  We use them on our Raspberry Pi clusters (K3s).
+  We use them in Docker (K3d)]]></description>
+</item>
+</channel>
+</rss>

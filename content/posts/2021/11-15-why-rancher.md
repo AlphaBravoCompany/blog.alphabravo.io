@@ -5,6 +5,9 @@ date: 2021-11-15T11:35:58Z
 draft: false
 featuredImage: /assets/ab-uses-rancher-full.png
 featuredImagePreview: /assets/ab-uses-rancher-small.png
+lightgallery: true
+tags: [rancher, kubernetes, rke2, k3s]
+author: AB Engineering
 ---
 # Why We Use Rancher
 

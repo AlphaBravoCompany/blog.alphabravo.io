@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>aws databrew - Tag - AB Engineering Blog</title>
+        <link>https://blog.alphabravo.io/tags/aws-databrew/</link>
+        <description>aws databrew - Tag - AB Engineering Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 22 Nov 2021 13:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/tags/aws-databrew/" rel="self" type="application/rss+xml" /><item>
+    <title>Why We Chose Nifi Over Databrew</title>
+    <link>https://blog.alphabravo.io/posts/2021/why-we-chose-nifi-over-databrew/</link>
+    <pubDate>Mon, 22 Nov 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/why-we-chose-nifi-over-databrew/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/assets/apache-nifi-full.png" referrerpolicy="no-referrer">
+            </div>Why AlphaBravo Chose Nifi Over Databrew Recently, the AlphaBravo engineering team began working on a new product we’re calling ABScan. Our goal is to provide a platform which uses multiple scanning utilities via a single interface.
+Early on in our development process, we realized that we would need to take multiple JSON outputs, convert them into CSV and SQL, and merge the results. This would require the use of an ETL to automate the transformation of the data generated so we could create CSV files for reports and SQL data for long term storage.]]></description>
+</item>
+</channel>
+</rss>

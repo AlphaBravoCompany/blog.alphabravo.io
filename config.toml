@@ -3,10 +3,12 @@ languageCode = 'en'
 defaultContentLanguage = 'en'
 defaultTheme = "auto"
 title = 'AB Engineering Blog'
+description = 'AlphaBravo DevSecOps Engineering Blog'
 images = ["/assets/ablogo.png"]
 dateFormat = '01-01-2021'
 theme = 'FeelIt'
 publishDir = "docs"
+SourceMap = true
 
 [blackfriday]
     extensions = ["hardLineBreak"]
@@ -51,14 +53,14 @@ publishDir = "docs"
     # title will be shown when you hover on this menu link
     title = ""
     weight = 3
-  [[menu.main]]
-    identifier = "categories"
-    pre = ""
-    post = ""
-    name = "Categories"
-    url = "/categories/"
-    title = ""
-    weight = 4
+# [[menu.main]]
+#    identifier = "categories"
+#    pre = ""
+#    post = ""
+#    name = "Categories"
+#    url = "/categories/"
+#    title = ""
+#    weight = 4
   [[menu.main]]
     identifier = "github"
     pre = "<i class='fab fa-github fa-fw'></i>"

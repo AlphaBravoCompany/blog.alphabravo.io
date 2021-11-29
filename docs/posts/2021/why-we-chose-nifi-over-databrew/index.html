@@ -19,7 +19,7 @@ Early on in our development process, we realized that we would need to take mult
 <meta name="application-name" content="AB Engineering Blog">
 <meta name="apple-mobile-web-app-title" content="AB Engineering Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.alphabravo.io/posts/2021/why-we-chose-nifi-over-databrew/" /><link rel="prev" href="https://blog.alphabravo.io/posts/2021/rancher-multi-cluster-management-ui/" /><link rel="stylesheet" href="/css/page.min.css"><link rel="stylesheet" href="/css/home.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.alphabravo.io/posts/2021/why-we-chose-nifi-over-databrew/" /><link rel="prev" href="https://blog.alphabravo.io/posts/2021/rancher-multi-cluster-management-ui/" /><link rel="next" href="https://blog.alphabravo.io/posts/2021/single-node-rke2-pt1/" /><link rel="stylesheet" href="/css/page.min.css"><link rel="stylesheet" href="/css/home.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -28,12 +28,12 @@ Early on in our development process, we realized that we would need to take mult
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.alphabravo.io\/posts\/2021\/why-we-chose-nifi-over-databrew\/"
-        },"genre": "posts","wordcount":  2273 ,
+        },"genre": "posts","keywords": "apache nifi, aws databrew, etl","wordcount":  2273 ,
         "url": "https:\/\/blog.alphabravo.io\/posts\/2021\/why-we-chose-nifi-over-databrew\/","datePublished": "2021-11-22T13:00:00+00:00","dateModified": "2021-11-22T13:00:00+00:00","publisher": {
             "@type": "Organization",
-            "name": "Author"},"author": {
+            "name": "Ed Engelking"},"author": {
                 "@type": "Person",
-                "name": "Author"
+                "name": "Ed Engelking"
             },"description": ""
     }
     </script></head><body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
@@ -51,7 +51,7 @@ Early on in our development process, we realized that we would need to take mult
         title="https://images.squarespace-cdn.com/content/v1/604fa2cb79525313bac61fd0/934a2a16-6def-4d2b-abac-af8a6f244702/whitepng.png?format=1500w" /><span id="id-1" class="typeit"></span></a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/" title="Blog Homepage"> Home </a><a class="menu-item" href="https://alphabravo.io" title="AlphaBravo Website" rel="noopener noreffer" target="_blank"> AB Website </a><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="https://github.com/AlphaBravoCompany" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><a class="menu-item" href="https://linkedin.com/company/alphabravogov/" rel="noopener noreffer" target="_blank"><i class='fab fa-linkedin fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+            <div class="menu-inner"><a class="menu-item" href="/" title="Blog Homepage"> Home </a><a class="menu-item" href="https://alphabravo.io" title="AlphaBravo Website" rel="noopener noreffer" target="_blank"> AB Website </a><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="https://github.com/AlphaBravoCompany" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><a class="menu-item" href="https://linkedin.com/company/alphabravogov/" rel="noopener noreffer" target="_blank"><i class='fab fa-linkedin fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
                         <input type="text" placeholder="Search" id="search-input-desktop">
                         <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
                             <i class="fas fa-search fa-fw"></i>
@@ -101,7 +101,7 @@ Early on in our development process, we realized that we would need to take mult
                     <a href="#" class="search-cancel" id="search-cancel-mobile">
                         Cancel
                     </a>
-                </div><a class="menu-item" href="/" title="Blog Homepage">Home</a><a class="menu-item" href="https://alphabravo.io" title="AlphaBravo Website" rel="noopener noreffer" target="_blank">AB Website</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="https://github.com/AlphaBravoCompany" title="" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a class="menu-item" href="https://linkedin.com/company/alphabravogov/" title="" rel="noopener noreffer" target="_blank"><i class='fab fa-linkedin fa-fw'></i></a><div class="menu-item"><a href="/index.xml" title="RSS"><i class="fas fa-rss fa-fw" title="RSS"></i> </a>
+                </div><a class="menu-item" href="/" title="Blog Homepage">Home</a><a class="menu-item" href="https://alphabravo.io" title="AlphaBravo Website" rel="noopener noreffer" target="_blank">AB Website</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="https://github.com/AlphaBravoCompany" title="" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a class="menu-item" href="https://linkedin.com/company/alphabravogov/" title="" rel="noopener noreffer" target="_blank"><i class='fab fa-linkedin fa-fw'></i></a><div class="menu-item"><a href="/index.xml" title="RSS"><i class="fas fa-rss fa-fw" title="RSS"></i> </a>
                 <span>&nbsp;|&nbsp;</span><a href="javascript:void(0);" class="theme-switch" title="Switch Theme">
                     <i class="fas fa-adjust fa-fw"></i>
                 </a>
@@ -124,7 +124,7 @@ Early on in our development process, we realized that we would need to take mult
         data-sizes="auto"
         alt="/assets/apache-nifi-full.png"
         title="/assets/apache-nifi-full.png" /></div><div class="single-card" data-image="true"><h2 class="single-title animated flipInX">Why We Chose Nifi Over Databrew</h2><div class="post-meta">
-                <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Author</a></span></div>
+                <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Ed Engelking</a></span></div>
                 <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-11-22">2021-11-22</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2273 words</span>&nbsp;
                     <span><i class="far fa-clock fa-fw"></i>&nbsp;11 minutes</span>&nbsp;</div>
             </div>
@@ -267,10 +267,14 @@ Example: com.mysql.jdbc.Driver</p>
 <p><strong>Website:</strong> <a href="https://alphabravo.io" target="_blank" rel="noopener noreffer">https://alphabravo.io</a></p>
 <p><strong>Contact Us:</strong> <a href="https://alphabravo.io/contact-us" target="_blank" rel="noopener noreffer">https://alphabravo.io/contact-us</a></p>
 </div><div class="post-footer" id="post-footer">
-    <div class="post-info"><div class="post-info-line"><div class="post-info-mod">
+    <div class="post-info"><div class="post-info-tag"><span><a href="/tags/apache-nifi/">apache nifi</a>
+                </span><span><a href="/tags/aws-databrew/">aws databrew</a>
+                </span><span><a href="/tags/etl/">etl</a>
+                </span></div><div class="post-info-line"><div class="post-info-mod">
                 <span>Updated on 2021-11-22</span>
             </div><div class="post-info-mod"></div>
-        </div></div><div class="post-nav"><a href="/posts/2021/rancher-multi-cluster-management-ui/" class="prev" rel="prev" title="Rancher Multi-Cluster Management UI"><i class="fas fa-angle-left fa-fw"></i>Previous Post</a></div></div>
+        </div></div><div class="post-nav"><a href="/posts/2021/rancher-multi-cluster-management-ui/" class="prev" rel="prev" title="Rancher Multi-Cluster Management UI"><i class="fas fa-angle-left fa-fw"></i>Previous Post</a>
+            <a href="/posts/2021/single-node-rke2-pt1/" class="next" rel="next" title="Powerful Single Node RKE2 on Hetzner for CHEAP! (Part 1)">Next Post<i class="fas fa-angle-right fa-fw"></i></a></div></div>
 </div></article></div>
             </main>
             <footer class="footer"><div class="footer-container"><div class="footer-line">AlphaBravo</div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/"></a></span></div>
@@ -280,4 +284,4 @@ Example: com.mysql.jdbc.Driver</p>
 
         <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
                 <i class="fas fa-chevron-up fa-fw"></i>
-            </a></div><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/typeit/typeit.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{},"data":{"id-1":"AB Engineering Blog","id-2":"AB Engineering Blog"},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"typeit":{"cursorChar":null,"cursorSpeed":null,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":null,"speed":null}};</script><script src="/js/theme.min.js"></script></body></html>
+            </a></div><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/typeit/typeit.min.js"></script><script src="/lib/lightgallery/lightgallery.min.js"></script><script src="/lib/lightgallery/lg-thumbnail.min.js"></script><script src="/lib/lightgallery/lg-zoom.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{},"data":{"id-1":"AB Engineering Blog","id-2":"AB Engineering Blog"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"typeit":{"cursorChar":null,"cursorSpeed":null,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":null,"speed":null}};</script><script src="/js/theme.min.js"></script></body></html>

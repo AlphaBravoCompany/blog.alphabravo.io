@@ -103,6 +103,13 @@ fingerprint = "sha256"
       enable = false
       [params.page.comment.vssue]
         enable = false
+    [params.page.seo]
+      # image URL
+      images = ["/assets/ab-seo-large.png"]
+      # Publisher info
+      [params.page.seo.publisher]
+        name = "AlphaBravo"
+        logoUrl = "/assets/alphabravo-logoonly-outline1.png"
 
   [params.social]
     Github = "alphabravocompany"

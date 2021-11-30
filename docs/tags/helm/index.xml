@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>helm - Tag - AB Engineering Blog</title>
+        <title>helm - Tag - Engineering Blog</title>
         <link>https://blog.alphabravo.io/tags/helm/</link>
-        <description>helm - Tag - AB Engineering Blog</description>
+        <description>helm - Tag - Engineering Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 30 Nov 2021 11:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/tags/helm/" rel="self" type="application/rss+xml" /><item>
     <title>Powerful Single Node K3s on Hetzner for CHEAP!</title>
     <link>https://blog.alphabravo.io/posts/2021/single-node-k3s/</link>

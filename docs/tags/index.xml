@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Tags - Tag - AB Engineering Blog</title>
+        <title>Tags - Tag - Engineering Blog</title>
         <link>https://blog.alphabravo.io/tags/</link>
-        <description>Tags - Tag - AB Engineering Blog</description>
+        <description>Tags - Tag - Engineering Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 30 Nov 2021 11:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/tags/" rel="self" type="application/rss+xml" /><item>
     <title>helm</title>
     <link>https://blog.alphabravo.io/tags/helm/</link>

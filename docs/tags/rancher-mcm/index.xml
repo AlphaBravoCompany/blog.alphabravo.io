@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>rancher mcm - Tag - AB Engineering Blog</title>
+        <title>rancher mcm - Tag - Engineering Blog</title>
         <link>https://blog.alphabravo.io/tags/rancher-mcm/</link>
-        <description>rancher mcm - Tag - AB Engineering Blog</description>
+        <description>rancher mcm - Tag - Engineering Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 17 Nov 2021 13:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/tags/rancher-mcm/" rel="self" type="application/rss+xml" /><item>
     <title>Rancher Multi-Cluster Management UI</title>
     <link>https://blog.alphabravo.io/posts/2021/rancher-multi-cluster-management-ui/</link>

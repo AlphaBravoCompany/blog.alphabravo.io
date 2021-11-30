@@ -1,6 +1,6 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>AB Engineering Blog</title>
+        <title>Engineering Blog</title>
         <link>https://blog.alphabravo.io/</link>
         <description>AlphaBravo Engineering Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 30 Nov 2021 11:00:00 &#43;0000</lastBuildDate>

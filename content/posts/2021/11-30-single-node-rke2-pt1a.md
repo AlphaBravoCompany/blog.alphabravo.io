@@ -1,7 +1,7 @@
 ---
 title: "Powerful Single Node K3s on Hetzner for CHEAP!"
 description: "Instructions on deploying K3s, Helm, cert-manager and Rancher on a single node Hetzner server."
-slug: "single-node-rke2-pt1"
+slug: "single-node-k3s"
 date: 2021-11-30T11:00:00Z
 draft: false
 featuredImage: /assets/single-node-k3s-full.png

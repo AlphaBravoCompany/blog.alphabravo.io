@@ -132,6 +132,12 @@ fingerprint = "sha256"
       dismiss = "Ok"
       link = "https://alphabravo.io"
 
+  [params.seo]
+    # image URL
+    image = "/assets/ab-seo-large.png"
+    # thumbnail URL
+    thumbnailUrl = "/assets/ab-seo-small.png"
+
 [languages]
   [languages.en]
     [languages.en.params]

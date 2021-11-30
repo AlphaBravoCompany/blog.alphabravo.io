@@ -124,6 +124,14 @@ fingerprint = "sha256"
       # GoatCounter code
       code = "stats.alphabravo.io/count"
 
+  [params.cookieconsent]
+    enable = true
+    # text strings used for Cookie consent banner
+    [params.cookieconsent.content]
+      message = "We use cookies and open-source, privacy-respecting analytics technologies to improve your browsing experience on our website, to analyze our website traffic, and to understand where our visitors are coming from."
+      dismiss = "Ok"
+      link = "https://alphabravo.io"
+
 [languages]
   [languages.en]
     [languages.en.params]

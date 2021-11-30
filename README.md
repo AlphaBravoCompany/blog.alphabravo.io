@@ -48,7 +48,7 @@ It is currently (Nov 2021) hosted on Github Sites.
 
 ## Run the site locally
 
-`docker run -it -p 1313:1313 -v ${PWD}:/site alphabravocompany/hugo-docker:latest server -D --bind=0.0.0.0 --disableFastRender --noHTTPCache`
+`docker run -it --rm -p 1313:1313 -v ${PWD}:/site alphabravocompany/hugo-docker:latest server -D --bind=0.0.0.0 --disableFastRender --noHTTPCache`
 
 ## Publish changes into static files
 

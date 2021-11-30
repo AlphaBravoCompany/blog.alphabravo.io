@@ -6,6 +6,7 @@ date: 2021-11-29T13:00:00Z
 draft: false
 featuredImage: /assets/single-node-rke2-full.png
 featuredImagePreview: /assets/single-node-rke2-full.png
+images: ["/assets/single-node-rke2-full.png"]
 lightgallery: true
 tags: [rancher, kubernetes, rke2, helm, hetzner]
 author: AB Engineering

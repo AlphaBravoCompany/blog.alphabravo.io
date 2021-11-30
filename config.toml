@@ -112,6 +112,12 @@ SourceMap = true
     copyright = true
     custom = 'AlphaBravo'
 
+  [params.analytics]
+    enable = true
+    [params.analytics.goatcounter]
+      # GoatCounter code
+      code = "https://stats.alphabravo.io/count"
+
 [languages]
   [languages.en]
     [languages.en.params]
@@ -139,14 +145,6 @@ SourceMap = true
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
-
-Analytics config
-  [params.analytics]
-    enable = true
-    [params.analytics.goatcounter]
-      # GoatCounter code
-      code = "<script data-goatcounter="https://stats.alphabravo.io/count"
-        async src="//stats.alphabravo.io/count.js"></script>"
 
 
 # Markup related configuration in Hugo

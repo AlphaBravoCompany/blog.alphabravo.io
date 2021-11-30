@@ -53,7 +53,7 @@ Once you are signed up:
 
 This will provision this new server and provide you and external IP Address that you can use to connect to the node.
 
-## Install RKE2 Kubernetes
+## Install K3S Kubernetes
 
 Once the node is provisioned, get the IP and login to the cluster using the SSH key you configured.
 

@@ -9,6 +9,7 @@ dateFormat = '01-01-2021'
 theme = 'FeelIt'
 publishDir = "docs"
 SourceMap = true
+enableRobotsTXT = true
 
 [blackfriday]
     extensions = ["hardLineBreak"]

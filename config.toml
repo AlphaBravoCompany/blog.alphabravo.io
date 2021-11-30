@@ -116,7 +116,7 @@ SourceMap = true
     enable = true
     [params.analytics.goatcounter]
       # GoatCounter code
-      code = "https://stats.alphabravo.io/count"
+      code = "stats.alphabravo.io/count"
 
 [languages]
   [languages.en]

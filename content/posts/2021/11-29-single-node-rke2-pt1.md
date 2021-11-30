@@ -2,7 +2,7 @@
 title: "Powerful Single Node RKE2 on Hetzner for CHEAP! (Part 1)"
 description: "Instructions on deploying RKE2, Helm, cert-manager and Rancher on a single node Hetzner server."
 slug: "single-node-rke2-pt1"
-date: 2021-11-26T13:00:00Z
+date: 2021-11-29T13:00:00Z
 draft: false
 featuredImage: /assets/single-node-rke2-full.png
 featuredImagePreview: /assets/single-node-rke2-full.png

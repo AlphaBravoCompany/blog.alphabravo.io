@@ -3,7 +3,17 @@
         <title>k3s - Tag - AB Engineering Blog</title>
         <link>https://blog.alphabravo.io/tags/k3s/</link>
         <description>k3s - Tag - AB Engineering Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 15 Nov 2021 11:35:58 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/tags/k3s/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 30 Nov 2021 11:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/tags/k3s/" rel="self" type="application/rss+xml" /><item>
+    <title>Powerful Single Node K3s on Hetzner for CHEAP!</title>
+    <link>https://blog.alphabravo.io/posts/2021/single-node-rke2-pt1/</link>
+    <pubDate>Tue, 30 Nov 2021 11:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/single-node-rke2-pt1/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/assets/single-node-k3s-full.png" referrerpolicy="no-referrer">
+            </div>The K3s Cluster No, your eyes do not deceive you. This is a very similarly named blog to our Powerful Single Node RKE2 on Hetzner for CHEAP! (Part 1).
+Some folks don&rsquo;t want to deploy RKE2, and we don&rsquo;t want you to feel left out. In this blog we are going to deploy K3s in place of RKE2.
+If you want to see why we chose Hetzner for this specific deployment, go check out the previous blog.]]></description>
+</item>
+<item>
     <title>Why We Use Rancher</title>
     <link>https://blog.alphabravo.io/posts/2021/why-we-use-rancher/</link>
     <pubDate>Mon, 15 Nov 2021 11:35:58 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/why-we-use-rancher/</guid>

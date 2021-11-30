@@ -3,34 +3,40 @@
         <title>Tags - Tag - AB Engineering Blog</title>
         <link>https://blog.alphabravo.io/tags/</link>
         <description>Tags - Tag - AB Engineering Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 26 Nov 2021 13:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/tags/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 30 Nov 2021 11:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/tags/" rel="self" type="application/rss+xml" /><item>
     <title>helm</title>
     <link>https://blog.alphabravo.io/tags/helm/</link>
-    <pubDate>Fri, 26 Nov 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/helm/</guid>
+    <pubDate>Tue, 30 Nov 2021 11:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/helm/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>hetzner</title>
     <link>https://blog.alphabravo.io/tags/hetzner/</link>
-    <pubDate>Fri, 26 Nov 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/hetzner/</guid>
+    <pubDate>Tue, 30 Nov 2021 11:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/hetzner/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>k3s</title>
+    <link>https://blog.alphabravo.io/tags/k3s/</link>
+    <pubDate>Tue, 30 Nov 2021 11:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/k3s/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>kubernetes</title>
     <link>https://blog.alphabravo.io/tags/kubernetes/</link>
-    <pubDate>Fri, 26 Nov 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/kubernetes/</guid>
+    <pubDate>Tue, 30 Nov 2021 11:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/kubernetes/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>rancher</title>
     <link>https://blog.alphabravo.io/tags/rancher/</link>
-    <pubDate>Fri, 26 Nov 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/rancher/</guid>
+    <pubDate>Tue, 30 Nov 2021 11:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/rancher/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>rke2</title>
     <link>https://blog.alphabravo.io/tags/rke2/</link>
-    <pubDate>Fri, 26 Nov 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/rke2/</guid>
+    <pubDate>Mon, 29 Nov 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/rke2/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
@@ -55,12 +61,6 @@
     <title>rancher mcm</title>
     <link>https://blog.alphabravo.io/tags/rancher-mcm/</link>
     <pubDate>Wed, 17 Nov 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/rancher-mcm/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>k3s</title>
-    <link>https://blog.alphabravo.io/tags/k3s/</link>
-    <pubDate>Mon, 15 Nov 2021 11:35:58 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/k3s/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>

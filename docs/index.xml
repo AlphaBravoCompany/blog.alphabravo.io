@@ -3,12 +3,22 @@
         <title>AB Engineering Blog</title>
         <link>https://blog.alphabravo.io/</link>
         <description>AlphaBravo Engineering Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 26 Nov 2021 13:00:00 &#43;0000</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 30 Nov 2021 11:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://blog.alphabravo.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Powerful Single Node K3s on Hetzner for CHEAP!</title>
+    <link>https://blog.alphabravo.io/posts/2021/single-node-rke2-pt1/</link>
+    <pubDate>Tue, 30 Nov 2021 11:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/single-node-rke2-pt1/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/assets/single-node-k3s-full.png" referrerpolicy="no-referrer">
+            </div>The K3s Cluster No, your eyes do not deceive you. This is a very similarly named blog to our Powerful Single Node RKE2 on Hetzner for CHEAP! (Part 1).
+Some folks don&rsquo;t want to deploy RKE2, and we don&rsquo;t want you to feel left out. In this blog we are going to deploy K3s in place of RKE2.
+If you want to see why we chose Hetzner for this specific deployment, go check out the previous blog.]]></description>
+</item>
+<item>
     <title>Powerful Single Node RKE2 on Hetzner for CHEAP! (Part 1)</title>
     <link>https://blog.alphabravo.io/posts/2021/single-node-rke2-pt1/</link>
-    <pubDate>Fri, 26 Nov 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/single-node-rke2-pt1/</guid>
+    <pubDate>Mon, 29 Nov 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/single-node-rke2-pt1/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/single-node-rke2-full.png" referrerpolicy="no-referrer">
             </div>The RKE2 Cluster In this blog, we will explain how to deploy a powerful, single node RKE2 cluster on Hetzner. It will provide the following resources.

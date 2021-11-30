@@ -2,7 +2,7 @@ baseURL = 'https://blog.alphabravo.io'
 languageCode = 'en'
 defaultContentLanguage = 'en'
 defaultTheme = "auto"
-title = 'Engineering Blog'
+title = 'AB Engineering Blog'
 description = 'AlphaBravo DevSecOps Focused Engineering Blog'
 images = ["/assets/ablogo.png"]
 dateFormat = '01-01-2021'
@@ -10,6 +10,7 @@ theme = 'FeelIt'
 publishDir = "docs"
 SourceMap = true
 enableRobotsTXT = true
+fingerprint = "sha256"
 
 [blackfriday]
     extensions = ["hardLineBreak"]
@@ -19,12 +20,12 @@ enableRobotsTXT = true
 
   [params.header]
     # desktop header mode ("fixed", "normal", "auto")
-    desktopMode = "fixed"
+    desktopMode = "auto"
     # mobile header mode ("fixed", "normal", "auto")
     mobileMode = "auto"
     [params.header.title]
-      logo = "https://images.squarespace-cdn.com/content/v1/604fa2cb79525313bac61fd0/934a2a16-6def-4d2b-abac-af8a6f244702/whitepng.png?format=1500w"
-      name = "AB Engineering Blog"
+      logo = "/assets/alphabravo-logoonly-outline1.png"
+      name = "Engineering Blog"
       typeit = true
       rss = true
 
@@ -98,6 +99,10 @@ enableRobotsTXT = true
       copy = true
       # the maximum number of lines of displayed code by default
       maxShownLines = 100
+    [params.page.comment]
+      enable = false
+      [params.page.comment.vssue]
+        enable = false
 
   [params.social]
     Github = "alphabravocompany"

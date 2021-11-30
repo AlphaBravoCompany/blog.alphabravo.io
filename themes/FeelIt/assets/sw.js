@@ -23,6 +23,7 @@ const MAX_TTL = {
 const CACHE_BLACKLIST = [
     (str) => {
         return !str.startsWith("http://localhost");
+        return !str.startsWith("http://mj-hdev-02");
     },
 ];
 

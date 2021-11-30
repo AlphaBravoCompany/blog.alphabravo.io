@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>rke2 - Tag - Engineering Blog</title>
+        <title>rke2 - Tag - AB Engineering Blog</title>
         <link>https://blog.alphabravo.io/tags/rke2/</link>
-        <description>rke2 - Tag - Engineering Blog</description>
+        <description>rke2 - Tag - AB Engineering Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 29 Nov 2021 13:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/tags/rke2/" rel="self" type="application/rss+xml" /><item>
     <title>Powerful Single Node RKE2 on Hetzner for CHEAP! (Part 1)</title>
     <link>https://blog.alphabravo.io/posts/2021/single-node-rke2-pt1/</link>

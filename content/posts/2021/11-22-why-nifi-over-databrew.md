@@ -5,6 +5,9 @@ date: 2021-11-22T13:00:00Z
 draft: false
 featuredImage: /assets/apache-nifi-full.png
 featuredImagePreview: /assets/apache-nifi-full.png
+images: ["/assets/ab-seo-large.png"]
+seo:
+  images: ["/assets/ab-seo-large.png"]
 lightgallery: true
 tags: [apache nifi, aws databrew, etl]
 author: Ed Engelking

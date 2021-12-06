@@ -26,7 +26,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.alphabravo.io\/posts\/2021\/single-node-k3s\/"
-        },"image": ["https:\/\/blog.alphabravo.io\/assets\/ab-seo-large.png"],"genre": "posts","keywords": "rancher, kubernetes, k3s, helm, hetzner","wordcount":  873 ,
+        },"image": ["https:\/\/blog.alphabravo.io\/assets\/ab-seo-large.png"],"genre": "posts","keywords": "rancher, kubernetes, k3s, helm, hetzner","wordcount":  906 ,
         "url": "https:\/\/blog.alphabravo.io\/posts\/2021\/single-node-k3s\/","datePublished": "2021-11-30T11:00:00+00:00","dateModified": "2021-11-30T11:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "AlphaBravo","logo": "https:\/\/blog.alphabravo.io\/assets\/alphabravo-logoonly-outline1.png"},"author": {
@@ -123,7 +123,7 @@
         alt="/assets/single-node-k3s-full.png"
         title="Instructions on deploying K3s, Helm, cert-manager and Rancher on a single node Hetzner server." /></div><div class="single-card" data-image="true"><h2 class="single-title animated flipInX">Powerful Single Node K3s on Hetzner for CHEAP!</h2><div class="post-meta">
                 <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>AB Engineering</a></span></div>
-                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-11-30">2021-11-30</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;873 words</span>&nbsp;
+                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-11-30">2021-11-30</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;906 words</span>&nbsp;
                     <span><i class="far fa-clock fa-fw"></i>&nbsp;5 minutes</span>&nbsp;</div>
             </div>
             
@@ -134,6 +134,7 @@
                     </div>
                     <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
+    <li><a href="#single-node-kubernetes-series">Single-Node Kubernetes Series</a></li>
     <li><a href="#the-k3s-cluster">The K3s Cluster</a></li>
     <li><a href="#why-k3s">Why K3s</a></li>
     <li><a href="#deploying-a-vm">Deploying a VM</a></li>
@@ -144,7 +145,13 @@
     <li><a href="#closing">Closing</a></li>
   </ul>
 </nav></div>
-                </div><div class="content" id="content"><h2 id="the-k3s-cluster">The K3s Cluster</h2>
+                </div><div class="content" id="content"><h2 id="single-node-kubernetes-series">Single-Node Kubernetes Series</h2>
+<ul>
+<li><a href="https://blog.alphabravo.io/posts/2021/single-node-rke2-pt1/" target="_blank" rel="noopener noreffer">Powerful Single Node RKE2 on Hetzner for CHEAP! (Part 1)</a></li>
+<li><a href="https://blog.alphabravo.io/posts/2021/single-node-k3s/" target="_blank" rel="noopener noreffer">Powerful Single Node K3S on Hetzner for CHEAP! (Part 1a)</a></li>
+<li><a href="https://blog.alphabravo.io/posts/2021/single-node-rke2-pt2/" target="_blank" rel="noopener noreffer">Powerful Single Node K3s on Hetzner for CHEAP! (Part 2)</a></li>
+</ul>
+<h2 id="the-k3s-cluster">The K3s Cluster</h2>
 <p>No, your eyes do not deceive you. This is a very similarly named blog to our <a href="https://blog.alphabravo.io/posts/2021/single-node-rke2-pt1/" target="_blank" rel="noopener noreffer">Powerful Single Node RKE2 on Hetzner for CHEAP! (Part 1)</a>.</p>
 <p>Some folks don&rsquo;t want to deploy RKE2, and we don&rsquo;t want you to feel left out. In this blog we are going to deploy <a href="https://k3s.io" target="_blank" rel="noopener noreffer">K3s</a> in place of RKE2.</p>
 <p>If you want to see why we chose Hetzner for this specific deployment, go check out the previous <a href="https://blog.alphabravo.io/posts/2021/single-node-rke2-pt1/" target="_blank" rel="noopener noreffer">blog</a>.</p>

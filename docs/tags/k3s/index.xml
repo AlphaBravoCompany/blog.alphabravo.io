@@ -9,9 +9,8 @@
     <pubDate>Tue, 30 Nov 2021 11:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/single-node-k3s/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/single-node-k3s-full.png" referrerpolicy="no-referrer">
-            </div>The K3s Cluster No, your eyes do not deceive you. This is a very similarly named blog to our Powerful Single Node RKE2 on Hetzner for CHEAP! (Part 1).
-Some folks don&rsquo;t want to deploy RKE2, and we don&rsquo;t want you to feel left out. In this blog we are going to deploy K3s in place of RKE2.
-If you want to see why we chose Hetzner for this specific deployment, go check out the previous blog.]]></description>
+            </div>Single-Node Kubernetes Series  Powerful Single Node RKE2 on Hetzner for CHEAP! (Part 1) Powerful Single Node K3S on Hetzner for CHEAP! (Part 1a) Powerful Single Node K3s on Hetzner for CHEAP! (Part 2)  The K3s Cluster No, your eyes do not deceive you. This is a very similarly named blog to our Powerful Single Node RKE2 on Hetzner for CHEAP! (Part 1).
+Some folks don&rsquo;t want to deploy RKE2, and we don&rsquo;t want you to feel left out.]]></description>
 </item>
 <item>
     <title>Why We Use Rancher</title>

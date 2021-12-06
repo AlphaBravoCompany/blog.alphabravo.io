@@ -3,9 +3,19 @@
         <title>AB Engineering Blog</title>
         <link>https://blog.alphabravo.io/</link>
         <description>AlphaBravo Engineering Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 30 Nov 2021 11:00:00 &#43;0000</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 06 Dec 2021 13:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://blog.alphabravo.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Powerful Single Node RKE2 on Hetzner for CHEAP! (Part 2)</title>
+    <link>https://blog.alphabravo.io/posts/2021/single-node-rke2-pt2/</link>
+    <pubDate>Mon, 06 Dec 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/single-node-rke2-pt2/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/assets/2021/12/single-node-rke2-pt2-full.png" referrerpolicy="no-referrer">
+            </div>Single-Node Kubernetes Series  Powerful Single Node RKE2 on Hetzner for CHEAP! (Part 1) Powerful Single Node K3S on Hetzner for CHEAP! (Part 1a) Powerful Single Node K3s on Hetzner for CHEAP! (Part 2)  RKE2 Install In the first blog of this series, we deployed a single node RKE2 deployment and Rancher UI or a cheap Hetzner server.
+In this post, we will install the following:
+ Longhorn for Persistent Data Rancher Monitoring EFK Logging (Elasticsearch,Fluent Bit,Kibana)  What is Longhorn Longhorn is an official CNCF project that delivers a powerful cloud-native distributed storage platform for Kubernetes that can run anywhere.]]></description>
+</item>
+<item>
     <title>Powerful Single Node K3s on Hetzner for CHEAP!</title>
     <link>https://blog.alphabravo.io/posts/2021/single-node-k3s/</link>
     <pubDate>Tue, 30 Nov 2021 11:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/single-node-k3s/</guid>
@@ -21,8 +31,7 @@ If you want to see why we chose Hetzner for this specific deployment, go check o
     <pubDate>Mon, 29 Nov 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/single-node-rke2-pt1/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/single-node-rke2-full.png" referrerpolicy="no-referrer">
-            </div>The RKE2 Cluster In this blog, we will explain how to deploy a powerful, single node RKE2 cluster on Hetzner. It will provide the following resources.
- Single Node RKE2 Kubernetes Cluster NGINX Ingress into your cluster Rancher Multi Cluster Manager Web UI to manage your cluster  Why Hetzner? Want an easy, powerful, single node, publically accessible Kubernetes cluster? Well, do we have a deal for you! (said in my best Billy Mays voice.]]></description>
+            </div>Instructions on deploying RKE2, Helm, cert-manager and Rancher on a single node Hetzner server.]]></description>
 </item>
 <item>
     <title>Why We Chose Nifi Over Databrew</title>
@@ -47,12 +56,8 @@ The official Kubernetes dashboard is&hellip; sub-optimal. There are a few other 
     <link>https://blog.alphabravo.io/posts/2021/why-we-use-rancher/</link>
     <pubDate>Mon, 15 Nov 2021 11:35:58 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/why-we-use-rancher/</guid>
     <description><![CDATA[<div class="featured-image">
-                <img src="/assets/ab-uses-rancher-full.png" referrerpolicy="no-referrer">
-            </div>Why We Use Rancher Ok, let&rsquo;s get this out of the way. Yes, we are a Rancher Gold Partner and yes, we provide Rancher Training.
-We are not those things because we are corpo shills. We partnered with Rancher because we use their products anyway.
-  We use them in production (RKE2 and K3s).
-  We use them on our Raspberry Pi clusters (K3s).
-  We use them in Docker (K3d)]]></description>
+                <img src="/assets/2021/11/11-15-ab-uses-rancher-full.png" referrerpolicy="no-referrer">
+            </div>Some insight into why AlphaBravo uses Rancher technologies to accelerate DevSecOps initiatives internally and for our customers.]]></description>
 </item>
 <item>
     <title>Welcome To The Blog</title>

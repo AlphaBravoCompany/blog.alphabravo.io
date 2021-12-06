@@ -1,14 +1,19 @@
 ---
 title: "Why We Use Rancher"
+description: "Some insight into why AlphaBravo uses Rancher technologies to accelerate DevSecOps initiatives internally and for our customers."
 slug: "why-we-use-rancher"
 date: 2021-11-15T11:35:58Z
 draft: false
-featuredImage: /assets/ab-uses-rancher-full.png
-featuredImagePreview: /assets/ab-uses-rancher-small.png
+featuredImage: /assets/2021/11/11-15-ab-uses-rancher-full.png
+featuredImagePreview: /assets/2021/11/11-15-ab-uses-rancher-full.png
+images: ["/assets/2021/11/11-15-seo-why-ab-uses-rancher.png"]
+seo:
+  images: ["/assets/2021/11/11-15-seo-why-ab-uses-rancher.png"]
 lightgallery: true
 tags: [rancher, kubernetes, rke2, k3s]
 author: AB Engineering
 ---
+<!--more-->
 # Why We Use Rancher
 
 Ok, let's get this out of the way. Yes, we are a [Rancher Gold Partner](https://alphabravo.io/press/alphabravo-suse-rancher-gold-partner) and yes, we provide [Rancher Training](https://alphabravo.io/training).
@@ -34,7 +39,7 @@ So what are some of the reasons why we use Rancher?
 
 *(Shout out to my Pager Duty crew.)*
 
-![](/assets/20211111_234943_worked-fine-in-dev.jpg)
+![](/assets/2021/11/11-15-worked-fine-in-dev.jpg)
 
 ---
 
@@ -57,7 +62,7 @@ Importantly, more than just a list of nerdy tech tools, this toolset enables Kub
 ---
 
 
-![](/assets/20211111_235846_kubernetes-everywhere.jpg)
+![](/assets/2021/11/11-15-kubernetes-everywhere.jpg)
 
 ---
 

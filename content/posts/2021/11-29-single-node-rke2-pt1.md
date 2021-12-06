@@ -13,7 +13,7 @@ lightgallery: true
 tags: [rancher, kubernetes, rke2, helm, hetzner]
 author: AB Engineering
 ---
-
+<!--more-->
 ## The RKE2 Cluster
 
 In this blog, we will explain how to deploy a powerful, single node RKE2 cluster on Hetzner. It will provide the following resources.
@@ -110,7 +110,7 @@ apt update && apt upgrade -y
 ```
 3. Install RKE2:
 ```bash
-curl -sfL https://get.rke2.io | sh -
+curl -sfL https://get.rke2.io | INSTALL_RKE2_CHANNEL=v1.21.6+rke2r1 sh -
 systemctl enable --now rke2-server.service
 export PATH=/var/lib/rancher/rke2/bin:$PATH
 ```

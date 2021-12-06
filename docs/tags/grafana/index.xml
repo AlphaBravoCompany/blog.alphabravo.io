@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>grafana - Tag - AB Engineering Blog</title>
+        <link>https://blog.alphabravo.io/tags/grafana/</link>
+        <description>grafana - Tag - AB Engineering Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 06 Dec 2021 13:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/tags/grafana/" rel="self" type="application/rss+xml" /><item>
+    <title>Powerful Single Node RKE2 on Hetzner for CHEAP! (Part 2)</title>
+    <link>https://blog.alphabravo.io/posts/2021/single-node-rke2-pt2/</link>
+    <pubDate>Mon, 06 Dec 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/single-node-rke2-pt2/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/assets/2021/12/single-node-rke2-pt2-full.png" referrerpolicy="no-referrer">
+            </div>Single-Node Kubernetes Series  Powerful Single Node RKE2 on Hetzner for CHEAP! (Part 1) Powerful Single Node K3S on Hetzner for CHEAP! (Part 1a) Powerful Single Node K3s on Hetzner for CHEAP! (Part 2)  RKE2 Install In the first blog of this series, we deployed a single node RKE2 deployment and Rancher UI or a cheap Hetzner server.
+In this post, we will install the following:
+ Longhorn for Persistent Data Rancher Monitoring EFK Logging (Elasticsearch,Fluent Bit,Kibana)  What is Longhorn Longhorn is an official CNCF project that delivers a powerful cloud-native distributed storage platform for Kubernetes that can run anywhere.]]></description>
+</item>
+</channel>
+</rss>

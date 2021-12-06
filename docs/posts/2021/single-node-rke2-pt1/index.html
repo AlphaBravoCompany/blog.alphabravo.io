@@ -28,7 +28,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.alphabravo.io\/posts\/2021\/single-node-rke2-pt1\/"
-        },"image": ["https:\/\/blog.alphabravo.io\/assets\/ab-seo-large.png"],"genre": "posts","keywords": "rancher, kubernetes, rke2, helm, hetzner","wordcount":  1090 ,
+        },"image": ["https:\/\/blog.alphabravo.io\/assets\/ab-seo-large.png"],"genre": "posts","keywords": "rancher, kubernetes, rke2, helm, hetzner","wordcount":  1091 ,
         "url": "https:\/\/blog.alphabravo.io\/posts\/2021\/single-node-rke2-pt1\/","datePublished": "2021-11-29T13:00:00+00:00","dateModified": "2021-11-29T13:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "AlphaBravo","logo": "https:\/\/blog.alphabravo.io\/assets\/alphabravo-logoonly-outline1.png"},"author": {
@@ -125,7 +125,7 @@
         alt="/assets/single-node-rke2-full.png"
         title="Instructions on deploying RKE2, Helm, cert-manager and Rancher on a single node Hetzner server." /></div><div class="single-card" data-image="true"><h2 class="single-title animated flipInX">Powerful Single Node RKE2 on Hetzner for CHEAP! (Part 1)</h2><div class="post-meta">
                 <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>AB Engineering</a></span></div>
-                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-11-29">2021-11-29</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1090 words</span>&nbsp;
+                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-11-29">2021-11-29</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1091 words</span>&nbsp;
                     <span><i class="far fa-clock fa-fw"></i>&nbsp;6 minutes</span>&nbsp;</div>
             </div>
             
@@ -229,7 +229,7 @@
 </code></pre></div><ol start="3">
 <li>Install RKE2:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">curl -sfL https://get.rke2.io <span class="p">|</span> sh -
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">curl -sfL https://get.rke2.io <span class="p">|</span> <span class="nv">INSTALL_RKE2_CHANNEL</span><span class="o">=</span>v1.21.6+rke2r1 sh -
 systemctl <span class="nb">enable</span> --now rke2-server.service
 <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>/var/lib/rancher/rke2/bin:<span class="nv">$PATH</span>
 </code></pre></div><ol start="4">
@@ -317,8 +317,7 @@ helm install cert-manager jetstack/cert-manager <span class="se">\
 <p><em>The AB Engineering Team</em></p>
 <p><strong>Website:</strong> <a href="https://alphabravo.io" target="_blank" rel="noopener noreffer">https://alphabravo.io</a></p>
 <p><strong>Contact Us:</strong> <a href="https://alphabravo.io/contact-us" target="_blank" rel="noopener noreffer">https://alphabravo.io/contact-us</a></p>
-<p><em>Note: Some links included here are affiliate links. If you use the link to sign up, AB may get a small referral credit on our account.</em></p>
-</div><div class="post-footer" id="post-footer">
+<p><em>Note: Some links included here are affiliate links. If you use the link to sign up, AB may get a small referral credit on our account.</em></p></div><div class="post-footer" id="post-footer">
     <div class="post-info"><div class="post-info-tag"><span><a href="/tags/rancher/">rancher</a>
                 </span><span><a href="/tags/kubernetes/">kubernetes</a>
                 </span><span><a href="/tags/rke2/">rke2</a>

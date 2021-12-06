@@ -1,0 +1,1470 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Powerful Single Node RKE2 on Hetzner for CHEAP! (Part 2) - AB Engineering Blog</title><meta name="description" content="Part 2 of the cheap single node Kubernetes series. In this blog we deploying Longhorn, Monitoring and Logging on RKE2."><meta property="og:title" content="Powerful Single Node RKE2 on Hetzner for CHEAP! (Part 2)" />
+<meta property="og:description" content="Part 2 of the cheap single node Kubernetes series. In this blog we deploying Longhorn, Monitoring and Logging on RKE2." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.alphabravo.io/posts/2021/single-node-rke2-pt2/" /><meta property="og:image" content="https://blog.alphabravo.io/assets/2021/21/powerful-single-node-rke2-pt2.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-12-06T13:00:00+00:00" />
+<meta property="article:modified_time" content="2021-12-06T13:00:00+00:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://blog.alphabravo.io/assets/2021/21/powerful-single-node-rke2-pt2.png"/>
+
+<meta name="twitter:title" content="Powerful Single Node RKE2 on Hetzner for CHEAP! (Part 2)"/>
+<meta name="twitter:description" content="Part 2 of the cheap single node Kubernetes series. In this blog we deploying Longhorn, Monitoring and Logging on RKE2."/>
+<meta name="application-name" content="AB Engineering Blog">
+<meta name="apple-mobile-web-app-title" content="AB Engineering Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.alphabravo.io/posts/2021/single-node-rke2-pt2/" /><link rel="prev" href="https://blog.alphabravo.io/posts/2021/single-node-k3s/" /><link rel="stylesheet" href="/css/page.min.css"><link rel="stylesheet" href="/css/home.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Powerful Single Node RKE2 on Hetzner for CHEAP! (Part 2)",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.alphabravo.io\/posts\/2021\/single-node-rke2-pt2\/"
+        },"image": ["https:\/\/blog.alphabravo.io\/assets\/2021\/21\/powerful-single-node-rke2-pt2.png"],"genre": "posts","keywords": "rancher, kubernetes, rke2, helm, hetzner, longhorn, elasticsearch, grafana, kibana, prometheus","wordcount":  2027 ,
+        "url": "https:\/\/blog.alphabravo.io\/posts\/2021\/single-node-rke2-pt2\/","datePublished": "2021-12-06T13:00:00+00:00","dateModified": "2021-12-06T13:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "AlphaBravo","logo": "https:\/\/blog.alphabravo.io\/assets\/alphabravo-logoonly-outline1.png"},"author": {
+                "@type": "Person",
+                "name": "AB Engineering"
+            },"description": "Part 2 of the cheap single node Kubernetes series. In this blog we deploying Longhorn, Monitoring and Logging on RKE2."
+    }
+    </script></head><body data-header-desktop="auto" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="AB Engineering Blog"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/assets/alphabravo-logoonly-outline1.png"
+        data-srcset="/assets/alphabravo-logoonly-outline1.png, /assets/alphabravo-logoonly-outline1.png 1.5x, /assets/alphabravo-logoonly-outline1.png 2x"
+        data-sizes="auto"
+        alt="/assets/alphabravo-logoonly-outline1.png"
+        title="/assets/alphabravo-logoonly-outline1.png" /><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/" title="Blog Homepage"> Home </a><a class="menu-item" href="https://alphabravo.io" title="AlphaBravo Website" rel="noopener noreffer" target="_blank"> AB Website </a><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="https://github.com/AlphaBravoCompany" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><a class="menu-item" href="https://linkedin.com/company/alphabravogov/" rel="noopener noreffer" target="_blank"><i class='fab fa-linkedin fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search" id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a class="menu-item" href="/index.xml" title="RSS"><i class="fas fa-rss fa-fw" title="RSS"></i> </a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="AB Engineering Blog"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/assets/alphabravo-logoonly-outline1.png"
+        data-srcset="/assets/alphabravo-logoonly-outline1.png, /assets/alphabravo-logoonly-outline1.png 1.5x, /assets/alphabravo-logoonly-outline1.png 2x"
+        data-sizes="auto"
+        alt="/assets/alphabravo-logoonly-outline1.png"
+        title="/assets/alphabravo-logoonly-outline1.png" /><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search" id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/" title="Blog Homepage">Home</a><a class="menu-item" href="https://alphabravo.io" title="AlphaBravo Website" rel="noopener noreffer" target="_blank">AB Website</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="https://github.com/AlphaBravoCompany" title="" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a class="menu-item" href="https://linkedin.com/company/alphabravogov/" title="" rel="noopener noreffer" target="_blank"><i class='fab fa-linkedin fa-fw'></i></a><div class="menu-item"><a href="/index.xml" title="RSS"><i class="fas fa-rss fa-fw" title="RSS"></i> </a>
+                <span>&nbsp;|&nbsp;</span><a href="javascript:void(0);" class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div></div>
+    </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single" data-toc="disable"><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/2021/12/single-node-rke2-pt2-full.png"
+        data-srcset="/assets/2021/12/single-node-rke2-pt2-full.png, /assets/2021/12/single-node-rke2-pt2-full.png 1.5x, /assets/2021/12/single-node-rke2-pt2-full.png 2x"
+        data-sizes="auto"
+        alt="/assets/2021/12/single-node-rke2-pt2-full.png"
+        title="Part 2 of the cheap single node Kubernetes series. In this blog we deploying Longhorn, Monitoring and Logging on RKE2." /></div><div class="single-card" data-image="true"><h2 class="single-title animated flipInX">Powerful Single Node RKE2 on Hetzner for CHEAP! (Part 2)</h2><div class="post-meta">
+                <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>AB Engineering</a></span></div>
+                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-12-06">2021-12-06</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2027 words</span>&nbsp;
+                    <span><i class="far fa-clock fa-fw"></i>&nbsp;10 minutes</span>&nbsp;</div>
+            </div>
+            
+            <hr><div class="details toc" id="toc-static"  data-kept="">
+                    <div class="details-summary toc-title">
+                        <span>Contents</span>
+                        <span><i class="details-icon fas fa-angle-right"></i></span>
+                    </div>
+                    <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#single-node-kubernetes-series">Single-Node Kubernetes Series</a></li>
+    <li><a href="#rke2-install">RKE2 Install</a></li>
+    <li><a href="#what-is-longhorn">What is Longhorn</a></li>
+    <li><a href="#installing-longhorn">Installing Longhorn</a></li>
+    <li><a href="#accessing-longhorn">Accessing Longhorn</a></li>
+    <li><a href="#installing-monitoring">Installing Monitoring</a></li>
+    <li><a href="#accessing-monitoring">Accessing Monitoring</a>
+      <ul>
+        <li><a href="#via-the-workloads">Via the Workloads</a></li>
+        <li><a href="#via-grafana">Via Grafana</a></li>
+      </ul>
+    </li>
+    <li><a href="#installing-logging">Installing Logging</a>
+      <ul>
+        <li><a href="#installing-elasticsearch">Installing Elasticsearch</a></li>
+        <li><a href="#installing-kibana">Installing Kibana</a></li>
+        <li><a href="#installing-fluent-bit">Installing Fluent-bit</a></li>
+        <li><a href="#accessing-logs-with-kibana">Accessing Logs With Kibana</a></li>
+      </ul>
+    </li>
+    <li><a href="#closing">Closing</a></li>
+  </ul>
+</nav></div>
+                </div><div class="content" id="content"><h2 id="single-node-kubernetes-series">Single-Node Kubernetes Series</h2>
+<ul>
+<li><a href="https://blog.alphabravo.io/posts/2021/single-node-rke2-pt1/" target="_blank" rel="noopener noreffer">Powerful Single Node RKE2 on Hetzner for CHEAP! (Part 1)</a></li>
+<li><a href="https://blog.alphabravo.io/posts/2021/single-node-k3s/" target="_blank" rel="noopener noreffer">Powerful Single Node K3S on Hetzner for CHEAP! (Part 1a)</a></li>
+<li><a href="https://blog.alphabravo.io/posts/2021/single-node-rke2-pt2/" target="_blank" rel="noopener noreffer">Powerful Single Node K3s on Hetzner for CHEAP! (Part 2)</a></li>
+</ul>
+<h2 id="rke2-install">RKE2 Install</h2>
+<p>In the first <a href="https://blog.alphabravo.io/posts/2021/single-node-rke2-pt1/" target="_blank" rel="noopener noreffer">blog of this series</a>, we deployed a single node RKE2 deployment and Rancher UI or a cheap Hetzner server.</p>
+<p>In this post, we will install the following:</p>
+<ul>
+<li><a href="https://longhorn.io" target="_blank" rel="noopener noreffer">Longhorn</a> for Persistent Data</li>
+<li><a href="https://rancher.com/docs/rancher/v2.6/en/monitoring-alerting/" target="_blank" rel="noopener noreffer">Rancher Monitoring</a></li>
+<li>EFK Logging (<a href="https://www.elastic.co/elastic-stack/" target="_blank" rel="noopener noreffer">Elasticsearch</a>,<a href="https://fluentbit.io/" target="_blank" rel="noopener noreffer">Fluent Bit</a>,<a href="https://www.elastic.co/kibana/" target="_blank" rel="noopener noreffer">Kibana</a>)</li>
+</ul>
+<h2 id="what-is-longhorn">What is Longhorn</h2>
+<p><a href="https://rancher.com/products/longhorn" target="_blank" rel="noopener noreffer">Longhorn</a> is an official CNCF project that delivers a powerful cloud-native distributed storage platform for Kubernetes that can run anywhere. When combined with Rancher, Longhorn makes the deployment of highly-available, persistent, block storage in your Kubernetes environment easy, fast, and reliable.</p>
+<p>Some of the key features are:</p>
+<ul>
+<li>An Inuitive Dashboard</li>
+<li>Easy 1-Click Deployment</li>
+<li>Built in Disaster Recovery Tools</li>
+<li>Infrastructure Agnostic means it run on any Kubernetes, anywhere</li>
+<li>A CNCF Sandbox Project</li>
+</ul>
+<h2 id="installing-longhorn">Installing Longhorn</h2>
+<p><a href="https://longhorn.io/docs/1.2.2/deploy/install/install-with-rancher/" target="_blank" rel="noopener noreffer">Official Longhorn Documentation</a></p>
+<p>As noted in the features above, the install of <a href="https://longhorn.io/" target="_blank" rel="noopener noreffer">Longhorn</a> has really been simplified using the one-click installer in the Rancher UI &ldquo;apps&rdquo; section. Follow the instructions below to get started:</p>
+<ol>
+<li>In Rancher MCM, Navigate to the cluster where you will install Longhorn.</li>
+<li>Navigate to the <code>Apps &amp; Marketplace</code>, <code>Charts</code> menu item.</li>
+<li>Find the <code>Longhorn</code> item in the charts and click it.</li>
+<li>Click <code>Install</code>.</li>
+<li>Customize the default settings by selecting <code>Customize Helm options before install</code> box.</li>
+<li>Under <code>Longhorn Storage Class Settings</code> change the <code>Default Storage Class Replica Count</code> from <code>3</code> to <code>1</code>. This is because we are running a single server and Longhorn by default expects 3 separate servers with 3 copies of the data for redundancy. In an actual production cluster, you can leave this at 3.</li>
+<li>Click <code>Next</code> and <code>Install</code> and Longhorn will install on RKE2.</li>
+</ol>
+<p><strong>Notes</strong></p>
+<ul>
+<li>You may want to add additional volumes specifically for Longhorn. To do that, add a volume, format at EXT4 or XFS, and mount it on your host/s. Then you can point to that path in the Longhorn config. In this case, we are just using the additional space on the root volume of the disk as longhorn automaticall mounts to <code>/var/lib/longhorn</code>.</li>
+<li>You may need to install <code>iscsi-initiator-utils</code> on your system for Longhorn to install properly.</li>
+</ul>
+<h2 id="accessing-longhorn">Accessing Longhorn</h2>
+<p>Now that Longhorn is installed, we can access the Longhorn UI via the Rancher UI.</p>
+<ol>
+<li>In Rancher MCM, Navigate to the cluster where installed Longhorn.</li>
+<li>Navigate to the <code>Longhorn</code> menu item.</li>
+<li>Click <code>Manage storage system via UI</code> on the Longhorn card and a new window will open with your Longhorn UI showing.</li>
+</ol>
+<figure><a class="lightgallery" href="/assets/2021/12/12-06-longhorn-ui.png" title="/assets/2021/12/12-06-longhorn-ui.png" data-thumbnail="/assets/2021/12/12-06-longhorn-ui.png" data-sub-html="<h2>Longhorn UI on RKE2</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/assets/2021/12/12-06-longhorn-ui.png"
+            data-srcset="/assets/2021/12/12-06-longhorn-ui.png, /assets/2021/12/12-06-longhorn-ui.png 1.5x, /assets/2021/12/12-06-longhorn-ui.png 2x"
+            data-sizes="auto"
+            alt="/assets/2021/12/12-06-longhorn-ui.png" />
+    </a><figcaption class="image-caption">Longhorn UI on RKE2</figcaption>
+    </figure>
+<h2 id="installing-monitoring">Installing Monitoring</h2>
+<p>Now that we have Longhorn installed for Persistent Storage, we can install Monitoring with persistence. The Rancher Monitoring chart will install Prometheus, Grafana, Alert-Manager and other tools to monitor the cluster.</p>
+<ol>
+<li>Login to the Rancher UI.</li>
+<li>Go to <code>Apps and Marketplace</code>, <code>Charts</code>.</li>
+<li>Click on <code>Monitoring</code> menu item and click <code>Install</code>.</li>
+<li>Leave the version as the default, but select <code>Customize Helm Options before Install</code> at the bottom of the page. Click <code>Next</code>.</li>
+<li>Under Prometheus (on the inner left column), change the following options:
+<ul>
+<li>Retention Size: <code>10GiB</code></li>
+<li>CPU Limit: <code>1500m</code></li>
+<li>Memory Limit <code>2048Mi</code></li>
+<li>Select the box for <code>Persistent Storage for Prometheus.</code></li>
+<li>Size: <code>10Gi</code></li>
+<li>Storage Class Name: <code>longhorn</code></li>
+</ul>
+</li>
+<li>Under Grafana (on the inner left column), change the following options:
+<ul>
+<li>Select <code>Enable with PVC Template</code></li>
+<li>Size: <code>10Gi</code></li>
+<li>Storage Class Name: <code>longhorn</code></li>
+<li>AccessMode: <code>ReadWriteOnce</code></li>
+</ul>
+</li>
+<li>Click <code>Next</code>, then click <code>Install</code>.</li>
+</ol>
+<p>Once this is complete, you should now have access to monitoring for your node and workloads running in your cluster.</p>
+<h2 id="accessing-monitoring">Accessing Monitoring</h2>
+<p>Monitoring is complex, especially when it comes to alert configuration..</p>
+<p>To get you started, we will show you 2 ways to see what is being monitored and your cluster stats.</p>
+<h3 id="via-the-workloads">Via the Workloads</h3>
+<ol>
+<li>In the Rancher UI, click on <code>Workload</code>, <code>Pods</code>.</li>
+<li>Click on a workload name like <code>longhorn-manager-010101</code> and then click on Metrics.</li>
+<li>You can see the different metrics for that specific Pod and change the time scale you ae see it in.</li>
+<li>You can also click on <code>Grafana</code> to be taken to the full Granfana dashboard for those specific metrics.</li>
+</ol>
+<figure><a class="lightgallery" href="/assets/2021/12/12-06-metrics-ui.png" title="/assets/2021/12/12-06-metrics-ui.png" data-thumbnail="/assets/2021/12/12-06-metrics-ui.png" data-sub-html="<h2>Workload Metrics UI</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/assets/2021/12/12-06-metrics-ui.png"
+            data-srcset="/assets/2021/12/12-06-metrics-ui.png, /assets/2021/12/12-06-metrics-ui.png 1.5x, /assets/2021/12/12-06-metrics-ui.png 2x"
+            data-sizes="auto"
+            alt="/assets/2021/12/12-06-metrics-ui.png" />
+    </a><figcaption class="image-caption">Workload Metrics UI</figcaption>
+    </figure>
+<h3 id="via-grafana">Via Grafana</h3>
+<ol>
+<li>In the Rancher UI, click on <code>Monitoring</code> in the menu.</li>
+<li>Under <code>Grafana</code>, click on <code>Metrics Dashboard</code>. This will open a new tab for Grafana</li>
+<li>The Welcome screen shows stats for the cluster as a whole.</li>
+<li>To explore the cluster more, hover on the 4 boxes in the menu and click <code>Manage</code>. This will show you an entire list of metrics you can drill down into and view.</li>
+</ol>
+<figure><a class="lightgallery" href="/assets/2021/12/12-06-grafana-ui.png" title="/assets/2021/12/12-06-grafana-ui.png" data-thumbnail="/assets/2021/12/12-06-grafana-ui.png" data-sub-html="<h2>Grafana UI</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/assets/2021/12/12-06-grafana-ui.png"
+            data-srcset="/assets/2021/12/12-06-grafana-ui.png, /assets/2021/12/12-06-grafana-ui.png 1.5x, /assets/2021/12/12-06-grafana-ui.png 2x"
+            data-sizes="auto"
+            alt="/assets/2021/12/12-06-grafana-ui.png" />
+    </a><figcaption class="image-caption">Grafana UI</figcaption>
+    </figure>
+<h2 id="installing-logging">Installing Logging</h2>
+<p>Logging is a large scale endeavor in itself. Make sure you understand the needs of your organization and whether or not you should log to a hosted service (we like <a href="https://logdna.com" target="_blank" rel="noopener noreffer">LogDNA</a>). However, in many cases, sending logs externally is not an option.</p>
+<p>In today&rsquo;s example, we will deploy Elasticsearch locally to ingest the logs, Kibana to view them, and Fluent-bit to ship them from the containers to Elastic.</p>
+<h3 id="installing-elasticsearch">Installing Elasticsearch</h3>
+<p>For Elasticsearch and Kibana, we will use the Helm charts maintained by <a href="https://bitnami.com/" target="_blank" rel="noopener noreffer">Bitnami</a>, a VMWare entity. They are very well maintained and well documented and are well suited for this application.</p>
+<ol>
+<li>Login to the Rancher Interface.</li>
+<li>Go to <code>Apps and Marketplace</code>, <code>Repositories</code>.</li>
+<li>Click <code>Create</code> and add the following then click <code>Create</code> again.</li>
+</ol>
+<ul>
+<li>Name: <code>bitnami</code></li>
+<li>Index URL: <code>https://charts.bitnami.com/bitnami</code></li>
+</ul>
+<ol start="4">
+<li>Under <code>Cluster</code>, click <code>Projects/Namespaces</code>.</li>
+<li>Under the <code>Default</code> project, click <code>Create Namespace</code> and name it <code>logging-system</code>.</li>
+<li>Go to <code>Apps and Marketplace</code>, <code>Charts</code>.</li>
+<li>Select only <code>bitnami</code> from the chart repo options.</li>
+<li>Click on <code>elasticsearch</code> menu item and click <code>Install</code>.</li>
+<li>Update the following and click <code>Next</code>:
+<ul>
+<li>Namespace: <code>logging-system</code></li>
+<li>Name: <code>elasticsearch-logging</code></li>
+<li>Customize Helm options before install: <code>check</code>.</li>
+</ul>
+</li>
+<li>Replace all the YAML with the below code.</li>
+</ol>
+<ul>
+<li>In the below code, update the <code>elasticPassword:</code> with your desired password. Make this complex because it is complicated to change. Save this password as it will be required for Kibana and Fluent.</li>
+</ul>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>Expand The Code<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">In the next few sections, the code blocks are quite large. We are showing them and collapsed in to to make this doc easier to read. In order to view/copy the code, click the arrow next to <code>YAML</code> in each section to expand the code.</div>
+        </div>
+    </div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">clusterDomain</span><span class="p">:</span><span class="w"> </span><span class="l">cluster.local</span><span class="w">
+</span><span class="w"></span><span class="nt">config</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w"></span><span class="nt">coordinating</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">affinity</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">autoscaling</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">    </span><span class="nt">maxReplicas</span><span class="p">:</span><span class="w"> </span><span class="m">3</span><span class="w">
+</span><span class="w">    </span><span class="nt">minReplicas</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="w">    </span><span class="nt">targetCPU</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">targetMemory</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">customLivenessProbe</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">customReadinessProbe</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">customStartupProbe</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">fullnameOverride</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">heapSize</span><span class="p">:</span><span class="w"> </span><span class="l">128m</span><span class="w">
+</span><span class="w">  </span><span class="nt">hostAliases</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">initContainers</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">livenessProbe</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">    </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span><span class="w">    </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="m">90</span><span class="w">
+</span><span class="w">    </span><span class="nt">periodSeconds</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
+</span><span class="w">    </span><span class="nt">successThreshold</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="w">    </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span><span class="w">  </span><span class="nt">nodeAffinityPreset</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">values</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">nodeSelector</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">podAffinityPreset</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">podAnnotations</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">podAntiAffinityPreset</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">podLabels</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">priorityClassName</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">readinessProbe</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">    </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span><span class="w">    </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="m">90</span><span class="w">
+</span><span class="w">    </span><span class="nt">periodSeconds</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
+</span><span class="w">    </span><span class="nt">successThreshold</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="w">    </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span><span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">limits</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">    </span><span class="nt">requests</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l">25m</span><span class="w">
+</span><span class="w">      </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l">256Mi</span><span class="w">
+</span><span class="w">  </span><span class="nt">schedulerName</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">securityContext</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">    </span><span class="nt">fsGroup</span><span class="p">:</span><span class="w"> </span><span class="m">1001</span><span class="w">
+</span><span class="w">    </span><span class="nt">runAsUser</span><span class="p">:</span><span class="w"> </span><span class="m">1001</span><span class="w">
+</span><span class="w">  </span><span class="nt">service</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">annotations</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">    </span><span class="nt">loadBalancerIP</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">nodePort</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">9200</span><span class="w">
+</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">ClusterIP</span><span class="w">
+</span><span class="w">  </span><span class="nt">serviceAccount</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">create</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">sidecars</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">startupProbe</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">    </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span><span class="w">    </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="m">90</span><span class="w">
+</span><span class="w">    </span><span class="nt">periodSeconds</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
+</span><span class="w">    </span><span class="nt">successThreshold</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="w">    </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span><span class="w">  </span><span class="nt">tolerations</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">topologySpreadConstraints</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">updateStrategy</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">RollingUpdate</span><span class="w">
+</span><span class="w"></span><span class="nt">curator</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">affinity</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">command</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="l">curator</span><span class="w">
+</span><span class="w">  </span><span class="nt">configMaps</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">action_file_yml</span><span class="p">:</span><span class="w"> </span><span class="p">|-</span><span class="sd">
+</span><span class="sd">      ---
+</span><span class="sd">      actions:
+</span><span class="sd">        1:
+</span><span class="sd">          action: delete_indices
+</span><span class="sd">          description: &#34;Clean up ES by deleting old indices&#34;
+</span><span class="sd">          options:
+</span><span class="sd">            timeout_override:
+</span><span class="sd">            continue_if_exception: False
+</span><span class="sd">            disable_action: False
+</span><span class="sd">            ignore_empty_list: True
+</span><span class="sd">          filters:
+</span><span class="sd">          - filtertype: age
+</span><span class="sd">            source: name
+</span><span class="sd">            direction: older
+</span><span class="sd">            timestring: &#39;%Y.%m.%d&#39;
+</span><span class="sd">            unit: days
+</span><span class="sd">            unit_count: 90
+</span><span class="sd">            field:
+</span><span class="sd">            stats_result:
+</span><span class="sd">            epoch:
+</span><span class="sd">            exclude: False</span><span class="w">      
+</span><span class="w">    </span><span class="nt">config_yml</span><span class="p">:</span><span class="w"> </span><span class="p">|-</span><span class="sd">
+</span><span class="sd">      ---
+</span><span class="sd">      client:
+</span><span class="sd">        hosts:
+</span><span class="sd">          - {{ template &#34;elasticsearch.coordinating.fullname&#34; . }}.{{ .Release.Namespace }}.svc.{{ .Values.clusterDomain }}
+</span><span class="sd">        port: {{ .Values.coordinating.service.port }}
+</span><span class="sd">        # url_prefix:
+</span><span class="sd">        # use_ssl: True
+</span><span class="sd">        # certificate:
+</span><span class="sd">        # client_cert:
+</span><span class="sd">        # client_key:
+</span><span class="sd">        # ssl_no_validate: True
+</span><span class="sd">        # http_auth:
+</span><span class="sd">        # timeout: 30
+</span><span class="sd">        # master_only: False
+</span><span class="sd">      # logging:
+</span><span class="sd">      #   loglevel: INFO
+</span><span class="sd">      #   logfile:
+</span><span class="sd">      #   logformat: default
+</span><span class="sd">      #   blacklist: [&#39;elasticsearch&#39;, &#39;urllib3&#39;]</span><span class="w">      
+</span><span class="w">  </span><span class="nt">cronjob</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">annotations</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">    </span><span class="nt">concurrencyPolicy</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">failedJobsHistoryLimit</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">jobRestartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l">Never</span><span class="w">
+</span><span class="w">    </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w">
+</span><span class="w">    </span><span class="nt">successfulJobsHistoryLimit</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">dryrun</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">  </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">extraInitContainers</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">extraVolumeMounts</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">extraVolumes</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">hooks</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">install</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">    </span><span class="nt">upgrade</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">pullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l">IfNotPresent</span><span class="w">
+</span><span class="w">    </span><span class="nt">pullSecrets</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">    </span><span class="nt">registry</span><span class="p">:</span><span class="w"> </span><span class="l">docker.io</span><span class="w">
+</span><span class="w">    </span><span class="nt">repository</span><span class="p">:</span><span class="w"> </span><span class="l">bitnami/elasticsearch-curator</span><span class="w">
+</span><span class="w">    </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="m">5.8.4</span>-<span class="l">debian-10-r179</span><span class="w">
+</span><span class="w">  </span><span class="nt">initContainers</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">curator</span><span class="w">
+</span><span class="w">  </span><span class="nt">nodeAffinityPreset</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">values</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">nodeSelector</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">podAffinityPreset</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">podAnnotations</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">podAntiAffinityPreset</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">podLabels</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">priorityClassName</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">psp</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">create</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">  </span><span class="nt">rbac</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">limits</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">    </span><span class="nt">requests</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">schedulerName</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">serviceAccount</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">create</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">sidecars</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">tolerations</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">topologySpreadConstraints</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w"></span><span class="nt">data</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">affinity</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">autoscaling</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">    </span><span class="nt">maxReplicas</span><span class="p">:</span><span class="w"> </span><span class="m">3</span><span class="w">
+</span><span class="w">    </span><span class="nt">minReplicas</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="w">    </span><span class="nt">targetCPU</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">targetMemory</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">customLivenessProbe</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">customReadinessProbe</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">customStartupProbe</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">fullnameOverride</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">heapSize</span><span class="p">:</span><span class="w"> </span><span class="l">2048m</span><span class="w">
+</span><span class="w">  </span><span class="nt">hostAliases</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">initContainers</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">livenessProbe</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">    </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span><span class="w">    </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="m">90</span><span class="w">
+</span><span class="w">    </span><span class="nt">periodSeconds</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
+</span><span class="w">    </span><span class="nt">successThreshold</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="w">    </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">data</span><span class="w">
+</span><span class="w">  </span><span class="nt">nodeAffinityPreset</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">values</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">nodeSelector</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">persistence</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">accessModes</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="l">ReadWriteOnce</span><span class="w">
+</span><span class="w">    </span><span class="nt">annotations</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">    </span><span class="nt">existingClaim</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">existingVolume</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">selector</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">    </span><span class="nt">size</span><span class="p">:</span><span class="w"> </span><span class="l">8Gi</span><span class="w">
+</span><span class="w">    </span><span class="nt">storageClass</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">podAffinityPreset</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">podAnnotations</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">podAntiAffinityPreset</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">podLabels</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">priorityClassName</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">readinessProbe</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">    </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span><span class="w">    </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="m">90</span><span class="w">
+</span><span class="w">    </span><span class="nt">periodSeconds</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
+</span><span class="w">    </span><span class="nt">successThreshold</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="w">    </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span><span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">limits</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">    </span><span class="nt">requests</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l">25m</span><span class="w">
+</span><span class="w">      </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l">1024Mi</span><span class="w">
+</span><span class="w">  </span><span class="nt">schedulerName</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">securityContext</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">    </span><span class="nt">fsGroup</span><span class="p">:</span><span class="w"> </span><span class="m">1001</span><span class="w">
+</span><span class="w">    </span><span class="nt">runAsUser</span><span class="p">:</span><span class="w"> </span><span class="m">1001</span><span class="w">
+</span><span class="w">  </span><span class="nt">serviceAccount</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">create</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">sidecars</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">startupProbe</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">    </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span><span class="w">    </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="m">90</span><span class="w">
+</span><span class="w">    </span><span class="nt">periodSeconds</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
+</span><span class="w">    </span><span class="nt">successThreshold</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="w">    </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span><span class="w">  </span><span class="nt">tolerations</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">topologySpreadConstraints</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">updateStrategy</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">rollingUpdatePartition</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">RollingUpdate</span><span class="w">
+</span><span class="w"></span><span class="nt">diagnosticMode</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">args</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="l">infinity</span><span class="w">
+</span><span class="w">  </span><span class="nt">command</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="l">sleep</span><span class="w">
+</span><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w"></span><span class="nt">extraConfig</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w"></span><span class="nt">extraEnvVars</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w"></span><span class="nt">extraEnvVarsConfigMap</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w"></span><span class="nt">extraEnvVarsSecret</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w"></span><span class="nt">extraVolumeMounts</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w"></span><span class="nt">extraVolumes</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w"></span><span class="nt">fullnameOverride</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w"></span><span class="nt">global</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">coordinating</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">coordinating-only</span><span class="w">
+</span><span class="w">  </span><span class="nt">imagePullSecrets</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">imageRegistry</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">kibanaEnabled</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">  </span><span class="nt">storageClass</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w"></span><span class="nt">image</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">debug</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">  </span><span class="nt">pullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l">IfNotPresent</span><span class="w">
+</span><span class="w">  </span><span class="nt">pullSecrets</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">registry</span><span class="p">:</span><span class="w"> </span><span class="l">docker.io</span><span class="w">
+</span><span class="w">  </span><span class="nt">repository</span><span class="p">:</span><span class="w"> </span><span class="l">bitnami/elasticsearch</span><span class="w">
+</span><span class="w">  </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="m">7.15.2</span>-<span class="l">debian-10-r0</span><span class="w">
+</span><span class="w"></span><span class="nt">ingest</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">affinity</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">customLivenessProbe</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">customReadinessProbe</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">customStartupProbe</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">  </span><span class="nt">fullnameOverride</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">heapSize</span><span class="p">:</span><span class="w"> </span><span class="l">256m</span><span class="w">
+</span><span class="w">  </span><span class="nt">hostAliases</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">initContainers</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">livenessProbe</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">    </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span><span class="w">    </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="m">90</span><span class="w">
+</span><span class="w">    </span><span class="nt">periodSeconds</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
+</span><span class="w">    </span><span class="nt">successThreshold</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="w">    </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">ingest</span><span class="w">
+</span><span class="w">  </span><span class="nt">nodeAffinityPreset</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">values</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">nodeSelector</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">podAffinityPreset</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">podAnnotations</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">podAntiAffinityPreset</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">podLabels</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">priorityClassName</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">readinessProbe</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">    </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span><span class="w">    </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="m">90</span><span class="w">
+</span><span class="w">    </span><span class="nt">periodSeconds</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
+</span><span class="w">    </span><span class="nt">successThreshold</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="w">    </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span><span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">limits</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">    </span><span class="nt">requests</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l">25m</span><span class="w">
+</span><span class="w">      </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l">256Mi</span><span class="w">
+</span><span class="w">  </span><span class="nt">schedulerName</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">securityContext</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">    </span><span class="nt">fsGroup</span><span class="p">:</span><span class="w"> </span><span class="m">1001</span><span class="w">
+</span><span class="w">    </span><span class="nt">runAsUser</span><span class="p">:</span><span class="w"> </span><span class="m">1001</span><span class="w">
+</span><span class="w">  </span><span class="nt">service</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">annotations</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">    </span><span class="nt">loadBalancerIP</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">nodePort</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">9300</span><span class="w">
+</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">ClusterIP</span><span class="w">
+</span><span class="w">  </span><span class="nt">serviceAccount</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">create</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">sidecars</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">startupProbe</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">    </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span><span class="w">    </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="m">90</span><span class="w">
+</span><span class="w">    </span><span class="nt">periodSeconds</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
+</span><span class="w">    </span><span class="nt">successThreshold</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="w">    </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span><span class="w">  </span><span class="nt">tolerations</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">topologySpreadConstraints</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">updateStrategy</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">RollingUpdate</span><span class="w">
+</span><span class="w"></span><span class="nt">initScripts</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w"></span><span class="nt">initScriptsCM</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w"></span><span class="nt">initScriptsSecret</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w"></span><span class="nt">kibana</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">elasticsearch</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">hosts</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="s1">&#39;{{ include &#34;elasticsearch.coordinating.fullname&#34; . }}&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">9200</span><span class="w">
+</span><span class="w"></span><span class="nt">master</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">affinity</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">autoscaling</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">    </span><span class="nt">maxReplicas</span><span class="p">:</span><span class="w"> </span><span class="m">3</span><span class="w">
+</span><span class="w">    </span><span class="nt">minReplicas</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="w">    </span><span class="nt">targetCPU</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">targetMemory</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">customLivenessProbe</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">customReadinessProbe</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">customStartupProbe</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">fullnameOverride</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">heapSize</span><span class="p">:</span><span class="w"> </span><span class="l">256m</span><span class="w">
+</span><span class="w">  </span><span class="nt">hostAliases</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">initContainers</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">livenessProbe</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">    </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span><span class="w">    </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="m">90</span><span class="w">
+</span><span class="w">    </span><span class="nt">periodSeconds</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
+</span><span class="w">    </span><span class="nt">successThreshold</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="w">    </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">master</span><span class="w">
+</span><span class="w">  </span><span class="nt">nodeAffinityPreset</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">values</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">nodeSelector</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">persistence</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">accessModes</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="l">ReadWriteOnce</span><span class="w">
+</span><span class="w">    </span><span class="nt">annotations</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">    </span><span class="nt">existingClaim</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">existingVolume</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">selector</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">    </span><span class="nt">size</span><span class="p">:</span><span class="w"> </span><span class="l">8Gi</span><span class="w">
+</span><span class="w">    </span><span class="nt">storageClass</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">podAffinityPreset</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">podAnnotations</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">podAntiAffinityPreset</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">podLabels</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">priorityClassName</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">readinessProbe</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">    </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span><span class="w">    </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="m">90</span><span class="w">
+</span><span class="w">    </span><span class="nt">periodSeconds</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
+</span><span class="w">    </span><span class="nt">successThreshold</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="w">    </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span><span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">limits</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">    </span><span class="nt">requests</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l">25m</span><span class="w">
+</span><span class="w">      </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l">1024Mi</span><span class="w">
+</span><span class="w">  </span><span class="nt">schedulerName</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">securityContext</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">    </span><span class="nt">fsGroup</span><span class="p">:</span><span class="w"> </span><span class="m">1001</span><span class="w">
+</span><span class="w">    </span><span class="nt">runAsUser</span><span class="p">:</span><span class="w"> </span><span class="m">1001</span><span class="w">
+</span><span class="w">  </span><span class="nt">service</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">annotations</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">    </span><span class="nt">loadBalancerIP</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">nodePort</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">9300</span><span class="w">
+</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">ClusterIP</span><span class="w">
+</span><span class="w">  </span><span class="nt">serviceAccount</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">create</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">sidecars</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">startupProbe</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">    </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span><span class="w">    </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="m">90</span><span class="w">
+</span><span class="w">    </span><span class="nt">periodSeconds</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
+</span><span class="w">    </span><span class="nt">successThreshold</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="w">    </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span><span class="w">  </span><span class="nt">tolerations</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">topologySpreadConstraints</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">updateStrategy</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">RollingUpdate</span><span class="w">
+</span><span class="w"></span><span class="nt">metrics</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">affinity</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">  </span><span class="nt">extraArgs</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">hostAliases</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">pullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l">IfNotPresent</span><span class="w">
+</span><span class="w">    </span><span class="nt">pullSecrets</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">    </span><span class="nt">registry</span><span class="p">:</span><span class="w"> </span><span class="l">docker.io</span><span class="w">
+</span><span class="w">    </span><span class="nt">repository</span><span class="p">:</span><span class="w"> </span><span class="l">bitnami/elasticsearch-exporter</span><span class="w">
+</span><span class="w">    </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="m">1.3.0</span>-<span class="l">debian-10-r19</span><span class="w">
+</span><span class="w">  </span><span class="nt">livenessProbe</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">    </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span><span class="w">    </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="m">60</span><span class="w">
+</span><span class="w">    </span><span class="nt">periodSeconds</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
+</span><span class="w">    </span><span class="nt">successThreshold</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="w">    </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">metrics</span><span class="w">
+</span><span class="w">  </span><span class="nt">nodeAffinityPreset</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">values</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">nodeSelector</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">podAffinityPreset</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">podAnnotations</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">prometheus.io/port</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;9114&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">prometheus.io/scrape</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;true&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">podAntiAffinityPreset</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">podLabels</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">readinessProbe</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">    </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span><span class="w">    </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span><span class="w">    </span><span class="nt">periodSeconds</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
+</span><span class="w">    </span><span class="nt">successThreshold</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="w">    </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">limits</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">    </span><span class="nt">requests</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">schedulerName</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">service</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">annotations</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">prometheus.io/port</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;9114&#39;</span><span class="w">
+</span><span class="w">      </span><span class="nt">prometheus.io/scrape</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;true&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">ClusterIP</span><span class="w">
+</span><span class="w">  </span><span class="nt">serviceMonitor</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">    </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">scrapeTimeout</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">selector</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">tolerations</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">topologySpreadConstraints</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w"></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">elastic</span><span class="w">
+</span><span class="w"></span><span class="nt">nameOverride</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w"></span><span class="nt">plugins</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w"></span><span class="nt">security</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">elasticPassword</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;lockitdown&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">  </span><span class="nt">existingSecret</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">fipsMode</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">  </span><span class="nt">tls</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">autoGenerated</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">    </span><span class="nt">coordinating</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">existingSecret</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">data</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">existingSecret</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">ingest</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">existingSecret</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">keyPassword</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">keystoreFilename</span><span class="p">:</span><span class="w"> </span><span class="l">elasticsearch.keystore.jks</span><span class="w">
+</span><span class="w">    </span><span class="nt">keystorePassword</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">master</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">existingSecret</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">restEncryption</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">    </span><span class="nt">truststoreFilename</span><span class="p">:</span><span class="w"> </span><span class="l">elasticsearch.truststore.jks</span><span class="w">
+</span><span class="w">    </span><span class="nt">truststorePassword</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">usePemCerts</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">    </span><span class="nt">verificationMode</span><span class="p">:</span><span class="w"> </span><span class="l">full</span><span class="w">
+</span><span class="w"></span><span class="nt">snapshotRepoPath</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w"></span><span class="nt">sysctlImage</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">  </span><span class="nt">pullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l">IfNotPresent</span><span class="w">
+</span><span class="w">  </span><span class="nt">pullSecrets</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">registry</span><span class="p">:</span><span class="w"> </span><span class="l">docker.io</span><span class="w">
+</span><span class="w">  </span><span class="nt">repository</span><span class="p">:</span><span class="w"> </span><span class="l">bitnami/bitnami-shell</span><span class="w">
+</span><span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">limits</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">    </span><span class="nt">requests</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="m">10</span>-<span class="l">debian-10-r248</span><span class="w">
+</span><span class="w"></span><span class="nt">volumePermissions</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">pullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l">IfNotPresent</span><span class="w">
+</span><span class="w">    </span><span class="nt">pullSecrets</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">    </span><span class="nt">registry</span><span class="p">:</span><span class="w"> </span><span class="l">docker.io</span><span class="w">
+</span><span class="w">    </span><span class="nt">repository</span><span class="p">:</span><span class="w"> </span><span class="l">bitnami/bitnami-shell</span><span class="w">
+</span><span class="w">    </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="m">10</span>-<span class="l">debian-10-r248</span><span class="w">
+</span><span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">limits</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">    </span><span class="nt">requests</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span></code></pre></div><ol start="11">
+<li>Click <code>Next</code> and click <code>Install</code>.</li>
+<li>Verify that everthing is up by running the following command:</li>
+</ol>
+<pre tabindex="0"><code>kubectl get all -n logging-system
+</code></pre><h3 id="installing-kibana">Installing Kibana</h3>
+<p>Next, we will deploy Kibana to view the logs in Elastic.</p>
+<ol>
+<li>Login to the Rancher Interface.</li>
+<li>Go to <code>Apps and Marketplace</code>, <code>Charts</code>.</li>
+<li>Select only <code>bitnami</code> from the chart repo options.</li>
+<li>Click on <code>kibana</code> menu item and click <code>Install</code>.</li>
+<li>Update the following and click <code>Next</code>:
+<ul>
+<li>Namespace: <code>logging-system</code></li>
+<li>Name: <code>kibana-logging</code></li>
+<li>Customize Helm options before install: <code>check</code></li>
+</ul>
+</li>
+<li>Replace all the YAML with the below code:
+<ul>
+<li>Update <code>kibanaPassword:</code> with the password your used in the Elasticsearch deployment.</li>
+<li>Update <code>ingress.hostname:</code> with the FQDN that you added to DNS for pass through ingress.</li>
+</ul>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">affinity</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w"></span><span class="nt">configuration</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">server</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">basePath</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">rewriteBasePath</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w"></span><span class="nt">configurationCM</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w"></span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="m">5601</span><span class="w">
+</span><span class="w"></span><span class="nt">elasticsearch</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">elasticsearch-logging-master.logging-system]</span><span class="w">
+</span><span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">9200</span><span class="w">
+</span><span class="w">  </span><span class="nt">security</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">auth</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">      </span><span class="nt">existingSecret</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">      </span><span class="nt">kibanaPassword</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;lockitdown&#39;</span><span class="w">
+</span><span class="w">      </span><span class="nt">kibanaUsername</span><span class="p">:</span><span class="w"> </span><span class="l">elastic</span><span class="w">
+</span><span class="w">    </span><span class="nt">tls</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">      </span><span class="nt">existingSecret</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;elasticsearch-logging-master-crt&#39;</span><span class="w">
+</span><span class="w">      </span><span class="nt">passwordsSecret</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">      </span><span class="nt">truststorePassword</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">      </span><span class="nt">usePemCerts</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">      </span><span class="nt">verificationMode</span><span class="p">:</span><span class="w"> </span><span class="l">certificate</span><span class="w">
+</span><span class="w"></span><span class="nt">extraConfiguration</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w"></span><span class="nt">extraDeploy</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w"></span><span class="nt">extraEnvVars</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w"></span><span class="nt">extraEnvVarsCM</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w"></span><span class="nt">extraEnvVarsSecret</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w"></span><span class="nt">extraVolumeMounts</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w"></span><span class="nt">extraVolumes</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w"></span><span class="nt">forceInitScripts</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w"></span><span class="nt">fullnameOverride</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w"></span><span class="nt">global</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">imagePullSecrets</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">imageRegistry</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">storageClass</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w"></span><span class="nt">hostAliases</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w"></span><span class="nt">image</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">pullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l">IfNotPresent</span><span class="w">
+</span><span class="w">  </span><span class="nt">pullSecrets</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">registry</span><span class="p">:</span><span class="w"> </span><span class="l">docker.io</span><span class="w">
+</span><span class="w">  </span><span class="nt">repository</span><span class="p">:</span><span class="w"> </span><span class="l">bitnami/kibana</span><span class="w">
+</span><span class="w">  </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="m">7.15.2</span>-<span class="l">debian-10-r0</span><span class="w">
+</span><span class="w"></span><span class="nt">ingress</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">annotations</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">  </span><span class="nt">extraHosts</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">extraPaths</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">extraTls</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l">kibana.apps.dsodev.net</span><span class="w">
+</span><span class="w">  </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">/</span><span class="w">
+</span><span class="w">  </span><span class="nt">pathType</span><span class="p">:</span><span class="w"> </span><span class="l">ImplementationSpecific</span><span class="w">
+</span><span class="w">  </span><span class="nt">secrets</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">tls</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w"></span><span class="nt">initContainers</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w"></span><span class="nt">initScriptsCM</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w"></span><span class="nt">initScriptsSecret</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w"></span><span class="nt">kubeVersion</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w"></span><span class="nt">livenessProbe</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">  </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="m">6</span><span class="w">
+</span><span class="w">  </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="m">120</span><span class="w">
+</span><span class="w">  </span><span class="nt">periodSeconds</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
+</span><span class="w">  </span><span class="nt">successThreshold</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="w">  </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span><span class="w"></span><span class="nt">metrics</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">  </span><span class="nt">service</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">annotations</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">prometheus.io/path</span><span class="p">:</span><span class="w"> </span><span class="l">_prometheus/metrics</span><span class="w">
+</span><span class="w">      </span><span class="nt">prometheus.io/port</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;80&#39;</span><span class="w">
+</span><span class="w">      </span><span class="nt">prometheus.io/scrape</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;true&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">serviceMonitor</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">    </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">scrapeTimeout</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">selector</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w"></span><span class="nt">nameOverride</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w"></span><span class="nt">nodeAffinityPreset</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">values</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w"></span><span class="nt">nodeSelector</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w"></span><span class="nt">persistence</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">accessMode</span><span class="p">:</span><span class="w"> </span><span class="l">ReadWriteOnce</span><span class="w">
+</span><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">  </span><span class="nt">existingClaim</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">size</span><span class="p">:</span><span class="w"> </span><span class="l">10Gi</span><span class="w">
+</span><span class="w">  </span><span class="nt">storageClass</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w"></span><span class="nt">plugins</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w"></span><span class="nt">podAffinityPreset</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w"></span><span class="nt">podAnnotations</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w"></span><span class="nt">podAntiAffinityPreset</span><span class="p">:</span><span class="w"> </span><span class="l">soft</span><span class="w">
+</span><span class="w"></span><span class="nt">podLabels</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w"></span><span class="nt">readinessProbe</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">  </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="m">6</span><span class="w">
+</span><span class="w">  </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="m">30</span><span class="w">
+</span><span class="w">  </span><span class="nt">periodSeconds</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
+</span><span class="w">  </span><span class="nt">successThreshold</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="w">  </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span><span class="w"></span><span class="nt">replicaCount</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="w"></span><span class="nt">resources</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">limits</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">requests</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w"></span><span class="nt">savedObjects</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">configmap</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">urls</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w"></span><span class="nt">schedulerName</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w"></span><span class="nt">securityContext</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">  </span><span class="nt">fsGroup</span><span class="p">:</span><span class="w"> </span><span class="m">1001</span><span class="w">
+</span><span class="w">  </span><span class="nt">runAsNonRoot</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">  </span><span class="nt">runAsUser</span><span class="p">:</span><span class="w"> </span><span class="m">1001</span><span class="w">
+</span><span class="w"></span><span class="nt">service</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">annotations</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">externalTrafficPolicy</span><span class="p">:</span><span class="w"> </span><span class="l">Cluster</span><span class="w">
+</span><span class="w">  </span><span class="nt">extraPorts</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">  </span><span class="nt">labels</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">loadBalancerIP</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">nodePort</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">5601</span><span class="w">
+</span><span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">ClusterIP</span><span class="w">
+</span><span class="w"></span><span class="nt">serviceAccount</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">annotations</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">create</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w"></span><span class="nt">sidecars</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w"></span><span class="nt">tls</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">autoGenerated</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">  </span><span class="nt">existingSecret</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">keyPassword</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">keystorePassword</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">passwordsSecret</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">usePemCerts</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w"></span><span class="nt">tolerations</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w"></span><span class="nt">updateStrategy</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">RollingUpdate</span><span class="w">
+</span><span class="w"></span><span class="nt">volumePermissions</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">pullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l">IfNotPresent</span><span class="w">
+</span><span class="w">    </span><span class="nt">pullSecrets</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">    </span><span class="nt">registry</span><span class="p">:</span><span class="w"> </span><span class="l">docker.io</span><span class="w">
+</span><span class="w">    </span><span class="nt">repository</span><span class="p">:</span><span class="w"> </span><span class="l">bitnami/bitnami-shell</span><span class="w">
+</span><span class="w">    </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="m">10</span>-<span class="l">debian-10-r248</span><span class="w">
+</span><span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">
+</span></code></pre></div><ol start="7">
+<li>Click <code>Next</code> and click <code>Install</code>.</li>
+<li>Verify that everthing is up by running the following command:</li>
+</ol>
+<pre tabindex="0"><code>kubectl get all -n logging-system
+</code></pre><h3 id="installing-fluent-bit">Installing Fluent-bit</h3>
+<p>Next we will install Fluent-bit to actually ship the logs out of Kubernetes and into Elasticsearch.</p>
+<ol>
+<li>Login to the Rancher Interface.</li>
+<li>Go to <code>Apps and Marketplace</code>, <code>Repositories</code>.</li>
+<li>Click <code>Create</code> and add the following then click <code>Create</code> again:</li>
+</ol>
+<ul>
+<li>Name: <code>fluent</code></li>
+<li>Target: <code>Git</code></li>
+<li>Git Repo URL: <code>https://github.com/fluent/helm-charts</code></li>
+<li>Git Branch: <code>main</code></li>
+</ul>
+<ol start="4">
+<li>Click on <code>fluent-bit</code> menu item and click <code>Install</code>.</li>
+<li>Update the following and click <code>Next</code>:
+<ul>
+<li>Namespace: <code>logging-system</code></li>
+<li>Name: <code>fluentbit-logging</code></li>
+<li>Customize Helm options before install: <code>check</code></li>
+</ul>
+</li>
+<li>Replace all the YAML with the below code.
+<ul>
+<li>Update <code>HTTP_Passwd</code> with the password your used in the Elasticsearch deployment.</li>
+</ul>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># Default values for fluent-bit.</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c"># kind -- DaemonSet or Deployment</span><span class="w">
+</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">DaemonSet</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c"># replicaCount -- Only applicable if kind=Deployment</span><span class="w">
+</span><span class="w"></span><span class="nt">replicaCount</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">image</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">repository</span><span class="p">:</span><span class="w"> </span><span class="l">fluent/fluent-bit</span><span class="w">
+</span><span class="w">  </span><span class="c"># Overrides the image tag whose default is {{ .Chart.AppVersion }}</span><span class="w">
+</span><span class="w">  </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&#34;</span><span class="w">
+</span><span class="w">  </span><span class="nt">pullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l">Always</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">testFramework</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">repository</span><span class="p">:</span><span class="w"> </span><span class="l">busybox</span><span class="w">
+</span><span class="w">    </span><span class="nt">pullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l">Always</span><span class="w">
+</span><span class="w">    </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l">latest</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">imagePullSecrets</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w"></span><span class="nt">nameOverride</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&#34;</span><span class="w">
+</span><span class="w"></span><span class="nt">fullnameOverride</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&#34;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">serviceAccount</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">create</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">  </span><span class="nt">annotations</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">rbac</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">create</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">  </span><span class="nt">nodeAccess</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">podSecurityPolicy</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">create</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">  </span><span class="nt">annotations</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">podSecurityContext</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w"></span><span class="c">#   fsGroup: 2000</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">hostNetwork</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w"></span><span class="nt">dnsPolicy</span><span class="p">:</span><span class="w"> </span><span class="l">ClusterFirst</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">dnsConfig</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w"></span><span class="c">#   nameservers:</span><span class="w">
+</span><span class="w"></span><span class="c">#     - 1.2.3.4</span><span class="w">
+</span><span class="w"></span><span class="c">#   searches:</span><span class="w">
+</span><span class="w"></span><span class="c">#     - ns1.svc.cluster-domain.example</span><span class="w">
+</span><span class="w"></span><span class="c">#     - my.dns.search.suffix</span><span class="w">
+</span><span class="w"></span><span class="c">#   options:</span><span class="w">
+</span><span class="w"></span><span class="c">#     - name: ndots</span><span class="w">
+</span><span class="w"></span><span class="c">#       value: &#34;2&#34;</span><span class="w">
+</span><span class="w"></span><span class="c">#     - name: edns0</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">hostAliases</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w"></span><span class="c">#   - ip: &#34;1.2.3.4&#34;</span><span class="w">
+</span><span class="w"></span><span class="c">#     hostnames:</span><span class="w">
+</span><span class="w"></span><span class="c">#     - &#34;foo.local&#34;</span><span class="w">
+</span><span class="w"></span><span class="c">#     - &#34;bar.local&#34;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">securityContext</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w"></span><span class="c">#   capabilities:</span><span class="w">
+</span><span class="w"></span><span class="c">#     drop:</span><span class="w">
+</span><span class="w"></span><span class="c">#     - ALL</span><span class="w">
+</span><span class="w"></span><span class="c">#   readOnlyRootFilesystem: true</span><span class="w">
+</span><span class="w"></span><span class="c">#   runAsNonRoot: true</span><span class="w">
+</span><span class="w"></span><span class="c">#   runAsUser: 1000</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">service</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">ClusterIP</span><span class="w">
+</span><span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">2020</span><span class="w">
+</span><span class="w">  </span><span class="nt">labels</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">  </span><span class="c"># nodePort: 30020</span><span class="w">
+</span><span class="w">  </span><span class="nt">annotations</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w"></span><span class="c">#   prometheus.io/path: &#34;/api/v1/metrics/prometheus&#34;</span><span class="w">
+</span><span class="w"></span><span class="c">#   prometheus.io/port: &#34;2020&#34;</span><span class="w">
+</span><span class="w"></span><span class="c">#   prometheus.io/scrape: &#34;true&#34;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">serviceMonitor</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w"></span><span class="c">#   namespace: monitoring</span><span class="w">
+</span><span class="w"></span><span class="c">#   interval: 10s</span><span class="w">
+</span><span class="w"></span><span class="c">#   scrapeTimeout: 10s</span><span class="w">
+</span><span class="w"></span><span class="c">#   jobLabel: fluentbit</span><span class="w">
+</span><span class="w"></span><span class="c">#   selector:</span><span class="w">
+</span><span class="w"></span><span class="c">#    prometheus: my-prometheus</span><span class="w">
+</span><span class="w"></span><span class="c">#  ## metric relabel configs to apply to samples before ingestion.</span><span class="w">
+</span><span class="w"></span><span class="c">#  ##</span><span class="w">
+</span><span class="w"></span><span class="c">#  metricRelabelings:</span><span class="w">
+</span><span class="w"></span><span class="c">#    - sourceLabels: [__meta_kubernetes_service_label_cluster]</span><span class="w">
+</span><span class="w"></span><span class="c">#      targetLabel: cluster</span><span class="w">
+</span><span class="w"></span><span class="c">#      regex: (.*)</span><span class="w">
+</span><span class="w"></span><span class="c">#      replacement: ${1}</span><span class="w">
+</span><span class="w"></span><span class="c">#      action: replace</span><span class="w">
+</span><span class="w"></span><span class="c">#  ## relabel configs to apply to samples after ingestion.</span><span class="w">
+</span><span class="w"></span><span class="c">#  ##</span><span class="w">
+</span><span class="w"></span><span class="c">#  relabelings:</span><span class="w">
+</span><span class="w"></span><span class="c">#    - sourceLabels: [__meta_kubernetes_pod_node_name]</span><span class="w">
+</span><span class="w"></span><span class="c">#      separator: ;</span><span class="w">
+</span><span class="w"></span><span class="c">#      regex: ^(.*)$</span><span class="w">
+</span><span class="w"></span><span class="c">#      targetLabel: nodename</span><span class="w">
+</span><span class="w"></span><span class="c">#      replacement: $1</span><span class="w">
+</span><span class="w"></span><span class="c">#      action: replace</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">prometheusRule</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w"></span><span class="c">#   namespace: &#34;&#34;</span><span class="w">
+</span><span class="w"></span><span class="c">#   additionnalLabels: {}</span><span class="w">
+</span><span class="w"></span><span class="c">#   rules:</span><span class="w">
+</span><span class="w"></span><span class="c">#   - alert: NoOutputBytesProcessed</span><span class="w">
+</span><span class="w"></span><span class="c">#     expr: rate(fluentbit_output_proc_bytes_total[5m]) == 0</span><span class="w">
+</span><span class="w"></span><span class="c">#     annotations:</span><span class="w">
+</span><span class="w"></span><span class="c">#       message: |</span><span class="w">
+</span><span class="w"></span><span class="c">#         Fluent Bit instance {{ $labels.instance }}&#39;s output plugin {{ $labels.name }} has not processed any</span><span class="w">
+</span><span class="w"></span><span class="c">#         bytes for at least 15 minutes.</span><span class="w">
+</span><span class="w"></span><span class="c">#       summary: No Output Bytes Processed</span><span class="w">
+</span><span class="w"></span><span class="c">#     for: 15m</span><span class="w">
+</span><span class="w"></span><span class="c">#     labels:</span><span class="w">
+</span><span class="w"></span><span class="c">#       severity: critical</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">dashboards</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">  </span><span class="nt">labelKey</span><span class="p">:</span><span class="w"> </span><span class="l">grafana_dashboard</span><span class="w">
+</span><span class="w">  </span><span class="nt">annotations</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">livenessProbe</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">httpGet</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">/</span><span class="w">
+</span><span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l">http</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">readinessProbe</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">httpGet</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">/api/v1/health</span><span class="w">
+</span><span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l">http</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w"></span><span class="c">#   limits:</span><span class="w">
+</span><span class="w"></span><span class="c">#     cpu: 100m</span><span class="w">
+</span><span class="w"></span><span class="c">#     memory: 128Mi</span><span class="w">
+</span><span class="w"></span><span class="c">#   requests:</span><span class="w">
+</span><span class="w"></span><span class="c">#     cpu: 100m</span><span class="w">
+</span><span class="w"></span><span class="c">#     memory: 128Mi</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">nodeSelector</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">tolerations</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">affinity</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">labels</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">annotations</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">podAnnotations</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">podLabels</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">priorityClassName</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&#34;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">envFrom</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">extraContainers</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w"></span><span class="c">#   - name: do-something</span><span class="w">
+</span><span class="w"></span><span class="c">#     image: busybox</span><span class="w">
+</span><span class="w"></span><span class="c">#     command: [&#39;do&#39;, &#39;something&#39;]</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">extraPorts</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w"></span><span class="c">#   - port: 5170</span><span class="w">
+</span><span class="w"></span><span class="c">#     containerPort: 5170</span><span class="w">
+</span><span class="w"></span><span class="c">#     protocol: TCP</span><span class="w">
+</span><span class="w"></span><span class="c">#     name: tcp</span><span class="w">
+</span><span class="w"></span><span class="c">#     nodePort: 30517</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">extraVolumes</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">extraVolumeMounts</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">updateStrategy</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w"></span><span class="c">#   type: RollingUpdate</span><span class="w">
+</span><span class="w"></span><span class="c">#   rollingUpdate:</span><span class="w">
+</span><span class="w"></span><span class="c">#     maxUnavailable: 1</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c"># Make use of a pre-defined configmap instead of the one templated here</span><span class="w">
+</span><span class="w"></span><span class="nt">existingConfigMap</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&#34;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">networkPolicy</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w"></span><span class="c">#   ingress:</span><span class="w">
+</span><span class="w"></span><span class="c">#     from: []</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">luaScripts</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c">## https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/configuration-file</span><span class="w">
+</span><span class="w"></span><span class="nt">config</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">service</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span><span class="sd">    [SERVICE]
+</span><span class="sd">        Daemon Off
+</span><span class="sd">        Flush 1
+</span><span class="sd">        Log_Level {{ .Values.logLevel }}
+</span><span class="sd">        Parsers_File parsers.conf
+</span><span class="sd">        Parsers_File custom_parsers.conf
+</span><span class="sd">        HTTP_Server On
+</span><span class="sd">        HTTP_Listen 0.0.0.0
+</span><span class="sd">        HTTP_Port {{ .Values.service.port }}
+</span><span class="sd">        Health_Check On</span><span class="w">    
+</span><span class="w">
+</span><span class="w">  </span><span class="c">## https://docs.fluentbit.io/manual/pipeline/inputs</span><span class="w">
+</span><span class="w">  </span><span class="nt">inputs</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span><span class="sd">    [INPUT]
+</span><span class="sd">        Name tail
+</span><span class="sd">        Path /var/log/containers/*.log
+</span><span class="sd">        multiline.parser docker, cri
+</span><span class="sd">        Tag kube.*
+</span><span class="sd">        Mem_Buf_Limit 5MB
+</span><span class="sd">        Skip_Long_Lines On
+</span><span class="sd">
+</span><span class="sd">    [INPUT]
+</span><span class="sd">        Name systemd
+</span><span class="sd">        Tag host.*
+</span><span class="sd">        Systemd_Filter _SYSTEMD_UNIT=kubelet.service
+</span><span class="sd">        Read_From_Tail On</span><span class="w">    
+</span><span class="w">
+</span><span class="w">  </span><span class="c">## https://docs.fluentbit.io/manual/pipeline/filters</span><span class="w">
+</span><span class="w">  </span><span class="nt">filters</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span><span class="sd">    [FILTER]
+</span><span class="sd">        Name kubernetes
+</span><span class="sd">        Match kube.*
+</span><span class="sd">        Merge_Log On
+</span><span class="sd">        Keep_Log Off
+</span><span class="sd">        K8S-Logging.Parser On
+</span><span class="sd">        K8S-Logging.Exclude On</span><span class="w">    
+</span><span class="w">
+</span><span class="w">  </span><span class="c">## https://docs.fluentbit.io/manual/pipeline/outputs</span><span class="w">
+</span><span class="w">  </span><span class="nt">outputs</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span><span class="sd">    [OUTPUT]
+</span><span class="sd">        Name es
+</span><span class="sd">        Match kube.*
+</span><span class="sd">        Host elasticsearch-logging-master.logging-system
+</span><span class="sd">        Logstash_Format On
+</span><span class="sd">        Retry_Limit 2
+</span><span class="sd">        Generate_ID On
+</span><span class="sd">        Replace_Dots On
+</span><span class="sd">        Trace_Error On
+</span><span class="sd">        HTTP_User elastic
+</span><span class="sd">        HTTP_Passwd lockitdown
+</span><span class="sd">        tls on
+</span><span class="sd">        tls.verify off
+</span><span class="sd">
+</span><span class="sd">    [OUTPUT]
+</span><span class="sd">        Name es
+</span><span class="sd">        Match host.*
+</span><span class="sd">        Host elasticsearch-logging-master.logging-system
+</span><span class="sd">        Logstash_Format On
+</span><span class="sd">        Logstash_Prefix node
+</span><span class="sd">        Retry_Limit 2
+</span><span class="sd">        Generate_ID On
+</span><span class="sd">        Replace_Dots On
+</span><span class="sd">        Trace_Error On
+</span><span class="sd">        HTTP_User elastic
+</span><span class="sd">        HTTP_Passwd lockitdown
+</span><span class="sd">        tls on
+</span><span class="sd">        tls.verify off</span><span class="w">    
+</span><span class="w">
+</span><span class="w">  </span><span class="c">## https://docs.fluentbit.io/manual/pipeline/parsers</span><span class="w">
+</span><span class="w">  </span><span class="nt">customParsers</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span><span class="sd">    [PARSER]
+</span><span class="sd">        Name docker_no_time
+</span><span class="sd">        Format json
+</span><span class="sd">        Time_Keep Off
+</span><span class="sd">        Time_Key time
+</span><span class="sd">        Time_Format %Y-%m-%dT%H:%M:%S.%L</span><span class="w">    
+</span><span class="w">
+</span><span class="w">  </span><span class="c"># This allows adding more files with arbitary filenames to /fluent-bit/etc by providing key/value pairs.</span><span class="w">
+</span><span class="w">  </span><span class="c"># The key becomes the filename, the value becomes the file content.</span><span class="w">
+</span><span class="w">  </span><span class="nt">extraFiles</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w"></span><span class="c">#     example.conf: |</span><span class="w">
+</span><span class="w"></span><span class="c">#       [OUTPUT]</span><span class="w">
+</span><span class="w"></span><span class="c">#           Name example</span><span class="w">
+</span><span class="w"></span><span class="c">#           Match foo.*</span><span class="w">
+</span><span class="w"></span><span class="c">#           Host bar</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c"># The config volume is mounted by default, either to the existingConfigMap value, or the default of &#34;fluent-bit.fullname&#34;</span><span class="w">
+</span><span class="w"></span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">config</span><span class="w">
+</span><span class="w">    </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/fluent-bit/etc/fluent-bit.conf</span><span class="w">
+</span><span class="w">    </span><span class="nt">subPath</span><span class="p">:</span><span class="w"> </span><span class="l">fluent-bit.conf</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">config</span><span class="w">
+</span><span class="w">    </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/fluent-bit/etc/custom_parsers.conf</span><span class="w">
+</span><span class="w">    </span><span class="nt">subPath</span><span class="p">:</span><span class="w"> </span><span class="l">custom_parsers.conf</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">daemonSetVolumes</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">varlog</span><span class="w">
+</span><span class="w">    </span><span class="nt">hostPath</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">/var/log</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">varlibdockercontainers</span><span class="w">
+</span><span class="w">    </span><span class="nt">hostPath</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">/var/lib/docker/containers</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">etcmachineid</span><span class="w">
+</span><span class="w">    </span><span class="nt">hostPath</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">/etc/machine-id</span><span class="w">
+</span><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">File</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">daemonSetVolumeMounts</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">varlog</span><span class="w">
+</span><span class="w">    </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/var/log</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">varlibdockercontainers</span><span class="w">
+</span><span class="w">    </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/var/lib/docker/containers</span><span class="w">
+</span><span class="w">    </span><span class="nt">readOnly</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">etcmachineid</span><span class="w">
+</span><span class="w">    </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/etc/machine-id</span><span class="w">
+</span><span class="w">    </span><span class="nt">readOnly</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c"># This supports either a structured array or a templatable string</span><span class="w">
+</span><span class="w"></span><span class="nt">initContainers</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c"># Array mode</span><span class="w">
+</span><span class="w"></span><span class="c"># initContainers:</span><span class="w">
+</span><span class="w"></span><span class="c">#   - name: do-something</span><span class="w">
+</span><span class="w"></span><span class="c">#     image: bitnami/kubectl:1.22</span><span class="w">
+</span><span class="w"></span><span class="c">#     command: [&#39;kubectl&#39;, &#39;version&#39;]</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c"># String mode</span><span class="w">
+</span><span class="w"></span><span class="c"># initContainers: |-</span><span class="w">
+</span><span class="w"></span><span class="c">#   - name: do-something</span><span class="w">
+</span><span class="w"></span><span class="c">#     image: bitnami/kubectl:{{ .Capabilities.KubeVersion.Major }}.{{ .Capabilities.KubeVersion.Minor }}</span><span class="w">
+</span><span class="w"></span><span class="c">#     command: [&#39;kubectl&#39;, &#39;version&#39;]</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">logLevel</span><span class="p">:</span><span class="w"> </span><span class="l">info</span><span class="w">
+</span></code></pre></div><ol start="7">
+<li>Click <code>Next</code> and click <code>Install</code>.</li>
+<li>Verify that everthing is up by running the following command:</li>
+</ol>
+<pre tabindex="0"><code>kubectl get all -n logging-system
+</code></pre><h3 id="accessing-logs-with-kibana">Accessing Logs With Kibana</h3>
+<p>Lastly, we need to login to Kibana, add the search index pattern, and start viewing the logs.</p>
+<ol>
+<li>In a browser, navigate to the FQDN you defined for your Kibana instance. eg: <code>https://kibana.apps.dsodev.net</code>.</li>
+<li>Login using:
+<ul>
+<li>Username: <code>elastic</code></li>
+<li>Password: the password your used in the Elasticsearch deployment.</li>
+</ul>
+</li>
+<li>Click the burger menu in the upper left and select <code>Stack Management</code> at the bottom.</li>
+<li>Under <code>Kibana</code>, select <code>Index Patterns</code>.</li>
+<li>Click <code>Create Index Pattern</code>.</li>
+<li>Enter the following details and click <code>Create Index Pattern</code>:
+<ul>
+<li>Name: <code>logstash*</code></li>
+<li>Timestamp: <code>@timestamp</code></li>
+</ul>
+</li>
+<li>Click the burger menu in the upper left and select <code>Discover</code>.</li>
+<li>You should see logs from all pods in your cluster flowing into this interface.</li>
+</ol>
+<figure><a class="lightgallery" href="/assets/2021/12/12-06-kibana-ui.png" title="/assets/2021/12/12-06-kibana-ui.png" data-thumbnail="/assets/2021/12/12-06-kibana-ui.png" data-sub-html="<h2>Kibana UI</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/assets/2021/12/12-06-kibana-ui.png"
+            data-srcset="/assets/2021/12/12-06-kibana-ui.png, /assets/2021/12/12-06-kibana-ui.png 1.5x, /assets/2021/12/12-06-kibana-ui.png 2x"
+            data-sizes="auto"
+            alt="/assets/2021/12/12-06-kibana-ui.png" />
+    </a><figcaption class="image-caption">Kibana UI</figcaption>
+    </figure>
+<h2 id="closing">Closing</h2>
+<p>Based on the instructions in the &ldquo;Single Node RKE2&rdquo; blogs, you should now have a solid foundation cluster for running, monitoring, and logging workloads on Kubernetes.</p>
+<p>Deploying RKE2 or K3s as a highly available, multi-node, production-ready setup involves quite a few more steps. But this guide hopefully gives you the starting point and confidence to go start building that out for yourself or your organization.</p>
+<p>If you have any questions or would like AlphaBravo&rsquo;s assistance in building production-grade Kubernetes clusters,  please reach out to us at <a href="mailto:info@alphabravo.io" rel="">info@alphabravo.io</a>.</p>
+<p>Thanks for reading!</p>
+<hr>
+<p><em>The AB Engineering Team</em></p>
+<p><strong>Website:</strong> <a href="https://alphabravo.io" target="_blank" rel="noopener noreffer">https://alphabravo.io</a></p>
+<p><strong>Contact Us:</strong> <a href="https://alphabravo.io/contact-us" target="_blank" rel="noopener noreffer">https://alphabravo.io/contact-us</a></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info"><div class="post-info-tag"><span><a href="/tags/rancher/">rancher</a>
+                </span><span><a href="/tags/kubernetes/">kubernetes</a>
+                </span><span><a href="/tags/rke2/">rke2</a>
+                </span><span><a href="/tags/helm/">helm</a>
+                </span><span><a href="/tags/hetzner/">hetzner</a>
+                </span><span><a href="/tags/longhorn/">longhorn</a>
+                </span><span><a href="/tags/elasticsearch/">elasticsearch</a>
+                </span><span><a href="/tags/grafana/">grafana</a>
+                </span><span><a href="/tags/kibana/">kibana</a>
+                </span><span><a href="/tags/prometheus/">prometheus</a>
+                </span></div><div class="post-info-line"><div class="post-info-mod">
+                <span>Updated on 2021-12-06</span>
+            </div><div class="post-info-mod"></div>
+        </div></div><div class="post-nav"><a href="/posts/2021/single-node-k3s/" class="prev" rel="prev" title="Powerful Single Node K3s on Hetzner for CHEAP!"><i class="fas fa-angle-left fa-fw"></i>Previous Post</a></div></div>
+</div></article></div>
+            </main>
+            <footer class="footer"><div class="footer-container"><div class="footer-line">AlphaBravo</div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/"></a></span></div>
+</div>
+</footer>
+        </div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-chevron-up fa-fw"></i>
+            </a></div><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/typeit/typeit.min.js"></script><script src="/lib/lightgallery/lightgallery.min.js"></script><script src="/lib/lightgallery/lg-thumbnail.min.js"></script><script src="/lib/lightgallery/lg-zoom.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/cookieconsent/cookieconsent.min.js"></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{},"cookieconsent":{"content":{"dismiss":"Ok","link":"https://alphabravo.io","message":"We use cookies and open-source, privacy-respecting analytics technologies to improve your browsing experience on our website, to analyze our website traffic, and to understand where our visitors are coming from."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"Engineering Blog","id-2":"Engineering Blog"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"typeit":{"cursorChar":null,"cursorSpeed":null,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":null,"speed":null}};</script><script src="/js/theme.min.js"></script><script data-goatcounter="https://stats.alphabravo.io/count" async src="//stats.alphabravo.io/count.js"></script></body></html>

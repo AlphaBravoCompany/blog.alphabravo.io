@@ -28,7 +28,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.alphabravo.io\/posts\/2021\/single-node-rke2-pt1\/"
-        },"image": ["https:\/\/blog.alphabravo.io\/assets\/ab-seo-large.png"],"genre": "posts","keywords": "rancher, kubernetes, rke2, helm, hetzner","wordcount":  1124 ,
+        },"image": ["https:\/\/blog.alphabravo.io\/assets\/ab-seo-large.png"],"genre": "posts","keywords": "rancher, kubernetes, rke2, helm, hetzner","wordcount":  1113 ,
         "url": "https:\/\/blog.alphabravo.io\/posts\/2021\/single-node-rke2-pt1\/","datePublished": "2021-11-29T13:00:00+00:00","dateModified": "2021-11-29T13:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "AlphaBravo","logo": "https:\/\/blog.alphabravo.io\/assets\/alphabravo-logoonly-outline1.png"},"author": {
@@ -125,7 +125,7 @@
         alt="/assets/single-node-rke2-full.png"
         title="Instructions on deploying RKE2, Helm, cert-manager and Rancher on a single node Hetzner server." /></div><div class="single-card" data-image="true"><h2 class="single-title animated flipInX">Powerful Single Node RKE2 on Hetzner for CHEAP! (Part 1)</h2><div class="post-meta">
                 <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>AB Engineering</a></span></div>
-                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-11-29">2021-11-29</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1124 words</span>&nbsp;
+                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-11-29">2021-11-29</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1113 words</span>&nbsp;
                     <span><i class="far fa-clock fa-fw"></i>&nbsp;6 minutes</span>&nbsp;</div>
             </div>
             
@@ -238,7 +238,7 @@
 </ol>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">curl -sfL https://get.rke2.io <span class="p">|</span> <span class="nv">INSTALL_RKE2_CHANNEL</span><span class="o">=</span>v1.21.6+rke2r1 sh -
 systemctl <span class="nb">enable</span> --now rke2-server.service
-<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>/var/lib/rancher/rke2/bin:<span class="nv">$PATH</span>
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&#34;/var/lib/rancher/rke2/bin:</span><span class="nv">$PATH</span><span class="s2">&#34;</span>
 </code></pre></div><ol start="4">
 <li>Export the kubeconfig file. We can use this file to connect from our local machine using the <code>kubectl</code> command line or <a href="https://k8slens.dev/" target="_blank" rel="noopener noreffer">Lens</a></li>
 </ol>
@@ -292,7 +292,7 @@ helm install cert-manager jetstack/cert-manager <span class="se">\
 </span><span class="se"></span>  --create-namespace <span class="se">\
 </span><span class="se"></span>  --version v1.5.1
 </code></pre></div><ol start="4">
-<li>Install Rancher using Helm. This assumes you have configured DNS to get a valid certificate.</li>
+<li>Install Rancher using Helm.</li>
 </ol>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">helm install rancher rancher-stable/rancher <span class="se">\
 </span><span class="se"></span>  --namespace cattle-system <span class="se">\

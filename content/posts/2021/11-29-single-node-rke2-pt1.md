@@ -119,7 +119,7 @@ apt update && apt upgrade -y
 ```bash
 curl -sfL https://get.rke2.io | INSTALL_RKE2_CHANNEL=v1.21.6+rke2r1 sh -
 systemctl enable --now rke2-server.service
-export PATH=/var/lib/rancher/rke2/bin:$PATH
+export PATH="/var/lib/rancher/rke2/bin:$PATH"
 ```
 4. Export the kubeconfig file. We can use this file to connect from our local machine using the `kubectl` command line or [Lens](https://k8slens.dev/)
 ```bash
@@ -187,7 +187,7 @@ helm install cert-manager jetstack/cert-manager \
   --version v1.5.1
 ```
 
-4. Install Rancher using Helm. This assumes you have configured DNS to get a valid certificate.
+4. Install Rancher using Helm.
 ```bash
 helm install rancher rancher-stable/rancher \
   --namespace cattle-system \

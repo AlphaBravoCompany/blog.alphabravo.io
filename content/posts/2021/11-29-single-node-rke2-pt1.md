@@ -6,7 +6,7 @@ date: 2021-11-29T13:00:00Z
 draft: false
 featuredImage: /assets/single-node-rke2-full.png
 featuredImagePreview: /assets/single-node-rke2-full.png
-images: ["/assets/ab-seo-large.png"]
+images: [/assets/ab-seo-large.png, /assets/single-node-rke2-full.png ]
 seo:
   images: ["/assets/ab-seo-large.png"]
 lightgallery: true

@@ -1,10 +1,14 @@
 ---
 title: "Rancher Multi-Cluster Management UI"
+description: "It doesn't matter what Kubernetes Engine you use (EKS, AKS, GKE, RKE, K3s, etc), Rancher MCM will help you manage it better."
 slug: "rancher-multi-cluster-management-ui"
 date: 2021-11-17T13:00:00Z
 draft: false
 featuredImage: /assets/rancher-ui-full.png
 featuredImagePreview: /assets/rancher-ui-small.png
+images: [/assets/ab-seo-large.png]
+seo:
+  images: [/assets/ab-seo-large.png]
 lightgallery: true
 tags: [rancher, kubernetes, rancher mcm]
 author: AB Engineering

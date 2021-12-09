@@ -13,7 +13,7 @@ lightgallery: true
 tags: [rancher, kubernetes, rke2, helm, hetzner, longhorn, elasticsearch, grafana, kibana, prometheus]
 author: AB Engineering
 ---
-
+<!--more-->
 ## Single-Node Kubernetes Series
 
 - [Powerful Single Node RKE2 on Hetzner for CHEAP! (Part 1)](https://blog.alphabravo.io/posts/2021/single-node-rke2-pt1/)

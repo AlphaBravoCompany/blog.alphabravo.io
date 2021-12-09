@@ -9,9 +9,7 @@
     <pubDate>Mon, 06 Dec 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/single-node-rke2-pt2/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/2021/12/single-node-rke2-pt2-full.png" referrerpolicy="no-referrer">
-            </div>Single-Node Kubernetes Series  Powerful Single Node RKE2 on Hetzner for CHEAP! (Part 1) Powerful Single Node K3S on Hetzner for CHEAP! (Part 1a) Powerful Single Node K3s on Hetzner for CHEAP! (Part 2)  RKE2 Install In the first blog of this series, we deployed a single node RKE2 deployment and Rancher UI or a cheap Hetzner server.
-In this post, we will install the following:
- Longhorn for Persistent Data Rancher Monitoring EFK Logging (Elasticsearch,Fluent Bit,Kibana)  What is Longhorn Longhorn is an official CNCF project that delivers a powerful cloud-native distributed storage platform for Kubernetes that can run anywhere.]]></description>
+            </div>Part 2 of the cheap single node Kubernetes series. In this blog we deploying Longhorn, Monitoring and Logging on RKE2.]]></description>
 </item>
 <item>
     <title>Powerful Single Node K3s on Hetzner for CHEAP!</title>
@@ -19,8 +17,7 @@ In this post, we will install the following:
     <pubDate>Tue, 30 Nov 2021 11:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/single-node-k3s/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/single-node-k3s-full.png" referrerpolicy="no-referrer">
-            </div>Single-Node Kubernetes Series  Powerful Single Node RKE2 on Hetzner for CHEAP! (Part 1) Powerful Single Node K3S on Hetzner for CHEAP! (Part 1a) Powerful Single Node K3s on Hetzner for CHEAP! (Part 2)  The K3s Cluster No, your eyes do not deceive you. This is a very similarly named blog to our Powerful Single Node RKE2 on Hetzner for CHEAP! (Part 1).
-Some folks don&rsquo;t want to deploy RKE2, and we don&rsquo;t want you to feel left out.]]></description>
+            </div>Instructions on deploying K3s, Helm, cert-manager and Rancher on a single node Hetzner server.]]></description>
 </item>
 <item>
     <title>Powerful Single Node RKE2 on Hetzner for CHEAP! (Part 1)</title>

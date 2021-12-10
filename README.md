@@ -52,7 +52,7 @@ It is currently (Nov 2021) hosted on Github Sites.
 
 ## Publish changes into static files
 
-`docker run --rm -v ${PWD}:/site alphabravocompany/hugo-docker:latest -D`
+`docker run --rm -v ${PWD}:/site alphabravocompany/hugo-docker:latest -v`
 
 ## To generate a new site 
 **REFERENCE ONLY. Not usually needed.**

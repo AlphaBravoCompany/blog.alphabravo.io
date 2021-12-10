@@ -3,7 +3,25 @@
         <title>Tags - Tag - AB Engineering Blog</title>
         <link>https://blog.alphabravo.io/tags/</link>
         <description>Tags - Tag - AB Engineering Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 06 Dec 2021 13:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/tags/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 08 Dec 2021 13:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>krew</title>
+    <link>https://blog.alphabravo.io/tags/krew/</link>
+    <pubDate>Wed, 08 Dec 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/krew/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>kubeconfig</title>
+    <link>https://blog.alphabravo.io/tags/kubeconfig/</link>
+    <pubDate>Wed, 08 Dec 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/kubeconfig/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>kubernetes</title>
+    <link>https://blog.alphabravo.io/tags/kubernetes/</link>
+    <pubDate>Wed, 08 Dec 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/kubernetes/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>elasticsearch</title>
     <link>https://blog.alphabravo.io/tags/elasticsearch/</link>
     <pubDate>Mon, 06 Dec 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/elasticsearch/</guid>
@@ -34,12 +52,6 @@
     <description><![CDATA[]]></description>
 </item>
 <item>
-    <title>kubernetes</title>
-    <link>https://blog.alphabravo.io/tags/kubernetes/</link>
-    <pubDate>Mon, 06 Dec 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/kubernetes/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
     <title>longhorn</title>
     <link>https://blog.alphabravo.io/tags/longhorn/</link>
     <pubDate>Mon, 06 Dec 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/longhorn/</guid>
@@ -49,18 +61,6 @@
     <title>prometheus</title>
     <link>https://blog.alphabravo.io/tags/prometheus/</link>
     <pubDate>Mon, 06 Dec 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/prometheus/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>rancher</title>
-    <link>https://blog.alphabravo.io/tags/rancher/</link>
-    <pubDate>Mon, 06 Dec 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/rancher/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>rke2</title>
-    <link>https://blog.alphabravo.io/tags/rke2/</link>
-    <pubDate>Mon, 06 Dec 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/rke2/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>

@@ -3,7 +3,7 @@ title: "Zero To Hero: Working With Multiple KUBECONFIGs"
 description: "We show you how to manage and work with multiple KUBECONFIG files from the comfort of the Linux CLI."
 slug: "zero-to-hero-working-with-multiple-kubeconfig"
 date: 2021-12-08T13:00:00Z
-draft: true
+draft: false
 featuredImage: /assets/2021/12/multiple-kubeconfig-full.png
 featuredImagePreview: /assets/2021/12/multiple-kubeconfig-full.png
 images: [/assets/2021/12/multiple-kubeconfig-social.png]

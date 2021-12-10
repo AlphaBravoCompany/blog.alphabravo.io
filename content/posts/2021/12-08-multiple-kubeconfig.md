@@ -36,7 +36,11 @@ Let's start with managing our `kubeconfig` files. They need to be treated with c
 
 The first thing we need to do is update the fields in each `kubeconfig` to be unique and meaningful.
 
-Here is the `kubeconfig` with the often found `default` values:
+**IMPORTANT**
+- Make copies of these before modifying them. (`cp config config.orig`) If you accidentally change something you shouldn't have, the file will no longer work and you may lose access to that cluster until you generate a new file.
+- Pay close attention to the relationship of the fields. The `cluster` and `user` fields relate to other fields in the file and should remain an equal value.
+
+Here is an example of a `kubeconfig` with the often found `default` values:
 
 ```
 apiVersion: v1
@@ -61,7 +65,7 @@ users:
 
 ```
 
-Below is the updated to be unique and descriptive:
+Below is an updated 'kubeconfig' with unique and descriptive:
 
 ```
 apiVersion: v1
@@ -85,7 +89,7 @@ users:
     client-key-data: fake-key-file
 ```
 
-Once you have done this cleanup on all of your files and given them meaningful names, move them into the `~/.kube/` directory on your system.
+Once the cleanup is complete on all files and they are given meaningful names (prod-cluster, dev-cluster, etc), move them into the `~/.kube/` directory on your system.
 
 ## Welcome to Krew
 
@@ -196,7 +200,9 @@ KUBECONFIG=~/.kube/rke2-homelab:~/.kube/prod-cluster:~/.kube/dev-cluster:~/.kube
 kubectl config view --flatten > tmp && mv tmp ~/.kube/config
 ```
 
-Now, if we were to look at our `~/.kube/config` file, we would see all the separate files merged into one (Click the arrow next to YAML to expand):
+Now, if we were to look at our `~/.kube/config` file, we would see all the separate files merged into one:
+
+**(*Click the arrow next to YAML to expand*)**
 
 ```yaml
 apiVersion: v1

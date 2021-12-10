@@ -28,7 +28,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.alphabravo.io\/posts\/2021\/zero-to-hero-working-with-multiple-kubeconfig\/"
-        },"image": ["https:\/\/blog.alphabravo.io\/assets\/2021\/12\/multiple-kubeconfig--social.png"],"genre": "posts","keywords": "kubernetes, kubeconfig, krew","wordcount":  1023 ,
+        },"image": ["https:\/\/blog.alphabravo.io\/assets\/2021\/12\/multiple-kubeconfig--social.png"],"genre": "posts","keywords": "kubernetes, kubeconfig, krew","wordcount":  1093 ,
         "url": "https:\/\/blog.alphabravo.io\/posts\/2021\/zero-to-hero-working-with-multiple-kubeconfig\/","datePublished": "2021-12-08T13:00:00+00:00","dateModified": "2021-12-08T13:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "AlphaBravo","logo": "https:\/\/blog.alphabravo.io\/assets\/alphabravo-logoonly-outline1.png"},"author": {
@@ -125,8 +125,8 @@
         alt="/assets/2021/12/multiple-kubeconfig-full.png"
         title="We show you how to manage and work with multiple `kubeconfig` files from the comfort of the Linux CLI." /></div><div class="single-card" data-image="true"><h2 class="single-title animated flipInX">Zero To Hero: Working With Multiple Kubeconfig Files</h2><div class="post-meta">
                 <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Mike 'MJ' Johnson</a></span></div>
-                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-12-08">2021-12-08</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1023 words</span>&nbsp;
-                    <span><i class="far fa-clock fa-fw"></i>&nbsp;5 minutes</span>&nbsp;</div>
+                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-12-08">2021-12-08</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1093 words</span>&nbsp;
+                    <span><i class="far fa-clock fa-fw"></i>&nbsp;6 minutes</span>&nbsp;</div>
             </div>
             
             <hr><div class="details toc" id="toc-static"  data-kept="">
@@ -158,7 +158,12 @@
 </ul>
 <h2 id="updating-the-fields-in-your-kubeconfig">Updating the fields in your <code>kubeconfig</code></h2>
 <p>The first thing we need to do is update the fields in each <code>kubeconfig</code> to be unique and meaningful.</p>
-<p>Here is the <code>kubeconfig</code> with the often found <code>default</code> values:</p>
+<p><strong>IMPORTANT</strong></p>
+<ul>
+<li>Make copies of these before modifying them. (<code>cp config config.orig</code>) If you accidentally change something you shouldn&rsquo;t have, the file will no longer work and you may lose access to that cluster until you generate a new file.</li>
+<li>Pay close attention to the relationship of the fields. The <code>cluster</code> and <code>user</code> fields relate to other fields in the file and should remain an equal value.</li>
+</ul>
+<p>Here is an example of a <code>kubeconfig</code> with the often found <code>default</code> values:</p>
 <pre tabindex="0"><code>apiVersion: v1
 clusters:
 - cluster:
@@ -179,7 +184,7 @@ users:
     client-certificate-data: fake-cert-file
     client-key-data: fake-key-file
 
-</code></pre><p>Below is the updated to be unique and descriptive:</p>
+</code></pre><p>Below is an updated &lsquo;kubeconfig&rsquo; with unique and descriptive:</p>
 <pre tabindex="0"><code>apiVersion: v1
 clusters:
 - cluster:
@@ -199,7 +204,7 @@ users:
   user:
     client-certificate-data: fake-cert-file
     client-key-data: fake-key-file
-</code></pre><p>Once you have done this cleanup on all of your files and given them meaningful names, move them into the <code>~/.kube/</code> directory on your system.</p>
+</code></pre><p>Once the cleanup is complete on all files and they are given meaningful names (prod-cluster, dev-cluster, etc), move them into the <code>~/.kube/</code> directory on your system.</p>
 <h2 id="welcome-to-krew">Welcome to Krew</h2>
 <p>Now that you have your <code>kubeconfig</code> files all in order, let&rsquo;s leverage some of the excellent <code>kubectl</code> tools that are out there.</p>
 <p>Kubernetes <a href="https://github.com/kubernetes-sigs/krew/" target="_blank" rel="noopener noreffer">Krew</a> &ldquo;is the package manager for kubectl plugins.&rdquo;</p>
@@ -265,7 +270,8 @@ drwx------ 10 root root 4.0K Dec  8 18:26 ..
 </code></pre><p>Next, we will use <code>kubectl</code> to merge all of the files we want (in this case, I use every <code>kubeconfig</code> file in the directory, but you can pick and choose) into a single file at <code>~/.kube/config</code>. Since this is the default location where <code>kubectl</code> looks, we don&rsquo;t need to update our <code>KUBECONFIG</code> variable anymore.</p>
 <pre tabindex="0"><code>KUBECONFIG=~/.kube/rke2-homelab:~/.kube/prod-cluster:~/.kube/dev-cluster:~/.kube/qa-cluster:~/.kube/test-cluster \
 kubectl config view --flatten &gt; tmp &amp;&amp; mv tmp ~/.kube/config
-</code></pre><p>Now, if we were to look at our <code>~/.kube/config</code> file, we would see all the separate files merged into one (Click the arrow next to YAML to expand):</p>
+</code></pre><p>Now, if we were to look at our <code>~/.kube/config</code> file, we would see all the separate files merged into one:</p>
+<p><strong>(<em>Click the arrow next to YAML to expand</em>)</strong></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
 </span><span class="w"></span><span class="nt">clusters</span><span class="p">:</span><span class="w">
 </span><span class="w"></span>- <span class="nt">cluster</span><span class="p">:</span><span class="w">

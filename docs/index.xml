@@ -6,12 +6,12 @@
         <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 08 Dec 2021 13:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://blog.alphabravo.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
-    <title>Zero To Hero: Working With Multiple KUBECONFIGs</title>
+    <title>Zero To Hero: Working With Multiple Kubeconfig Files</title>
     <link>https://blog.alphabravo.io/posts/2021/zero-to-hero-working-with-multiple-kubeconfig/</link>
     <pubDate>Wed, 08 Dec 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/zero-to-hero-working-with-multiple-kubeconfig/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/2021/12/multiple-kubeconfig-full.png" referrerpolicy="no-referrer">
-            </div>We show you how to manage and work with multiple KUBECONFIG files from the comfort of the Linux CLI.]]></description>
+            </div>We show you how to manage and work with multiple `kubeconfig` files from the comfort of the Linux CLI.]]></description>
 </item>
 <item>
     <title>Powerful Single Node RKE2 on Hetzner for CHEAP! (Part 2)</title>

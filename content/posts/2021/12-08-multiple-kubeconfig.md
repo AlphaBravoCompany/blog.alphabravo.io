@@ -1,6 +1,6 @@
 ---
-title: "Zero To Hero: Working With Multiple KUBECONFIGs"
-description: "We show you how to manage and work with multiple KUBECONFIG files from the comfort of the Linux CLI."
+title: "Zero To Hero: Working With Multiple Kubeconfig Files"
+description: "We show you how to manage and work with multiple `kubeconfig` files from the comfort of the Linux CLI."
 slug: "zero-to-hero-working-with-multiple-kubeconfig"
 date: 2021-12-08T13:00:00Z
 draft: false
@@ -18,7 +18,7 @@ asciinema: true
 ---
 <!--more-->
 
-Scaling beyond managing a single Kubernetes cluster from the CLI get hard quickly. 
+Scaling beyond managing a single Kubernetes cluster from the CLI gets hard quickly. 
 
 Even after digging in on the [official documentation](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/), we feel that the process is just too complex to use efficiently on a daily basis.
 
@@ -61,7 +61,7 @@ users:
 
 ```
 
-Here it is updated to be unique and descriptive:
+Below is the updated to be unique and descriptive:
 
 ```
 apiVersion: v1
@@ -189,14 +189,14 @@ drwx------ 10 root root 4.0K Dec  8 18:26 ..
 -rw-r--r--  1 root root 3.0K Dec  9 18:21 test-cluster
 ```
 
-Next, will use kubeconfig to merge all of the files we want (in this case I use every `kubeconfig` file) into a single file at `~/.kube/config`. Since this is the default location where `kubectl` looks, we dont need to update our `KUBECONFIG` variable anymore.
+Next, we will use `kubectl` to merge all of the files we want (in this case, I use every `kubeconfig` file in the directory, but you can pick and choose) into a single file at `~/.kube/config`. Since this is the default location where `kubectl` looks, we don't need to update our `KUBECONFIG` variable anymore.
 
 ```
 KUBECONFIG=~/.kube/rke2-homelab:~/.kube/prod-cluster:~/.kube/dev-cluster:~/.kube/qa-cluster:~/.kube/test-cluster \
 kubectl config view --flatten > tmp && mv tmp ~/.kube/config
 ```
 
-Now if we were to look at our `~/.kube/config` file, we would see all the separate files merged into one (Click the arrow next to YAML to expand):
+Now, if we were to look at our `~/.kube/config` file, we would see all the separate files merged into one (Click the arrow next to YAML to expand):
 
 ```yaml
 apiVersion: v1
@@ -273,24 +273,24 @@ users:
 
 Now that we have our files all merged, we can start easily switching contexts and namespaces with `kubectx` and `kubens`.
 
-- Swith to the prod cluster:
+- Switch to the `prod-cluster`:
 ```
 kubectl ctx prod-cluster
 # Switched to context "prod-cluster".
 ```
 
-- Switch to the dev cluster:
+- Switch to the `devcluster`:
 ```
 kubectl ctx dev-cluster
 # Switched to context "dev-cluster".
 ```
 
-- Get a selectable list of clusters you can switch to (if you instaled FZF):
+- Get a selectable list of clusters you can switch to (if you installed FZF):
 ```
 kubectl ctx
 ```
 
-- Switch to a the cattle-system namespace on the prod-cluster:
+- Switch to the `cattle-system` namespace on the `prod-cluster`:
 ```
 kubectl ctx prod-cluster
 kubectl ns cattle-system
@@ -298,7 +298,7 @@ kubectl ns cattle-system
 
 ## Closing
 
-Hopefully this blog helps you get a handle on the your ever growing list of Kubernetes clusters that you are managing. 
+Hopefully, this blog helps you get a handle on your ever-growing list of Kubernetes clusters that you are managing. 
 
 We recommend using [Rancher](https://rancher.com/products/rancher) if you want a powerful Web UI to manage your clusters, but sometimes the CLI is necessary.
 

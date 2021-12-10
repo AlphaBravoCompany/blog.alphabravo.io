@@ -4,8 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Zero To Hero: Working With Multiple KUBECONFIGs - AB Engineering Blog</title><meta name="description" content="We show you how to manage and work with multiple KUBECONFIG files from the comfort of the Linux CLI."><meta property="og:title" content="Zero To Hero: Working With Multiple KUBECONFIGs" />
-<meta property="og:description" content="We show you how to manage and work with multiple KUBECONFIG files from the comfort of the Linux CLI." />
+        <title>Zero To Hero: Working With Multiple Kubeconfig Files - AB Engineering Blog</title><meta name="description" content="We show you how to manage and work with multiple `kubeconfig` files from the comfort of the Linux CLI."><meta property="og:title" content="Zero To Hero: Working With Multiple Kubeconfig Files" />
+<meta property="og:description" content="We show you how to manage and work with multiple `kubeconfig` files from the comfort of the Linux CLI." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.alphabravo.io/posts/2021/zero-to-hero-working-with-multiple-kubeconfig/" /><meta property="og:image" content="https://blog.alphabravo.io/assets/2021/12/multiple-kubeconfig-social.png" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-12-08T13:00:00+00:00" />
@@ -14,8 +14,8 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://blog.alphabravo.io/assets/2021/12/multiple-kubeconfig-social.png"/>
 
-<meta name="twitter:title" content="Zero To Hero: Working With Multiple KUBECONFIGs"/>
-<meta name="twitter:description" content="We show you how to manage and work with multiple KUBECONFIG files from the comfort of the Linux CLI."/>
+<meta name="twitter:title" content="Zero To Hero: Working With Multiple Kubeconfig Files"/>
+<meta name="twitter:description" content="We show you how to manage and work with multiple `kubeconfig` files from the comfort of the Linux CLI."/>
 <meta name="application-name" content="AB Engineering Blog">
 <meta name="apple-mobile-web-app-title" content="AB Engineering Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -23,18 +23,18 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Zero To Hero: Working With Multiple KUBECONFIGs",
+        "headline": "Zero To Hero: Working With Multiple Kubeconfig Files",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.alphabravo.io\/posts\/2021\/zero-to-hero-working-with-multiple-kubeconfig\/"
-        },"image": ["https:\/\/blog.alphabravo.io\/assets\/2021\/12\/multiple-kubeconfig--social.png"],"genre": "posts","keywords": "kubernetes, kubeconfig, krew","wordcount":  1018 ,
+        },"image": ["https:\/\/blog.alphabravo.io\/assets\/2021\/12\/multiple-kubeconfig--social.png"],"genre": "posts","keywords": "kubernetes, kubeconfig, krew","wordcount":  1023 ,
         "url": "https:\/\/blog.alphabravo.io\/posts\/2021\/zero-to-hero-working-with-multiple-kubeconfig\/","datePublished": "2021-12-08T13:00:00+00:00","dateModified": "2021-12-08T13:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "AlphaBravo","logo": "https:\/\/blog.alphabravo.io\/assets\/alphabravo-logoonly-outline1.png"},"author": {
                 "@type": "Person",
                 "name": "Mike 'MJ' Johnson"
-            },"description": "We show you how to manage and work with multiple KUBECONFIG files from the comfort of the Linux CLI."
+            },"description": "We show you how to manage and work with multiple `kubeconfig` files from the comfort of the Linux CLI."
     }
     </script></head><body data-header-desktop="auto" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
@@ -123,9 +123,9 @@
         data-srcset="/assets/2021/12/multiple-kubeconfig-full.png, /assets/2021/12/multiple-kubeconfig-full.png 1.5x, /assets/2021/12/multiple-kubeconfig-full.png 2x"
         data-sizes="auto"
         alt="/assets/2021/12/multiple-kubeconfig-full.png"
-        title="We show you how to manage and work with multiple KUBECONFIG files from the comfort of the Linux CLI." /></div><div class="single-card" data-image="true"><h2 class="single-title animated flipInX">Zero To Hero: Working With Multiple KUBECONFIGs</h2><div class="post-meta">
+        title="We show you how to manage and work with multiple `kubeconfig` files from the comfort of the Linux CLI." /></div><div class="single-card" data-image="true"><h2 class="single-title animated flipInX">Zero To Hero: Working With Multiple Kubeconfig Files</h2><div class="post-meta">
                 <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Mike 'MJ' Johnson</a></span></div>
-                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-12-08">2021-12-08</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1018 words</span>&nbsp;
+                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-12-08">2021-12-08</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1023 words</span>&nbsp;
                     <span><i class="far fa-clock fa-fw"></i>&nbsp;5 minutes</span>&nbsp;</div>
             </div>
             
@@ -146,7 +146,7 @@
     <li><a href="#closing">Closing</a></li>
   </ul>
 </nav></div>
-                </div><div class="content" id="content"><p>Scaling beyond managing a single Kubernetes cluster from the CLI get hard quickly.</p>
+                </div><div class="content" id="content"><p>Scaling beyond managing a single Kubernetes cluster from the CLI gets hard quickly.</p>
 <p>Even after digging in on the <a href="https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/" target="_blank" rel="noopener noreffer">official documentation</a>, we feel that the process is just too complex to use efficiently on a daily basis.</p>
 <p>Luckily we have some tips and tools that should help you with that process.</p>
 <h2 id="kubeconfig-file-management"><code>kubeconfig</code> File Management</h2>
@@ -179,7 +179,7 @@ users:
     client-certificate-data: fake-cert-file
     client-key-data: fake-key-file
 
-</code></pre><p>Here it is updated to be unique and descriptive:</p>
+</code></pre><p>Below is the updated to be unique and descriptive:</p>
 <pre tabindex="0"><code>apiVersion: v1
 clusters:
 - cluster:
@@ -262,10 +262,10 @@ drwx------ 10 root root 4.0K Dec  8 18:26 ..
 -rw-r--r--  1 root root 3.0K Dec  9 18:21 qa-cluster
 -rw-------  1 root root 3.0K Dec  9 18:13 rke2-homelab
 -rw-r--r--  1 root root 3.0K Dec  9 18:21 test-cluster
-</code></pre><p>Next, will use kubeconfig to merge all of the files we want (in this case I use every <code>kubeconfig</code> file) into a single file at <code>~/.kube/config</code>. Since this is the default location where <code>kubectl</code> looks, we dont need to update our <code>KUBECONFIG</code> variable anymore.</p>
+</code></pre><p>Next, we will use <code>kubectl</code> to merge all of the files we want (in this case, I use every <code>kubeconfig</code> file in the directory, but you can pick and choose) into a single file at <code>~/.kube/config</code>. Since this is the default location where <code>kubectl</code> looks, we don&rsquo;t need to update our <code>KUBECONFIG</code> variable anymore.</p>
 <pre tabindex="0"><code>KUBECONFIG=~/.kube/rke2-homelab:~/.kube/prod-cluster:~/.kube/dev-cluster:~/.kube/qa-cluster:~/.kube/test-cluster \
 kubectl config view --flatten &gt; tmp &amp;&amp; mv tmp ~/.kube/config
-</code></pre><p>Now if we were to look at our <code>~/.kube/config</code> file, we would see all the separate files merged into one (Click the arrow next to YAML to expand):</p>
+</code></pre><p>Now, if we were to look at our <code>~/.kube/config</code> file, we would see all the separate files merged into one (Click the arrow next to YAML to expand):</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
 </span><span class="w"></span><span class="nt">clusters</span><span class="p">:</span><span class="w">
 </span><span class="w"></span>- <span class="nt">cluster</span><span class="p">:</span><span class="w">
@@ -337,26 +337,26 @@ kubectl config view --flatten &gt; tmp &amp;&amp; mv tmp ~/.kube/config
 </span></code></pre></div><h2 id="using-kubectx-and-kubens">Using <code>kubectx</code> and <code>kubens</code></h2>
 <p>Now that we have our files all merged, we can start easily switching contexts and namespaces with <code>kubectx</code> and <code>kubens</code>.</p>
 <ul>
-<li>Swith to the prod cluster:</li>
+<li>Switch to the <code>prod-cluster</code>:</li>
 </ul>
 <pre tabindex="0"><code>kubectl ctx prod-cluster
 # Switched to context &quot;prod-cluster&quot;.
 </code></pre><ul>
-<li>Switch to the dev cluster:</li>
+<li>Switch to the <code>devcluster</code>:</li>
 </ul>
 <pre tabindex="0"><code>kubectl ctx dev-cluster
 # Switched to context &quot;dev-cluster&quot;.
 </code></pre><ul>
-<li>Get a selectable list of clusters you can switch to (if you instaled FZF):</li>
+<li>Get a selectable list of clusters you can switch to (if you installed FZF):</li>
 </ul>
 <pre tabindex="0"><code>kubectl ctx
 </code></pre><ul>
-<li>Switch to a the cattle-system namespace on the prod-cluster:</li>
+<li>Switch to the <code>cattle-system</code> namespace on the <code>prod-cluster</code>:</li>
 </ul>
 <pre tabindex="0"><code>kubectl ctx prod-cluster
 kubectl ns cattle-system
 </code></pre><h2 id="closing">Closing</h2>
-<p>Hopefully this blog helps you get a handle on the your ever growing list of Kubernetes clusters that you are managing.</p>
+<p>Hopefully, this blog helps you get a handle on your ever-growing list of Kubernetes clusters that you are managing.</p>
 <p>We recommend using <a href="https://rancher.com/products/rancher" target="_blank" rel="noopener noreffer">Rancher</a> if you want a powerful Web UI to manage your clusters, but sometimes the CLI is necessary.</p>
 <p>If you have any questions or would like AlphaBravo&rsquo;s assistance in building production-grade Kubernetes clusters,  please reach out to us at <a href="mailto:info@alphabravo.io" rel="">info@alphabravo.io</a>.</p>
 <p>Thanks for reading!</p>

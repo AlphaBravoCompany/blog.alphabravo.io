@@ -28,7 +28,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.alphabravo.io\/posts\/2021\/zero-to-hero-working-with-multiple-kubeconfig\/"
-        },"image": ["https:\/\/blog.alphabravo.io\/assets\/2021\/12\/multiple-kubeconfig--social.png"],"genre": "posts","keywords": "kubernetes, kubeconfig, krew","wordcount":  1093 ,
+        },"image": ["https:\/\/blog.alphabravo.io\/assets\/2021\/12\/multiple-kubeconfig--social.png"],"genre": "posts","keywords": "kubernetes, kubeconfig, krew","wordcount":  1241 ,
         "url": "https:\/\/blog.alphabravo.io\/posts\/2021\/zero-to-hero-working-with-multiple-kubeconfig\/","datePublished": "2021-12-08T13:00:00+00:00","dateModified": "2021-12-08T13:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "AlphaBravo","logo": "https:\/\/blog.alphabravo.io\/assets\/alphabravo-logoonly-outline1.png"},"author": {
@@ -125,7 +125,7 @@
         alt="/assets/2021/12/multiple-kubeconfig-full.png"
         title="We show you how to manage and work with multiple `kubeconfig` files from the comfort of the Linux CLI." /></div><div class="single-card" data-image="true"><h2 class="single-title animated flipInX">Zero To Hero: Working With Multiple Kubeconfig Files</h2><div class="post-meta">
                 <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Mike 'MJ' Johnson</a></span></div>
-                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-12-08">2021-12-08</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1093 words</span>&nbsp;
+                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-12-08">2021-12-08</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1241 words</span>&nbsp;
                     <span><i class="far fa-clock fa-fw"></i>&nbsp;6 minutes</span>&nbsp;</div>
             </div>
             
@@ -138,6 +138,7 @@
   <ul>
     <li><a href="#kubeconfig-file-management"><code>kubeconfig</code> File Management</a></li>
     <li><a href="#updating-the-fields-in-your-kubeconfig">Updating the fields in your <code>kubeconfig</code></a></li>
+    <li><a href="#important-note">Important Note</a></li>
     <li><a href="#welcome-to-krew">Welcome to Krew</a></li>
     <li><a href="#install-kubectx-and-kubens-with-krew">Install <code>kubectx</code> and <code>kubens</code> with Krew</a></li>
     <li><a href="#install-fzf-optional">Install FZF (Optional)</a></li>
@@ -205,10 +206,19 @@ users:
     client-certificate-data: fake-cert-file
     client-key-data: fake-key-file
 </code></pre><p>Once the cleanup is complete on all files and they are given meaningful names (prod-cluster, dev-cluster, etc), move them into the <code>~/.kube/</code> directory on your system.</p>
+<h2 id="important-note">Important Note</h2>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>Linux and BASH Specific<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">The following instructions were tested on a Linux host (Ubuntu 20.04) and using the BASH shell. Pay close attention as your steps and requirements for implementing this may change based on if you are using another Linux distribution, MacOS, or Windows or are using another shell like ZSH or FISH.</div>
+        </div>
+    </div>
 <h2 id="welcome-to-krew">Welcome to Krew</h2>
 <p>Now that you have your <code>kubeconfig</code> files all in order, let&rsquo;s leverage some of the excellent <code>kubectl</code> tools that are out there.</p>
 <p>Kubernetes <a href="https://github.com/kubernetes-sigs/krew/" target="_blank" rel="noopener noreffer">Krew</a> &ldquo;is the package manager for kubectl plugins.&rdquo;</p>
-<p>You can get started by <a href="https://krew.sigs.k8s.io/docs/user-guide/setup/install/" target="_blank" rel="noopener noreffer">installing Krew here</a>.</p>
+<p>You can get started by <a href="https://krew.sigs.k8s.io/docs/user-guide/setup/install/" target="_blank" rel="noopener noreffer">installing Krew here</a>. Krew supports WIndows, Mac and other Linux distributons and instructions for each system are in that link.</p>
 <p>I typically install it by running their included script on my system:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>
   <span class="nb">set</span> -x<span class="p">;</span> <span class="nb">cd</span> <span class="s2">&#34;</span><span class="k">$(</span>mktemp -d<span class="k">)</span><span class="s2">&#34;</span> <span class="o">&amp;&amp;</span>
@@ -219,9 +229,12 @@ users:
   tar zxvf <span class="s2">&#34;</span><span class="si">${</span><span class="nv">KREW</span><span class="si">}</span><span class="s2">.tar.gz&#34;</span> <span class="o">&amp;&amp;</span>
   ./<span class="s2">&#34;</span><span class="si">${</span><span class="nv">KREW</span><span class="si">}</span><span class="s2">&#34;</span> install krew
 <span class="o">)</span>
-</code></pre></div><p>And add the path export to the <code>~/.bashrc</code> file.</p>
+</code></pre></div><p>If you are using BASH, add the path export to the <code>~/.bashrc</code> file. You may need to check <a href="https://krew.sigs.k8s.io/docs/user-guide/setup/install/" target="_blank" rel="noopener noreffer">here</a> on what to do if you are using FSH, ZSH or another shell.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">KREW_ROOT</span><span class="k">:-</span><span class="nv">$HOME</span><span class="p">/.krew</span><span class="si">}</span><span class="s2">/bin:</span><span class="nv">$PATH</span><span class="s2">&#34;</span>
-</code></pre></div><p>Exit your shell and log back in, then run the following command to see if Krew is working.</p>
+</code></pre></div><p>Reload your shell with the new <code>~/.bashrc</code> settings.</p>
+<pre tabindex="0"><code>source ~/.bash_profile
+source ~/.bashrc
+</code></pre><p>Check to make sure Krew is installed and you can see the version:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">kubectl krew version
 </code></pre></div><p>Output:</p>
 <pre tabindex="0"><code>OPTION            VALUE
@@ -253,8 +266,10 @@ kubectl krew install ns
 <p>Install instructions for FZF <a href="https://github.com/junegunn/fzf#installation" target="_blank" rel="noopener noreffer">here</a>.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git clone --depth <span class="m">1</span> https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
-</code></pre></div><p>You will need to close your shell and log back in for this to work.</p>
-<h2 id="merging-kubeconfig-files">Merging <code>kubeconfig</code> files</h2>
+</code></pre></div><p>Reload your shell with the new <code>~/.bashrc</code> settings to make sure FZF is active.</p>
+<pre tabindex="0"><code>source ~/.bash_profile
+source ~/.bashrc
+</code></pre><h2 id="merging-kubeconfig-files">Merging <code>kubeconfig</code> files</h2>
 <p>This part is highly opinionated. This what works for me, but I am interested to hear if you know of a better / more efficient way!</p>
 <p>All kubeconfig files should be in your <code>~/.kube/</code> directory for this and properly named / sanitized (per above).</p>
 <pre tabindex="0"><code>root@rke2-test:~# ls ~/.kube -lah
@@ -342,8 +357,17 @@ kubectl config view --flatten &gt; tmp &amp;&amp; mv tmp ~/.kube/config
 </span><span class="w">
 </span></code></pre></div><h2 id="using-kubectx-and-kubens">Using <code>kubectx</code> and <code>kubens</code></h2>
 <p>Now that we have our files all merged, we can start easily switching contexts and namespaces with <code>kubectx</code> and <code>kubens</code>.</p>
+<p>To clarify their purpose:</p>
 <ul>
-<li>Switch to the <code>prod-cluster</code>:</li>
+<li>
+<p><code>kubectx</code> is used for switching <em>contexts</em>. This allows you to switch to managing different clusters.</p>
+</li>
+<li>
+<p><code>kubens</code> is used for switching <em>namespaces</em> inside of each context. This allows for you to target specific namespaced resources inside an individual cluster.</p>
+</li>
+<li>
+<p>Switch to the <code>prod-cluster</code>:</p>
+</li>
 </ul>
 <pre tabindex="0"><code>kubectl ctx prod-cluster
 # Switched to context &quot;prod-cluster&quot;.

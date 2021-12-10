@@ -43,8 +43,8 @@ It is currently (Nov 2021) hosted on Github Sites.
 
 ## Image Size
 
-*featureImage*: 1600x840
-*featuredImagePreview*: 800x240
+- *featureImage*: 1600x840
+- *socialImage*: 600x314
 
 ## Run the site locally
 
@@ -58,5 +58,3 @@ It is currently (Nov 2021) hosted on Github Sites.
 **REFERENCE ONLY. Not usually needed.**
 
 `docker run -it --rm -v ${PWD}:/site alphabravocompany/hugo-docker:latest new site quickstart <SITENAME>`
-
-git remote add origin git@abgithub.com:AlphaBravoCompany/blog.alphabravo.io.git

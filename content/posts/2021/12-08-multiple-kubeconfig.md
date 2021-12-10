@@ -91,13 +91,20 @@ users:
 
 Once the cleanup is complete on all files and they are given meaningful names (prod-cluster, dev-cluster, etc), move them into the `~/.kube/` directory on your system.
 
+## Important Note
+
+{{< admonition type=note title="Linux and BASH Specific" open=true >}}
+The following instructions were tested on a Linux host (Ubuntu 20.04) and using the BASH shell. Pay close attention as your steps and requirements for implementing this may change based on if you are using another Linux distribution, MacOS, or Windows or are using another shell like ZSH or FISH.
+{{< /admonition >}}
+
+
 ## Welcome to Krew
 
 Now that you have your `kubeconfig` files all in order, let's leverage some of the excellent `kubectl` tools that are out there.
 
 Kubernetes [Krew](https://github.com/kubernetes-sigs/krew/) "is the package manager for kubectl plugins."
 
-You can get started by [installing Krew here](https://krew.sigs.k8s.io/docs/user-guide/setup/install/).
+You can get started by [installing Krew here](https://krew.sigs.k8s.io/docs/user-guide/setup/install/). Krew supports WIndows, Mac and other Linux distributons and instructions for each system are in that link.
 
 I typically install it by running their included script on my system:
 
@@ -113,12 +120,18 @@ I typically install it by running their included script on my system:
 )
 ```
 
-And add the path export to the `~/.bashrc` file.
+If you are using BASH, add the path export to the `~/.bashrc` file. You may need to check [here](https://krew.sigs.k8s.io/docs/user-guide/setup/install/) on what to do if you are using FSH, ZSH or another shell.
 ```bash
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 ```
 
-Exit your shell and log back in, then run the following command to see if Krew is working.
+Reload your shell with the new `~/.bashrc` settings.
+```
+source ~/.bash_profile
+source ~/.bashrc
+```
+
+Check to make sure Krew is installed and you can see the version:
 
 ```bash
 kubectl krew version
@@ -172,7 +185,12 @@ Install instructions for FZF [here](https://github.com/junegunn/fzf#installation
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 ```
-You will need to close your shell and log back in for this to work.
+
+Reload your shell with the new `~/.bashrc` settings to make sure FZF is active.
+```
+source ~/.bash_profile
+source ~/.bashrc
+```
 
 ## Merging `kubeconfig` files
 
@@ -278,6 +296,11 @@ users:
 ## Using `kubectx` and `kubens`
 
 Now that we have our files all merged, we can start easily switching contexts and namespaces with `kubectx` and `kubens`.
+
+To clarify their purpose:
+
+- `kubectx` is used for switching *contexts*. This allows you to switch to managing different clusters.
+- `kubens` is used for switching *namespaces* inside of each context. This allows for you to target specific namespaced resources inside an individual cluster.
 
 - Switch to the `prod-cluster`:
 ```

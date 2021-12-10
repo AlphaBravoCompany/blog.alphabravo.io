@@ -104,7 +104,7 @@ Now that you have your `kubeconfig` files all in order, let's leverage some of t
 
 Kubernetes [Krew](https://github.com/kubernetes-sigs/krew/) "is the package manager for kubectl plugins."
 
-You can get started by [installing Krew here](https://krew.sigs.k8s.io/docs/user-guide/setup/install/). Krew supports WIndows, Mac and other Linux distributons and instructions for each system are in that link.
+You can get started by [installing Krew here](https://krew.sigs.k8s.io/docs/user-guide/setup/install/). Krew supports Windows, Mac and other Linux distributons and instructions for each system are in that link.
 
 I typically install it by running their included script on my system:
 

@@ -3,7 +3,19 @@
         <title>Tags - Tag - AB Engineering Blog</title>
         <link>https://blog.alphabravo.io/tags/</link>
         <description>Tags - Tag - AB Engineering Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 08 Dec 2021 13:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/tags/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 23 Dec 2021 13:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>cloudflare</title>
+    <link>https://blog.alphabravo.io/tags/cloudflare/</link>
+    <pubDate>Thu, 23 Dec 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/cloudflare/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>dns</title>
+    <link>https://blog.alphabravo.io/tags/dns/</link>
+    <pubDate>Thu, 23 Dec 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/dns/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>krew</title>
     <link>https://blog.alphabravo.io/tags/krew/</link>
     <pubDate>Wed, 08 Dec 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/krew/</guid>
@@ -49,18 +61,6 @@
     <title>kibana</title>
     <link>https://blog.alphabravo.io/tags/kibana/</link>
     <pubDate>Mon, 06 Dec 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/kibana/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>longhorn</title>
-    <link>https://blog.alphabravo.io/tags/longhorn/</link>
-    <pubDate>Mon, 06 Dec 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/longhorn/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>prometheus</title>
-    <link>https://blog.alphabravo.io/tags/prometheus/</link>
-    <pubDate>Mon, 06 Dec 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/prometheus/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>

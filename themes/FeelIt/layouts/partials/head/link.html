@@ -81,13 +81,13 @@
 
 {{- if ne $offline true -}}
 {{- $analytics := .Site.Config.Privacy.GoogleAnalytics -}}
-{{- if not $analytics.Disable }}{{ with .Site.GoogleAnalytics -}}
-    {{ if hasPrefix . "G-"}}
+{{- if and (not $analytics.Disable) (.Site.GoogleAnalytics) -}}
+    {{ if hasPrefix .Site.GoogleAnalytics "G-"}}
         <link href="https://www.googletagmanager.com" rel="preconnect" crossorigin>
         <link rel="dns-prefetch" href="https://www.googletagmanager.com">
-    {{ else if hasPrefix . "UA-" }}
+    {{ else if hasPrefix .Site.GoogleAnalytics "UA-" }}
         <link href="https://www.google-analytics.com" rel="preconnect" crossorigin>
         <link rel="dns-prefetch" href="https://www.google-analytics.com">
     {{- end -}}
-{{- end -}}{{ end -}}
+{{- end -}}
 {{- end -}}

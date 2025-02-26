@@ -1,28 +1,28 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>hetzner - Tag - AB Engineering Blog</title>
-        <link>https://blog.alphabravo.io/tags/hetzner/</link>
-        <description>hetzner - Tag - AB Engineering Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 06 Dec 2021 13:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/tags/hetzner/" rel="self" type="application/rss+xml" /><item>
+        <title>Hetzner - Tag - AB Engineering Blog</title>
+        <link>http://localhost:1313/tags/hetzner/</link>
+        <description>Hetzner - Tag - AB Engineering Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 06 Dec 2021 13:00:00 &#43;0000</lastBuildDate><atom:link href="http://localhost:1313/tags/hetzner/" rel="self" type="application/rss+xml" /><item>
     <title>Powerful Single Node RKE2 on Hetzner for CHEAP! (Part 2)</title>
-    <link>https://blog.alphabravo.io/posts/2021/single-node-rke2-pt2/</link>
-    <pubDate>Mon, 06 Dec 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/single-node-rke2-pt2/</guid>
+    <link>http://localhost:1313/posts/2021/single-node-rke2-pt2/</link>
+    <pubDate>Mon, 06 Dec 2021 13:00:00 &#43;0000</pubDate><guid>http://localhost:1313/posts/2021/single-node-rke2-pt2/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/2021/12/single-node-rke2-pt2-full.png" referrerpolicy="no-referrer">
             </div>Part 2 of the cheap single node Kubernetes series. In this blog we deploying Longhorn, Monitoring and Logging on RKE2.]]></description>
 </item>
 <item>
     <title>Powerful Single Node K3s on Hetzner for CHEAP!</title>
-    <link>https://blog.alphabravo.io/posts/2021/single-node-k3s/</link>
-    <pubDate>Tue, 30 Nov 2021 11:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/single-node-k3s/</guid>
+    <link>http://localhost:1313/posts/2021/single-node-k3s/</link>
+    <pubDate>Tue, 30 Nov 2021 11:00:00 &#43;0000</pubDate><guid>http://localhost:1313/posts/2021/single-node-k3s/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/single-node-k3s-full.png" referrerpolicy="no-referrer">
             </div>Instructions on deploying K3s, Helm, cert-manager and Rancher on a single node Hetzner server.]]></description>
 </item>
 <item>
     <title>Powerful Single Node RKE2 on Hetzner for CHEAP! (Part 1)</title>
-    <link>https://blog.alphabravo.io/posts/2021/single-node-rke2-pt1/</link>
-    <pubDate>Mon, 29 Nov 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/single-node-rke2-pt1/</guid>
+    <link>http://localhost:1313/posts/2021/single-node-rke2-pt1/</link>
+    <pubDate>Mon, 29 Nov 2021 13:00:00 &#43;0000</pubDate><guid>http://localhost:1313/posts/2021/single-node-rke2-pt1/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/single-node-rke2-full.png" referrerpolicy="no-referrer">
             </div>Instructions on deploying RKE2, Helm, cert-manager and Rancher on a single node Hetzner server.]]></description>

@@ -1,85 +1,88 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>AB Engineering Blog</title>
-        <link>https://blog.alphabravo.io/</link>
+        <link>http://localhost:1313/</link>
         <description>AlphaBravo Engineering Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 23 Dec 2021 13:00:00 &#43;0000</lastBuildDate>
-            <atom:link href="https://blog.alphabravo.io/index.xml" rel="self" type="application/rss+xml" />
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 15 Mar 2025 11:00:00 &#43;0000</lastBuildDate>
+            <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
         <item>
     <title>Bulk Delete Cloudflare DNS Records</title>
-    <link>https://blog.alphabravo.io/posts/2021/bulk-delete-clouflare-dns/</link>
-    <pubDate>Thu, 23 Dec 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/bulk-delete-clouflare-dns/</guid>
+    <link>http://localhost:1313/posts/2021/bulk-delete-clouflare-dns/</link>
+    <pubDate>Thu, 23 Dec 2021 13:00:00 &#43;0000</pubDate><guid>http://localhost:1313/posts/2021/bulk-delete-clouflare-dns/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/2021/12/bulk-delete-cf-full.png" referrerpolicy="no-referrer">
             </div>Cloudflare doesn't let you bulk delete in the UI. In this blog, we show you how to use Python script to bulk delete DNS records in Cloudflare.]]></description>
 </item>
 <item>
     <title>Zero To Hero: Working With Multiple Kubeconfig Files</title>
-    <link>https://blog.alphabravo.io/posts/2021/zero-to-hero-working-with-multiple-kubeconfig/</link>
-    <pubDate>Wed, 08 Dec 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/zero-to-hero-working-with-multiple-kubeconfig/</guid>
+    <link>http://localhost:1313/posts/2021/zero-to-hero-working-with-multiple-kubeconfig/</link>
+    <pubDate>Wed, 08 Dec 2021 13:00:00 &#43;0000</pubDate><guid>http://localhost:1313/posts/2021/zero-to-hero-working-with-multiple-kubeconfig/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/2021/12/multiple-kubeconfig-full.png" referrerpolicy="no-referrer">
             </div>We show you how to manage and work with multiple `kubeconfig` files from the comfort of the Linux CLI.]]></description>
 </item>
 <item>
     <title>Powerful Single Node RKE2 on Hetzner for CHEAP! (Part 2)</title>
-    <link>https://blog.alphabravo.io/posts/2021/single-node-rke2-pt2/</link>
-    <pubDate>Mon, 06 Dec 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/single-node-rke2-pt2/</guid>
+    <link>http://localhost:1313/posts/2021/single-node-rke2-pt2/</link>
+    <pubDate>Mon, 06 Dec 2021 13:00:00 &#43;0000</pubDate><guid>http://localhost:1313/posts/2021/single-node-rke2-pt2/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/2021/12/single-node-rke2-pt2-full.png" referrerpolicy="no-referrer">
             </div>Part 2 of the cheap single node Kubernetes series. In this blog we deploying Longhorn, Monitoring and Logging on RKE2.]]></description>
 </item>
 <item>
     <title>Powerful Single Node K3s on Hetzner for CHEAP!</title>
-    <link>https://blog.alphabravo.io/posts/2021/single-node-k3s/</link>
-    <pubDate>Tue, 30 Nov 2021 11:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/single-node-k3s/</guid>
+    <link>http://localhost:1313/posts/2021/single-node-k3s/</link>
+    <pubDate>Tue, 30 Nov 2021 11:00:00 &#43;0000</pubDate><guid>http://localhost:1313/posts/2021/single-node-k3s/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/single-node-k3s-full.png" referrerpolicy="no-referrer">
             </div>Instructions on deploying K3s, Helm, cert-manager and Rancher on a single node Hetzner server.]]></description>
 </item>
 <item>
     <title>Powerful Single Node RKE2 on Hetzner for CHEAP! (Part 1)</title>
-    <link>https://blog.alphabravo.io/posts/2021/single-node-rke2-pt1/</link>
-    <pubDate>Mon, 29 Nov 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/single-node-rke2-pt1/</guid>
+    <link>http://localhost:1313/posts/2021/single-node-rke2-pt1/</link>
+    <pubDate>Mon, 29 Nov 2021 13:00:00 &#43;0000</pubDate><guid>http://localhost:1313/posts/2021/single-node-rke2-pt1/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/single-node-rke2-full.png" referrerpolicy="no-referrer">
             </div>Instructions on deploying RKE2, Helm, cert-manager and Rancher on a single node Hetzner server.]]></description>
 </item>
 <item>
     <title>Why We Chose Nifi Over Databrew</title>
-    <link>https://blog.alphabravo.io/posts/2021/why-we-chose-nifi-over-databrew/</link>
-    <pubDate>Mon, 22 Nov 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/why-we-chose-nifi-over-databrew/</guid>
+    <link>http://localhost:1313/posts/2021/why-we-chose-nifi-over-databrew/</link>
+    <pubDate>Mon, 22 Nov 2021 13:00:00 &#43;0000</pubDate><guid>http://localhost:1313/posts/2021/why-we-chose-nifi-over-databrew/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/apache-nifi-full.png" referrerpolicy="no-referrer">
-            </div>Why AlphaBravo Chose Nifi Over Databrew Recently, the AlphaBravo engineering team began working on a new product we’re calling ABScan. Our goal is to provide a platform which uses multiple scanning utilities via a single interface.
-Early on in our development process, we realized that we would need to take multiple JSON outputs, convert them into CSV and SQL, and merge the results. This would require the use of an ETL to automate the transformation of the data generated so we could create CSV files for reports and SQL data for long term storage.]]></description>
+            </div><h2 id="why-alphabravo-chose-nifi-over-databrew">Why AlphaBravo Chose Nifi Over Databrew</h2>
+<p>Recently, the AlphaBravo engineering team began working on a new product we’re calling ABScan. Our goal is to provide a platform which uses multiple scanning utilities via a single interface.</p>
+<p>Early on in our development process, we realized that we would need to take multiple JSON outputs, convert them into CSV and SQL, and merge the results.  This would require the use of an ETL to automate the transformation of the data generated so we could create CSV files for reports and SQL data for long term storage.</p>]]></description>
 </item>
 <item>
     <title>Rancher Multi-Cluster Management UI</title>
-    <link>https://blog.alphabravo.io/posts/2021/rancher-multi-cluster-management-ui/</link>
-    <pubDate>Wed, 17 Nov 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/rancher-multi-cluster-management-ui/</guid>
+    <link>http://localhost:1313/posts/2021/rancher-multi-cluster-management-ui/</link>
+    <pubDate>Wed, 17 Nov 2021 13:00:00 &#43;0000</pubDate><guid>http://localhost:1313/posts/2021/rancher-multi-cluster-management-ui/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/rancher-ui-full.png" referrerpolicy="no-referrer">
-            </div>What is Rancher Multi-Cluster Management If you have ventured into container management and Kubernetes for your organization (or even for yourself), you have quickly realized that you need a robust way to manage more than one cluster easily. In fact, you probably want an easier way to manage a single cluster.
-The official Kubernetes dashboard is&hellip; sub-optimal. There are a few other open-source options out there, but they lack in many areas.]]></description>
+            </div><h2 id="what-is-rancher-multi-cluster-management">What is Rancher Multi-Cluster Management</h2>
+<p>If you have ventured into container management and Kubernetes for your organization (or even for yourself), you have quickly realized that you need a robust way to manage more than one cluster easily. In fact, you probably want an easier way to manage a single cluster.</p>
+<p>The official Kubernetes dashboard is&hellip; sub-optimal. There are a few other open-source options out there, but they lack in many areas. So what are we supposed to do?</p>]]></description>
 </item>
 <item>
     <title>Why We Use Rancher</title>
-    <link>https://blog.alphabravo.io/posts/2021/why-we-use-rancher/</link>
-    <pubDate>Mon, 15 Nov 2021 11:35:58 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/why-we-use-rancher/</guid>
+    <link>http://localhost:1313/posts/2021/why-we-use-rancher/</link>
+    <pubDate>Mon, 15 Nov 2021 11:35:58 &#43;0000</pubDate><guid>http://localhost:1313/posts/2021/why-we-use-rancher/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/2021/11/11-15-ab-uses-rancher-full.png" referrerpolicy="no-referrer">
             </div>Some insight into why AlphaBravo uses Rancher technologies to accelerate DevSecOps initiatives internally and for our customers.]]></description>
 </item>
 <item>
     <title>Welcome To The Blog</title>
-    <link>https://blog.alphabravo.io/posts/2021/welcome-to-the-blog/</link>
-    <pubDate>Mon, 15 Nov 2021 10:35:58 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/welcome-to-the-blog/</guid>
+    <link>http://localhost:1313/posts/2021/welcome-to-the-blog/</link>
+    <pubDate>Mon, 15 Nov 2021 10:35:58 &#43;0000</pubDate><guid>http://localhost:1313/posts/2021/welcome-to-the-blog/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/welcome-full1.png" referrerpolicy="no-referrer">
-            </div>Welcome To The Blog We are excited to have you here.
-As technology enthusiasts with a broad range of experiences, we hope to convey some tales, some tech, and some thoughts around the current state of DevSecOps.
-Our focus is mainly on building robust platforms using open-source software. But don&rsquo;t be confused if we talk about non-open source software too. We are a small team and we understand very well that sometimes you need a product or tool that &ldquo;just works&rdquo;.]]></description>
+            </div><h1 id="welcome-to-the-blog">Welcome To The Blog</h1>
+<p>We are excited to have you here.</p>
+<p>As technology enthusiasts with a broad range of experiences, we hope to convey some tales, some tech, and some thoughts around the current state of DevSecOps.</p>
+<p>Our focus is mainly on building robust platforms using open-source software. But don&rsquo;t be confused if we talk about non-open source software too. We are a small team and we understand very well that sometimes you need a product or tool that &ldquo;just works&rdquo;.</p>]]></description>
 </item>
 </channel>
 </rss>

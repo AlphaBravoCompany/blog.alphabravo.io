@@ -1,12 +1,12 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>kubeconfig - Tag - AB Engineering Blog</title>
-        <link>https://blog.alphabravo.io/tags/kubeconfig/</link>
-        <description>kubeconfig - Tag - AB Engineering Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 08 Dec 2021 13:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/tags/kubeconfig/" rel="self" type="application/rss+xml" /><item>
+        <title>Kubeconfig - Tag - AB Engineering Blog</title>
+        <link>http://localhost:1313/tags/kubeconfig/</link>
+        <description>Kubeconfig - Tag - AB Engineering Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 08 Dec 2021 13:00:00 &#43;0000</lastBuildDate><atom:link href="http://localhost:1313/tags/kubeconfig/" rel="self" type="application/rss+xml" /><item>
     <title>Zero To Hero: Working With Multiple Kubeconfig Files</title>
-    <link>https://blog.alphabravo.io/posts/2021/zero-to-hero-working-with-multiple-kubeconfig/</link>
-    <pubDate>Wed, 08 Dec 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/zero-to-hero-working-with-multiple-kubeconfig/</guid>
+    <link>http://localhost:1313/posts/2021/zero-to-hero-working-with-multiple-kubeconfig/</link>
+    <pubDate>Wed, 08 Dec 2021 13:00:00 &#43;0000</pubDate><guid>http://localhost:1313/posts/2021/zero-to-hero-working-with-multiple-kubeconfig/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/2021/12/multiple-kubeconfig-full.png" referrerpolicy="no-referrer">
             </div>We show you how to manage and work with multiple `kubeconfig` files from the comfort of the Linux CLI.]]></description>

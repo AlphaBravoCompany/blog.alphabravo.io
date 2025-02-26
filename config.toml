@@ -12,6 +12,10 @@ SourceMap = true
 enableRobotsTXT = true
 fingerprint = "sha256"
 
+[privacy]
+  [privacy.googleAnalytics]
+    disable = true
+
 [blackfriday]
     extensions = ["hardLineBreak"]
 

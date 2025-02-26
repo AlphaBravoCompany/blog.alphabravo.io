@@ -2,3 +2,20 @@
 // Custom style
 // 自定义样式
 // ==============================
+
+// Override header background color to grey in light mode
+.header-desktop, .header-mobile {
+    background-color: #333333 !important;
+}
+
+// Add more spacing between paragraphs in articles
+.page.single .content {
+    p {
+        margin-bottom: 1.5em;
+    }
+
+    // Preserve normal spacing for certain elements
+    li p {
+        margin-bottom: 0.5em;
+    }
+}

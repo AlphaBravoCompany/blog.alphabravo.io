@@ -1,7 +1,7 @@
 ---
 title: "Enhancing National Security: How AlphaBravo and Chainguard Fortify DOD and Federal Supply Chains"
 description: "Learn how AlphaBravo and Chainguard are working together to fortify DOD and Federal Supply Chains."
-slug: "alphabravo-chainguard-dod"
+slug: "alphabravo-chainguard-dod1"
 date: 2025-03-15T11:00:00Z
 draft: true
 featuredImage: /assets/2025/03/03-01-25-ab-chainguard-dod.png

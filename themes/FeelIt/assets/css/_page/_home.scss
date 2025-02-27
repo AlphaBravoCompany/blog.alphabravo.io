@@ -86,7 +86,7 @@
     display: flex;
     list-style: none;
     align-items: flex-start;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-direction: row;
     flex-wrap: wrap;
     padding-top: 1rem;
@@ -99,12 +99,15 @@
     padding-bottom: 1rem;
     @include border-radius(.5rem);
     color: $global-font-color;
-    width: 49%;
+    width: 32%;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
     @include transition(transform 0.4s ease);
     @include box-shadow(0 2px 4px -1px rgba(0, 0, 0, 0.2));
 
     &[data-image=hide] {
-      min-height: 13rem;
+      min-height: 300px;
     }
 
     &:hover {
@@ -118,7 +121,7 @@
 
     .featured-image-preview {
       width: 100%;
-      padding: 30% 0 0;
+      padding: 56.25% 0 0;
       position: relative;
       margin: 0 auto;
 
@@ -170,8 +173,9 @@
 
     .content {
       @include box(vertical);
-      -webkit-line-clamp: 2;
-      margin: 0 1rem 0 1rem;
+      -webkit-line-clamp: 3;
+      height: 4.5rem;
+      margin: 0 1rem;
       overflow: hidden;
       text-overflow: ellipsis;
       @include overflow-wrap(break-word);
@@ -213,8 +217,9 @@
     }
 
     .post-footer {
-      margin: .5rem 1rem 0 1rem;
+      margin: 0.5rem 1rem 0 1rem;
       font-size: .875rem;
+      margin-top: auto;
 
       .post-tags {
         list-style: none;

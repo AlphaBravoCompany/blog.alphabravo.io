@@ -3,6 +3,8 @@
 .single-card {
   padding: 1rem;
   margin: 1rem 0 0;
+  max-width: 1000px;
+  width: 100%;
   @include border-radius(.5rem);
   @include box-shadow(0 2px 4px -1px rgba(0, 0, 0, 0.2));
   background-color: $global-background-card-color;
@@ -52,13 +54,20 @@
 
   .featured-image {
     margin: 1rem 0 0;
+    max-width: 1000px;
+    width: 100%;
+    position: relative;
+    padding-top: 56.25%; // 16:9 aspect ratio (9/16 = 0.5625 or 56.25%)
+    overflow: hidden;
 
     img {
-      display: block;
-      max-width: 100%;
-      height: auto;
-      margin: 0 auto;
-      overflow: hidden;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      margin: 0;
       @include border-radius(.5rem .5rem 0 0);
     }
 
@@ -339,6 +348,14 @@
       height: 1.25em;
       vertical-align: text-bottom;
     }
+  }
+
+  .page {
+    position: relative;
+    max-width: 1000px;
+    width: 100%;
+    margin: 0;
+    padding-top: 1rem;
   }
 
   @import "../_partial/_single/footer";

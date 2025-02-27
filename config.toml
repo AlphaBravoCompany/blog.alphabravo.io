@@ -184,3 +184,15 @@ fingerprint = "sha256"
   [markup.highlight]
     # false is a necessary configuration (https://github.com/khusika/FeelIt/issues/158)
     noClasses = false
+
+# Image processing configuration
+[imaging]
+  # Default resample filter used for resizing. Default is Box,
+  # a simple and fast averaging filter appropriate for downscaling.
+  # See https://github.com/disintegration/imaging
+  resampleFilter = "CatmullRom"
+  # Default JPEG quality setting. Default is 75.
+  quality = 85
+  # Anchor used when cropping pictures. Default is "smart".
+  # Valid values are Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight
+  anchor = "Smart"

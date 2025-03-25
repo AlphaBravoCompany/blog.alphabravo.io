@@ -1,20 +1,20 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>K3s - Tag - AB Engineering Blog</title>
-        <link>http://localhost:1313/tags/k3s/</link>
+        <link>https://blog.alphabravo.io/tags/k3s/</link>
         <description>K3s - Tag - AB Engineering Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 30 Nov 2021 11:00:00 &#43;0000</lastBuildDate><atom:link href="http://localhost:1313/tags/k3s/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 30 Nov 2021 11:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/tags/k3s/" rel="self" type="application/rss+xml" /><item>
     <title>Powerful Single Node K3s on Hetzner for CHEAP!</title>
-    <link>http://localhost:1313/posts/2021/single-node-k3s/</link>
-    <pubDate>Tue, 30 Nov 2021 11:00:00 &#43;0000</pubDate><guid>http://localhost:1313/posts/2021/single-node-k3s/</guid>
+    <link>https://blog.alphabravo.io/posts/2021/single-node-k3s/</link>
+    <pubDate>Tue, 30 Nov 2021 11:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/single-node-k3s/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/single-node-k3s-full.png" referrerpolicy="no-referrer">
             </div>Instructions on deploying K3s, Helm, cert-manager and Rancher on a single node Hetzner server.]]></description>
 </item>
 <item>
     <title>Why We Use Rancher</title>
-    <link>http://localhost:1313/posts/2021/why-we-use-rancher/</link>
-    <pubDate>Mon, 15 Nov 2021 11:35:58 &#43;0000</pubDate><guid>http://localhost:1313/posts/2021/why-we-use-rancher/</guid>
+    <link>https://blog.alphabravo.io/posts/2021/why-we-use-rancher/</link>
+    <pubDate>Mon, 15 Nov 2021 11:35:58 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/why-we-use-rancher/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/2021/11/11-15-ab-uses-rancher-full.png" referrerpolicy="no-referrer">
             </div>Some insight into why AlphaBravo uses Rancher technologies to accelerate DevSecOps initiatives internally and for our customers.]]></description>

@@ -56,17 +56,26 @@
   }
 }
 
+@media only screen and (max-width: 1400px) {
+  #toc-auto {
+    margin-left: 0;
+    left: auto;
+    right: 1rem;
+    transform: none;
+  }
+}
+
 @media only screen and (max-width: 1200px) {
   .archive {
     width: 52%;
   }
 
-  #toc-auto {
-    display: none;
-  }
-
   #toc-static {
     display: block;
+  }
+
+  #toc-auto {
+    display: none;
   }
 
   .page, .single {
@@ -95,9 +104,15 @@
 }
 
 @media only screen and (max-width: 960px) {
+  #toc-auto {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 768px) {
   .home[data-home=posts] {
     .summary{
-      width: 100%;
+      width: 49%;
       min-height: 0;
     }
   }
@@ -110,6 +125,10 @@
     p {
       font-size: .9rem;
     }
+  }
+
+  #toc-auto {
+    display: none;
   }
 }
 
@@ -124,6 +143,7 @@
 
   .home[data-home=posts] {
     .summary {
+      width: 100%;
       .single-title {
         margin: 0.4rem .5rem;
       }

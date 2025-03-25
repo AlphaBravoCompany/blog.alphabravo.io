@@ -4,11 +4,11 @@ description: "Cloudflare doesn't let you bulk delete in the UI. In this blog, we
 slug: "bulk-delete-clouflare-dns"
 date: 2021-12-23T13:00:00Z
 draft: false
-featuredImage: /assets/2021/12/bulk-delete-cf-full.png
-featuredImagePreview: /assets/2021/12/bulk-delete-cf-full.png
-images: [/assets/2021/12/bulk-delete-cf-social.png]
+featuredImage: /assets/2021/12/12-23-bulk-delete-cf-full.png  
+featuredImagePreview: /assets/2021/12/12-23-bulk-delete-cf-full.png
+images: [/assets/2021/12/12-23-bulk-delete-cf-social.png]
 seo:
-  images: [/assets/2021/12/bulk-delete-cf-social.png]
+  images: [/assets/2021/12/12-23-bulk-delete-cf-social.png]
 lightgallery: true
 tags: [cloudflare,dns]
 author: Mike 'MJ' Johnson

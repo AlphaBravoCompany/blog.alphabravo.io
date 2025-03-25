@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Security - Tag - AB Engineering Blog</title>
-        <link>http://localhost:1313/tags/security/</link>
+        <link>https://blog.alphabravo.io/tags/security/</link>
         <description>Security - Tag - AB Engineering Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 15 Mar 2025 11:00:00 &#43;0000</lastBuildDate><atom:link href="http://localhost:1313/tags/security/" rel="self" type="application/rss+xml" /><item>
-    <title>Enhancing National Security: How AlphaBravo and Chainguard Fortify DOD and Federal Supply Chains</title>
-    <link>http://localhost:1313/posts/2025/alphabravo-chainguard-dod1/</link>
-    <pubDate>Sat, 15 Mar 2025 11:00:00 &#43;0000</pubDate><guid>http://localhost:1313/posts/2025/alphabravo-chainguard-dod1/</guid>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 24 Mar 2025 09:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/tags/security/" rel="self" type="application/rss+xml" /><item>
+    <title>Securing Kubernetes Clusters in Federal Government Environments: A Technical Guide</title>
+    <link>https://blog.alphabravo.io/posts/2025/alphabravo-chainguard-dod1/</link>
+    <pubDate>Mon, 24 Mar 2025 09:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2025/alphabravo-chainguard-dod1/</guid>
     <description><![CDATA[<div class="featured-image">
-                <img src="/assets/2025/03/03-01-25-ab-chainguard-dod.png" referrerpolicy="no-referrer">
-            </div>Learn how AlphaBravo and Chainguard are working together to fortify DOD and Federal Supply Chains.]]></description>
+                <img src="/assets/2025/03/032525-secure-k8s.png" referrerpolicy="no-referrer">
+            </div>Having trouble wrapping your head around what it takes to run secure Kubernetes clusters in your DoD and Federal environments? AlphaBravo has you covered with starter technical guide.]]></description>
 </item>
 </channel>
 </rss>

@@ -5,8 +5,8 @@
         <description>Kubernetes - Tag - AB Engineering Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 24 Mar 2025 09:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/tags/kubernetes/" rel="self" type="application/rss+xml" /><item>
     <title>Securing Kubernetes Clusters in Federal Government Environments: A Technical Guide</title>
-    <link>https://blog.alphabravo.io/posts/2025/alphabravo-chainguard-dod1/</link>
-    <pubDate>Mon, 24 Mar 2025 09:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2025/alphabravo-chainguard-dod1/</guid>
+    <link>https://blog.alphabravo.io/posts/2025/securing-k8s-federal-gov-tech-guide/</link>
+    <pubDate>Mon, 24 Mar 2025 09:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2025/securing-k8s-federal-gov-tech-guide/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/2025/03/032525-secure-k8s.png" referrerpolicy="no-referrer">
             </div>Having trouble wrapping your head around what it takes to run secure Kubernetes clusters in your DoD and Federal environments? AlphaBravo has you covered with starter technical guide.]]></description>

@@ -1,7 +1,7 @@
 ---
 title: "Securing Kubernetes Clusters in Federal Government Environments: A Technical Guide"
 description: "Having trouble wrapping your head around what it takes to run secure Kubernetes clusters in your DoD and Federal environments? AlphaBravo has you covered with starter technical guide."
-slug: "alphabravo-chainguard-dod1"
+slug: "securing-k8s-federal-gov-tech-guide"
 date: 2025-03-24T09:00:00Z
 draft: false
 featuredImage: /assets/2025/03/032525-secure-k8s.png

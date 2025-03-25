@@ -42,7 +42,7 @@ The first thing we need to do is update the fields in each `kubeconfig` to be un
 
 Here is an example of a `kubeconfig` with the often found `default` values:
 
-```
+```yaml
 apiVersion: v1
 clusters:
 - cluster:
@@ -67,7 +67,7 @@ users:
 
 Below is an updated 'kubeconfig' with unique and descriptive:
 
-```
+```yaml
 apiVersion: v1
 clusters:
 - cluster:
@@ -126,7 +126,7 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 ```
 
 Reload your shell with the new `~/.bashrc` settings.
-```
+```bash
 source ~/.bash_profile
 source ~/.bashrc
 ```
@@ -187,7 +187,7 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ```
 
 Reload your shell with the new `~/.bashrc` settings to make sure FZF is active.
-```
+```bash
 source ~/.bash_profile
 source ~/.bashrc
 ```
@@ -198,7 +198,7 @@ This part is highly opinionated. This what works for me, but I am interested to 
 
 All kubeconfig files should be in your `~/.kube/` directory for this and properly named / sanitized (per above).
 
-```
+```bash
 root@rke2-test:~# ls ~/.kube -lah
 total 44K
 drwxr-xr-x  2 root root 4.0K Dec  9 18:24 .
@@ -213,7 +213,7 @@ drwx------ 10 root root 4.0K Dec  8 18:26 ..
 
 Next, we will use `kubectl` to merge all of the files we want (in this case, I use every `kubeconfig` file in the directory, but you can pick and choose) into a single file at `~/.kube/config`. Since this is the default location where `kubectl` looks, we don't need to update our `KUBECONFIG` variable anymore.
 
-```
+```bash
 KUBECONFIG=~/.kube/rke2-homelab:~/.kube/prod-cluster:~/.kube/dev-cluster:~/.kube/qa-cluster:~/.kube/test-cluster \
 kubectl config view --flatten > tmp && mv tmp ~/.kube/config
 ```
@@ -303,24 +303,24 @@ To clarify their purpose:
 - `kubens` is used for switching *namespaces* inside of each context. This allows for you to target specific namespaced resources inside an individual cluster.
 
 - Switch to the `prod-cluster`:
-```
+```bash
 kubectl ctx prod-cluster
 # Switched to context "prod-cluster".
 ```
 
 - Switch to the `devcluster`:
-```
+```bash
 kubectl ctx dev-cluster
 # Switched to context "dev-cluster".
 ```
 
 - Get a selectable list of clusters you can switch to (if you installed FZF):
-```
+```bash
 kubectl ctx
 ```
 
 - Switch to the `cattle-system` namespace on the `prod-cluster`:
-```
+```bash
 kubectl ctx prod-cluster
 kubectl ns cattle-system
 ```

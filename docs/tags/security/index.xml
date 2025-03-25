@@ -3,12 +3,12 @@
         <title>Security - Tag - AB Engineering Blog</title>
         <link>http://localhost:1313/tags/security/</link>
         <description>Security - Tag - AB Engineering Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 25 Feb 2025 11:00:00 &#43;0000</lastBuildDate><atom:link href="http://localhost:1313/tags/security/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 15 Mar 2025 11:00:00 &#43;0000</lastBuildDate><atom:link href="http://localhost:1313/tags/security/" rel="self" type="application/rss+xml" /><item>
     <title>Enhancing National Security: How AlphaBravo and Chainguard Fortify DOD and Federal Supply Chains</title>
-    <link>http://localhost:1313/posts/2025/alphabravo-chainguard-dod/</link>
-    <pubDate>Tue, 25 Feb 2025 11:00:00 &#43;0000</pubDate><guid>http://localhost:1313/posts/2025/alphabravo-chainguard-dod/</guid>
+    <link>http://localhost:1313/posts/2025/alphabravo-chainguard-dod1/</link>
+    <pubDate>Sat, 15 Mar 2025 11:00:00 &#43;0000</pubDate><guid>http://localhost:1313/posts/2025/alphabravo-chainguard-dod1/</guid>
     <description><![CDATA[<div class="featured-image">
-                <img src="/assets/single-node-k3s-full.png" referrerpolicy="no-referrer">
+                <img src="/assets/2025/03/03-01-25-ab-chainguard-dod.png" referrerpolicy="no-referrer">
             </div>Learn how AlphaBravo and Chainguard are working together to fortify DOD and Federal Supply Chains.]]></description>
 </item>
 </channel>

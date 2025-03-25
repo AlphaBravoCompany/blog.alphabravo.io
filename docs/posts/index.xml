@@ -3,13 +3,13 @@
         <title>All Posts - AB Engineering Blog</title>
         <link>https://blog.alphabravo.io/posts/</link>
         <description>All Posts | AB Engineering Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 24 Mar 2025 09:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 26 Mar 2025 06:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/posts/" rel="self" type="application/rss+xml" /><item>
     <title>Securing Kubernetes Clusters in Federal Government Environments: A Technical Guide</title>
     <link>https://blog.alphabravo.io/posts/2025/securing-k8s-federal-gov-tech-guide/</link>
     <pubDate>Mon, 24 Mar 2025 09:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2025/securing-k8s-federal-gov-tech-guide/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/2025/03/032525-secure-k8s.png" referrerpolicy="no-referrer">
-            </div>Having trouble wrapping your head around what it takes to run secure Kubernetes clusters in your DoD and Federal environments? AlphaBravo has you covered with starter technical guide.]]></description>
+            </div>In 2025, government DevSecOps is going full throttle—automating, securing, and regulating like a caffeinated compliance officer with a CI/CD pipeline.]]></description>
 </item>
 <item>
     <title>Bulk Delete Cloudflare DNS Records</title>

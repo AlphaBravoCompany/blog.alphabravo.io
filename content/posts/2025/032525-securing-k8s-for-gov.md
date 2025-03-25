@@ -1,6 +1,6 @@
 ---
 title: "Securing Kubernetes Clusters in Federal Government Environments: A Technical Guide"
-description: "Having trouble wrapping your head around what it takes to run secure Kubernetes clusters in your DoD and Federal environments? AlphaBravo has you covered with starter technical guide."
+description: "In 2025, government DevSecOps is going full throttle—automating, securing, and regulating like a caffeinated compliance officer with a CI/CD pipeline."
 slug: "securing-k8s-federal-gov-tech-guide"
 date: 2025-03-24T09:00:00Z
 draft: false

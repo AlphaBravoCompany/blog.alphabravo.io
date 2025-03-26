@@ -33,9 +33,7 @@
     <pubDate>Wed, 17 Nov 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/rancher-multi-cluster-management-ui/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/rancher-ui-full.png" referrerpolicy="no-referrer">
-            </div><h2 id="what-is-rancher-multi-cluster-management">What is Rancher Multi-Cluster Management</h2>
-<p>If you have ventured into container management and Kubernetes for your organization (or even for yourself), you have quickly realized that you need a robust way to manage more than one cluster easily. In fact, you probably want an easier way to manage a single cluster.</p>
-<p>The official Kubernetes dashboard is&hellip; sub-optimal. There are a few other open-source options out there, but they lack in many areas. So what are we supposed to do?</p>]]></description>
+            </div>It doesn't matter what Kubernetes Engine you use (EKS, AKS, GKE, RKE, K3s, etc), Rancher MCM will help you manage it better.]]></description>
 </item>
 <item>
     <title>Why We Use Rancher</title>

@@ -67,9 +67,7 @@
     <pubDate>Mon, 22 Nov 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/why-we-chose-nifi-over-databrew/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/apache-nifi-full.png" referrerpolicy="no-referrer">
-            </div><h2 id="why-alphabravo-chose-nifi-over-databrew">Why AlphaBravo Chose Nifi Over Databrew</h2>
-<p>Recently, the AlphaBravo engineering team began working on a new product we’re calling ABScan. Our goal is to provide a platform which uses multiple scanning utilities via a single interface.</p>
-<p>Early on in our development process, we realized that we would need to take multiple JSON outputs, convert them into CSV and SQL, and merge the results.  This would require the use of an ETL to automate the transformation of the data generated so we could create CSV files for reports and SQL data for long term storage.</p>]]></description>
+            </div>A deep dive into why We Chose Nifi Over Databrew]]></description>
 </item>
 <item>
     <title>Rancher Multi-Cluster Management UI</title>
@@ -77,9 +75,7 @@
     <pubDate>Wed, 17 Nov 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/rancher-multi-cluster-management-ui/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/rancher-ui-full.png" referrerpolicy="no-referrer">
-            </div><h2 id="what-is-rancher-multi-cluster-management">What is Rancher Multi-Cluster Management</h2>
-<p>If you have ventured into container management and Kubernetes for your organization (or even for yourself), you have quickly realized that you need a robust way to manage more than one cluster easily. In fact, you probably want an easier way to manage a single cluster.</p>
-<p>The official Kubernetes dashboard is&hellip; sub-optimal. There are a few other open-source options out there, but they lack in many areas. So what are we supposed to do?</p>]]></description>
+            </div>It doesn't matter what Kubernetes Engine you use (EKS, AKS, GKE, RKE, K3s, etc), Rancher MCM will help you manage it better.]]></description>
 </item>
 <item>
     <title>Why We Use Rancher</title>

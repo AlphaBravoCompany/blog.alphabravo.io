@@ -20,7 +20,6 @@
 
         {{- /* Posts */ -}}
         {{- if ne $posts.enable false | and .Site.RegularPages -}}
-            <div class="summary-card">
             {{- /* Paginate */ -}}
             {{- $pages := where .Site.RegularPages "Type" "posts" -}}
             {{- if .Site.Params.page.hiddenFromHomePage -}}
@@ -33,10 +32,13 @@
             {{- else -}}
                 {{- $pages = .Paginate $pages -}}
             {{- end -}}
+            <div class="summary-card">
             {{- range $pages.Pages -}}
                 {{- .Render "summary" -}}
             {{- end -}}
-            {{- partial "paginator.html" . -}}
+            </div>
+            <div class="pagination-container">
+                {{- partial "paginator.html" . -}}
             </div>
         {{- end -}}
     </div>

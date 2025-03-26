@@ -93,7 +93,7 @@ fingerprint = "sha256"
       social = true
     [params.home.posts]
       enable = true
-      paginate = 10
+      paginate = 9
       imagePreview = true
       defaultHiddenFromHomePage = false
 

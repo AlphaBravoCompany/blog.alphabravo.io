@@ -1,5 +1,6 @@
 ---
 title: "Why We Chose Nifi Over Databrew"
+description: "A deep dive into why We Chose Nifi Over Databrew"
 slug: "why-we-chose-nifi-over-databrew"
 date: 2021-11-22T13:00:00Z
 draft: false
@@ -12,6 +13,7 @@ lightgallery: true
 tags: [apache nifi, aws databrew, etl]
 author: Ed Engelking
 ---
+<!--more-->
 
 ## Why AlphaBravo Chose Nifi Over Databrew
 

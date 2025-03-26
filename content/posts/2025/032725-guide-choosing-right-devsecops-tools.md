@@ -1,5 +1,5 @@
 ---
-title: "A Guide to Choosing the Right Devsecops Tools for Your Government Agency"
+title: "A Guide to Choosing the Right DevSecOps Tools for Your Government Agency"
 description: "Overview: Providing a framework for selecting the most suitable tools based on specific government needs."
 slug: "top-5-trends-in-government-devsecops-for-2025"
 date: 2025-03-27T06:00:00Z

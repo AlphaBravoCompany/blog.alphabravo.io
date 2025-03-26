@@ -83,24 +83,46 @@
 
   .summary-card {
     margin: 0 auto;
-    display: flex;
-    list-style: none;
-    align-items: flex-start;
-    justify-content: space-between;
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-flow: row dense; /* Ensures dense packing while maintaining row order */
+    grid-gap: 1rem;
     padding-top: 1rem;
+    margin-bottom: 2rem; /* Add space before pagination */
+  }
+  
+  @media only screen and (max-width: 1200px) {
+    .summary-card {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
+    }
+  }
+  
+  @media only screen and (max-width: 767px) {
+    .summary-card {
+      grid-template-columns: 1fr; /* 1 column on mobile */
+    }
+  }
+  
+  .pagination-container {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .pagination {
+    display: inline-flex;
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
   }
 
 
   .summary {
     background-color: $global-background-card-color;
-    margin-bottom: 1rem;
     padding-bottom: 1rem;
     @include border-radius(.5rem);
     color: $global-font-color;
-    width: 32%;
-    height: 450px;
+    width: 100%;
+    height: fit-content; /* Only as tall as needed */
     display: flex;
     flex-direction: column;
     @include transition(transform 0.4s ease);
@@ -148,10 +170,23 @@
     }
 
     .post-meta {
-      font-size: .875rem;
+      font-size: .75rem; /* Smaller font size */
       margin: 0 1rem .5rem;
       color: $global-font-secondary-color;
-
+      
+      .author-date-line {
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      
+      .post-date-separator {
+        margin: 0 0.25rem;
+      }
+      
       span {
         display: inline-block;
       }
@@ -173,11 +208,11 @@
 
     .content {
       @include box(vertical);
-      -webkit-line-clamp: 3;
-      height: 4.5rem;
-      margin: 0 1rem;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      -webkit-line-clamp: none; /* Remove line clamp to show full content */
+      line-clamp: none; /* Standard property for compatibility */
+      height: auto; /* Changed from fixed height to auto */
+      margin: 0 1rem 1rem; /* Added bottom margin */
+      overflow: visible; /* Allow content to be fully visible */
       @include overflow-wrap(break-word);
       color: $global-font-secondary-color;
 
@@ -240,6 +275,7 @@
           margin: 0 5px 5px 0;
           text-decoration: none;
           -webkit-transition: color 0.2s;
+          transition: color 0.2s; /* Added standard property for compatibility */
           @include border-radius(.25rem);
           border: 1px solid;
           &:hover {

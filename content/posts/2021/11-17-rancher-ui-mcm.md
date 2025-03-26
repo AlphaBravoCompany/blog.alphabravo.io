@@ -13,6 +13,8 @@ lightgallery: true
 tags: [rancher, kubernetes, rancher mcm]
 author: AB Engineering
 ---
+<!--more-->
+
 ## What is Rancher Multi-Cluster Management
 
 If you have ventured into container management and Kubernetes for your organization (or even for yourself), you have quickly realized that you need a robust way to manage more than one cluster easily. In fact, you probably want an easier way to manage a single cluster.

@@ -9,9 +9,7 @@
     <pubDate>Mon, 22 Nov 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/why-we-chose-nifi-over-databrew/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/apache-nifi-full.png" referrerpolicy="no-referrer">
-            </div><h2 id="why-alphabravo-chose-nifi-over-databrew">Why AlphaBravo Chose Nifi Over Databrew</h2>
-<p>Recently, the AlphaBravo engineering team began working on a new product we’re calling ABScan. Our goal is to provide a platform which uses multiple scanning utilities via a single interface.</p>
-<p>Early on in our development process, we realized that we would need to take multiple JSON outputs, convert them into CSV and SQL, and merge the results.  This would require the use of an ETL to automate the transformation of the data generated so we could create CSV files for reports and SQL data for long term storage.</p>]]></description>
+            </div>A deep dive into why We Chose Nifi Over Databrew]]></description>
 </item>
 </channel>
 </rss>

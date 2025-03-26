@@ -4,6 +4,14 @@
         <link>https://blog.alphabravo.io/posts/</link>
         <description>All Posts | AB Engineering Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 27 Mar 2025 06:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Top 5 Trends in Government Devsecops for 2025</title>
+    <link>https://blog.alphabravo.io/posts/2025/top-5-trends-in-government-devsecops-for-2025/</link>
+    <pubDate>Wed, 26 Mar 2025 06:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2025/top-5-trends-in-government-devsecops-for-2025/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/assets/2025/03/032625-top-5-trends-gov-devsecops-2025.png" referrerpolicy="no-referrer">
+            </div>In 2025, government DevSecOps is going full throttle—automating, securing, and regulating like a caffeinated compliance officer with a CI/CD pipeline.]]></description>
+</item>
+<item>
     <title>Securing Kubernetes Clusters in Federal Government Environments: A Technical Guide</title>
     <link>https://blog.alphabravo.io/posts/2025/securing-k8s-federal-gov-tech-guide/</link>
     <pubDate>Mon, 24 Mar 2025 09:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2025/securing-k8s-federal-gov-tech-guide/</guid>
@@ -78,17 +86,6 @@
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/2021/11/11-15-ab-uses-rancher-full.png" referrerpolicy="no-referrer">
             </div>Some insight into why AlphaBravo uses Rancher technologies to accelerate DevSecOps initiatives internally and for our customers.]]></description>
-</item>
-<item>
-    <title>Welcome To The Blog</title>
-    <link>https://blog.alphabravo.io/posts/2021/welcome-to-the-blog/</link>
-    <pubDate>Mon, 15 Nov 2021 10:35:58 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/welcome-to-the-blog/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/assets/welcome-full1.png" referrerpolicy="no-referrer">
-            </div><h1 id="welcome-to-the-blog">Welcome To The Blog</h1>
-<p>We are excited to have you here.</p>
-<p>As technology enthusiasts with a broad range of experiences, we hope to convey some tales, some tech, and some thoughts around the current state of DevSecOps.</p>
-<p>Our focus is mainly on building robust platforms using open-source software. But don&rsquo;t be confused if we talk about non-open source software too. We are a small team and we understand very well that sometimes you need a product or tool that &ldquo;just works&rdquo;.</p>]]></description>
 </item>
 </channel>
 </rss>

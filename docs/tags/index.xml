@@ -3,40 +3,46 @@
         <title>Tags - Tag - AB Engineering Blog</title>
         <link>https://blog.alphabravo.io/tags/</link>
         <description>Tags - Tag - AB Engineering Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 24 Mar 2025 09:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/tags/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 26 Mar 2025 06:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/tags/" rel="self" type="application/rss+xml" /><item>
     <title>Chainguard</title>
     <link>https://blog.alphabravo.io/tags/chainguard/</link>
-    <pubDate>Mon, 24 Mar 2025 09:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/chainguard/</guid>
+    <pubDate>Wed, 26 Mar 2025 06:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/chainguard/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>Containers</title>
     <link>https://blog.alphabravo.io/tags/containers/</link>
-    <pubDate>Mon, 24 Mar 2025 09:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/containers/</guid>
+    <pubDate>Wed, 26 Mar 2025 06:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/containers/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Devops</title>
+    <link>https://blog.alphabravo.io/tags/devops/</link>
+    <pubDate>Wed, 26 Mar 2025 06:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/devops/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>Devsecops</title>
     <link>https://blog.alphabravo.io/tags/devsecops/</link>
-    <pubDate>Mon, 24 Mar 2025 09:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/devsecops/</guid>
+    <pubDate>Wed, 26 Mar 2025 06:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/devsecops/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>Dod</title>
     <link>https://blog.alphabravo.io/tags/dod/</link>
-    <pubDate>Mon, 24 Mar 2025 09:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/dod/</guid>
+    <pubDate>Wed, 26 Mar 2025 06:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/dod/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>Kubernetes</title>
     <link>https://blog.alphabravo.io/tags/kubernetes/</link>
-    <pubDate>Mon, 24 Mar 2025 09:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/kubernetes/</guid>
+    <pubDate>Wed, 26 Mar 2025 06:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/kubernetes/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>Security</title>
     <link>https://blog.alphabravo.io/tags/security/</link>
-    <pubDate>Mon, 24 Mar 2025 09:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/security/</guid>
+    <pubDate>Wed, 26 Mar 2025 06:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/security/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
@@ -55,12 +61,6 @@
     <title>Krew</title>
     <link>https://blog.alphabravo.io/tags/krew/</link>
     <pubDate>Wed, 08 Dec 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/krew/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Kubeconfig</title>
-    <link>https://blog.alphabravo.io/tags/kubeconfig/</link>
-    <pubDate>Wed, 08 Dec 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/kubeconfig/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>

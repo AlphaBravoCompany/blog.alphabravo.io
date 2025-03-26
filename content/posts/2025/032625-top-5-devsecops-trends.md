@@ -7,7 +7,7 @@ draft: false
 featuredImage: /assets/2025/03/032625-top-5-trends-gov-devsecops-2025.png
 featuredImagePreview: /assets/2025/03/032625-top-5-trends-gov-devsecops-2025.png
 lightgallery: true
-tags: [dod, chainguard, containers, security, kubernetes, devsecops]
+tags: [dod, chainguard, containers, security, kubernetes, devsecops, devops]
 author: AB Engineering
 ---
 <!--more-->

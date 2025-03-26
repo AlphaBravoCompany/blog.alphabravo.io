@@ -3,7 +3,15 @@
         <title>Kubernetes - Tag - AB Engineering Blog</title>
         <link>https://blog.alphabravo.io/tags/kubernetes/</link>
         <description>Kubernetes - Tag - AB Engineering Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 24 Mar 2025 09:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/tags/kubernetes/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 26 Mar 2025 06:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/tags/kubernetes/" rel="self" type="application/rss+xml" /><item>
+    <title>Top 5 Trends in Government Devsecops for 2025</title>
+    <link>https://blog.alphabravo.io/posts/2025/top-5-trends-in-government-devsecops-for-2025/</link>
+    <pubDate>Wed, 26 Mar 2025 06:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2025/top-5-trends-in-government-devsecops-for-2025/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/assets/2025/03/032625-top-5-trends-gov-devsecops-2025.png" referrerpolicy="no-referrer">
+            </div>In 2025, government DevSecOps is going full throttle—automating, securing, and regulating like a caffeinated compliance officer with a CI/CD pipeline.]]></description>
+</item>
+<item>
     <title>Securing Kubernetes Clusters in Federal Government Environments: A Technical Guide</title>
     <link>https://blog.alphabravo.io/posts/2025/securing-k8s-federal-gov-tech-guide/</link>
     <pubDate>Mon, 24 Mar 2025 09:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2025/securing-k8s-federal-gov-tech-guide/</guid>

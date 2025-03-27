@@ -4,11 +4,11 @@ description: "A deep dive into why We Chose Nifi Over Databrew"
 slug: "why-we-chose-nifi-over-databrew"
 date: 2021-11-22T13:00:00Z
 draft: false
-featuredImage: /assets/apache-nifi-full.png
-featuredImagePreview: /assets/apache-nifi-full.png
-images: ["/assets/ab-seo-large.png"]
+featuredImage: /assets/2021/11/nifi-over-databrew.png
+featuredImagePreview: /assets/2021/11/nifi-over-databrew.png
+images: ["/assets/2021/11/nifi-over-databrew.png"]
 seo:
-  images: ["/assets/ab-seo-large.png"]
+  images: ["/assets/2021/11/nifi-over-databrew.png"]
 lightgallery: true
 tags: [apache nifi, aws databrew, etl]
 author: Ed Engelking

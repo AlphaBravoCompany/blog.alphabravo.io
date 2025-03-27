@@ -4,11 +4,11 @@ description: "Instructions on deploying RKE2, Helm, cert-manager and Rancher on 
 slug: "single-node-rke2-pt1"
 date: 2021-11-29T13:00:00Z
 draft: false
-featuredImage: /assets/single-node-rke2-full.png
-featuredImagePreview: /assets/single-node-rke2-full.png
-images: [/assets/2021/11/11-29-single-node-rke2-part1-social.png]
+featuredImage: /assets/2021/11/hetzner-rke2-part1.png
+featuredImagePreview: /assets/2021/11/hetzner-rke2-part1.png
+images: [/assets/2021/11/hetzner-rke2-part1.png]
 seo:
-  images: [/assets/2021/11/11-29-single-node-rke2-part1-social.png]
+  images: [/assets/2021/11/hetzner-rke2-part1.png]
 lightgallery: true
 tags: [rancher, kubernetes, rke2, helm, hetzner]
 author: AB Engineering

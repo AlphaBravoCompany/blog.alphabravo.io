@@ -1,0 +1,41 @@
+/* Custom CSS to directly define social icons */
+
+/* Twitter/X icon */
+.fab.fa-twitter:before {
+  content: "\f099";
+  font-family: "Font Awesome 6 Brands";
+  display: inline-block !important;
+  visibility: visible !important;
+}
+
+/* Telegram icon */
+.fab.fa-telegram:before {
+  content: "\f2c6";
+  font-family: "Font Awesome 6 Brands";
+  display: inline-block !important;
+  visibility: visible !important;
+}
+
+/* Stack Overflow icon */
+.fab.fa-stack-overflow:before {
+  content: "\f16c";
+  font-family: "Font Awesome 6 Brands";
+  display: inline-block !important;
+  visibility: visible !important;
+}
+
+/* GitHub icon */
+.fab.fa-github-alt:before {
+  content: "\f113";
+  font-family: "Font Awesome 6 Brands";
+  display: inline-block !important;
+  visibility: visible !important;
+}
+
+/* LinkedIn icon */
+.fab.fa-linkedin:before {
+  content: "\f08c";
+  font-family: "Font Awesome 6 Brands";
+  display: inline-block !important;
+  visibility: visible !important;
+}

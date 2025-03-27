@@ -4,11 +4,11 @@ description: "We show you how to manage and work with multiple `kubeconfig` file
 slug: "zero-to-hero-working-with-multiple-kubeconfig"
 date: 2021-12-08T13:00:00Z
 draft: false
-featuredImage: /assets/2021/12/multiple-kubeconfig-full.png
-featuredImagePreview: /assets/2021/12/multiple-kubeconfig-full.png
-images: [/assets/2021/12/multiple-kubeconfig-social.png]
+featuredImage: /assets/2021/12/multi-kubeconfig.png
+featuredImagePreview: /assets/2021/12/multi-kubeconfig.png
+images: [/assets/2021/12/multi-kubeconfig.png]
 seo:
-  images: [/assets/2021/12/multiple-kubeconfig--social.png]
+  images: [/assets/2021/12/multi-kubeconfig.png]
 lightgallery: true
 tags: [kubernetes, kubeconfig, krew]
 author: Mike 'MJ' Johnson

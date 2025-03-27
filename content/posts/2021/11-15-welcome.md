@@ -1,11 +1,13 @@
 ---
 title: "Welcome To The Blog"
+description: "Welcome To The AlphaBravo Engineering Blog"
 slug: "welcome-to-the-blog"
 date: 2021-11-15T10:35:58Z
 draft: false
-featuredImage: /assets/welcome-full1.png
-featuredImagePreview: /assets/welcome-small.png
+featuredImage: /assets/2021/11/welcome.png
+featuredImagePreview: /assets/2021/11/welcome.png
 ---
+<!--more-->
 
 # Welcome To The Blog
 

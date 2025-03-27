@@ -4,16 +4,17 @@ description: "Some insight into why AlphaBravo uses Rancher technologies to acce
 slug: "why-we-use-rancher"
 date: 2021-11-15T11:35:58Z
 draft: false
-featuredImage: /assets/2021/11/11-15-ab-uses-rancher-full.png
-featuredImagePreview: /assets/2021/11/11-15-ab-uses-rancher-full.png
-images: ["/assets/2021/11/11-15-seo-why-ab-uses-rancher.png"]
+featuredImage: /assets/2021/11/why-rancher.png
+featuredImagePreview: /assets/2021/11/why-rancher.png
+images: ["/assets/2021/11/why-rancher.png"]
 seo:
-  images: ["/assets/2021/11/11-15-seo-why-ab-uses-rancher.png"]
+  images: ["/assets/2021/11/why-rancher.png"]
 lightgallery: true
 tags: [rancher, kubernetes, rke2, k3s]
 author: AB Engineering
 ---
 <!--more-->
+
 # Why We Use Rancher
 
 Ok, let's get this out of the way. Yes, we are a [Rancher Gold Partner](https://alphabravo.io/press/alphabravo-suse-rancher-gold-partner) and yes, we provide [Rancher Training](https://alphabravo.io/training).

@@ -4,8 +4,11 @@ description: "Learn how AlphaBravo and Chainguard are working together to fortif
 slug: "alphabravo-chainguard-dod1"
 date: 2025-03-15T11:00:00Z
 draft: true
-featuredImage: /assets/2025/03/03-01-25-ab-chainguard-dod.png
-featuredImagePreview: /assets/2025/03/03-01-25-ab-chainguard-dod.png
+featuredImage: /assets/2025/03/ab-and-chainguard-enhance-national.png
+featuredImagePreview: /assets/2025/03/ab-and-chainguard-enhance-national.png
+images: [/assets/2025/03/ab-and-chainguard-enhance-national.png]
+seo:
+  images: [/assets/2025/03/ab-and-chainguard-enhance-national.png]
 lightgallery: true
 tags: [dod, chainguard, containers, security, kubernetes, devsecops]
 author: AB Engineering

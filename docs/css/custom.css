@@ -1,0 +1,22 @@
+/* Custom CSS for fixing social icons */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css');
+
+/* Ensure Twitter icon displays properly */
+.fab.fa-twitter:before {
+  content: "\f099";
+  display: inline-block;
+}
+
+/* Ensure Telegram icon displays properly */
+.fab.fa-telegram:before {
+  content: "\f2c6";
+  display: inline-block;
+}
+
+/* Ensure Stack Overflow icon displays properly */
+.fab.fa-stack-overflow:before {
+  content: "\f16c";
+  display: inline-block;
+}
+
+/* Add more icon fixes as needed */

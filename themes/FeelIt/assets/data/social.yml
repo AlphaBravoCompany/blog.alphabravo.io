@@ -14,11 +14,11 @@ linkedin:
   Icon:
     Class: fab fa-linkedin fa-fw
 
-# 003: Twitter
+# 003: X (formerly Twitter)
 twitter:
   Weight: 3
   Prefix: https://twitter.com/
-  Title: Twitter
+  Title: X
   Icon:
     Class: fab fa-twitter fa-fw
 
@@ -44,7 +44,7 @@ telegram:
   Prefix: https://t.me/
   Title: Telegram
   Icon:
-    Class: fab fa-telegram-plane fa-fw
+    Class: fab fa-telegram fa-fw
 
 # 007: Medium
 medium:
@@ -156,7 +156,7 @@ stackoverflow:
   Prefix: https://stackoverflow.com/users/
   Title: Stack Overflow
   Icon:
-    Class: fab fa-codepen fa-fw
+    Class: fab fa-stack-overflow fa-fw
 
 # 021: 微博
 weibo:

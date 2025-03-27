@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Enhancing National Security: How AlphaBravo and Chainguard Fortify DOD and Federal Supply Chains - AB Engineering Blog</title><meta name="description" content="Learn how AlphaBravo and Chainguard are working together to fortify DOD and Federal Supply Chains."><meta property="og:url" content="http://localhost:1313/posts/2025/alphabravo-chainguard-dod1/">
+  <meta property="og:site_name" content="AB Engineering Blog">
+  <meta property="og:title" content="Enhancing National Security: How AlphaBravo and Chainguard Fortify DOD and Federal Supply Chains">
+  <meta property="og:description" content="Learn how AlphaBravo and Chainguard are working together to fortify DOD and Federal Supply Chains.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-03-15T11:00:00+00:00">
+    <meta property="article:modified_time" content="2025-03-15T11:00:00+00:00">
+    <meta property="article:tag" content="Dod">
+    <meta property="article:tag" content="Chainguard">
+    <meta property="article:tag" content="Containers">
+    <meta property="article:tag" content="Security">
+    <meta property="article:tag" content="Kubernetes">
+    <meta property="article:tag" content="Devsecops">
+    <meta property="og:image" content="http://localhost:1313/assets/2025/03/ab-and-chainguard-enhance-national.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/assets/2025/03/ab-and-chainguard-enhance-national.png">
+  <meta name="twitter:title" content="Enhancing National Security: How AlphaBravo and Chainguard Fortify DOD and Federal Supply Chains">
+  <meta name="twitter:description" content="Learn how AlphaBravo and Chainguard are working together to fortify DOD and Federal Supply Chains.">
+      <meta name="twitter:site" content="@alphabravogov">
+<meta name="application-name" content="AB Engineering Blog">
+<meta name="apple-mobile-web-app-title" content="AB Engineering Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/posts/2025/alphabravo-chainguard-dod1/" /><link rel="prev" href="http://localhost:1313/posts/2021/bulk-delete-clouflare-dns/" /><link rel="next" href="http://localhost:1313/posts/2025/securing-k8s-federal-gov-tech-guide/" /><link rel="stylesheet" href="/css/page.min.css"><link rel="stylesheet" href="/css/home.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Enhancing National Security: How AlphaBravo and Chainguard Fortify DOD and Federal Supply Chains",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/posts\/2025\/alphabravo-chainguard-dod1\/"
+        },"image": ["http:\/\/localhost:1313\/assets\/2025\/03\/ab-and-chainguard-enhance-national.png"],"genre": "posts","keywords": "dod, chainguard, containers, security, kubernetes, devsecops","wordcount":  1023 ,
+        "url": "http:\/\/localhost:1313\/posts\/2025\/alphabravo-chainguard-dod1\/","datePublished": "2025-03-15T11:00:00+00:00","dateModified": "2025-03-15T11:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "AlphaBravo","logo": "http:\/\/localhost:1313\/assets\/alphabravo-logoonly-outline1.png"},"author": {
+                "@type": "Person",
+                "name": "AB Engineering"
+            },"description": "Learn how AlphaBravo and Chainguard are working together to fortify DOD and Federal Supply Chains."
+    }
+    </script></head><body data-header-desktop="auto" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="AB Engineering Blog"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/assets/alphabravo-logoonly-outline1.png"
+        data-srcset="/assets/alphabravo-logoonly-outline1.png, /assets/alphabravo-logoonly-outline1.png 1.5x, /assets/alphabravo-logoonly-outline1.png 2x"
+        data-sizes="auto"
+        alt="/assets/alphabravo-logoonly-outline1.png"
+        title="/assets/alphabravo-logoonly-outline1.png" /><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="https://blog.alphabravo.io" title="Blog Homepage" rel="noopener noreffer" target="_blank"> Home </a><a class="menu-item" href="https://alphabravo.io" title="AlphaBravo Website" rel="noopener noreffer" target="_blank"> AB Website </a><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="https://github.com/AlphaBravoCompany" rel="noopener noreffer" target="_blank"><i class='fab fa-github-alt fa-fw'></i>  </a><a class="menu-item" href="https://linkedin.com/company/alphabravogov/" rel="noopener noreffer" target="_blank"><i class='fab fa-linkedin fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search" id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a class="menu-item" href="/index.xml" title="RSS"><i class="fas fa-rss fa-fw" title="RSS"></i> </a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="AB Engineering Blog"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/assets/alphabravo-logoonly-outline1.png"
+        data-srcset="/assets/alphabravo-logoonly-outline1.png, /assets/alphabravo-logoonly-outline1.png 1.5x, /assets/alphabravo-logoonly-outline1.png 2x"
+        data-sizes="auto"
+        alt="/assets/alphabravo-logoonly-outline1.png"
+        title="/assets/alphabravo-logoonly-outline1.png" /><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search" id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="https://blog.alphabravo.io" title="Blog Homepage" rel="noopener noreffer" target="_blank">Home</a><a class="menu-item" href="https://alphabravo.io" title="AlphaBravo Website" rel="noopener noreffer" target="_blank">AB Website</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="https://github.com/AlphaBravoCompany" title="" rel="noopener noreffer" target="_blank"><i class='fab fa-github-alt fa-fw'></i></a><a class="menu-item" href="https://linkedin.com/company/alphabravogov/" title="" rel="noopener noreffer" target="_blank"><i class='fab fa-linkedin fa-fw'></i></a><div class="menu-item"><a href="/index.xml" title="RSS"><i class="fas fa-rss fa-fw" title="RSS"></i> </a>
+                <span>&nbsp;|&nbsp;</span><a href="javascript:void(0);" class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div></div>
+    </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single" data-toc="disable"><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/2025/03/ab-and-chainguard-enhance-national.png"
+        data-srcset="/assets/2025/03/ab-and-chainguard-enhance-national.png, /assets/2025/03/ab-and-chainguard-enhance-national.png 1.5x, /assets/2025/03/ab-and-chainguard-enhance-national.png 2x"
+        data-sizes="auto"
+        alt="/assets/2025/03/ab-and-chainguard-enhance-national.png"
+        title="Learn how AlphaBravo and Chainguard are working together to fortify DOD and Federal Supply Chains." /></div><div class="single-card" data-image="true"><h2 class="single-title animated flipInX">Enhancing National Security: How AlphaBravo and Chainguard Fortify DOD and Federal Supply Chains</h2><div class="post-meta">
+                <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>AB Engineering</a></span></div>
+                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2025-03-15">2025-03-15</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1023 words</span>&nbsp;
+                    <span><i class="far fa-clock fa-fw"></i>&nbsp;5 minutes</span>&nbsp;</div>
+            </div>
+            
+            <hr><div class="details toc" id="toc-static"  data-kept="">
+                    <div class="details-summary toc-title">
+                        <span>Contents</span>
+                        <span><i class="details-icon fas fa-angle-right"></i></span>
+                    </div>
+                    <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-evolving-security-landscape-for-federal-operations">The Evolving Security Landscape for Federal Operations</a></li>
+    <li><a href="#alphabravo-operationalizing-compliance-in-defense-ecosystems">AlphaBravo: Operationalizing Compliance in Defense Ecosystems</a>
+      <ul>
+        <li><a href="#compliance-driven-automation-for-dod-standards">Compliance-Driven Automation for DOD Standards</a></li>
+        <li><a href="#multi-cloud-and-air-gapped-deployment-flexibility">Multi-Cloud and Air-Gapped Deployment Flexibility</a></li>
+        <li><a href="#strengthening-supply-chain-transparency">Strengthening Supply Chain Transparency</a></li>
+      </ul>
+    </li>
+    <li><a href="#chainguard-revolutionizing-container-security-for-federal-workloads">Chainguard: Revolutionizing Container Security for Federal Workloads</a>
+      <ul>
+        <li><a href="#zero-cve-containers-with-remediation-slas">Zero-CVE Containers with Remediation SLAs</a></li>
+        <li><a href="#fips-validation-and-stig-hardening-at-scale">FIPS Validation and STIG Hardening at Scale</a></li>
+        <li><a href="#end-to-end-integrity-with-sigstore-and-sboms">End-to-End Integrity with Sigstore and SBOMs</a></li>
+      </ul>
+    </li>
+    <li><a href="#synergizing-alphabravo-and-chainguard-for-end-to-end-security">Synergizing AlphaBravo and Chainguard for End-to-End Security</a>
+      <ul>
+        <li><a href="#unified-compliance-across-development-and-deployment">Unified Compliance Across Development and Deployment</a></li>
+        <li><a href="#accelerating-continuous-ato-cato-adoption">Accelerating Continuous ATO (cATO) Adoption</a></li>
+      </ul>
+    </li>
+    <li><a href="#case-studies-transforming-federal-security-postures">Case Studies: Transforming Federal Security Postures</a>
+      <ul>
+        <li><a href="#army-cyber-command-chainguards-zero-cve-milestone">Army Cyber Command: Chainguard’s Zero-CVE Milestone</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion-building-a-resilient-federal-cyber-ecosystem">Conclusion: Building a Resilient Federal Cyber Ecosystem</a></li>
+  </ul>
+</nav></div>
+                </div><div class="content" id="content"><p>In an era where cyber threats increasingly target critical infrastructure and national defense systems, the Department of Defense (DOD) and federal agencies face unprecedented challenges in securing their software supply chains. Two companies, <strong>AlphaBravo</strong> and <strong>Chainguard</strong>, have emerged as pivotal players in addressing these challenges through innovative solutions tailored for government use cases. By combining <strong>compliance-driven automation</strong>, <strong>secure containerization</strong>, and <strong>end-to-end supply chain integrity</strong>, these organizations provide robust frameworks that enable federal entities to modernize their operations while adhering to stringent security standards. This report explores their technologies, strategic differentiators, and real-world applications within defense ecosystems.</p>
+<hr>
+<h2 id="the-evolving-security-landscape-for-federal-operations">The Evolving Security Landscape for Federal Operations</h2>
+<p>Federal agencies and defense contractors operate under some of the most rigorous compliance requirements globally, including the <strong>Defense Information Systems Agency (DISA) Security Technical Implementation Guides (STIGs)</strong>, <strong>FedRAMP</strong>, and <strong>Zero-Trust Architecture (ZTA)</strong> mandates. Traditional approaches to cybersecurity often struggle to keep pace with the rapid deployment cycles demanded by modern missions, leading to vulnerabilities in software pipelines and infrastructure configurations.</p>
+<p>The 2021 Executive Order on Improving the Nation’s Cybersecurity highlighted the urgent need for <strong>Software Bill of Materials (SBOM)</strong> adoption and <strong>automated compliance checks</strong> to mitigate risks from third-party components. However, implementing these measures without disrupting existing workflows remains a persistent challenge. AlphaBravo and Chainguard address these gaps through complementary strategies:</p>
+<hr>
+<h2 id="alphabravo-operationalizing-compliance-in-defense-ecosystems">AlphaBravo: Operationalizing Compliance in Defense Ecosystems</h2>
+<h3 id="compliance-driven-automation-for-dod-standards">Compliance-Driven Automation for DOD Standards</h3>
+<p>AlphaBravo’s <strong>ABOps</strong> platform integrates compliance enforcement directly into deployment pipelines, ensuring that applications meet <strong>DISA STIGs</strong> and <strong>Zero-Trust</strong> requirements from the first line of code. By automating security controls such as cluster repeatable K8s deployments and security hardening, ABOps reduces manual configuration errors that often plague legacy systems. For example, ABOps leverages RKE2 and configuration as code to enforce consistent security policies across clusters in high security DoD environments.</p>
+<p>The platform’s cloud-native workflow ensures that infrastucture is always running in the desired state, ensuring that orgnanizations are always compliant with their security requirements. AlphaBravo’s ABOps platform is designed to run on any cloud platform or on-prem environment, ensuring maximum flexibility and scalability for DOD operations.</p>
+<h3 id="multi-cloud-and-air-gapped-deployment-flexibility">Multi-Cloud and Air-Gapped Deployment Flexibility</h3>
+<p>Defense operations increasingly rely on hybrid architectures spanning <strong>AWS GovCloud</strong>, <strong>Azure Government</strong>, and on-premises data centers. AlphaBravo’s unified management interface simplifies provisioning and monitoring across these environments while enforcing consistent security policies. For disconnected or classified networks, ABOps utilizes Rancher Hauler to provide air-gapped systems with all artifacts necessary for deployment.</p>
+<h3 id="strengthening-supply-chain-transparency">Strengthening Supply Chain Transparency</h3>
+<p>AlphaBravo integrates technologies like Harbor, Grype, Trivy and others to scan static OCI artifacts like containers and SUSE Security (formerly Neuvector) for container runtime scanning inside Kubernetes clusters.</p>
+<p>These techniques provide a comprehensive view of the environment, ensuring that every component is secure and up-to-date.</p>
+<p>But, if you are not able to secure your container supply chain from the start, you are going to face problems down the line.</p>
+<p>Enter <strong>Chainguard</strong>.</p>
+<hr>
+<h2 id="chainguard-revolutionizing-container-security-for-federal-workloads">Chainguard: Revolutionizing Container Security for Federal Workloads</h2>
+<h3 id="zero-cve-containers-with-remediation-slas">Zero-CVE Containers with Remediation SLAs</h3>
+<p>Chainguard’s container images redefine secure software delivery by stripping non-essential components, resulting in <strong>60-80% smaller footprints</strong> compared to upstream alternatives. This minimalism directly reduces attack surfaces, a critical factor for DOD systems processing sensitive intelligence data. Chainguard guarantees <strong>zero critical CVEs</strong> in production through its <strong>7-day remediation SLA</strong> for vulnerabilities, ensuring patches are applied before exploits proliferate.</p>
+<p>The impact is profound: Anduril Industries reported reducing container vulnerabilities from thousands to zero overnight using Chainguard Images, accelerating their FedRAMP High authorization. Similarly, a major defense contractor cut <strong>400+ engineering hours monthly</strong> by replacing manual CVE triage with Chainguard’s automated updates.</p>
+<h3 id="fips-validation-and-stig-hardening-at-scale">FIPS Validation and STIG Hardening at Scale</h3>
+<p>Chainguard’s <strong>FIPS 140-2 validated containers</strong> provide cryptographically secure environments for processing Controlled Unclassified Information (CUI) and National Security Systems (NSS) data. Pairing these with <strong>OS-level STIG configurations</strong>, agencies achieve compliance with <strong>DoD DevSecOps Reference Design</strong> mandates without costly retrofits. Carahsoft, Chainguard’s federal distribution partner, highlights how these pre-hardened images slash the time required for Authority to Operate (ATO) approvals by 70%.</p>
+<h3 id="end-to-end-integrity-with-sigstore-and-sboms">End-to-End Integrity with Sigstore and SBOMs</h3>
+<p>Every Chainguard image includes a <strong>cryptographically signed SBOM</strong> generated during build processes, enabling agencies to trace components back to their source code. This capability aligns with the <strong>NTIA’s SBOM guidelines</strong>, providing auditors immutable records of software provenance. During a recent FedRAMP audit, the Federal Energy Regulatory Commission (FERC) leveraged Chainguard’s SBOMs to verify 100% of third-party dependencies in under two hours—a process previously taking weeks.</p>
+<hr>
+<h2 id="synergizing-alphabravo-and-chainguard-for-end-to-end-security">Synergizing AlphaBravo and Chainguard for End-to-End Security</h2>
+<h3 id="unified-compliance-across-development-and-deployment">Unified Compliance Across Development and Deployment</h3>
+<p>While Chainguard secures the <strong>build</strong> and <strong>source</strong> phases with minimal containers, AlphaBravo extends protection into <strong>deployment</strong> and <strong>runtime</strong> via policy-driven orchestration. Joint customers deploy Chainguard’s hardened images through ABOps’ hardened and robust deployment pipelines, creating a continuous security loop from code commit to production.</p>
+<h3 id="accelerating-continuous-ato-cato-adoption">Accelerating Continuous ATO (cATO) Adoption</h3>
+<p>The <strong>“start left” philosophy</strong> championed by both companies embeds compliance checks early in the lifecycle. Chainguard’s FIPS/STIG containers satisfy technical controls and address procedural requirements like <strong>NIST 800-53</strong> and <strong>CNSSI 1253</strong>. Chainguard was able to support PROGRAM XYZ and reduce their time to cATO by XXX.</p>
+<hr>
+<h2 id="case-studies-transforming-federal-security-postures">Case Studies: Transforming Federal Security Postures</h2>
+<h3 id="army-cyber-command-chainguards-zero-cve-milestone">Army Cyber Command: Chainguard’s Zero-CVE Milestone</h3>
+<p>By migrating 500+ legacy applications to Chainguard Images, CUSTOMER XYZ reported <strong>reduced CVE risk</strong> by XXX.</p>
+<hr>
+<h2 id="conclusion-building-a-resilient-federal-cyber-ecosystem">Conclusion: Building a Resilient Federal Cyber Ecosystem</h2>
+<p>AlphaBravo and Chainguard exemplify how commercial innovation can address the unique security demands of defense and federal operations. Through their combined offerings—<strong>ABOps’ policy-driven orchestration</strong> and <strong>Chainguard’s secure-by-design containers</strong>—agencies achieve:</p>
+<ol>
+<li><strong>Accelerated Compliance</strong>: Automated enforcement of STIGs, FIPS, and Zero-Trust requirements.</li>
+<li><strong>Supply Chain Integrity</strong>: Tamper-proof SBOMs and attestations from development to deployment.</li>
+<li><strong>Operational Resilience</strong>: Consistent security across multicloud, edge, and disconnected environments.</li>
+</ol>
+<p>As cyber adversaries grow more sophisticated, adopting these platforms will be critical for maintaining the DOD’s technological edge. Federal leaders should prioritize:</p>
+<ul>
+<li><strong>Piloting Integrated Solutions</strong>: Test Chainguard/AlphaBravo stacks in controlled environments like ABLabs.</li>
+<li><strong>Modernizing Acquisition Policies</strong>: Leverage OTAs and BOAs to fast-track deployment of commercial technologies.</li>
+<li><strong>Upskilling Workforce</strong>: Utilize AlphaBravo’s container training programs to bridge DevSecOps talent gaps.</li>
+</ul>
+<p>By embracing these strategies, agencies can transform cybersecurity from a compliance exercise into a sustained strategic advantage.</p>
+<p>If you have any questions, please reach out to us at <a href="mailto:info@alphabravo.io" rel="">info@alphabravo.io</a>.</p>
+<p>Thanks for reading!</p>
+<hr>
+<p><em>The AB Engineering Team</em></p>
+<p><strong>Website:</strong> <a href="https://alphabravo.io" target="_blank" rel="noopener noreffer">https://alphabravo.io</a></p>
+<p><strong>Contact Us:</strong> <a href="https://alphabravo.io/contact-us" target="_blank" rel="noopener noreffer">https://alphabravo.io/contact-us</a></p></div><div class="post-footer" id="post-footer">
+    <div class="post-info"><div class="post-info-tag"><span><a href="/tags/dod/">Dod</a>
+                </span><span><a href="/tags/chainguard/">Chainguard</a>
+                </span><span><a href="/tags/containers/">Containers</a>
+                </span><span><a href="/tags/security/">Security</a>
+                </span><span><a href="/tags/kubernetes/">Kubernetes</a>
+                </span><span><a href="/tags/devsecops/">Devsecops</a>
+                </span></div><div class="post-info-line"><div class="post-info-mod">
+                <span>Updated on 2025-03-15</span>
+            </div><div class="post-info-mod"></div>
+        </div></div><div class="post-nav"><a href="/posts/2021/bulk-delete-clouflare-dns/" class="prev" rel="prev" title="Bulk Delete Cloudflare DNS Records"><i class="fas fa-angle-left fa-fw"></i>Previous Post</a>
+            <a href="/posts/2025/securing-k8s-federal-gov-tech-guide/" class="next" rel="next" title="Securing Kubernetes Clusters in Federal Government Environments: A Technical Guide">Next Post<i class="fas fa-angle-right fa-fw"></i></a></div></div>
+</div></article></div>
+            </main>
+            <footer class="footer"><div class="footer-container"><div class="footer-line">AlphaBravo</div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/"></a></span></div>
+</div>
+</footer>
+        </div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-chevron-up fa-fw"></i>
+            </a></div><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css' integrity='sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==' crossorigin='anonymous' referrerpolicy='no-referrer' /><link rel="stylesheet" href="/css/custom-icons.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/typeit/typeit.min.js"></script><script src="/lib/lightgallery/lightgallery.min.js"></script><script src="/lib/lightgallery/lg-thumbnail.min.js"></script><script src="/lib/lightgallery/lg-zoom.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/cookieconsent/cookieconsent.min.js"></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{},"cookieconsent":{"content":{"dismiss":"Ok","link":"https://alphabravo.io","message":"We use cookies and open-source, privacy-respecting analytics technologies to improve your browsing experience on our website, to analyze our website traffic, and to understand where our visitors are coming from."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"Engineering Blog","id-2":"Engineering Blog"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"typeit":{"cursorChar":null,"cursorSpeed":null,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":null,"speed":null}};</script><script src="/js/theme.min.js"></script></body></html>

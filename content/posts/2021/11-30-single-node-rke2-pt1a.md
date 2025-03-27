@@ -4,8 +4,11 @@ description: "Instructions on deploying K3s, Helm, cert-manager and Rancher on a
 slug: "single-node-k3s"
 date: 2021-11-30T11:00:00Z
 draft: false
-featuredImage: /assets/single-node-k3s-full.png
-featuredImagePreview: /assets/single-node-k3s-full.png
+featuredImage: /assets/2021/11/hetzner-k3s.png
+featuredImagePreview: /assets/2021/11/hetzner-k3s.png
+images: [/assets/2021/11/hetzner-k3s.png]
+seo:
+  images: [/assets/2021/11/hetzner-k3s.png]
 lightgallery: true
 tags: [rancher, kubernetes, k3s, helm, hetzner]
 author: AB Engineering

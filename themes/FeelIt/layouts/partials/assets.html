@@ -5,15 +5,13 @@
 {{- $pwa := .Scratch.Get "pwa" -}}
 
 {{- /* Font Awesome */ -}}
-{{- if $params.cdnfontawesome -}}
-{{- $source := $cdn.fontawesomeFreeCSS | default "lib/fontawesome-free/all.min.css" -}}
+{{- $fontAwesomeCDN := "<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css' integrity='sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==' crossorigin='anonymous' referrerpolicy='no-referrer' />" -}}
+{{- safeHTML $fontAwesomeCDN -}}
+
+{{- /* Custom CSS for fixing social icons */ -}}
+{{- $source := "css/custom-icons.css" -}}
 {{- $style := dict "Source" $source "Fingerprint" $fingerprint -}}
 {{- partial "plugin/style.html" $style -}}
-{{- else -}}
-{{- $source := "lib/fontawesome-free/all.min.css" -}}
-{{- $style := dict "Source" $source "Fingerprint" $fingerprint -}}
-{{- partial "plugin/style.html" $style -}}
-{{- end -}}
 
 {{- /* Animate.css */ -}}
 {{- $source := $cdn.animateCSS | default "lib/animate/animate.min.css" -}}

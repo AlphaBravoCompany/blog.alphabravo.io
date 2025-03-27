@@ -1,6 +1,7 @@
 {{- /* Font Awesome */ -}}
 {{- /* :(far fa-circle): -> <i class="far fa-circle fa-fw"></i> */ -}}
 
+{{- /* Process spacing around icons */ -}}
 {{- $REin := ` (:\([\w- ]+?\):)` -}}
 {{- $REout := `&nbsp;$1` -}}
 {{- $content := replaceRE $REin $REout . -}}
@@ -9,6 +10,12 @@
 {{- $REout = `$1&nbsp;` -}}
 {{- $content = replaceRE $REin $REout . -}}
 
+{{- /* Map old icon names to new ones */ -}}
+{{- $iconMap := dict "fa-telegram-plane" "fa-telegram" "fa-twitter" "fa-x-twitter" -}}
+
+{{- /* Process icon shortcodes */ -}}
 {{- $REin = `:\(([\w- ]+?)\):` -}}
-{{- $REout = `<i class="$1"></i>` -}}
-{{- return replaceRE $REin $REout $content -}}
+{{- $REout = `<i class="$1" data-fa-processed="true"></i>` -}}
+{{- $content = replaceRE $REin $REout $content -}}
+
+{{- return $content -}}

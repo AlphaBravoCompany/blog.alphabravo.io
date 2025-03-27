@@ -4,11 +4,11 @@ description: "It doesn't matter what Kubernetes Engine you use (EKS, AKS, GKE, R
 slug: "rancher-multi-cluster-management-ui"
 date: 2021-11-17T13:00:00Z
 draft: false
-featuredImage: /assets/rancher-ui-full.png
-featuredImagePreview: /assets/rancher-ui-small.png
-images: [/assets/ab-seo-large.png]
+featuredImage: /assets/2021/11/rancher-mcm-ui.png
+featuredImagePreview: /assets/2021/11/rancher-mcm-ui.png
+images: [/assets/2021/11/rancher-mcm-ui.png]
 seo:
-  images: [/assets/ab-seo-large.png]
+  images: [/assets/2021/11/rancher-mcm-ui.png]
 lightgallery: true
 tags: [rancher, kubernetes, rancher mcm]
 author: AB Engineering

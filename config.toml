@@ -69,7 +69,7 @@ fingerprint = "sha256"
 #    weight = 4
   [[menu.main]]
     identifier = "github"
-    pre = "<i class='fab fa-github fa-fw'></i>"
+    pre = "<i class='fab fa-github-alt fa-fw'></i>"
     post = ""
     name = ""
     url = "https://github.com/AlphaBravoCompany"

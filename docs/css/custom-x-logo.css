@@ -1,0 +1,10 @@
+/* Custom X logo CSS */
+.fab.fa-x-twitter:before {
+  content: "\58"; /* X character */
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  font-style: normal;
+  display: inline-block;
+  text-rendering: auto;
+  line-height: 1;
+}

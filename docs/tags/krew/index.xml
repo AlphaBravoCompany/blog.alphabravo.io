@@ -8,7 +8,7 @@
     <link>https://blog.alphabravo.io/posts/2021/zero-to-hero-working-with-multiple-kubeconfig/</link>
     <pubDate>Wed, 08 Dec 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/zero-to-hero-working-with-multiple-kubeconfig/</guid>
     <description><![CDATA[<div class="featured-image">
-                <img src="/assets/2021/12/multiple-kubeconfig-full.png" referrerpolicy="no-referrer">
+                <img src="/assets/2021/12/multi-kubeconfig.png" referrerpolicy="no-referrer">
             </div>We show you how to manage and work with multiple `kubeconfig` files from the comfort of the Linux CLI.]]></description>
 </item>
 </channel>

@@ -81,8 +81,16 @@
                     {{- $socialArr = $socialArr | append $social -}}
                 {{- end -}}
             {{- end -}}
+            {{- /* Special handling for Twitter/X */ -}}
+            {{- if .Site.Params.social.Twitter -}}
+                <a href="https://twitter.com/{{ .Site.Params.social.Twitter }}" rel="me noopener noreffer" target="_blank" title="X">
+                    <i class="fab fa-twitter fa-fw"></i>
+                </a>
+            {{- end -}}
             {{- range sort $socialArr "Weight" -}}
-                {{- partial "plugin/social.html" . -}}
+                {{- if ne .Title "X" -}}
+                    {{- partial "plugin/social.html" . -}}
+                {{- end -}}
             {{- end -}}
         </div>
     {{- end -}}

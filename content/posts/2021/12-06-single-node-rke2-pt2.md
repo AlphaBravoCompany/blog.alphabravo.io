@@ -4,11 +4,11 @@ description: "Part 2 of the cheap single node Kubernetes series. In this blog we
 slug: "single-node-rke2-pt2"
 date: 2021-12-06T13:00:00Z
 draft: false
-featuredImage: /assets/2021/12/single-node-rke2-pt2-full.png
-featuredImagePreview: /assets/2021/12/single-node-rke2-pt2-full.png
-images: [/assets/2021/12/12-06-single-node-rke2-part2-social.png]
+featuredImage: /assets/2021/12/hetzner-rke2-part2.png
+featuredImagePreview: /assets/2021/12/hetzner-rke2-part2.png
+images: [/assets/2021/12/hetzner-rke2-part2.png]
 seo:
-  images: [/assets/2021/12/12-06-single-node-rke2-part2-social.png]
+  images: [/assets/2021/12/hetzner-rke2-part2.png]
 lightgallery: true
 tags: [rancher, kubernetes, rke2, helm, hetzner, longhorn, elasticsearch, grafana, kibana, prometheus]
 author: AB Engineering

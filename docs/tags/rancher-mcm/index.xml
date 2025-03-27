@@ -8,7 +8,7 @@
     <link>https://blog.alphabravo.io/posts/2021/rancher-multi-cluster-management-ui/</link>
     <pubDate>Wed, 17 Nov 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/rancher-multi-cluster-management-ui/</guid>
     <description><![CDATA[<div class="featured-image">
-                <img src="/assets/rancher-ui-full.png" referrerpolicy="no-referrer">
+                <img src="/assets/2021/11/rancher-mcm-ui.png" referrerpolicy="no-referrer">
             </div>It doesn't matter what Kubernetes Engine you use (EKS, AKS, GKE, RKE, K3s, etc), Rancher MCM will help you manage it better.]]></description>
 </item>
 </channel>

@@ -8,7 +8,7 @@
     <link>https://blog.alphabravo.io/posts/2021/bulk-delete-clouflare-dns/</link>
     <pubDate>Thu, 23 Dec 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/bulk-delete-clouflare-dns/</guid>
     <description><![CDATA[<div class="featured-image">
-                <img src="/assets/2021/12/12-23-bulk-delete-cf-full.png" referrerpolicy="no-referrer">
+                <img src="/assets/2021/12/delete-cf-dns.png" referrerpolicy="no-referrer">
             </div>Cloudflare doesn't let you bulk delete in the UI. In this blog, we show you how to use Python script to bulk delete DNS records in Cloudflare.]]></description>
 </item>
 </channel>

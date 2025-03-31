@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Kubernetes Demystified: A Fun and Accessible Guide for Non-Techies - AB Engineering Blog</title><meta name="description" content="Understanding Kubernetes in simple terms."><meta property="og:url" content="https://blog.alphabravo.io/posts/2025/kubernetes-demystified-for-non-techies/">
+  <meta property="og:site_name" content="AB Engineering Blog">
+  <meta property="og:title" content="Kubernetes Demystified: A Fun and Accessible Guide for Non-Techies">
+  <meta property="og:description" content="Understanding Kubernetes in simple terms.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-03-31T09:00:00+00:00">
+    <meta property="article:modified_time" content="2025-03-31T09:00:00+00:00">
+    <meta property="article:tag" content="Containers">
+    <meta property="article:tag" content="Kubernetes">
+    <meta property="article:tag" content="Devsecops">
+    <meta property="og:image" content="https://blog.alphabravo.io/assets/2025/03/03-31-25-k8s-demystified.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://blog.alphabravo.io/assets/2025/03/03-31-25-k8s-demystified.png">
+  <meta name="twitter:title" content="Kubernetes Demystified: A Fun and Accessible Guide for Non-Techies">
+  <meta name="twitter:description" content="Understanding Kubernetes in simple terms.">
+      <meta name="twitter:site" content="@alphabravogov">
+<meta name="application-name" content="AB Engineering Blog">
+<meta name="apple-mobile-web-app-title" content="AB Engineering Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.alphabravo.io/posts/2025/kubernetes-demystified-for-non-techies/" /><link rel="prev" href="https://blog.alphabravo.io/posts/2025/choosing-right-devsecops-tools-gov/" /><link rel="stylesheet" href="/css/page.min.css"><link rel="stylesheet" href="/css/home.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Kubernetes Demystified: A Fun and Accessible Guide for Non-Techies",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.alphabravo.io\/posts\/2025\/kubernetes-demystified-for-non-techies\/"
+        },"image": ["https:\/\/blog.alphabravo.io\/assets\/2025\/03\/03-31-25-k8s-demystified.png"],"genre": "posts","keywords": "containers, kubernetes, devsecops","wordcount":  1198 ,
+        "url": "https:\/\/blog.alphabravo.io\/posts\/2025\/kubernetes-demystified-for-non-techies\/","datePublished": "2025-03-31T09:00:00+00:00","dateModified": "2025-03-31T09:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "AlphaBravo","logo": "https:\/\/blog.alphabravo.io\/assets\/alphabravo-logoonly-outline1.png"},"author": {
+                "@type": "Person",
+                "name": "AB Engineering"
+            },"description": "Understanding Kubernetes in simple terms."
+    }
+    </script></head><body data-header-desktop="auto" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="AB Engineering Blog"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/assets/alphabravo-logoonly-outline1.png"
+        data-srcset="/assets/alphabravo-logoonly-outline1.png, /assets/alphabravo-logoonly-outline1.png 1.5x, /assets/alphabravo-logoonly-outline1.png 2x"
+        data-sizes="auto"
+        alt="/assets/alphabravo-logoonly-outline1.png"
+        title="/assets/alphabravo-logoonly-outline1.png" /><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="https://blog.alphabravo.io" title="Blog Homepage" rel="noopener noreffer" target="_blank"> Home </a><a class="menu-item" href="https://alphabravo.io" title="AlphaBravo Website" rel="noopener noreffer" target="_blank"> AB Website </a><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="https://github.com/AlphaBravoCompany" rel="noopener noreffer" target="_blank"><i class='fab fa-github-alt fa-fw'></i>  </a><a class="menu-item" href="https://linkedin.com/company/alphabravogov/" rel="noopener noreffer" target="_blank"><i class='fab fa-linkedin fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search" id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a class="menu-item" href="/index.xml" title="RSS"><i class="fas fa-rss fa-fw" title="RSS"></i> </a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="AB Engineering Blog"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/assets/alphabravo-logoonly-outline1.png"
+        data-srcset="/assets/alphabravo-logoonly-outline1.png, /assets/alphabravo-logoonly-outline1.png 1.5x, /assets/alphabravo-logoonly-outline1.png 2x"
+        data-sizes="auto"
+        alt="/assets/alphabravo-logoonly-outline1.png"
+        title="/assets/alphabravo-logoonly-outline1.png" /><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search" id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="https://blog.alphabravo.io" title="Blog Homepage" rel="noopener noreffer" target="_blank">Home</a><a class="menu-item" href="https://alphabravo.io" title="AlphaBravo Website" rel="noopener noreffer" target="_blank">AB Website</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="https://github.com/AlphaBravoCompany" title="" rel="noopener noreffer" target="_blank"><i class='fab fa-github-alt fa-fw'></i></a><a class="menu-item" href="https://linkedin.com/company/alphabravogov/" title="" rel="noopener noreffer" target="_blank"><i class='fab fa-linkedin fa-fw'></i></a><div class="menu-item"><a href="/index.xml" title="RSS"><i class="fas fa-rss fa-fw" title="RSS"></i> </a>
+                <span>&nbsp;|&nbsp;</span><a href="javascript:void(0);" class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div></div>
+    </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single" data-toc="disable"><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/2025/03/03-31-25-k8s-demystified.png"
+        data-srcset="/assets/2025/03/03-31-25-k8s-demystified.png, /assets/2025/03/03-31-25-k8s-demystified.png 1.5x, /assets/2025/03/03-31-25-k8s-demystified.png 2x"
+        data-sizes="auto"
+        alt="/assets/2025/03/03-31-25-k8s-demystified.png"
+        title="Understanding Kubernetes in simple terms." /></div><div class="single-card" data-image="true"><h2 class="single-title animated flipInX">Kubernetes Demystified: A Fun and Accessible Guide for Non-Techies</h2><div class="post-meta">
+                <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>AB Engineering</a></span></div>
+                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2025-03-31">2025-03-31</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1198 words</span>&nbsp;
+                    <span><i class="far fa-clock fa-fw"></i>&nbsp;6 minutes</span>&nbsp;</div>
+            </div>
+            
+            <hr><div class="details toc" id="toc-static"  data-kept="">
+                    <div class="details-summary toc-title">
+                        <span>Contents</span>
+                        <span><i class="details-icon fas fa-angle-right"></i></span>
+                    </div>
+                    <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-problem-kubernetes-solves-why-do-we-need-it">The Problem Kubernetes Solves: Why Do We Need It?</a></li>
+    <li><a href="#what-is-kubernetes-an-everyday-analogy">What Is Kubernetes? An Everyday Analogy</a></li>
+    <li><a href="#core-concepts-of-kubernetes-explained-simply">Core Concepts of Kubernetes Explained Simply</a>
+      <ul>
+        <li><a href="#1-clusters-the-big-picture">1. Clusters: The Big Picture</a></li>
+        <li><a href="#2-nodes-the-workers">2. Nodes: The Workers</a></li>
+        <li><a href="#3-pods-the-smallest-unit">3. Pods: The Smallest Unit</a></li>
+        <li><a href="#4-control-plane-the-brain">4. Control Plane: The Brain</a></li>
+        <li><a href="#5-services-connecting-everything">5. Services: Connecting Everything</a></li>
+        <li><a href="#6-deployments-the-blueprint">6. Deployments: The Blueprint</a></li>
+      </ul>
+    </li>
+    <li><a href="#why-is-kubernetes-so-popular">Why Is Kubernetes So Popular?</a></li>
+    <li><a href="#real-life-examples-of-kubernetes-in-action">Real-Life Examples of Kubernetes in Action</a></li>
+    <li><a href="#challenges-with-kubernetes-and-how-theyre-being-addressed">Challenges with Kubernetes (and How They&rsquo;re Being Addressed)</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav></div>
+                </div><div class="content" id="content"><p>Kubernetes, often affectionately abbreviated as &ldquo;K8s,&rdquo; is one of the most buzzworthy technologies in the world of IT and software development. But for many people, especially those without a technical background, it can seem like an impenetrable wall of jargon and complexity. This article aims to break down Kubernetes into simple, relatable concepts that anyone can understand. By the end, you&rsquo;ll not only know what Kubernetes is but also why it matters and how it works. Think of this as your friendly guide to understanding one of the most transformative tools in modern computing.</p>
+<hr>
+<h2 id="the-problem-kubernetes-solves-why-do-we-need-it">The Problem Kubernetes Solves: Why Do We Need It?</h2>
+<p>Before diving into what Kubernetes is, it&rsquo;s essential to understand the problem it was designed to solve. Imagine you&rsquo;re running a business with a website or an app that serves thousands—or even millions—of users. Behind the scenes, your app is powered by code running on servers. But here&rsquo;s the catch: managing these servers and ensuring your app runs smoothly is no small feat.</p>
+<p>Traditionally, apps were built as single monolithic units that ran on individual servers. If something went wrong with the server—say it crashed or couldn&rsquo;t handle a sudden spike in traffic—your app would go down, leaving users frustrated. Scaling up to meet demand meant buying more servers, which could be expensive and inefficient.</p>
+<p>Enter <strong>containers</strong>, a game-changer in how applications are deployed and managed. Containers package an application and all its dependencies into a lightweight, portable unit that can run consistently across different environments. Think of containers as shipping containers for software: they standardize how apps are transported and run, regardless of where they are deployed.</p>
+<p>But here&rsquo;s the twist: managing containers at scale isn&rsquo;t easy either. Imagine trying to juggle hundreds or thousands of containers across multiple servers while ensuring they communicate seamlessly, scale up or down based on demand, and recover from failures automatically. This is where Kubernetes comes in—it orchestrates all these moving parts so you don&rsquo;t have to.</p>
+<hr>
+<h2 id="what-is-kubernetes-an-everyday-analogy">What Is Kubernetes? An Everyday Analogy</h2>
+<p>At its core, Kubernetes is an <strong>orchestrator</strong> for containers. But what does that mean? Let&rsquo;s use an analogy.</p>
+<p>Imagine you&rsquo;re running a busy restaurant kitchen. You have multiple chefs (servers) cooking various dishes (containers). Each dish requires specific ingredients (resources) and needs to be prepared in a particular order (workflow). As the restaurant owner, you want to ensure:</p>
+<ol>
+<li>Dishes are prepared on time.</li>
+<li>Chefs aren&rsquo;t overworked or sitting idle.</li>
+<li>Ingredients are used efficiently.</li>
+<li>If a chef burns a dish or calls in sick, another chef steps in seamlessly.</li>
+</ol>
+<p>Now replace &ldquo;chefs&rdquo; with servers, &ldquo;dishes&rdquo; with applications running in containers, and &ldquo;you&rdquo; with Kubernetes. Kubernetes acts as the head chef or conductor, ensuring everything runs smoothly in your kitchen—or in this case, your IT infrastructure.</p>
+<hr>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/2025/03/03-31-25-k8s-demystified-image1.png"
+        data-srcset="/assets/2025/03/03-31-25-k8s-demystified-image1.png, /assets/2025/03/03-31-25-k8s-demystified-image1.png 1.5x, /assets/2025/03/03-31-25-k8s-demystified-image1.png 2x"
+        data-sizes="auto"
+        alt="/assets/2025/03/03-31-25-k8s-demystified-image1.png"
+        title="Kubernetes Demystified" /></p>
+<h2 id="core-concepts-of-kubernetes-explained-simply">Core Concepts of Kubernetes Explained Simply</h2>
+<p>To understand how Kubernetes works, let&rsquo;s break down its key components using simple terms.</p>
+<h3 id="1-clusters-the-big-picture">1. Clusters: The Big Picture</h3>
+<p>A <strong>cluster</strong> is like a team working together to get things done. In Kubernetes, a cluster consists of multiple machines (called nodes) that work together to run your applications. These machines can be physical computers or virtual servers in the cloud.</p>
+<p>The cluster has two main parts:</p>
+<ul>
+<li><strong>Control Plane</strong>: The brain of the operation that makes decisions about what needs to be done.</li>
+<li><strong>Worker Nodes</strong>: The hands that do the actual work by running your applications.</li>
+</ul>
+<h3 id="2-nodes-the-workers">2. Nodes: The Workers</h3>
+<p>Each <strong>node</strong> is like an individual employee in your team. Nodes are responsible for running &ldquo;pods,&rdquo; which we&rsquo;ll explain shortly. They have their own resources (CPU, memory, etc.) and follow instructions from the control plane.</p>
+<h3 id="3-pods-the-smallest-unit">3. Pods: The Smallest Unit</h3>
+<p>A <strong>pod</strong> is like a table at your restaurant where dishes (containers) are served together because they complement each other. For example:</p>
+<ul>
+<li>One container might serve as the main course (your app&rsquo;s backend).</li>
+<li>Another container might serve as dessert (a database).</li>
+</ul>
+<p>Pods ensure these related containers share resources and communicate effectively.</p>
+<h3 id="4-control-plane-the-brain">4. Control Plane: The Brain</h3>
+<p>The control plane oversees everything happening in the cluster. It has several components:</p>
+<ul>
+<li><strong>API Server</strong>: Acts as the receptionist—you interact with it to give instructions.</li>
+<li><strong>Scheduler</strong>: Decides which node should handle which pod based on available resources.</li>
+<li><strong>Controller Manager</strong>: Ensures everything stays on track; if something fails, it fixes it.</li>
+<li><strong>etcd</strong>: A database that keeps track of what&rsquo;s happening in the cluster.</li>
+</ul>
+<h3 id="5-services-connecting-everything">5. Services: Connecting Everything</h3>
+<p>A <strong>service</strong> ensures that pods can talk to each other and users can access your app without worrying about where it&rsquo;s running. It&rsquo;s like giving each table at your restaurant a number so waiters know where to deliver food.</p>
+<h3 id="6-deployments-the-blueprint">6. Deployments: The Blueprint</h3>
+<p>A <strong>deployment</strong> is like a recipe—it specifies how many replicas of a pod you need and ensures they stay up-to-date. For example, if you want three instances of your app running at all times, the deployment makes sure this happens automatically.</p>
+<hr>
+<h2 id="why-is-kubernetes-so-popular">Why Is Kubernetes So Popular?</h2>
+<p>Kubernetes has become incredibly popular because it solves real-world problems for businesses of all sizes. Here are some reasons why it&rsquo;s such a big deal:</p>
+<ol>
+<li><strong>Scalability</strong>: Kubernetes can automatically scale your app up or down based on demand.</li>
+<li><strong>Resilience</strong>: If something goes wrong—like a server crashing—Kubernetes automatically recovers by restarting pods or moving them to healthy nodes.</li>
+<li><strong>Portability</strong>: You can run Kubernetes on any infrastructure—whether it&rsquo;s your local data center or a cloud provider like AWS or Google Cloud.</li>
+<li><strong>Cost Efficiency</strong>: By optimizing resource usage, Kubernetes helps businesses save money on infrastructure costs.</li>
+<li><strong>Automation</strong>: It takes care of repetitive tasks like deploying updates or balancing workloads across servers.</li>
+</ol>
+<hr>
+<h2 id="real-life-examples-of-kubernetes-in-action">Real-Life Examples of Kubernetes in Action</h2>
+<p>To make this even more relatable, let&rsquo;s look at some real-life scenarios where Kubernetes shines:</p>
+<ol>
+<li>
+<p><strong>E-commerce Websites</strong>
+Imagine an online store preparing for Black Friday sales. Traffic spikes dramatically during this period, but you don&rsquo;t want to overpay for unused servers during quieter times. Kubernetes can scale up resources during high traffic and scale them down afterward automatically.</p>
+</li>
+<li>
+<p><strong>Streaming Services</strong>
+For platforms like Netflix or Spotify, user demand fluctuates throughout the day. Kubernetes ensures these services run smoothly by distributing workloads across multiple servers and recovering from failures instantly.</p>
+</li>
+<li>
+<p><strong>Healthcare Apps</strong>
+In healthcare, apps must remain available 24/7 because lives depend on them. Kubernetes provides high availability by replicating critical services across multiple nodes.</p>
+</li>
+</ol>
+<hr>
+<h2 id="challenges-with-kubernetes-and-how-theyre-being-addressed">Challenges with Kubernetes (and How They&rsquo;re Being Addressed)</h2>
+<p>While Kubernetes offers many benefits, it&rsquo;s not without challenges:</p>
+<ol>
+<li><strong>Complexity</strong>: Setting up and managing Kubernetes requires expertise.</li>
+<li><strong>Learning Curve</strong>: Understanding its concepts can be daunting for newcomers.</li>
+<li><strong>Resource Management</strong>: Poorly configured clusters can lead to inefficiencies.</li>
+</ol>
+<p>Fortunately, managed services like Google Kubernetes Engine (GKE) and Amazon Elastic Kubernetes Service (EKS) simplify much of this complexity by handling setup and maintenance for you.</p>
+<hr>
+<h2 id="conclusion">Conclusion</h2>
+<p>Kubernetes might seem intimidating at first glance, but at its heart, it&rsquo;s just a tool designed to make life easier for developers and businesses alike by automating the management of containerized applications. Whether you&rsquo;re running a small startup or a global enterprise, Kubernetes provides the scalability, resilience, and flexibility needed to thrive in today&rsquo;s fast-paced digital world.</p>
+<p>So next time someone mentions &ldquo;K8s,&rdquo; you&rsquo;ll know they&rsquo;re talking about one of the most powerful tools for orchestrating modern applications—and you&rsquo;ll have some fun analogies to explain it!</p></div><div class="post-footer" id="post-footer">
+    <div class="post-info"><div class="post-info-tag"><span><a href="/tags/containers/">Containers</a>
+                </span><span><a href="/tags/kubernetes/">Kubernetes</a>
+                </span><span><a href="/tags/devsecops/">Devsecops</a>
+                </span></div><div class="post-info-line"><div class="post-info-mod">
+                <span>Updated on 2025-03-31</span>
+            </div><div class="post-info-mod"></div>
+        </div></div><div class="post-nav"><a href="/posts/2025/choosing-right-devsecops-tools-gov/" class="prev" rel="prev" title="A Guide to Choosing the Right DevSecOps Tools for Your Government Agency"><i class="fas fa-angle-left fa-fw"></i>Previous Post</a></div></div>
+</div></article></div>
+            </main>
+            <footer class="footer"><div class="footer-container"><div class="footer-line">AlphaBravo</div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/"></a></span></div>
+</div>
+</footer>
+        </div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-chevron-up fa-fw"></i>
+            </a></div><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css' integrity='sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==' crossorigin='anonymous' referrerpolicy='no-referrer' /><link rel="stylesheet" href="/css/custom-icons.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/typeit/typeit.min.js"></script><script src="/lib/lightgallery/lightgallery.min.js"></script><script src="/lib/lightgallery/lg-thumbnail.min.js"></script><script src="/lib/lightgallery/lg-zoom.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/cookieconsent/cookieconsent.min.js"></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{},"cookieconsent":{"content":{"dismiss":"Ok","link":"https://alphabravo.io","message":"We use cookies and open-source, privacy-respecting analytics technologies to improve your browsing experience on our website, to analyze our website traffic, and to understand where our visitors are coming from."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"Engineering Blog","id-2":"Engineering Blog"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"typeit":{"cursorChar":null,"cursorSpeed":null,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":null,"speed":null}};</script><script src="/js/theme.min.js"></script><script data-goatcounter="https://stats.alphabravo.io/count" async src="//stats.alphabravo.io/count.js"></script></body></html>

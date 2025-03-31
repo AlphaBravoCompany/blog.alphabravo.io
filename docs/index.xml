@@ -3,9 +3,17 @@
         <title>AB Engineering Blog</title>
         <link>https://blog.alphabravo.io/</link>
         <description>AlphaBravo Engineering Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 27 Mar 2025 06:00:00 &#43;0000</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 31 Mar 2025 09:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://blog.alphabravo.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Kubernetes Demystified: A Fun and Accessible Guide for Non-Techies</title>
+    <link>https://blog.alphabravo.io/posts/2025/kubernetes-demystified-for-non-techies/</link>
+    <pubDate>Mon, 31 Mar 2025 09:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2025/kubernetes-demystified-for-non-techies/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/assets/2025/03/03-31-25-k8s-demystified.png" referrerpolicy="no-referrer">
+            </div>Understanding Kubernetes in simple terms.]]></description>
+</item>
+<item>
     <title>A Guide to Choosing the Right DevSecOps Tools for Your Government Agency</title>
     <link>https://blog.alphabravo.io/posts/2025/choosing-right-devsecops-tools-gov/</link>
     <pubDate>Thu, 27 Mar 2025 06:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2025/choosing-right-devsecops-tools-gov/</guid>

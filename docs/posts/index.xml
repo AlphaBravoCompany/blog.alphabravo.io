@@ -3,7 +3,15 @@
         <title>All Posts - AB Engineering Blog</title>
         <link>https://blog.alphabravo.io/posts/</link>
         <description>All Posts | AB Engineering Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 31 Mar 2025 09:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 03 Apr 2025 09:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Understanding Kubernetes Primitives: Bridging Traditional Datacenter and Cloud Concepts</title>
+    <link>https://blog.alphabravo.io/posts/2025/bridging-cloud-and-k8s/</link>
+    <pubDate>Tue, 01 Apr 2025 07:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2025/bridging-cloud-and-k8s/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/assets/2025/04/04-01-25-kubernetes-primitives.png" referrerpolicy="no-referrer">
+            </div>Relating Kubernetes primitives to familiar concepts in datacenter and cloud environments.]]></description>
+</item>
+<item>
     <title>Kubernetes Demystified: A Fun and Accessible Guide for Non-Techies</title>
     <link>https://blog.alphabravo.io/posts/2025/kubernetes-demystified-for-non-techies/</link>
     <pubDate>Mon, 31 Mar 2025 09:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2025/kubernetes-demystified-for-non-techies/</guid>
@@ -74,14 +82,6 @@
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/2021/11/hetzner-rke2-part1.png" referrerpolicy="no-referrer">
             </div>Instructions on deploying RKE2, Helm, cert-manager and Rancher on a single node Hetzner server.]]></description>
-</item>
-<item>
-    <title>Why We Chose Nifi Over Databrew</title>
-    <link>https://blog.alphabravo.io/posts/2021/why-we-chose-nifi-over-databrew/</link>
-    <pubDate>Mon, 22 Nov 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/why-we-chose-nifi-over-databrew/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/assets/2021/11/nifi-over-databrew.png" referrerpolicy="no-referrer">
-            </div>A deep dive into why We Chose Nifi Over Databrew]]></description>
 </item>
 </channel>
 </rss>

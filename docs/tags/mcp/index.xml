@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Mcp - Tag - AB Engineering Blog</title>
+        <link>http://localhost:1313/tags/mcp/</link>
+        <description>Mcp - Tag - AB Engineering Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 31 Mar 2025 09:00:00 &#43;0000</lastBuildDate><atom:link href="http://localhost:1313/tags/mcp/" rel="self" type="application/rss+xml" /><item>
+    <title>The AI Whisperer&#39;s Guide to MCP Servers: Supercharging Your Digital Assistants</title>
+    <link>http://localhost:1313/posts/2025/mcp-servers-devsecops/</link>
+    <pubDate>Mon, 31 Mar 2025 09:00:00 &#43;0000</pubDate><guid>http://localhost:1313/posts/2025/mcp-servers-devsecops/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/assets/2025/04/04-03-25-mcp-guide.png" referrerpolicy="no-referrer">
+            </div>A beginner's guide to MCP servers and their role in DevSecOps.]]></description>
+</item>
+</channel>
+</rss>

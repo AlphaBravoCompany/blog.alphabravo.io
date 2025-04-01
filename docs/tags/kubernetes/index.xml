@@ -3,7 +3,15 @@
         <title>Kubernetes - Tag - AB Engineering Blog</title>
         <link>https://blog.alphabravo.io/tags/kubernetes/</link>
         <description>Kubernetes - Tag - AB Engineering Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 31 Mar 2025 09:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/tags/kubernetes/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 01 Apr 2025 07:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/tags/kubernetes/" rel="self" type="application/rss+xml" /><item>
+    <title>Understanding Kubernetes Primitives: Bridging Traditional Datacenter and Cloud Concepts</title>
+    <link>https://blog.alphabravo.io/posts/2025/bridging-cloud-and-k8s/</link>
+    <pubDate>Tue, 01 Apr 2025 07:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2025/bridging-cloud-and-k8s/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/assets/2025/04/04-01-25-kubernetes-primitives.png" referrerpolicy="no-referrer">
+            </div>Relating Kubernetes primitives to familiar concepts in datacenter and cloud environments.]]></description>
+</item>
+<item>
     <title>Kubernetes Demystified: A Fun and Accessible Guide for Non-Techies</title>
     <link>https://blog.alphabravo.io/posts/2025/kubernetes-demystified-for-non-techies/</link>
     <pubDate>Mon, 31 Mar 2025 09:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2025/kubernetes-demystified-for-non-techies/</guid>
@@ -74,14 +82,6 @@
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/2021/11/rancher-mcm-ui.png" referrerpolicy="no-referrer">
             </div>It doesn't matter what Kubernetes Engine you use (EKS, AKS, GKE, RKE, K3s, etc), Rancher MCM will help you manage it better.]]></description>
-</item>
-<item>
-    <title>Why We Use Rancher</title>
-    <link>https://blog.alphabravo.io/posts/2021/why-we-use-rancher/</link>
-    <pubDate>Mon, 15 Nov 2021 11:35:58 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/why-we-use-rancher/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/assets/2021/11/why-rancher.png" referrerpolicy="no-referrer">
-            </div>Some insight into why AlphaBravo uses Rancher technologies to accelerate DevSecOps initiatives internally and for our customers.]]></description>
 </item>
 </channel>
 </rss>

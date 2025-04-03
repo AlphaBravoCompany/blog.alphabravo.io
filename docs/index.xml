@@ -3,9 +3,25 @@
         <title>AB Engineering Blog</title>
         <link>https://blog.alphabravo.io/</link>
         <description>AlphaBravo Engineering Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 03 Apr 2025 09:00:00 &#43;0000</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 06 Apr 2025 09:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://blog.alphabravo.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>The AI Whisperer&#39;s Guide to MCP Servers: Supercharging Your Digital Assistants</title>
+    <link>https://blog.alphabravo.io/posts/2025/mcp-servers-devsecops/</link>
+    <pubDate>Thu, 03 Apr 2025 09:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2025/mcp-servers-devsecops/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/assets/2025/04/04-03-25-mcp-guide.png" referrerpolicy="no-referrer">
+            </div>A beginner's guide to MCP servers and their role in DevSecOps.]]></description>
+</item>
+<item>
+    <title>K3s, Rancher, and vCluster: Your Kubernetes Management Dream Team</title>
+    <link>https://blog.alphabravo.io/posts/2025/k3s-rancher-vcluster/</link>
+    <pubDate>Tue, 01 Apr 2025 09:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2025/k3s-rancher-vcluster/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/assets/2025/04/04-09-25-rancher-vcluster.jpg" referrerpolicy="no-referrer">
+            </div>A guide to setting up K3s, Rancher MCM, and vCluster for efficient Kubernetes management.]]></description>
+</item>
+<item>
     <title>Understanding Kubernetes Primitives: Bridging Traditional Datacenter and Cloud Concepts</title>
     <link>https://blog.alphabravo.io/posts/2025/bridging-cloud-and-k8s/</link>
     <pubDate>Tue, 01 Apr 2025 07:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2025/bridging-cloud-and-k8s/</guid>

@@ -3,7 +3,15 @@
         <title>Kubernetes - Tag - AB Engineering Blog</title>
         <link>https://blog.alphabravo.io/tags/kubernetes/</link>
         <description>Kubernetes - Tag - AB Engineering Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 01 Apr 2025 07:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/tags/kubernetes/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 01 Apr 2025 09:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/tags/kubernetes/" rel="self" type="application/rss+xml" /><item>
+    <title>K3s, Rancher, and vCluster: Your Kubernetes Management Dream Team</title>
+    <link>https://blog.alphabravo.io/posts/2025/k3s-rancher-vcluster/</link>
+    <pubDate>Tue, 01 Apr 2025 09:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2025/k3s-rancher-vcluster/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/assets/2025/04/04-09-25-rancher-vcluster.jpg" referrerpolicy="no-referrer">
+            </div>A guide to setting up K3s, Rancher MCM, and vCluster for efficient Kubernetes management.]]></description>
+</item>
+<item>
     <title>Understanding Kubernetes Primitives: Bridging Traditional Datacenter and Cloud Concepts</title>
     <link>https://blog.alphabravo.io/posts/2025/bridging-cloud-and-k8s/</link>
     <pubDate>Tue, 01 Apr 2025 07:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2025/bridging-cloud-and-k8s/</guid>
@@ -74,14 +82,6 @@
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/2021/11/hetzner-rke2-part1.png" referrerpolicy="no-referrer">
             </div>Instructions on deploying RKE2, Helm, cert-manager and Rancher on a single node Hetzner server.]]></description>
-</item>
-<item>
-    <title>Rancher Multi-Cluster Management UI</title>
-    <link>https://blog.alphabravo.io/posts/2021/rancher-multi-cluster-management-ui/</link>
-    <pubDate>Wed, 17 Nov 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/rancher-multi-cluster-management-ui/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/assets/2021/11/rancher-mcm-ui.png" referrerpolicy="no-referrer">
-            </div>It doesn't matter what Kubernetes Engine you use (EKS, AKS, GKE, RKE, K3s, etc), Rancher MCM will help you manage it better.]]></description>
 </item>
 </channel>
 </rss>

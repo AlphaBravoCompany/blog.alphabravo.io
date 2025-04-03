@@ -3,7 +3,49 @@
         <title>Tags - Tag - AB Engineering Blog</title>
         <link>https://blog.alphabravo.io/tags/</link>
         <description>Tags - Tag - AB Engineering Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 01 Apr 2025 07:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/tags/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 03 Apr 2025 09:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>Ai</title>
+    <link>https://blog.alphabravo.io/tags/ai/</link>
+    <pubDate>Thu, 03 Apr 2025 09:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/ai/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Devsecops</title>
+    <link>https://blog.alphabravo.io/tags/devsecops/</link>
+    <pubDate>Thu, 03 Apr 2025 09:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/devsecops/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Digital Assistants</title>
+    <link>https://blog.alphabravo.io/tags/digital-assistants/</link>
+    <pubDate>Thu, 03 Apr 2025 09:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/digital-assistants/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Mcp</title>
+    <link>https://blog.alphabravo.io/tags/mcp/</link>
+    <pubDate>Thu, 03 Apr 2025 09:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/mcp/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Etcd</title>
+    <link>https://blog.alphabravo.io/tags/etcd/</link>
+    <pubDate>Tue, 01 Apr 2025 09:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/etcd/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>K3s</title>
+    <link>https://blog.alphabravo.io/tags/k3s/</link>
+    <pubDate>Tue, 01 Apr 2025 09:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/k3s/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Kubernetes</title>
+    <link>https://blog.alphabravo.io/tags/kubernetes/</link>
+    <pubDate>Tue, 01 Apr 2025 09:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/kubernetes/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>Cloud</title>
     <link>https://blog.alphabravo.io/tags/cloud/</link>
     <pubDate>Tue, 01 Apr 2025 07:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/cloud/</guid>
@@ -19,48 +61,6 @@
     <title>Datacenter</title>
     <link>https://blog.alphabravo.io/tags/datacenter/</link>
     <pubDate>Tue, 01 Apr 2025 07:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/datacenter/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Devsecops</title>
-    <link>https://blog.alphabravo.io/tags/devsecops/</link>
-    <pubDate>Tue, 01 Apr 2025 07:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/devsecops/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Kubernetes</title>
-    <link>https://blog.alphabravo.io/tags/kubernetes/</link>
-    <pubDate>Tue, 01 Apr 2025 07:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/kubernetes/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Dod</title>
-    <link>https://blog.alphabravo.io/tags/dod/</link>
-    <pubDate>Thu, 27 Mar 2025 06:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/dod/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Security</title>
-    <link>https://blog.alphabravo.io/tags/security/</link>
-    <pubDate>Thu, 27 Mar 2025 06:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/security/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Chainguard</title>
-    <link>https://blog.alphabravo.io/tags/chainguard/</link>
-    <pubDate>Wed, 26 Mar 2025 06:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/chainguard/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Devops</title>
-    <link>https://blog.alphabravo.io/tags/devops/</link>
-    <pubDate>Wed, 26 Mar 2025 06:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/devops/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Cloudflare</title>
-    <link>https://blog.alphabravo.io/tags/cloudflare/</link>
-    <pubDate>Thu, 23 Dec 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/tags/cloudflare/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title> - AB Engineering Blog</title><meta name="description" content="AlphaBravo Engineering Blog"><meta property="og:url" content="http://localhost:1313/posts/2025/04-07-25-etcd-deep-dive/">
+  <meta property="og:site_name" content="AB Engineering Blog">
+  <meta property="og:title" content="AB Engineering Blog">
+  <meta property="og:description" content="metadata— title: “ETCD and Kubernetes: A Deep Dive with K3s - Where Your Cluster’s Secrets Hide” description: “A beginner’s guide to etcd and Kubernetes with K3s.” slug: “etcd-k3s-deep-dive” date: 2025-04-06T09:00:00Z draft: false featuredImage: /assets/2025/04/04-07-25-k3s-etcd.jpg featuredImagePreview: /assets/2025/04/04-07-25-k3s-etcd.jpg featuredImageAlt: “K3s and ETCD” images: [&#34;/assets/2025/04/04-07-25-k3s-etcd.jpg&#34;] seo: images: [&#34;/assets/2025/04/04-07-25-k3s-etcd.jpg&#34;] lightgallery: true tags: [devsecops, kubernetes, etcd, k3s] author: AB Engineering">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="AB Engineering Blog">
+  <meta name="twitter:description" content="metadata— title: “ETCD and Kubernetes: A Deep Dive with K3s - Where Your Cluster’s Secrets Hide” description: “A beginner’s guide to etcd and Kubernetes with K3s.” slug: “etcd-k3s-deep-dive” date: 2025-04-06T09:00:00Z draft: false featuredImage: /assets/2025/04/04-07-25-k3s-etcd.jpg featuredImagePreview: /assets/2025/04/04-07-25-k3s-etcd.jpg featuredImageAlt: “K3s and ETCD” images: [&#34;/assets/2025/04/04-07-25-k3s-etcd.jpg&#34;] seo: images: [&#34;/assets/2025/04/04-07-25-k3s-etcd.jpg&#34;] lightgallery: true tags: [devsecops, kubernetes, etcd, k3s] author: AB Engineering">
+      <meta name="twitter:site" content="@alphabravogov">
+<meta name="application-name" content="AB Engineering Blog">
+<meta name="apple-mobile-web-app-title" content="AB Engineering Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/posts/2025/04-07-25-etcd-deep-dive/" /><link rel="next" href="http://localhost:1313/posts/2021/welcome-to-the-blog/" /><link rel="stylesheet" href="/css/page.min.css"><link rel="stylesheet" href="/css/home.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/posts\/2025\/04-07-25-etcd-deep-dive\/"
+        },"image": ["http:\/\/localhost:1313\/assets\/ab-seo-large.png"],"genre": "posts","wordcount":  1446 ,
+        "url": "http:\/\/localhost:1313\/posts\/2025\/04-07-25-etcd-deep-dive\/","publisher": {
+            "@type": "Organization",
+            "name": "AlphaBravo","logo": "http:\/\/localhost:1313\/assets\/alphabravo-logoonly-outline1.png"},"author": {
+                "@type": "Person",
+                "name": "Author"
+            },"description": ""
+    }
+    </script></head><body data-header-desktop="auto" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="AB Engineering Blog"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/assets/alphabravo-logoonly-outline1.png"
+        data-srcset="/assets/alphabravo-logoonly-outline1.png, /assets/alphabravo-logoonly-outline1.png 1.5x, /assets/alphabravo-logoonly-outline1.png 2x"
+        data-sizes="auto"
+        alt="/assets/alphabravo-logoonly-outline1.png"
+        title="/assets/alphabravo-logoonly-outline1.png" /><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="https://blog.alphabravo.io" title="Blog Homepage" rel="noopener noreffer" target="_blank"> Home </a><a class="menu-item" href="https://alphabravo.io" title="AlphaBravo Website" rel="noopener noreffer" target="_blank"> AB Website </a><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="https://github.com/AlphaBravoCompany" rel="noopener noreffer" target="_blank"><i class='fab fa-github-alt fa-fw'></i>  </a><a class="menu-item" href="https://linkedin.com/company/alphabravogov/" rel="noopener noreffer" target="_blank"><i class='fab fa-linkedin fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search" id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a class="menu-item" href="/index.xml" title="RSS"><i class="fas fa-rss fa-fw" title="RSS"></i> </a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="AB Engineering Blog"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/assets/alphabravo-logoonly-outline1.png"
+        data-srcset="/assets/alphabravo-logoonly-outline1.png, /assets/alphabravo-logoonly-outline1.png 1.5x, /assets/alphabravo-logoonly-outline1.png 2x"
+        data-sizes="auto"
+        alt="/assets/alphabravo-logoonly-outline1.png"
+        title="/assets/alphabravo-logoonly-outline1.png" /><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search" id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="https://blog.alphabravo.io" title="Blog Homepage" rel="noopener noreffer" target="_blank">Home</a><a class="menu-item" href="https://alphabravo.io" title="AlphaBravo Website" rel="noopener noreffer" target="_blank">AB Website</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="https://github.com/AlphaBravoCompany" title="" rel="noopener noreffer" target="_blank"><i class='fab fa-github-alt fa-fw'></i></a><a class="menu-item" href="https://linkedin.com/company/alphabravogov/" title="" rel="noopener noreffer" target="_blank"><i class='fab fa-linkedin fa-fw'></i></a><div class="menu-item"><a href="/index.xml" title="RSS"><i class="fas fa-rss fa-fw" title="RSS"></i> </a>
+                <span>&nbsp;|&nbsp;</span><a href="javascript:void(0);" class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div></div>
+    </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single" data-toc="disable"><div class="single-card" ><h2 class="single-title animated flipInX"></h2><div class="post-meta">
+                <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Author</a></span></div>
+                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1446 words</span>&nbsp;
+                    <span><i class="far fa-clock fa-fw"></i>&nbsp;7 minutes</span>&nbsp;</div>
+            </div>
+            
+            <hr><div class="details toc" id="toc-static"  data-kept="">
+                    <div class="details-summary toc-title">
+                        <span>Contents</span>
+                        <span><i class="details-icon fas fa-angle-right"></i></span>
+                    </div>
+                    <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#author-ab-engineering">metadata&mdash;
+title: &ldquo;ETCD and Kubernetes: A Deep Dive with K3s - Where Your Cluster&rsquo;s Secrets Hide&rdquo;
+description: &ldquo;A beginner&rsquo;s guide to etcd and Kubernetes with K3s.&rdquo;
+slug: &ldquo;etcd-k3s-deep-dive&rdquo;
+date: 2025-04-06T09:00:00Z
+draft: false
+featuredImage: /assets/2025/04/04-07-25-k3s-etcd.jpg
+featuredImagePreview: /assets/2025/04/04-07-25-k3s-etcd.jpg
+featuredImageAlt: &ldquo;K3s and ETCD&rdquo;
+images: [&quot;/assets/2025/04/04-07-25-k3s-etcd.jpg&quot;]
+seo:
+images: [&quot;/assets/2025/04/04-07-25-k3s-etcd.jpg&quot;]
+lightgallery: true
+tags: [devsecops, kubernetes, etcd, k3s]
+author: AB Engineering</a></li>
+    <li><a href="#what-is-etcd-and-why-should-you-care">What is ETCD and Why Should You Care?</a></li>
+    <li><a href="#k3s-and-etcd-the-lightweight-dynamic-duo">K3s and ETCD: The Lightweight Dynamic Duo</a></li>
+    <li><a href="#prerequisites">Prerequisites</a></li>
+    <li><a href="#setting-up-k3s-with-embedded-etcd">Setting Up K3s with Embedded Etcd</a>
+      <ul>
+        <li><a href="#step-1-start-your-first-k3s-server-with-embedded-etcd">Step 1: Start Your First K3s Server with Embedded Etcd</a></li>
+        <li><a href="#step-2-verify-k3s-is-running">Step 2: Verify K3s is Running</a></li>
+        <li><a href="#step-3-installing-etcdctl-the-skeleton-key-to-your-clusters-data">Step 3: Installing etcdctl (The Skeleton Key to Your Cluster&rsquo;s Data)</a></li>
+      </ul>
+    </li>
+    <li><a href="#peeking-inside-etcd-where-kubernetes-stores-its-secrets">Peeking Inside ETCD: Where Kubernetes Stores Its Secrets</a>
+      <ul>
+        <li><a href="#step-4-verifying-your-etcdctl-installation">Step 4: Verifying Your etcdctl Installation</a></li>
+        <li><a href="#step-5-retrieving-all-keys-from-etcd">Step 5: Retrieving All Keys from ETCD</a></li>
+        <li><a href="#step-6-focusing-on-pod-data">Step 6: Focusing on Pod Data</a></li>
+      </ul>
+    </li>
+    <li><a href="#playing-with-fire-storing-and-retrieving-custom-values">Playing with Fire: Storing and Retrieving Custom Values</a>
+      <ul>
+        <li><a href="#step-7-storing-a-custom-value">Step 7: Storing a Custom Value</a></li>
+        <li><a href="#step-8-retrieving-our-custom-value">Step 8: Retrieving Our Custom Value</a></li>
+      </ul>
+    </li>
+    <li><a href="#living-dangerously-command-variations-and-their-consequences">Living Dangerously: Command Variations and Their Consequences</a>
+      <ul>
+        <li><a href="#variation-1-removing-the-certificate">Variation 1: Removing the Certificate</a></li>
+        <li><a href="#variation-2-skipping-the-endpoint">Variation 2: Skipping the Endpoint</a></li>
+      </ul>
+    </li>
+    <li><a href="#checking-if-youre-running-with-embedded-etcd">Checking If You&rsquo;re Running with Embedded Etcd</a></li>
+    <li><a href="#conclusion-etcd---the-unsung-hero-of-your-k3s-cluster">Conclusion: ETCD - The Unsung Hero of Your K3s Cluster</a></li>
+  </ul>
+</nav></div>
+                </div><div class="content" id="content"><h2 id="author-ab-engineering">metadata&mdash;
+title: &ldquo;ETCD and Kubernetes: A Deep Dive with K3s - Where Your Cluster&rsquo;s Secrets Hide&rdquo;
+description: &ldquo;A beginner&rsquo;s guide to etcd and Kubernetes with K3s.&rdquo;
+slug: &ldquo;etcd-k3s-deep-dive&rdquo;
+date: 2025-04-06T09:00:00Z
+draft: false
+featuredImage: /assets/2025/04/04-07-25-k3s-etcd.jpg
+featuredImagePreview: /assets/2025/04/04-07-25-k3s-etcd.jpg
+featuredImageAlt: &ldquo;K3s and ETCD&rdquo;
+images: [&quot;/assets/2025/04/04-07-25-k3s-etcd.jpg&quot;]
+seo:
+images: [&quot;/assets/2025/04/04-07-25-k3s-etcd.jpg&quot;]
+lightgallery: true
+tags: [devsecops, kubernetes, etcd, k3s]
+author: AB Engineering</h2>
+<p>Before diving into the fascinating world of Kubernetes&rsquo; memory bank (aka etcd), let me quickly summarize the key findings from this exploration. Etcd serves as the brain behind your Kubernetes cluster&rsquo;s operations, storing critical configuration data and state information. When integrated with K3s, it offers a lightweight yet powerful solution for maintaining cluster continuity. Through direct interaction with etcd using etcdctl, we can glimpse the inner workings of Kubernetes&rsquo; decision-making processes and even manipulate stored values – though with great power comes great responsibility (and potential cluster chaos).</p>
+<h2 id="what-is-etcd-and-why-should-you-care">What is ETCD and Why Should You Care?</h2>
+<p>In the grand theater of Kubernetes orchestration, etcd plays the unsung hero - the meticulous record-keeper responsible for storing every configuration detail, state record, and metadata that makes your cluster tick. Without etcd, your Kubernetes cluster would suffer from a severe case of digital amnesia, unable to remember what containers should be running where, or which services are mapped to which endpoints.</p>
+<p>While etcd wasn&rsquo;t specifically built for Kubernetes (it was actually created by the folks at CoreOS for their distributed systems), it&rsquo;s been enthusiastically adopted by the Kubernetes community like that one exchange student everyone immediately befriends. Its distributed key-value architecture makes it perfect for the high-availability, consistency-focused needs of container orchestration.</p>
+<p>As one of my mentors once quipped, &ldquo;If your containers are the actors, and Kubernetes is the director, then etcd is the script supervisor making sure nobody forgets their lines.&rdquo;</p>
+<h2 id="k3s-and-etcd-the-lightweight-dynamic-duo">K3s and ETCD: The Lightweight Dynamic Duo</h2>
+<p>Unlike its more resource-hungry cousins, K3s offers a refreshingly svelte approach to Kubernetes. One of its standout features is the flexibility to choose your datastore poison. You can opt for:</p>
+<ul>
+<li>
+<p><strong>Embedded SQLite</strong>: Perfect for single-node setups when you&rsquo;re just testing things out on that Raspberry Pi gathering dust in your drawer. Note: As reliable as your memory after an all-night deployment session when you try to scale beyond one server.</p>
+</li>
+<li>
+<p><strong>Embedded etcd</strong>: The high-availability option we&rsquo;re exploring today. Automatically activated when you configure K3s to initialize a cluster. It&rsquo;s like SQLite but with friends it can talk to.</p>
+</li>
+<li>
+<p><strong>External Databases</strong>: For the enterprise folks who already have a dedicated database team glaring at you for not using their &ldquo;perfectly optimized&rdquo; MySQL setup.</p>
+</li>
+</ul>
+<p>Today, we&rsquo;re focusing on the embedded etcd option because, let&rsquo;s face it, we want our Kubernetes to be both lightweight AND resilient - like a marathon runner who can also deadlift.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before we embark on this journey of etcd enlightenment, you should be familiar with:</p>
+<ul>
+<li>Basic Kubernetes concepts (pods, nodes, clusters) - if &ldquo;kubectl&rdquo; sounds like a noise your cat makes when coughing up a hairball, you might want to brush up first</li>
+<li>Command-line familiarity (if you get anxious seeing a blinking cursor, this might be challenging)</li>
+<li>Basic understanding of etcd as a distributed key-value store</li>
+<li>K3s installed or ready to install (we&rsquo;ll help with that)</li>
+<li>Your favorite caffeinated beverage (troubleshooting distributed systems is thirsty work)</li>
+</ul>
+<h2 id="setting-up-k3s-with-embedded-etcd">Setting Up K3s with Embedded Etcd</h2>
+<p>Let&rsquo;s get our hands dirty with a properly configured K3s cluster using embedded etcd. For high availability, etcd clusters need an odd number of server nodes to maintain quorum. Remember the old saying: &ldquo;In the land of distributed consensus, three nodes are better than two, and five is better than four.&rdquo;</p>
+<h3 id="step-1-start-your-first-k3s-server-with-embedded-etcd">Step 1: Start Your First K3s Server with Embedded Etcd</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -sfL https://get.k3s.io <span class="p">|</span> <span class="nv">K3S_TOKEN</span><span class="o">=</span>supersecrettoken sh -s - server <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --cluster-init <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --tls-san<span class="o">=</span>
+</span></span></code></pre></div><p>The <code>--cluster-init</code> flag is where the magic happens - it tells K3s to initialize a new cluster using embedded etcd instead of the default SQLite database. Like choosing the deluxe package at a car wash, it&rsquo;s a small option with significant benefits.</p>
+<h3 id="step-2-verify-k3s-is-running">Step 2: Verify K3s is Running</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo k3s kubectl get nodes
+</span></span></code></pre></div><p>You should see your server node with roles that include &lsquo;master&rsquo; and &rsquo;etcd&rsquo;, proudly displaying its dual citizenship in the land of Kubernetes.</p>
+<h3 id="step-3-installing-etcdctl-the-skeleton-key-to-your-clusters-data">Step 3: Installing etcdctl (The Skeleton Key to Your Cluster&rsquo;s Data)</h3>
+<p>K3s, in its quest for minimalism, doesn&rsquo;t include etcdctl. Like those &ldquo;assembly required&rdquo; furniture pieces that don&rsquo;t include the required tools, we need to bring our own:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">ETCD_VERSION</span><span class="o">=</span><span class="s2">&#34;v3.5.5&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">ETCD_URL</span><span class="o">=</span><span class="s2">&#34;https://github.com/etcd-io/etcd/releases/download/</span><span class="si">${</span><span class="nv">ETCD_VERSION</span><span class="si">}</span><span class="s2">/etcd-</span><span class="si">${</span><span class="nv">ETCD_VERSION</span><span class="si">}</span><span class="s2">-linux-amd64.tar.gz&#34;</span>
+</span></span><span class="line"><span class="cl">curl -sL <span class="si">${</span><span class="nv">ETCD_URL</span><span class="si">}</span> <span class="p">|</span> sudo tar -zxv --strip-components<span class="o">=</span><span class="m">1</span> -C /usr/local/bin
+</span></span></code></pre></div><p>This downloads and installs etcdctl, our Swiss Army knife for etcd interactions.</p>
+<h2 id="peeking-inside-etcd-where-kubernetes-stores-its-secrets">Peeking Inside ETCD: Where Kubernetes Stores Its Secrets</h2>
+<p>Now that we have our etcdctl ready, let&rsquo;s use it to peek into the heart of our Kubernetes cluster. Accessing etcd data requires proper credentials - it&rsquo;s not giving up its secrets to just anyone.</p>
+<h3 id="step-4-verifying-your-etcdctl-installation">Step 4: Verifying Your etcdctl Installation</h3>
+<p>First, let&rsquo;s check that our etcdctl is properly installed:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo etcdctl version <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --cacert<span class="o">=</span>/var/lib/rancher/k3s/server/tls/etcd/server-ca.crt <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --cert<span class="o">=</span>/var/lib/rancher/k3s/server/tls/etcd/client.crt <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --key<span class="o">=</span>/var/lib/rancher/k3s/server/tls/etcd/client.key
+</span></span></code></pre></div><p>If all goes well, you&rsquo;ll see the version information - your backstage pass is working.</p>
+<h3 id="step-5-retrieving-all-keys-from-etcd">Step 5: Retrieving All Keys from ETCD</h3>
+<p>Let&rsquo;s see what secrets our cluster is keeping:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo etcdctl <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --endpoints<span class="o">=</span>https://127.0.0.1:2379 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --cacert<span class="o">=</span>/var/lib/rancher/k3s/server/tls/etcd/server-ca.crt <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --key<span class="o">=</span>/var/lib/rancher/k3s/server/tls/etcd/client.key <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --cert<span class="o">=</span>/var/lib/rancher/k3s/server/tls/etcd/client.crt <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  get / --prefix --keys-only
+</span></span></code></pre></div><p>This command is like opening the filing cabinet of Kubernetes. The <code>--prefix</code> flag tells etcdctl to show all keys under the specified path, while <code>--keys-only</code> keeps things tidy by showing just the keys without their values.</p>
+<p>You&rsquo;ll likely see a treasure trove of keys, many starting with <code>/registry/</code> - that&rsquo;s Kubernetes&rsquo; organizational system at work.</p>
+<h3 id="step-6-focusing-on-pod-data">Step 6: Focusing on Pod Data</h3>
+<p>To zoom in on just pod-related information:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo etcdctl <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --endpoints<span class="o">=</span>https://127.0.0.1:2379 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --cacert<span class="o">=</span>/var/lib/rancher/k3s/server/tls/etcd/server-ca.crt <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --key<span class="o">=</span>/var/lib/rancher/k3s/server/tls/etcd/client.key <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --cert<span class="o">=</span>/var/lib/rancher/k3s/server/tls/etcd/client.crt <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  get /registry/pods --prefix --keys-only
+</span></span></code></pre></div><p>Now you&rsquo;re looking at the addresses where Kubernetes stores information about every pod in your cluster. It&rsquo;s like having the building directory for your containerized applications.</p>
+<h2 id="playing-with-fire-storing-and-retrieving-custom-values">Playing with Fire: Storing and Retrieving Custom Values</h2>
+<p>Let&rsquo;s have some fun (the responsible sysadmin kind of fun) by storing and retrieving our own values in etcd.</p>
+<h3 id="step-7-storing-a-custom-value">Step 7: Storing a Custom Value</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo etcdctl <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --endpoints<span class="o">=</span>https://127.0.0.1:2379 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --cacert<span class="o">=</span>/var/lib/rancher/k3s/server/tls/etcd/server-ca.crt <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --key<span class="o">=</span>/var/lib/rancher/k3s/server/tls/etcd/client.key <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --cert<span class="o">=</span>/var/lib/rancher/k3s/server/tls/etcd/client.crt <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  put name k3s-wizard
+</span></span></code></pre></div><p>If successful, etcd will respond with &ldquo;OK&rdquo; - its way of saying &ldquo;I&rsquo;ve recorded your note in the cosmic ledger of Kubernetes&rdquo;.</p>
+<h3 id="step-8-retrieving-our-custom-value">Step 8: Retrieving Our Custom Value</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo etcdctl <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --endpoints<span class="o">=</span>https://127.0.0.1:2379 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --cacert<span class="o">=</span>/var/lib/rancher/k3s/server/tls/etcd/server-ca.crt <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --key<span class="o">=</span>/var/lib/rancher/k3s/server/tls/etcd/client.key <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --cert<span class="o">=</span>/var/lib/rancher/k3s/server/tls/etcd/client.crt <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  get name
+</span></span></code></pre></div><p>This should return &ldquo;k3s-wizard&rdquo;, confirming our data survived its journey to and from etcd.</p>
+<h2 id="living-dangerously-command-variations-and-their-consequences">Living Dangerously: Command Variations and Their Consequences</h2>
+<p>Now, let&rsquo;s experiment with modified commands to understand the security mechanisms protecting our etcd data. Warning: This is like removing safety guardrails to see what happens - educational but potentially messy.</p>
+<h3 id="variation-1-removing-the-certificate">Variation 1: Removing the Certificate</h3>
+<p>If we try without the certificate:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo etcdctl <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --endpoints<span class="o">=</span>https://127.0.0.1:2379 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --cacert<span class="o">=</span>/var/lib/rancher/k3s/server/tls/etcd/server-ca.crt <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --key<span class="o">=</span>/var/lib/rancher/k3s/server/tls/etcd/client.key <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  get name
+</span></span></code></pre></div><p>You&rsquo;ll likely meet etcd&rsquo;s bouncer: a connection error. The certificate is your VIP pass, and without it, you&rsquo;re not getting past the velvet rope.</p>
+<h3 id="variation-2-skipping-the-endpoint">Variation 2: Skipping the Endpoint</h3>
+<p>Interestingly, if we run the command from within the server node, we might be able to omit the endpoint:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo etcdctl <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --cacert<span class="o">=</span>/var/lib/rancher/k3s/server/tls/etcd/server-ca.crt <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --key<span class="o">=</span>/var/lib/rancher/k3s/server/tls/etcd/client.key <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --cert<span class="o">=</span>/var/lib/rancher/k3s/server/tls/etcd/client.crt <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  get name
+</span></span></code></pre></div><p>This works because etcdctl defaults to localhost:2379 when no endpoint is specified. It&rsquo;s like not having to tell your GPS your current location.</p>
+<h2 id="checking-if-youre-running-with-embedded-etcd">Checking If You&rsquo;re Running with Embedded Etcd</h2>
+<p>If you inherited a cluster and aren&rsquo;t sure if it&rsquo;s using embedded etcd, here&rsquo;s how to check:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo journalctl -u k3s.service --no-pager <span class="p">|</span> grep <span class="s2">&#34;database&#34;</span>
+</span></span></code></pre></div><p>If you see messages about &ldquo;Running embedded etcd&rdquo; or &ldquo;Defragmenting etcd database,&rdquo; congratulations! You&rsquo;re in the etcd club.</p>
+<p>Alternatively:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo ls -l /var/lib/rancher/k3s/server/db/
+</span></span></code></pre></div><p>If you see an <code>etcd</code> directory rather than just a <code>k3s.db</code> file, you&rsquo;re running with embedded etcd.</p>
+<h2 id="conclusion-etcd---the-unsung-hero-of-your-k3s-cluster">Conclusion: ETCD - The Unsung Hero of Your K3s Cluster</h2>
+<p>Throughout this journey into the heart of Kubernetes data storage, we&rsquo;ve seen how etcd serves as the reliable backbone of cluster state management. We&rsquo;ve learned how to:</p>
+<ul>
+<li>Set up K3s with embedded etcd for better reliability</li>
+<li>Install and use etcdctl to interact directly with the etcd datastore</li>
+<li>Retrieve, store, and manage data in etcd</li>
+<li>Navigate the security mechanisms protecting your cluster&rsquo;s most sensitive information</li>
+<li>Verify which datastore your K3s cluster is using</li>
+</ul>
+<p>Remember, etcd is like the black box flight recorder of your Kubernetes cluster - it knows everything that&rsquo;s happening, but needs special tools to reveal its secrets. With the knowledge you&rsquo;ve gained today, you&rsquo;re now equipped to both understand and manipulate this critical component of your Kubernetes infrastructure.</p>
+<p>As one wise DevOps engineer once said, &ldquo;Those who understand etcd are destined to rebuild their clusters less often.&rdquo; Happy clustering!</p></div><div class="post-footer" id="post-footer">
+    <div class="post-info"><div class="post-info-line"><div class="post-info-mod">
+                <span>Updated on 0001-01-01</span>
+            </div><div class="post-info-mod"></div>
+        </div></div><div class="post-nav">
+            <a href="/posts/2021/welcome-to-the-blog/" class="next" rel="next" title="Welcome To The Blog">Next Post<i class="fas fa-angle-right fa-fw"></i></a></div></div>
+</div></article></div>
+            </main>
+            <footer class="footer"><div class="footer-container"><div class="footer-line">AlphaBravo</div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/"></a></span></div>
+</div>
+</footer>
+        </div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-chevron-up fa-fw"></i>
+            </a></div><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css' integrity='sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==' crossorigin='anonymous' referrerpolicy='no-referrer' /><link rel="stylesheet" href="/css/custom-icons.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/typeit/typeit.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/cookieconsent/cookieconsent.min.js"></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{},"cookieconsent":{"content":{"dismiss":"Ok","link":"https://alphabravo.io","message":"We use cookies and open-source, privacy-respecting analytics technologies to improve your browsing experience on our website, to analyze our website traffic, and to understand where our visitors are coming from."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"Engineering Blog","id-2":"Engineering Blog"},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"typeit":{"cursorChar":null,"cursorSpeed":null,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":null,"speed":null}};</script><script src="/js/theme.min.js"></script></body></html>

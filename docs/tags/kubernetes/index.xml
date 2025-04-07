@@ -3,12 +3,20 @@
         <title>Kubernetes - Tag - AB Engineering Blog</title>
         <link>https://blog.alphabravo.io/tags/kubernetes/</link>
         <description>Kubernetes - Tag - AB Engineering Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 01 Apr 2025 09:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/tags/kubernetes/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 07 Apr 2025 09:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/tags/kubernetes/" rel="self" type="application/rss+xml" /><item>
+    <title>ETCD and Kubernetes: A Deep Dive with K3s - Where Your Cluster&#39;s Secrets Hide</title>
+    <link>https://blog.alphabravo.io/posts/2025/etcd-k3s-deep-dive/</link>
+    <pubDate>Mon, 07 Apr 2025 09:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2025/etcd-k3s-deep-dive/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/assets/2025/04/04-07-25-k3s-etcd.jpg" referrerpolicy="no-referrer">
+            </div>A beginner's guide to etcd and Kubernetes with K3s.]]></description>
+</item>
+<item>
     <title>K3s, Rancher, and vCluster: Your Kubernetes Management Dream Team</title>
     <link>https://blog.alphabravo.io/posts/2025/k3s-rancher-vcluster/</link>
     <pubDate>Tue, 01 Apr 2025 09:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2025/k3s-rancher-vcluster/</guid>
     <description><![CDATA[<div class="featured-image">
-                <img src="/assets/2025/04/04-09-25-rancher-vcluster.jpg" referrerpolicy="no-referrer">
+                <img src="/assets/2025/04/04-01-25-rancher-vcluster.jpg" referrerpolicy="no-referrer">
             </div>A guide to setting up K3s, Rancher MCM, and vCluster for efficient Kubernetes management.]]></description>
 </item>
 <item>
@@ -74,14 +82,6 @@
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/2021/11/hetzner-k3s.png" referrerpolicy="no-referrer">
             </div>Instructions on deploying K3s, Helm, cert-manager and Rancher on a single node Hetzner server.]]></description>
-</item>
-<item>
-    <title>Powerful Single Node RKE2 on Hetzner for CHEAP! (Part 1)</title>
-    <link>https://blog.alphabravo.io/posts/2021/single-node-rke2-pt1/</link>
-    <pubDate>Mon, 29 Nov 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/single-node-rke2-pt1/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/assets/2021/11/hetzner-rke2-part1.png" referrerpolicy="no-referrer">
-            </div>Instructions on deploying RKE2, Helm, cert-manager and Rancher on a single node Hetzner server.]]></description>
 </item>
 </channel>
 </rss>

@@ -3,7 +3,15 @@
         <title>Devsecops - Tag - AB Engineering Blog</title>
         <link>https://blog.alphabravo.io/tags/devsecops/</link>
         <description>Devsecops - Tag - AB Engineering Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 03 Apr 2025 09:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/tags/devsecops/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 07 Apr 2025 09:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/tags/devsecops/" rel="self" type="application/rss+xml" /><item>
+    <title>ETCD and Kubernetes: A Deep Dive with K3s - Where Your Cluster&#39;s Secrets Hide</title>
+    <link>https://blog.alphabravo.io/posts/2025/etcd-k3s-deep-dive/</link>
+    <pubDate>Mon, 07 Apr 2025 09:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2025/etcd-k3s-deep-dive/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/assets/2025/04/04-07-25-k3s-etcd.jpg" referrerpolicy="no-referrer">
+            </div>A beginner's guide to etcd and Kubernetes with K3s.]]></description>
+</item>
+<item>
     <title>The AI Whisperer&#39;s Guide to MCP Servers: Supercharging Your Digital Assistants</title>
     <link>https://blog.alphabravo.io/posts/2025/mcp-servers-devsecops/</link>
     <pubDate>Thu, 03 Apr 2025 09:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2025/mcp-servers-devsecops/</guid>
@@ -16,7 +24,7 @@
     <link>https://blog.alphabravo.io/posts/2025/k3s-rancher-vcluster/</link>
     <pubDate>Tue, 01 Apr 2025 09:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2025/k3s-rancher-vcluster/</guid>
     <description><![CDATA[<div class="featured-image">
-                <img src="/assets/2025/04/04-09-25-rancher-vcluster.jpg" referrerpolicy="no-referrer">
+                <img src="/assets/2025/04/04-01-25-rancher-vcluster.jpg" referrerpolicy="no-referrer">
             </div>A guide to setting up K3s, Rancher MCM, and vCluster for efficient Kubernetes management.]]></description>
 </item>
 <item>

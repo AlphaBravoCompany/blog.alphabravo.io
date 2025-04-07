@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Containerized IBM Granite: Running Enterprise-Grade LLMs Locally with Ollama and vLLM (Hands On Guide) - AB Engineering Blog</title><meta name="description" content="A guide to running IBM Granite models in containers for local deployment."><meta property="og:url" content="http://localhost:1313/posts/2025/ibm-granite-container/">
+  <meta property="og:site_name" content="AB Engineering Blog">
+  <meta property="og:title" content="Containerized IBM Granite: Running Enterprise-Grade LLMs Locally with Ollama and vLLM (Hands On Guide)">
+  <meta property="og:description" content="A guide to running IBM Granite models in containers for local deployment.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-04-03T09:00:00+00:00">
+    <meta property="article:modified_time" content="2025-04-03T09:00:00+00:00">
+    <meta property="article:tag" content="Devsecops">
+    <meta property="article:tag" content="Kubernetes">
+    <meta property="article:tag" content="Etcd">
+    <meta property="article:tag" content="K3s">
+    <meta property="og:image" content="http://localhost:1313/assets/2025/04/04-08-25-granite-container.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/assets/2025/04/04-08-25-granite-container.png">
+  <meta name="twitter:title" content="Containerized IBM Granite: Running Enterprise-Grade LLMs Locally with Ollama and vLLM (Hands On Guide)">
+  <meta name="twitter:description" content="A guide to running IBM Granite models in containers for local deployment.">
+      <meta name="twitter:site" content="@alphabravogov">
+<meta name="application-name" content="AB Engineering Blog">
+<meta name="apple-mobile-web-app-title" content="AB Engineering Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/posts/2025/ibm-granite-container/" /><link rel="prev" href="http://localhost:1313/posts/2025/mcp-servers-devsecops/" /><link rel="next" href="http://localhost:1313/posts/2025/etcd-k3s-deep-dive/" /><link rel="stylesheet" href="/css/page.min.css"><link rel="stylesheet" href="/css/home.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Containerized IBM Granite: Running Enterprise-Grade LLMs Locally with Ollama and vLLM (Hands On Guide)",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/posts\/2025\/ibm-granite-container\/"
+        },"image": ["http:\/\/localhost:1313\/assets\/2025\/04\/04-08-25-granite-container.png"],"genre": "posts","keywords": "devsecops, kubernetes, etcd, k3s","wordcount":  2227 ,
+        "url": "http:\/\/localhost:1313\/posts\/2025\/ibm-granite-container\/","datePublished": "2025-04-03T09:00:00+00:00","dateModified": "2025-04-03T09:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "AlphaBravo","logo": "http:\/\/localhost:1313\/assets\/alphabravo-logoonly-outline1.png"},"author": {
+                "@type": "Person",
+                "name": "AB Engineering"
+            },"description": "A guide to running IBM Granite models in containers for local deployment."
+    }
+    </script></head><body data-header-desktop="auto" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="AB Engineering Blog"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/assets/alphabravo-logoonly-outline1.png"
+        data-srcset="/assets/alphabravo-logoonly-outline1.png, /assets/alphabravo-logoonly-outline1.png 1.5x, /assets/alphabravo-logoonly-outline1.png 2x"
+        data-sizes="auto"
+        alt="/assets/alphabravo-logoonly-outline1.png"
+        title="/assets/alphabravo-logoonly-outline1.png" /><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="https://blog.alphabravo.io" title="Blog Homepage" rel="noopener noreffer" target="_blank"> Home </a><a class="menu-item" href="https://alphabravo.io" title="AlphaBravo Website" rel="noopener noreffer" target="_blank"> AB Website </a><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="https://github.com/AlphaBravoCompany" rel="noopener noreffer" target="_blank"><i class='fab fa-github-alt fa-fw'></i>  </a><a class="menu-item" href="https://linkedin.com/company/alphabravogov/" rel="noopener noreffer" target="_blank"><i class='fab fa-linkedin fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search" id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a class="menu-item" href="/index.xml" title="RSS"><i class="fas fa-rss fa-fw" title="RSS"></i> </a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="AB Engineering Blog"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/assets/alphabravo-logoonly-outline1.png"
+        data-srcset="/assets/alphabravo-logoonly-outline1.png, /assets/alphabravo-logoonly-outline1.png 1.5x, /assets/alphabravo-logoonly-outline1.png 2x"
+        data-sizes="auto"
+        alt="/assets/alphabravo-logoonly-outline1.png"
+        title="/assets/alphabravo-logoonly-outline1.png" /><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search" id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="https://blog.alphabravo.io" title="Blog Homepage" rel="noopener noreffer" target="_blank">Home</a><a class="menu-item" href="https://alphabravo.io" title="AlphaBravo Website" rel="noopener noreffer" target="_blank">AB Website</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="https://github.com/AlphaBravoCompany" title="" rel="noopener noreffer" target="_blank"><i class='fab fa-github-alt fa-fw'></i></a><a class="menu-item" href="https://linkedin.com/company/alphabravogov/" title="" rel="noopener noreffer" target="_blank"><i class='fab fa-linkedin fa-fw'></i></a><div class="menu-item"><a href="/index.xml" title="RSS"><i class="fas fa-rss fa-fw" title="RSS"></i> </a>
+                <span>&nbsp;|&nbsp;</span><a href="javascript:void(0);" class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div></div>
+    </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single" data-toc="disable"><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/2025/04/04-08-25-granite-container.png"
+        data-srcset="/assets/2025/04/04-08-25-granite-container.png, /assets/2025/04/04-08-25-granite-container.png 1.5x, /assets/2025/04/04-08-25-granite-container.png 2x"
+        data-sizes="auto"
+        alt="/assets/2025/04/04-08-25-granite-container.png"
+        title="A guide to running IBM Granite models in containers for local deployment." /></div><div class="single-card" data-image="true"><h2 class="single-title animated flipInX">Containerized IBM Granite: Running Enterprise-Grade LLMs Locally with Ollama and vLLM (Hands On Guide)</h2><div class="post-meta">
+                <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>AB Engineering</a></span></div>
+                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2025-04-03">2025-04-03</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2227 words</span>&nbsp;
+                    <span><i class="far fa-clock fa-fw"></i>&nbsp;11 minutes</span>&nbsp;</div>
+            </div>
+            
+            <hr><div class="details toc" id="toc-static"  data-kept="">
+                    <div class="details-summary toc-title">
+                        <span>Contents</span>
+                        <span><i class="details-icon fas fa-angle-right"></i></span>
+                    </div>
+                    <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#understanding-ibm-granite-models">Understanding IBM Granite Models</a></li>
+    <li><a href="#the-small-model-advantage">The Small Model Advantage</a></li>
+    <li><a href="#setting-up-ollama-on-ubuntu-with-docker">Setting Up Ollama on Ubuntu with Docker</a></li>
+    <li><a href="#option-1-running-granite-models-with-ollama">Option 1: Running Granite Models with Ollama</a></li>
+    <li><a href="#option-2setting-up-vllm-with-dockerpodman">Option 2:Setting Up vLLM with Docker/Podman</a></li>
+    <li><a href="#building-custom-vllm-images-for-specific-hardware">Building Custom vLLM Images for Specific Hardware</a></li>
+    <li><a href="#fine-tuning-granite-for-organization-specific-knowledge-with-unsloth">Fine-tuning Granite for Organization-Specific Knowledge with Unsloth</a></li>
+    <li><a href="#implementing-rag-with-granite-models">Implementing RAG with Granite Models</a></li>
+    <li><a href="#creating-a-simple-web-ui-for-testing">Creating a Simple Web UI for Testing</a></li>
+    <li><a href="#tying-it-all-together-a-complete-local-ai-stack">Tying It All Together: A Complete Local AI Stack</a></li>
+  </ul>
+</nav></div>
+                </div><div class="content" id="content"><p>IBM Granite models have emerged as powerful contenders in the enterprise AI landscape, offering a balance of performance and resource efficiency that makes local deployment feasible even without data center resources. In this deep dive, we&rsquo;ll explore how to run these models in containers using Ollama and vLLM on Ubuntu, followed by practical approaches to fine-tuning and augmenting them for organization-specific use cases.</p>
+<h2 id="understanding-ibm-granite-models">Understanding IBM Granite Models</h2>
+<p>Granite is a family of large language models (LLMs) created by IBM specifically for enterprise applications. Unlike many commercial alternatives, Granite models are open source under the Apache 2.0 license, which means developers can experiment with, modify, and distribute them freely. This makes them particularly attractive for organizations that handle sensitive data and prefer to run their own LLMs rather than relying on external services.</p>
+<p>What truly sets Granite apart is its transparency in training data. While most LLMs are notoriously vague about their training sources, Granite models provide visibility into their training data. The first 13 billion parameter Granite LLM was trained on approximately 6.5TB of data, including 1.8 million scientific papers from archive, all U.S. utility patents granted by the USPTO from 1975 through 2023, and legal opinions from U.S. federal and state courts. This enterprise-focused training makes Granite particularly well-suited for business applications.</p>
+<p>The Granite family includes several specialized variants:</p>
+<ul>
+<li><strong>[Granite for Language]</strong>: Models for accurate natural language processing with low latency</li>
+<li><strong>Granite for Code</strong>: Trained on over 100 programming languages for enterprise software tasks</li>
+<li><strong>Granite for Time Series</strong>: Fine-tuned for predictive analysis using historical data</li>
+<li><strong>Granite for GeoSpatial</strong>: Developed with NASA to analyze satellite data for environmental monitoring</li>
+<li><strong>Granite Guardian</strong>: Designed to detect risks in prompts and responses for safe AI use</li>
+</ul>
+<p>You can learn more about each variant in the <a href="https://huggingface.co/ibm-granite" target="_blank" rel="noopener noreffer">Hugging Face documentation</a>.</p>
+<p>Each series comes in various parameter sizes, commonly ranging from 2B to 20B parameters, allowing organizations to select the appropriate trade-off between capability and resource requirements.</p>
+<h2 id="the-small-model-advantage">The Small Model Advantage</h2>
+<p>In an AI landscape obsessed with parameter count, Granite models take a refreshingly practical approach. As the developer&rsquo;s version of &ldquo;it&rsquo;s not the size that matters,&rdquo; these smaller models offer several compelling advantages:</p>
+<ol>
+<li>
+<p><strong>Performance Efficiency</strong>: Despite their relatively modest size, Granite models can outperform competitors with twice their parameter count in specific tasks, particularly in coding and language processing.</p>
+</li>
+<li>
+<p><strong>Resource Economy</strong>: Running a 7B or 13B parameter model requires significantly less computational resources than running a 70B+ behemoth. This translates directly to lower infrastructure costs, faster response times, and the ability to deploy on consumer-grade hardware.</p>
+</li>
+<li>
+<p><strong>Deployment Flexibility</strong>: With smaller models, you can run multiple instances on the same hardware, allowing for greater system resilience and load balancing.</p>
+</li>
+<li>
+<p><strong>Fine-tuning Feasibility</strong>: The smaller parameter count makes these models substantially easier to fine-tune for specific domains without requiring specialized hardware or massive datasets.</p>
+</li>
+</ol>
+<p>Think of it as the difference between driving a nimble sports car versus a semi-truck when you&rsquo;re just delivering groceries. Sure, the truck can carry more, but for most practical purposes, the sports car gets the job done faster and with less fuel.</p>
+<h2 id="setting-up-ollama-on-ubuntu-with-docker">Setting Up Ollama on Ubuntu with Docker</h2>
+<p>Ollama has emerged as one of the simplest ways to run LLMs locally. Let&rsquo;s walk through setting it up on Ubuntu using Docker.</p>
+<p>First, ensure Docker is installed on your system:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt update
+</span></span><span class="line"><span class="cl">sudo apt install docker.io
+</span></span><span class="line"><span class="cl">sudo systemctl start docker
+</span></span><span class="line"><span class="cl">sudo systemctl <span class="nb">enable</span> docker
+</span></span></code></pre></div><p>For GPU acceleration (highly recommended for reasonable performance), we need to install the NVIDIA Container Toolkit:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt update <span class="o">&amp;&amp;</span> sudo apt upgrade
+</span></span><span class="line"><span class="cl">sudo apt install curl
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey <span class="p">|</span> sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="o">&amp;&amp;</span> curl -s -L https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-container-toolkit.list <span class="p">|</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>sed <span class="s1">&#39;s#deb https://#deb  https://#g&#39;</span> <span class="p">|</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sed -i -e <span class="s1">&#39;/experimental/ s/^#//g&#39;</span> /etc/apt/sources.list.d/nvidia-container-toolkit.list
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sudo apt-get update
+</span></span><span class="line"><span class="cl">sudo apt-get install -y nvidia-container-toolkit
+</span></span></code></pre></div><p>Configure the container runtime and restart Docker:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo nvidia-ctk runtime configure --runtime<span class="o">=</span>docker
+</span></span><span class="line"><span class="cl">sudo systemctl restart docker
+</span></span></code></pre></div><p>Now that we have Docker and GPU support configured, let&rsquo;s move on to setting up Ollama or vLLM.</p>
+<p>Note that you only need to set up one of these options - Ollama or vLLM - based on your preference for ease of use or performance optimization.</p>
+<h2 id="option-1-running-granite-models-with-ollama">Option 1: Running Granite Models with Ollama</h2>
+<p>Now we can pull the Ollama Docker image and create a container:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker run -d --gpus<span class="o">=</span>all -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
+</span></span></code></pre></div><p>This command creates a container named &ldquo;ollama&rdquo; from the official image, enables GPU support, and maps the necessary port and volume.</p>
+<p>With Ollama set up, let&rsquo;s download and run a Granite model:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker <span class="nb">exec</span> -it ollama ollama pull granite3.2:8b
+</span></span></code></pre></div><p>This will download the 8B parameter model, which offers a good balance between capability and resource efficiency. Once downloaded, you can run it:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker <span class="nb">exec</span> -it ollama ollama run granite3.2:8b
+</span></span></code></pre></div><p>By default, Ollama runs models with a restricted context length to minimize memory usage. For more extensive prompts, you can increase the context window:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># When in the interactive session</span>
+</span></span><span class="line"><span class="cl">/set parameter num_ctx <span class="m">8192</span>
+</span></span></code></pre></div><p>Granite 3.1 models support up to 131072 (128k) context length, though be mindful of your RAM capacity when increasing this value.</p>
+<p>For programmatic access, you can use curl to interact with Ollama&rsquo;s API:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X POST <span class="s2">&#34;http://localhost:11434/v1/chat/completions&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -H <span class="s2">&#34;Content-Type: application/json&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -d <span class="s1">&#39;{
+</span></span></span><span class="line"><span class="cl"><span class="s1">    &#34;model&#34;: &#34;granite3.2:8b&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="s1">    &#34;messages&#34;: [
+</span></span></span><span class="line"><span class="cl"><span class="s1">      {
+</span></span></span><span class="line"><span class="cl"><span class="s1">        &#34;role&#34;: &#34;user&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="s1">        &#34;content&#34;: &#34;Explain quantum computing to a software engineer&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s1">      }
+</span></span></span><span class="line"><span class="cl"><span class="s1">    ]
+</span></span></span><span class="line"><span class="cl"><span class="s1">  }&#39;</span>
+</span></span></code></pre></div><h2 id="option-2setting-up-vllm-with-dockerpodman">Option 2:Setting Up vLLM with Docker/Podman</h2>
+<p>While Ollama prioritizes ease of use, vLLM focuses on optimized performance through advanced serving techniques. Let&rsquo;s set it up using Docker:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker pull vllm/vllm-openai:latest
+</span></span></code></pre></div><p>If you prefer Podman (which some security-conscious users favor for its rootless operation by default), the command is similar:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">podman pull vllm/vllm-openai:latest
+</span></span></code></pre></div><p>To run vLLM with a Granite model, we&rsquo;ll mount our HuggingFace cache to avoid redundant downloads:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker run --runtime nvidia --gpus all <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -v ~/.cache/huggingface:/root/.cache/huggingface <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -p 8000:8000 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --ipc<span class="o">=</span>host <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  vllm/vllm-openai:latest <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --model ibm-granite/granite-3.1-8b-instruct
+</span></span></code></pre></div><p>For Podman users, you might need to disable SELinux labeling:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">podman run --runtime nvidia --gpus all <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -v ~/.cache/huggingface:/root/.cache/huggingface <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -p 8000:8000 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --ipc<span class="o">=</span>host <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --security-opt <span class="nv">label</span><span class="o">=</span>disable <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  vllm/vllm-openai:latest <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --model ibm-granite/granite-3.1-8b-instruct
+</span></span></code></pre></div><p>The <code>--ipc=host</code> flag is crucial as it allows the container to access the host&rsquo;s shared memory, which vLLM requires for tensor parallel inference.</p>
+<p>Once running, you can test the model with:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -H <span class="s2">&#34;Content-Type: application/json&#34;</span> http://localhost:8000/v1/chat/completions -d <span class="s1">&#39;{ 
+</span></span></span><span class="line"><span class="cl"><span class="s1">  &#34;model&#34;: &#34;ibm-granite/granite-3.1-8b-instruct&#34;, 
+</span></span></span><span class="line"><span class="cl"><span class="s1">  &#34;messages&#34;: [ 
+</span></span></span><span class="line"><span class="cl"><span class="s1">    {&#34;role&#34;: &#34;user&#34;, &#34;content&#34;: &#34;How are you today?&#34;} 
+</span></span></span><span class="line"><span class="cl"><span class="s1">  ]
+</span></span></span><span class="line"><span class="cl"><span class="s1">}&#39;</span>
+</span></span></code></pre></div><h2 id="building-custom-vllm-images-for-specific-hardware">Building Custom vLLM Images for Specific Hardware</h2>
+<p>For organizations with specialized hardware or performance requirements, building a custom vLLM image might be beneficial:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone https://github.com/vllm-project/vllm.git
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> vllm/
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># For standard builds</span>
+</span></span><span class="line"><span class="cl"><span class="nv">DOCKER_BUILDKIT</span><span class="o">=</span><span class="m">1</span> docker build . --target vllm-openai --tag custom-vllm/vllm-openai --file docker/Dockerfile
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># For specific architectures like ppc64le</span>
+</span></span><span class="line"><span class="cl">podman build --security-opt <span class="nv">label</span><span class="o">=</span>disable --format docker -t vllm:ppc64le -f Dockerfile.ppc64le .
+</span></span></code></pre></div><p>When building for your specific GPU architecture to optimize performance, add:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">--build-arg <span class="nv">torch_cuda_arch_list</span><span class="o">=</span><span class="s2">&#34;&#34;</span>
+</span></span></code></pre></div><p>This allows vLLM to detect and optimize for your specific GPU model.</p>
+<h2 id="fine-tuning-granite-for-organization-specific-knowledge-with-unsloth">Fine-tuning Granite for Organization-Specific Knowledge with Unsloth</h2>
+<p>One of the key advantages of smaller models like Granite is the feasibility of fine-tuning them for specific domains with reasonable compute resources. Unsloth provides an efficient framework for this purpose.</p>
+<p>We have also written a sample training set for fine-tuning a Granite model. You can find it <a href="/assets/2025/04/sample-training-set.txt" rel="">here</a>.</p>
+<p>Let&rsquo;s explore how to fine-tune a Granite model using <a href="https://github.com/unsloth/unsloth" target="_blank" rel="noopener noreffer">Unsloth</a>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">unsloth</span> <span class="kn">import</span> <span class="n">FastLanguageModel</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">torch</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Load the Granite model</span>
+</span></span><span class="line"><span class="cl"><span class="n">model</span><span class="p">,</span> <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">FastLanguageModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">model_name</span><span class="o">=</span><span class="s2">&#34;ibm-granite/granite-3.2-8b-instruct&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">max_seq_length</span><span class="o">=</span><span class="mi">2048</span><span class="p">,</span>  <span class="c1"># Context length, can go up to 8192</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float16</span><span class="p">,</span>  <span class="c1"># Use bfloat16 for newer GPUs</span>
+</span></span><span class="line"><span class="cl">    <span class="n">load_in_4bit</span><span class="o">=</span><span class="kc">True</span>     <span class="c1"># Enable 4-bit quantization for memory efficiency</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Configure for fine-tuning using QLoRA</span>
+</span></span><span class="line"><span class="cl"><span class="n">model</span> <span class="o">=</span> <span class="n">FastLanguageModel</span><span class="o">.</span><span class="n">get_peft_model</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">model</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">r</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>                                  <span class="c1"># LoRA rank</span>
+</span></span><span class="line"><span class="cl">    <span class="n">target_modules</span><span class="o">=</span><span class="p">[</span><span class="s2">&#34;q_proj&#34;</span><span class="p">,</span> <span class="s2">&#34;k_proj&#34;</span><span class="p">,</span> <span class="s2">&#34;v_proj&#34;</span><span class="p">,</span> <span class="s2">&#34;o_proj&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="n">lora_alpha</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">lora_dropout</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">bias</span><span class="o">=</span><span class="s2">&#34;none&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">use_gradient_checkpointing</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Load and process your dataset</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">datasets</span> <span class="kn">import</span> <span class="n">load_dataset</span>
+</span></span><span class="line"><span class="cl"><span class="n">dataset</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s2">&#34;your_organization/custom_dataset&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">format_instruction</span><span class="p">(</span><span class="n">sample</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;text&#34;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&#34;### Instruction: </span><span class="si">{</span><span class="n">sample</span><span class="p">[</span><span class="s1">&#39;instruction&#39;</span><span class="p">]</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">### Response: </span><span class="si">{</span><span class="n">sample</span><span class="p">[</span><span class="s1">&#39;response&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">formatted_dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">format_instruction</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Configure training parameters</span>
+</span></span><span class="line"><span class="cl"><span class="n">trainer</span> <span class="o">=</span> <span class="n">FastLanguageModel</span><span class="o">.</span><span class="n">get_trainer</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">model</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">tokenizer</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">max_seq_length</span><span class="o">=</span><span class="mi">2048</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dataset</span><span class="o">=</span><span class="n">formatted_dataset</span><span class="p">[</span><span class="s2">&#34;train&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="n">per_device_train_batch_size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>     <span class="c1"># Adjust based on your GPU memory</span>
+</span></span><span class="line"><span class="cl">    <span class="n">gradient_accumulation_steps</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>     <span class="c1"># Effectively increases batch size</span>
+</span></span><span class="line"><span class="cl">    <span class="n">max_steps</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span>                       <span class="c1"># For full runs, use num_train_epochs instead</span>
+</span></span><span class="line"><span class="cl">    <span class="n">learning_rate</span><span class="o">=</span><span class="mf">2e-4</span><span class="p">,</span>                <span class="c1"># Lower for more precise fine-tuning</span>
+</span></span><span class="line"><span class="cl">    <span class="n">output_dir</span><span class="o">=</span><span class="s2">&#34;./granite-finetuned&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Train the model</span>
+</span></span><span class="line"><span class="cl"><span class="n">trainer</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Save the fine-tuned model</span>
+</span></span><span class="line"><span class="cl"><span class="n">model</span><span class="o">.</span><span class="n">save_pretrained</span><span class="p">(</span><span class="s2">&#34;./granite-finetuned&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>The key parameters to adjust during fine-tuning are:</p>
+<ul>
+<li><strong>max_seq_length</strong>: Controls context length; 2048 is recommended for testing</li>
+<li><strong>load_in_4bit</strong>: Enables 4-bit quantization, reducing memory usage by 4×</li>
+<li><strong>learning_rate</strong>: Lower values like 1e-4 or 5e-5 provide more precise fine-tuning</li>
+<li><strong>per_device_train_batch_size</strong>: Increase for better GPU utilization</li>
+<li><strong>gradient_accumulation_steps</strong>: Simulates larger batch sizes without increasing memory usage</li>
+</ul>
+<p>For organizations with limited GPU resources, QLoRA (Quantized Low-Rank Adaptation) is particularly valuable as it enables fine-tuning on consumer GPUs while maintaining most of the quality benefits of full fine-tuning.</p>
+<h2 id="implementing-rag-with-granite-models">Implementing RAG with Granite Models</h2>
+<p>Retrieval-Augmented Generation (RAG) systems extend LLMs with external knowledge, making them particularly valuable for enterprise contexts where models need access to company-specific information.</p>
+<p>Let&rsquo;s implement a basic RAG system with our containerized Granite model:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">langchain.embeddings</span> <span class="kn">import</span> <span class="n">HuggingFaceEmbeddings</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">langchain.vectorstores</span> <span class="kn">import</span> <span class="n">FAISS</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">langchain.document_loaders</span> <span class="kn">import</span> <span class="n">DirectoryLoader</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">langchain.text_splitter</span> <span class="kn">import</span> <span class="n">RecursiveCharacterTextSplitter</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">langchain.chains</span> <span class="kn">import</span> <span class="n">RetrievalQA</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">langchain.llms</span> <span class="kn">import</span> <span class="n">Ollama</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Load documents from a directory (your organization&#39;s knowledge base)</span>
+</span></span><span class="line"><span class="cl"><span class="n">loader</span> <span class="o">=</span> <span class="n">DirectoryLoader</span><span class="p">(</span><span class="s1">&#39;./company_documents&#39;</span><span class="p">,</span> <span class="n">glob</span><span class="o">=</span><span class="s2">&#34;**/*.pdf&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">documents</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Split documents into manageable chunks</span>
+</span></span><span class="line"><span class="cl"><span class="n">text_splitter</span> <span class="o">=</span> <span class="n">RecursiveCharacterTextSplitter</span><span class="p">(</span><span class="n">chunk_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">chunk_overlap</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">texts</span> <span class="o">=</span> <span class="n">text_splitter</span><span class="o">.</span><span class="n">split_documents</span><span class="p">(</span><span class="n">documents</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Create embeddings</span>
+</span></span><span class="line"><span class="cl"><span class="n">embeddings</span> <span class="o">=</span> <span class="n">HuggingFaceEmbeddings</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">&#34;sentence-transformers/all-MiniLM-L6-v2&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Create a vector database</span>
+</span></span><span class="line"><span class="cl"><span class="n">vectorstore</span> <span class="o">=</span> <span class="n">FAISS</span><span class="o">.</span><span class="n">from_documents</span><span class="p">(</span><span class="n">texts</span><span class="p">,</span> <span class="n">embeddings</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Initialize the Granite model via Ollama</span>
+</span></span><span class="line"><span class="cl"><span class="n">llm</span> <span class="o">=</span> <span class="n">Ollama</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&#34;granite3.2:8b&#34;</span><span class="p">,</span> <span class="n">base_url</span><span class="o">=</span><span class="s2">&#34;http://localhost:11434&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Create a question-answering chain</span>
+</span></span><span class="line"><span class="cl"><span class="n">qa_chain</span> <span class="o">=</span> <span class="n">RetrievalQA</span><span class="o">.</span><span class="n">from_chain_type</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">llm</span><span class="o">=</span><span class="n">llm</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">chain_type</span><span class="o">=</span><span class="s2">&#34;stuff&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">retriever</span><span class="o">=</span><span class="n">vectorstore</span><span class="o">.</span><span class="n">as_retriever</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Example query</span>
+</span></span><span class="line"><span class="cl"><span class="n">query</span> <span class="o">=</span> <span class="s2">&#34;What is our company&#39;s policy on remote work?&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">response</span> <span class="o">=</span> <span class="n">qa_chain</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+</span></span></code></pre></div><p>For more sophisticated integration, you might leverage the Model Context Protocol (MCP), which facilitates RAG capabilities within Open-WebUI:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">rag_integration</span> <span class="kn">import</span> <span class="n">MCPClient</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Initialize MCP client</span>
+</span></span><span class="line"><span class="cl"><span class="n">client</span> <span class="o">=</span> <span class="n">MCPClient</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">server_address</span><span class="o">=</span><span class="s2">&#34;http://localhost:11434&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">model</span><span class="o">=</span><span class="s2">&#34;granite3.2:8b&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Query with additional context</span>
+</span></span><span class="line"><span class="cl"><span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">query</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;Summarize our Q2 financial performance&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">context</span><span class="o">=</span><span class="p">[</span><span class="s2">&#34;Financial performance for Q2 showed a 15</span><span class="si">% i</span><span class="s2">ncrease in revenue...&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+</span></span></code></pre></div><p>This setup allows you to enhance your Granite model with domain-specific knowledge, producing responses grounded in your organization&rsquo;s data.</p>
+<h2 id="creating-a-simple-web-ui-for-testing">Creating a Simple Web UI for Testing</h2>
+<p>To make your local Granite deployment accessible to non-technical stakeholders, a simple web UI is invaluable. Let&rsquo;s create one using Gradio:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">gradio</span> <span class="k">as</span> <span class="nn">gr</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">requests</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">json</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">query_model</span><span class="p">(</span><span class="n">prompt</span><span class="p">,</span> <span class="n">model_choice</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">max_tokens</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Configure endpoint based on model choice</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="s2">&#34;ollama&#34;</span> <span class="ow">in</span> <span class="n">model_choice</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">url</span> <span class="o">=</span> <span class="s2">&#34;http://localhost:11434/v1/chat/completions&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">model_name</span> <span class="o">=</span> <span class="n">model_choice</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&#34;-&#34;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># Extract model name</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>  <span class="c1"># vLLM</span>
+</span></span><span class="line"><span class="cl">        <span class="n">url</span> <span class="o">=</span> <span class="s2">&#34;http://localhost:8000/v1/chat/completions&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">model_name</span> <span class="o">=</span> <span class="s2">&#34;ibm-granite/granite-3.2-8b-instruct&#34;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># Prepare the request payload</span>
+</span></span><span class="line"><span class="cl">    <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;model&#34;</span><span class="p">:</span> <span class="n">model_name</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;messages&#34;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&#34;role&#34;</span><span class="p">:</span> <span class="s2">&#34;user&#34;</span><span class="p">,</span> <span class="s2">&#34;content&#34;</span><span class="p">:</span> <span class="n">prompt</span><span class="p">}],</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;temperature&#34;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">temperature</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;max_tokens&#34;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">max_tokens</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># Send the request</span>
+</span></span><span class="line"><span class="cl">    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># Parse the response</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">result</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;choices&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;message&#39;</span><span class="p">][</span><span class="s1">&#39;content&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="sa">f</span><span class="s2">&#34;Error: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Create the Gradio interface</span>
+</span></span><span class="line"><span class="cl"><span class="k">with</span> <span class="n">gr</span><span class="o">.</span><span class="n">Blocks</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&#34;Granite Model Playground&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">demo</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">gr</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="s2">&#34;# IBM Granite Model Playground&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">with</span> <span class="n">gr</span><span class="o">.</span><span class="n">Row</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">        <span class="k">with</span> <span class="n">gr</span><span class="o">.</span><span class="n">Column</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">            <span class="n">prompt</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Textbox</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&#34;Prompt&#34;</span><span class="p">,</span> <span class="n">lines</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">placeholder</span><span class="o">=</span><span class="s2">&#34;Enter your prompt here...&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">model_choice</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                <span class="n">label</span><span class="o">=</span><span class="s2">&#34;Model&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                <span class="n">choices</span><span class="o">=</span><span class="p">[</span>
+</span></span><span class="line"><span class="cl">                    <span class="s2">&#34;ollama-granite3.2:2b&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                    <span class="s2">&#34;ollama-granite3.2:8b&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                    <span class="s2">&#34;vllm-granite3.2:8b-instruct&#34;</span>
+</span></span><span class="line"><span class="cl">                <span class="p">],</span>
+</span></span><span class="line"><span class="cl">                <span class="n">value</span><span class="o">=</span><span class="s2">&#34;ollama-granite3.2:8b&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">temperature</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Slider</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&#34;Temperature&#34;</span><span class="p">,</span> <span class="n">minimum</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">maximum</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">max_tokens</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Slider</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&#34;Max Tokens&#34;</span><span class="p">,</span> <span class="n">minimum</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">maximum</span><span class="o">=</span><span class="mi">4096</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1024</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">submit_btn</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&#34;Generate&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">with</span> <span class="n">gr</span><span class="o">.</span><span class="n">Column</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">            <span class="n">output</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Textbox</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&#34;Response&#34;</span><span class="p">,</span> <span class="n">lines</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">submit_btn</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">fn</span><span class="o">=</span><span class="n">query_model</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">prompt</span><span class="p">,</span> <span class="n">model_choice</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">max_tokens</span><span class="p">],</span> <span class="n">outputs</span><span class="o">=</span><span class="n">output</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Launch the interface</span>
+</span></span><span class="line"><span class="cl"><span class="n">demo</span><span class="o">.</span><span class="n">launch</span><span class="p">(</span><span class="n">server_name</span><span class="o">=</span><span class="s2">&#34;0.0.0.0&#34;</span><span class="p">,</span> <span class="n">server_port</span><span class="o">=</span><span class="mi">7860</span><span class="p">)</span>
+</span></span></code></pre></div><p>This creates a simple yet effective web interface at http://localhost:7860 where users can interact with both your Ollama and vLLM deployed models.</p>
+<h2 id="tying-it-all-together-a-complete-local-ai-stack">Tying It All Together: A Complete Local AI Stack</h2>
+<p>Let&rsquo;s integrate everything into a comprehensive local AI stack using docker-compose for easier management:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;3&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">ollama</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">ollama/ollama:latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l">ollama</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">ollama:/root/.ollama</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;11434:11434&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">deploy</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">resources</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">reservations</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">devices</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span>- <span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l">nvidia</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l">all</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="nt">capabilities</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">gpu]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">vllm</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">vllm/vllm-openai:latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l">vllm</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">${HOME}/.cache/huggingface:/root/.cache/huggingface</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;8000:8000&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span>--<span class="l">model ibm-granite/granite-3.2-8b-instruct</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ipc</span><span class="p">:</span><span class="w"> </span><span class="l">host</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">deploy</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">resources</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">reservations</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">devices</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span>- <span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l">nvidia</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l">all</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="nt">capabilities</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">gpu]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">webapp</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l">./webapp</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l">granite-webapp</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;7860:7860&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">ollama</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">vllm</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">ollama</span><span class="p">:</span><span class="w">
+</span></span></span></code></pre></div><p>Create a ./webapp/Dockerfile for the web UI:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Dockerfile" data-lang="Dockerfile"><span class="line"><span class="cl"><span class="k">FROM</span><span class="s"> python:3.10-slim</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /app</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> requirements.txt .<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> pip install -r requirements.txt<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> app.py .<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">EXPOSE</span><span class="s"> 7860</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;python&#34;</span><span class="p">,</span> <span class="s2">&#34;app.py&#34;</span><span class="p">]</span><span class="err">
+</span></span></span></code></pre></div><p>Create ./webapp/requirements.txt:</p>
+<pre tabindex="0"><code>gradio
+requests
+</code></pre><p>Place the Gradio interface code in ./webapp/app.py, then launch the entire stack:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose up -d
+</span></span></code></pre></div><p>Download the necessary models:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker <span class="nb">exec</span> -it ollama ollama pull granite3.2:2b
+</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -it ollama ollama pull granite3.2:8b
+</span></span></code></pre></div><p>This setup provides a complete AI stack with:</p>
+<ul>
+<li>Ollama serving Granite models for lightweight applications</li>
+<li>vLLM providing optimized inference for higher throughput needs</li>
+<li>A web UI for easy interaction</li>
+<li>Options for fine-tuning and RAG integration</li>
+</ul>
+<p>The real beauty of this architecture lies in its complete local operation. All data stays within your infrastructure, making it ideal for sensitive enterprise environments. The smaller footprint of Granite models means you can run this setup on modest hardware, from workstations to small servers, without requiring data center-scale resources.</p>
+<p>In a world obsessed with chasing ever-larger parameter counts, there&rsquo;s wisdom in choosing appropriately sized models for the task at hand. IBM&rsquo;s Granite models demonstrate that with careful training and optimization, smaller can indeed be better – especially when it means you can deploy AI capabilities entirely within your own infrastructure and fine-tune them to your specific needs.</p>
+<p>So go ahead, containerize those Granite models, adapt them to your organization&rsquo;s knowledge domain, and enjoy the freedom of running cutting-edge AI while maintaining complete control over your data and infrastructure. In the end, the best AI isn&rsquo;t necessarily the biggest – it&rsquo;s the one that efficiently solves your specific problems while respecting your constraints.</p></div><div class="post-footer" id="post-footer">
+    <div class="post-info"><div class="post-info-tag"><span><a href="/tags/devsecops/">Devsecops</a>
+                </span><span><a href="/tags/kubernetes/">Kubernetes</a>
+                </span><span><a href="/tags/etcd/">Etcd</a>
+                </span><span><a href="/tags/k3s/">K3s</a>
+                </span></div><div class="post-info-line"><div class="post-info-mod">
+                <span>Updated on 2025-04-03</span>
+            </div><div class="post-info-mod"></div>
+        </div></div><div class="post-nav"><a href="/posts/2025/mcp-servers-devsecops/" class="prev" rel="prev" title="The AI Whisperer&#39;s Guide to MCP Servers: Supercharging Your Digital Assistants"><i class="fas fa-angle-left fa-fw"></i>Previous Post</a>
+            <a href="/posts/2025/etcd-k3s-deep-dive/" class="next" rel="next" title="ETCD and Kubernetes: A Deep Dive with K3s - Where Your Cluster&#39;s Secrets Hide">Next Post<i class="fas fa-angle-right fa-fw"></i></a></div></div>
+</div></article></div>
+            </main>
+            <footer class="footer"><div class="footer-container"><div class="footer-line">AlphaBravo</div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/"></a></span></div>
+</div>
+</footer>
+        </div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-chevron-up fa-fw"></i>
+            </a></div><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css' integrity='sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==' crossorigin='anonymous' referrerpolicy='no-referrer' /><link rel="stylesheet" href="/css/custom-icons.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/typeit/typeit.min.js"></script><script src="/lib/lightgallery/lightgallery.min.js"></script><script src="/lib/lightgallery/lg-thumbnail.min.js"></script><script src="/lib/lightgallery/lg-zoom.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/cookieconsent/cookieconsent.min.js"></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{},"cookieconsent":{"content":{"dismiss":"Ok","link":"https://alphabravo.io","message":"We use cookies and open-source, privacy-respecting analytics technologies to improve your browsing experience on our website, to analyze our website traffic, and to understand where our visitors are coming from."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"Engineering Blog","id-2":"Engineering Blog"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"typeit":{"cursorChar":null,"cursorSpeed":null,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":null,"speed":null}};</script><script src="/js/theme.min.js"></script></body></html>

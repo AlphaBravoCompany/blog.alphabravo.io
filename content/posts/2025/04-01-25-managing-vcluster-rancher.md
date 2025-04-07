@@ -4,12 +4,12 @@ description: "A guide to setting up K3s, Rancher MCM, and vCluster for efficient
 slug: "k3s-rancher-vcluster"
 date: 2025-04-01T09:00:00Z
 draft: false
-featuredImage: /assets/2025/04/04-09-25-rancher-vcluster.jpg
-featuredImagePreview: /assets/2025/04/04-09-25-rancher-vcluster.jpg
+featuredImage: /assets/2025/04/04-01-25-rancher-vcluster.jpg
+featuredImagePreview: /assets/2025/04/04-01-25-rancher-vcluster.jpg
 featuredImageAlt: "K3s, Rancher, and vCluster"
-images: ["/assets/2025/04/04-09-25-rancher-vcluster.jpg"]
+images: ["/assets/2025/04/04-01-25-rancher-vcluster.jpg"]
 seo:
-  images: ["/assets/2025/04/04-09-25-rancher-vcluster.jpg"]
+  images: ["/assets/2025/04/04-01-25-rancher-vcluster.jpg"]
 lightgallery: true
 tags: [devsecops, kubernetes, etcd, k3s]
 author: AB Engineering

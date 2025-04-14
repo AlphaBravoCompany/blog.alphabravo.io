@@ -2,7 +2,7 @@
 title: "Planning a Kubernetes Deployment: Aligning with DoD Security Policies (Part 2)"
 description: "A guide to planning a secure Kubernetes deployment in a government environment."
 slug: "k8s-gov-deep-dive-part2"
-date: 2025-04-14T10:00:00Z
+date: 2025-04-14T09:30:00Z
 draft: true
 featuredImage: /assets/2025/04/gov-k8s-series/04-14-25-k8s-gov-part2.jpg
 featuredImagePreview: /assets/2025/04/gov-k8s-series/04-14-25-k8s-gov-part2.jpg

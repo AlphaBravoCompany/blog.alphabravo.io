@@ -4,6 +4,14 @@
         <link>https://blog.alphabravo.io/posts/</link>
         <description>All Posts | AB Engineering Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 16 Apr 2025 09:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Planning a Kubernetes Deployment: Aligning with DoD Security Policies (Part 2)</title>
+    <link>https://blog.alphabravo.io/posts/2025/k8s-gov-deep-dive-part2/</link>
+    <pubDate>Mon, 14 Apr 2025 09:30:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2025/k8s-gov-deep-dive-part2/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/assets/2025/04/gov-k8s-series/04-14-25-k8s-gov-part2.jpg" referrerpolicy="no-referrer">
+            </div>A guide to planning a secure Kubernetes deployment in a government environment.]]></description>
+</item>
+<item>
     <title>Kubernetes in the Classified Crowd: Orchestrating Containers Behind the Government Firewall (Part 1)</title>
     <link>https://blog.alphabravo.io/posts/2025/k8s-gov-deep-dive-part1/</link>
     <pubDate>Mon, 14 Apr 2025 09:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2025/k8s-gov-deep-dive-part1/</guid>
@@ -74,14 +82,6 @@
     <description><![CDATA[<div class="featured-image">
                 <img src="/assets/2021/12/delete-cf-dns.png" referrerpolicy="no-referrer">
             </div>Cloudflare doesn't let you bulk delete in the UI. In this blog, we show you how to use Python script to bulk delete DNS records in Cloudflare.]]></description>
-</item>
-<item>
-    <title>Zero To Hero: Working With Multiple Kubeconfig Files</title>
-    <link>https://blog.alphabravo.io/posts/2021/zero-to-hero-working-with-multiple-kubeconfig/</link>
-    <pubDate>Wed, 08 Dec 2021 13:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2021/zero-to-hero-working-with-multiple-kubeconfig/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/assets/2021/12/multi-kubeconfig.png" referrerpolicy="no-referrer">
-            </div>We show you how to manage and work with multiple `kubeconfig` files from the comfort of the Linux CLI.]]></description>
 </item>
 </channel>
 </rss>

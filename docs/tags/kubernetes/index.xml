@@ -3,13 +3,13 @@
         <title>Kubernetes - Tag - AB Engineering Blog</title>
         <link>https://blog.alphabravo.io/tags/kubernetes/</link>
         <description>Kubernetes - Tag - AB Engineering Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 07 Apr 2025 09:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/tags/kubernetes/" rel="self" type="application/rss+xml" /><item>
-    <title>ETCD and Kubernetes: A Deep Dive with K3s - Where Your Cluster&#39;s Secrets Hide</title>
-    <link>https://blog.alphabravo.io/posts/2025/etcd-k3s-deep-dive/</link>
-    <pubDate>Mon, 07 Apr 2025 09:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2025/etcd-k3s-deep-dive/</guid>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 08 Apr 2025 09:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/tags/kubernetes/" rel="self" type="application/rss+xml" /><item>
+    <title>Containerized IBM Granite: Running Enterprise-Grade LLMs Locally with Ollama and vLLM (Hands On Guide)</title>
+    <link>https://blog.alphabravo.io/posts/2025/ibm-granite-container/</link>
+    <pubDate>Tue, 08 Apr 2025 09:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2025/ibm-granite-container/</guid>
     <description><![CDATA[<div class="featured-image">
-                <img src="/assets/2025/04/04-07-25-k3s-etcd.jpg" referrerpolicy="no-referrer">
-            </div>A beginner's guide to etcd and Kubernetes with K3s.]]></description>
+                <img src="/assets/2025/04/04-08-25-granite-container.png" referrerpolicy="no-referrer">
+            </div>A guide to running IBM Granite models in containers for local deployment.]]></description>
 </item>
 <item>
     <title>K3s, Rancher, and vCluster: Your Kubernetes Management Dream Team</title>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Kubernetes in the Classified Crowd: Orchestrating Containers Behind the Government Firewall (Part 1) - AB Engineering Blog</title><meta name="description" content="A beginner&#39;s guide to Kubernetes and its deployment in government environments."><meta property="og:url" content="http://localhost:1313/posts/2025/k8s-gov-deep-dive-part1/">
+  <meta property="og:site_name" content="AB Engineering Blog">
+  <meta property="og:title" content="Kubernetes in the Classified Crowd: Orchestrating Containers Behind the Government Firewall (Part 1)">
+  <meta property="og:description" content="A beginner&#39;s guide to Kubernetes and its deployment in government environments.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-04-14T09:00:00+00:00">
+    <meta property="article:modified_time" content="2025-04-14T09:00:00+00:00">
+    <meta property="article:tag" content="Devsecops">
+    <meta property="article:tag" content="Kubernetes">
+    <meta property="article:tag" content="Government">
+    <meta property="article:tag" content="K8s">
+    <meta property="og:image" content="http://localhost:1313/assets/2025/04/gov-k8s-series/04-13-25-k8s-gov-part1.jpg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/assets/2025/04/gov-k8s-series/04-13-25-k8s-gov-part1.jpg">
+  <meta name="twitter:title" content="Kubernetes in the Classified Crowd: Orchestrating Containers Behind the Government Firewall (Part 1)">
+  <meta name="twitter:description" content="A beginner&#39;s guide to Kubernetes and its deployment in government environments.">
+      <meta name="twitter:site" content="@alphabravogov">
+<meta name="application-name" content="AB Engineering Blog">
+<meta name="apple-mobile-web-app-title" content="AB Engineering Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/posts/2025/k8s-gov-deep-dive-part1/" /><link rel="prev" href="http://localhost:1313/posts/2025/ibm-granite-container/" /><link rel="stylesheet" href="/css/page.min.css"><link rel="stylesheet" href="/css/home.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Kubernetes in the Classified Crowd: Orchestrating Containers Behind the Government Firewall (Part 1)",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/posts\/2025\/k8s-gov-deep-dive-part1\/"
+        },"image": ["http:\/\/localhost:1313\/assets\/2025\/04\/gov-k8s-series\/04-13-25-k8s-gov-part1.jpg"],"genre": "posts","keywords": "devsecops, kubernetes, government, k8s","wordcount":  1795 ,
+        "url": "http:\/\/localhost:1313\/posts\/2025\/k8s-gov-deep-dive-part1\/","datePublished": "2025-04-14T09:00:00+00:00","dateModified": "2025-04-14T09:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "AlphaBravo","logo": "http:\/\/localhost:1313\/assets\/alphabravo-logoonly-outline1.png"},"author": {
+                "@type": "Person",
+                "name": "AB Engineering"
+            },"description": "A beginner's guide to Kubernetes and its deployment in government environments."
+    }
+    </script></head><body data-header-desktop="auto" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="AB Engineering Blog"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/assets/alphabravo-logoonly-outline1.png"
+        data-srcset="/assets/alphabravo-logoonly-outline1.png, /assets/alphabravo-logoonly-outline1.png 1.5x, /assets/alphabravo-logoonly-outline1.png 2x"
+        data-sizes="auto"
+        alt="/assets/alphabravo-logoonly-outline1.png"
+        title="/assets/alphabravo-logoonly-outline1.png" /><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="https://blog.alphabravo.io" title="Blog Homepage" rel="noopener noreffer" target="_blank"> Home </a><a class="menu-item" href="https://alphabravo.io" title="AlphaBravo Website" rel="noopener noreffer" target="_blank"> AB Website </a><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="https://github.com/AlphaBravoCompany" rel="noopener noreffer" target="_blank"><i class='fab fa-github-alt fa-fw'></i>  </a><a class="menu-item" href="https://linkedin.com/company/alphabravogov/" rel="noopener noreffer" target="_blank"><i class='fab fa-linkedin fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search" id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a class="menu-item" href="/index.xml" title="RSS"><i class="fas fa-rss fa-fw" title="RSS"></i> </a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="AB Engineering Blog"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/assets/alphabravo-logoonly-outline1.png"
+        data-srcset="/assets/alphabravo-logoonly-outline1.png, /assets/alphabravo-logoonly-outline1.png 1.5x, /assets/alphabravo-logoonly-outline1.png 2x"
+        data-sizes="auto"
+        alt="/assets/alphabravo-logoonly-outline1.png"
+        title="/assets/alphabravo-logoonly-outline1.png" /><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search" id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="https://blog.alphabravo.io" title="Blog Homepage" rel="noopener noreffer" target="_blank">Home</a><a class="menu-item" href="https://alphabravo.io" title="AlphaBravo Website" rel="noopener noreffer" target="_blank">AB Website</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="https://github.com/AlphaBravoCompany" title="" rel="noopener noreffer" target="_blank"><i class='fab fa-github-alt fa-fw'></i></a><a class="menu-item" href="https://linkedin.com/company/alphabravogov/" title="" rel="noopener noreffer" target="_blank"><i class='fab fa-linkedin fa-fw'></i></a><div class="menu-item"><a href="/index.xml" title="RSS"><i class="fas fa-rss fa-fw" title="RSS"></i> </a>
+                <span>&nbsp;|&nbsp;</span><a href="javascript:void(0);" class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div></div>
+    </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single" data-toc="disable"><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/2025/04/gov-k8s-series/04-13-25-k8s-gov-part1.jpg"
+        data-srcset="/assets/2025/04/gov-k8s-series/04-13-25-k8s-gov-part1.jpg, /assets/2025/04/gov-k8s-series/04-13-25-k8s-gov-part1.jpg 1.5x, /assets/2025/04/gov-k8s-series/04-13-25-k8s-gov-part1.jpg 2x"
+        data-sizes="auto"
+        alt="/assets/2025/04/gov-k8s-series/04-13-25-k8s-gov-part1.jpg"
+        title="A beginner&#39;s guide to Kubernetes and its deployment in government environments." /></div><div class="single-card" data-image="true"><h2 class="single-title animated flipInX">Kubernetes in the Classified Crowd: Orchestrating Containers Behind the Government Firewall (Part 1)</h2><div class="post-meta">
+                <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>AB Engineering</a></span></div>
+                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2025-04-14">2025-04-14</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1795 words</span>&nbsp;
+                    <span><i class="far fa-clock fa-fw"></i>&nbsp;9 minutes</span>&nbsp;</div>
+            </div>
+            
+            <hr><div class="details toc" id="toc-static"  data-kept="">
+                    <div class="details-summary toc-title">
+                        <span>Contents</span>
+                        <span><i class="details-icon fas fa-angle-right"></i></span>
+                    </div>
+                    <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-orchestration-situation-why-kubernetes-matters-to-uncle-sam">The Orchestration Situation: Why Kubernetes Matters to Uncle Sam</a></li>
+    <li><a href="#welcome-to-the-security-labyrinth-the-government-it-landscape">Welcome to the Security Labyrinth: The Government IT Landscape</a></li>
+    <li><a href="#challenges-where-devops-dreams-meet-compliance-realities">Challenges: Where DevOps Dreams Meet Compliance Realities</a>
+      <ul>
+        <li><a href="#the-compliance-conundrum">The Compliance Conundrum</a></li>
+        <li><a href="#container-security-trust-issues-and-supply-chain-concerns">Container Security: Trust Issues and Supply Chain Concerns</a></li>
+        <li><a href="#the-open-source-dilemma">The Open Source Dilemma</a></li>
+      </ul>
+    </li>
+    <li><a href="#nsa-and-cisa-weigh-in-hardening-guidance-from-the-experts">NSA and CISA Weigh In: Hardening Guidance from the Experts</a></li>
+    <li><a href="#the-role-based-reality-access-control-in-government-kubernetes">The Role-Based Reality: Access Control in Government Kubernetes</a></li>
+    <li><a href="#building-for-authority-to-operate-ato-the-government-deployment-pathway">Building for Authority to Operate (ATO): The Government Deployment Pathway</a></li>
+    <li><a href="#choosing-your-kubernetes-distribution-not-all-k8s-are-created-equal">Choosing Your Kubernetes Distribution: Not All K8s Are Created Equal</a></li>
+    <li><a href="#the-data-sharing-dilemma-balancing-security-with-function">The Data-Sharing Dilemma: Balancing Security with Function</a></li>
+    <li><a href="#navigating-the-path-forward">Navigating the Path Forward</a></li>
+  </ul>
+</nav></div>
+                </div><div class="content" id="content"><h1 id="kubernetes-in-the-classified-crowd-orchestrating-containers-behind-the-government-firewall">Kubernetes in the Classified Crowd: Orchestrating Containers Behind the Government Firewall</h1>
+<p>In a world where &ldquo;moving to the cloud&rdquo; has become the default corporate strategy, government agencies face a unique set of challenges that make their cloud migration journeys more akin to &ldquo;moving to a highly-regulated, FIPS-compliant, ATO-approved, thoroughly-inspected cloud while filling out paperwork in triplicate.&rdquo; As the saying goes in government IT circles, &ldquo;We want innovation at the speed of relevance, just after completing the proper risk assessment forms.&rdquo;</p>
+<p>Kubernetes has emerged as the de facto standard for container orchestration across the commercial sector, but its adoption in Department of Defense (DoD) and Federal Government environments introduces layers of complexity that would make even the most seasoned DevOps engineers wince. This post kicks off our series on navigating these choppy waters, where compliance requirements and classified workloads meet cutting-edge container orchestration.</p>
+<h2 id="the-orchestration-situation-why-kubernetes-matters-to-uncle-sam">The Orchestration Situation: Why Kubernetes Matters to Uncle Sam</h2>
+<p>Kubernetes, often abbreviated as K8s (because government loves acronyms almost as much as Silicon Valley), is an open-source platform that automates the deployment, scaling, and management of containerized applications. For federal agencies undertaking application modernization initiatives, Kubernetes represents more than just a trendy technology – it offers a strategic foundation for achieving critical objectives like accelerating innovation, optimizing costs, and enhancing security posture.</p>
+<p>The benefits are compelling: containers enable agencies to modernize legacy applications and build new ones that leverage evolving cloud services. This containerized approach allows government entities to develop applications and deploy valuable resources with unprecedented speed. As Brian Douglas, Director of Public Sector at Kubecost, notes: &ldquo;Kubecost partners with many federal and government agencies that are actively transitioning to Kubernetes. The benefits of a modernization effort range from improved security, faster application deployment, agility to scale, and the ability—when done correctly—to optimize resources&rdquo;.</p>
+<p>However, as government agencies embrace this technology, they quickly discover that Kubernetes in classified environments isn&rsquo;t just about mastering YAML files and understanding pod lifecycles – it&rsquo;s about navigating a complex web of security frameworks, compliance requirements, and authorization processes.</p>
+<h2 id="welcome-to-the-security-labyrinth-the-government-it-landscape">Welcome to the Security Labyrinth: The Government IT Landscape</h2>
+<p>Government IT environments operate under stringent security requirements that make commercial compliance frameworks look like mere suggestions. The stakes are considerably higher – we&rsquo;re talking about systems that may handle national security information, control critical infrastructure, or process sensitive citizen data.</p>
+<p>The DoD classifies cloud security by Impact Levels (IL) based on data sensitivity and potential impact if compromised. These levels range from IL2 for publicly releasable information to IL6 for classified data, with each level requiring progressively more stringent security controls. Understanding these impact levels is essential, as they dictate the security requirements your Kubernetes implementation must satisfy.</p>
+<p>Beyond impact levels, government Kubernetes deployments must navigate a complex ecosystem of security frameworks:</p>
+<ul>
+<li>NIST Special Publication 800-53, which details security and privacy controls for federal information systems- Department of Defense Risk Management Framework (RMF)</li>
+<li>DISA Security Technical Implementation Guides (STIGs) for Kubernetes- NSA and CISA Kubernetes Hardening Guidance</li>
+<li>Center for Internet Security (CIS) Kubernetes Benchmarks</li>
+</ul>
+<p>If your eyes haven&rsquo;t glazed over yet, congratulations – you might have what it takes to be a government security architect.</p>
+<h2 id="challenges-where-devops-dreams-meet-compliance-realities">Challenges: Where DevOps Dreams Meet Compliance Realities</h2>
+<h3 id="the-compliance-conundrum">The Compliance Conundrum</h3>
+<p>Validating compliance with frameworks like NIST 800-53 is the number one blocker for faster application delivery in government settings. Kubernetes presents a particular challenge due to its dynamic nature – it&rsquo;s difficult to detect when assets fall out of compliance in such a fluid environment.</p>
+<p>Studies have shown that the annual cost of non-compliance to businesses runs an average of $14.8 million, while the cost of compliance averages $5.5 million. In government environments, the stakes are even higher, as non-compliance can delay Authorization to Operate (ATO) approvals, halt project timelines, and potentially expose sensitive data to security risks.</p>
+<h3 id="container-security-trust-issues-and-supply-chain-concerns">Container Security: Trust Issues and Supply Chain Concerns</h3>
+<p>The NSA and CISA identify three common sources of compromise in Kubernetes: supply chain risks, malicious threat actors, and insider threats. Supply chain risks are particularly challenging to mitigate and can arise during the container build cycle or infrastructure acquisition.</p>
+<p>For government agencies, these concerns are amplified by requirements to validate the provenance of all software components. As one DoD guidance document notes, &ldquo;In order to prevent any combination of human errors, supply chain interdictions, unintended code, and support the creation of a software bill of materials (SBOM), the adoption of an approved software platform and development pipeline(s) are critical&rdquo;.</p>
+<h3 id="the-open-source-dilemma">The Open Source Dilemma</h3>
+<p>Government agencies have historically had a complicated relationship with open-source software. One ISO-27001 auditor famously &ldquo;flagged&rdquo; a company&rsquo;s use of open-source software as a security risk, causing management to nearly ban all open-source tools. This misconception persists in some government circles, despite the fact that the U.S. Department of Defense itself has clarified that it does not consider open-source software to be inherently risky.</p>
+<p>For Kubernetes – an open-source system – this means government deployments must include rigorous evaluation processes. As one Reddit commenter advised, organizations should develop &ldquo;a framework to reduce the risks&rdquo; by assessing factors like how long a package has been around, the quality of its code, how often it&rsquo;s updated, and what professional support options exist.</p>
+<h2 id="nsa-and-cisa-weigh-in-hardening-guidance-from-the-experts">NSA and CISA Weigh In: Hardening Guidance from the Experts</h2>
+<p>In August 2021, the National Security Agency (NSA) and the Cybersecurity and Infrastructure Security Agency (CISA) released &ldquo;Kubernetes Hardening Guidance,&rdquo; which was subsequently updated with clarifications and additions to logging and threat detection.</p>
+<p>The guidance identifies common motivations for targeting Kubernetes clusters: data theft, computational power theft, or denial of service. It provides detailed recommendations for hardening Kubernetes systems, including:</p>
+<ol>
+<li>Scanning containers and Pods for vulnerabilities or misconfigurations</li>
+<li>Running containers and Pods with the least privileges possible</li>
+<li>Using network separation to control the amount of damage a compromise can cause</li>
+<li>Implementing firewalls to limit unneeded network connectivity and encryption to protect confidentiality</li>
+<li>Using strong authentication and authorization to limit user and administrator access</li>
+</ol>
+<p>These recommendations form the baseline for secure Kubernetes deployments in government environments, but they&rsquo;re just the beginning of a comprehensive security strategy.</p>
+<h2 id="the-role-based-reality-access-control-in-government-kubernetes">The Role-Based Reality: Access Control in Government Kubernetes</h2>
+<p>In government environments, Role-Based Access Control (RBAC) isn&rsquo;t just a best practice – it&rsquo;s a critical security requirement. RBAC in Kubernetes presents unique challenges, especially in multi-tenant setups where robust access separation and efficient permission management are essential.</p>
+<p>Implementing RBAC effectively requires attention to role hierarchies, namespace isolation, and scalable access management. However, even well-designed RBAC systems can face challenges in government settings due to the &ldquo;separation of duties&rdquo; principle. As one expert explains: &ldquo;You shouldn&rsquo;t manage the system and be responsible for the security of the system by rule. InfoSec should write policies and rules for others to follow and then audit their work. Basically treat K8s as an OS not a piece of software&rdquo;.</p>
+<p>This creates a new operational model where Kubernetes administrators and security teams must collaborate closely while maintaining clear boundaries of responsibility – a dance that requires both technical skill and organizational finesse.</p>
+<h2 id="building-for-authority-to-operate-ato-the-government-deployment-pathway">Building for Authority to Operate (ATO): The Government Deployment Pathway</h2>
+<p>For many government projects, securing an Authority to Operate (ATO) represents a critical milestone. This formal declaration that a system meets security requirements can make or break a Kubernetes deployment.</p>
+<p>A Reddit user described their experience joining a project that needed to secure an ATO for an application deployed in a DoD environment: &ldquo;Our team is quite small, and we don&rsquo;t have anyone dedicated to navigating the ATO process&hellip; My primary concern is how to secure the Docker runtime that will host our app, and I find myself a bit uncertain about where to begin&rdquo;.</p>
+<p>This uncertainty is common among teams new to government deployments. For Kubernetes, the ATO process typically requires demonstrating compliance with applicable STIGs, implementing continuous monitoring capabilities, and establishing an active cyber defense posture.</p>
+<p>An evolution in this space is the concept of Continuous Authorization (cATO), which requires three core competencies:</p>
+<ul>
+<li>Continuous Monitoring of RMF controls</li>
+<li>Active Cyber Defense</li>
+<li>Use of an approved DevSecOps Reference Design</li>
+</ul>
+<h2 id="choosing-your-kubernetes-distribution-not-all-k8s-are-created-equal">Choosing Your Kubernetes Distribution: Not All K8s Are Created Equal</h2>
+<p>When deploying Kubernetes in government environments, the choice of distribution becomes critical. Several options have emerged that cater specifically to government security requirements:</p>
+<ul>
+<li>Rancher RKE2, which has &ldquo;reasonably easy configuration compared to kubeadm, and it is designed with the explicit goal of US Government security compliance&rdquo;</li>
+<li>Enterprise Kubernetes distributions with FedRAMP certifications</li>
+<li>Platform One&rsquo;s Kubernetes offerings, which come pre-configured for DoD environments</li>
+</ul>
+<p>However, as one expert cautions: &ldquo;Don&rsquo;t assume Rancher/RKE2, EKS anywhere, or any &lsquo;out-of-the-box solution&rsquo; is going to provide 100% of what you need. K8s is not impossibly complex, but it is more complex than wrangling hosts and a hypervisor. You will need to know the intimate details of your chosen CNI and CSI at a minimum&rdquo;.</p>
+<h2 id="the-data-sharing-dilemma-balancing-security-with-function">The Data-Sharing Dilemma: Balancing Security with Function</h2>
+<p>One of the most significant challenges in government Kubernetes deployments involves data sharing between components. A recent study explored efficient and secure methods for sharing data between co-located containers on the same physical host for workloads deployed on Kubernetes.</p>
+<p>The research demonstrated that using CSI shared local volume mounts can enable secure file sharing and even create shared memory regions, providing viable approaches to data sharing for layered storage systems in Kubernetes. These findings are particularly relevant for data-intensive workloads like distributed deep learning that generate significant temporary data between pipeline stages.</p>
+<p>For government agencies dealing with sensitive information, these secure data-sharing mechanisms represent a crucial capability, enabling complex workflows while maintaining appropriate security boundaries.</p>
+<h2 id="navigating-the-path-forward">Navigating the Path Forward</h2>
+<p>As we&rsquo;ve explored, deploying Kubernetes in government environments presents unique challenges that require specialized knowledge and careful planning. The intersection of container orchestration technology with strict compliance requirements creates a complex landscape that few commercial deployments encounter.</p>
+<p>Yet, the benefits are compelling enough that agencies across the federal government continue to invest in Kubernetes capabilities. From improved application deployment speed to enhanced security through immutable infrastructure patterns, Kubernetes offers agencies a path to modernization that aligns with both mission needs and security requirements.</p>
+<p>In our next post, <strong>&ldquo;Planning a Kubernetes Deployment: Aligning with DoD Security Policies&rdquo;</strong>, we&rsquo;ll dive deeper into the practical aspects of designing a Kubernetes architecture that satisfies DoD security requirements from day one. We&rsquo;ll explore reference architectures approved for government use, examine the crucial role of the software supply chain in secure deployments, and provide actionable guidance for teams preparing to embark on their government Kubernetes journey.</p>
+<p>Until then, remember that in government IT, we don&rsquo;t just &ldquo;shift left&rdquo; on security – we start with security, continue with security, and finish with even more security, all while maintaining detailed documentation of our security. Because nothing says &ldquo;mission accomplished&rdquo; like a fully compliant, properly hardened Kubernetes cluster that passes its authorization review on the first try.</p></div><div class="post-footer" id="post-footer">
+    <div class="post-info"><div class="post-info-tag"><span><a href="/tags/devsecops/">Devsecops</a>
+                </span><span><a href="/tags/kubernetes/">Kubernetes</a>
+                </span><span><a href="/tags/government/">Government</a>
+                </span><span><a href="/tags/k8s/">K8s</a>
+                </span></div><div class="post-info-line"><div class="post-info-mod">
+                <span>Updated on 2025-04-14</span>
+            </div><div class="post-info-mod"></div>
+        </div></div><div class="post-nav"><a href="/posts/2025/ibm-granite-container/" class="prev" rel="prev" title="Containerized IBM Granite: Running Enterprise-Grade LLMs Locally with Ollama and vLLM (Hands On Guide)"><i class="fas fa-angle-left fa-fw"></i>Previous Post</a></div></div>
+</div></article></div>
+            </main>
+            <footer class="footer"><div class="footer-container"><div class="footer-line">AlphaBravo</div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/"></a></span></div>
+</div>
+</footer>
+        </div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-chevron-up fa-fw"></i>
+            </a></div><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css' integrity='sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==' crossorigin='anonymous' referrerpolicy='no-referrer' /><link rel="stylesheet" href="/css/custom-icons.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/typeit/typeit.min.js"></script><script src="/lib/lightgallery/lightgallery.min.js"></script><script src="/lib/lightgallery/lg-thumbnail.min.js"></script><script src="/lib/lightgallery/lg-zoom.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/cookieconsent/cookieconsent.min.js"></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{},"cookieconsent":{"content":{"dismiss":"Ok","link":"https://alphabravo.io","message":"We use cookies and open-source, privacy-respecting analytics technologies to improve your browsing experience on our website, to analyze our website traffic, and to understand where our visitors are coming from."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"Engineering Blog","id-2":"Engineering Blog"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"typeit":{"cursorChar":null,"cursorSpeed":null,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":null,"speed":null}};</script><script src="/js/theme.min.js"></script></body></html>

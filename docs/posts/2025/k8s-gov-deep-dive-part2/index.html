@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Planning a Kubernetes Deployment: Aligning with DoD Security Policies (Part 2) - AB Engineering Blog</title><meta name="description" content="A guide to planning a secure Kubernetes deployment in a government environment."><meta property="og:url" content="http://localhost:1313/posts/2025/k8s-gov-deep-dive-part2/">
+  <meta property="og:site_name" content="AB Engineering Blog">
+  <meta property="og:title" content="Planning a Kubernetes Deployment: Aligning with DoD Security Policies (Part 2)">
+  <meta property="og:description" content="A guide to planning a secure Kubernetes deployment in a government environment.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-04-11T09:00:00+00:00">
+    <meta property="article:modified_time" content="2025-04-11T09:00:00+00:00">
+    <meta property="article:tag" content="Devsecops">
+    <meta property="article:tag" content="Kubernetes">
+    <meta property="article:tag" content="Government">
+    <meta property="article:tag" content="K8s">
+    <meta property="og:image" content="http://localhost:1313/assets/2025/04/gov-k8s-series/04-14-25-k8s-gov-part2.jpg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/assets/2025/04/gov-k8s-series/04-14-25-k8s-gov-part2.jpg">
+  <meta name="twitter:title" content="Planning a Kubernetes Deployment: Aligning with DoD Security Policies (Part 2)">
+  <meta name="twitter:description" content="A guide to planning a secure Kubernetes deployment in a government environment.">
+      <meta name="twitter:site" content="@alphabravogov">
+<meta name="application-name" content="AB Engineering Blog">
+<meta name="apple-mobile-web-app-title" content="AB Engineering Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/posts/2025/k8s-gov-deep-dive-part2/" /><link rel="prev" href="http://localhost:1313/posts/2025/k8s-gov-deep-dive-part3/" /><link rel="next" href="http://localhost:1313/posts/2025/k8s-gov-deep-dive-part1/" /><link rel="stylesheet" href="/css/page.min.css"><link rel="stylesheet" href="/css/home.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Planning a Kubernetes Deployment: Aligning with DoD Security Policies (Part 2)",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/posts\/2025\/k8s-gov-deep-dive-part2\/"
+        },"image": ["http:\/\/localhost:1313\/assets\/2025\/04\/gov-k8s-series\/04-14-25-k8s-gov-part2.jpg"],"genre": "posts","keywords": "devsecops, kubernetes, government, k8s","wordcount":  1592 ,
+        "url": "http:\/\/localhost:1313\/posts\/2025\/k8s-gov-deep-dive-part2\/","datePublished": "2025-04-11T09:00:00+00:00","dateModified": "2025-04-11T09:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "AlphaBravo","logo": "http:\/\/localhost:1313\/assets\/alphabravo-logoonly-outline1.png"},"author": {
+                "@type": "Person",
+                "name": "AB Engineering"
+            },"description": "A guide to planning a secure Kubernetes deployment in a government environment."
+    }
+    </script></head><body data-header-desktop="auto" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="AB Engineering Blog"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/assets/alphabravo-logoonly-outline1.png"
+        data-srcset="/assets/alphabravo-logoonly-outline1.png, /assets/alphabravo-logoonly-outline1.png 1.5x, /assets/alphabravo-logoonly-outline1.png 2x"
+        data-sizes="auto"
+        alt="/assets/alphabravo-logoonly-outline1.png"
+        title="/assets/alphabravo-logoonly-outline1.png" /><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="https://blog.alphabravo.io" title="Blog Homepage" rel="noopener noreffer" target="_blank"> Home </a><a class="menu-item" href="https://alphabravo.io" title="AlphaBravo Website" rel="noopener noreffer" target="_blank"> AB Website </a><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="https://github.com/AlphaBravoCompany" rel="noopener noreffer" target="_blank"><i class='fab fa-github-alt fa-fw'></i>  </a><a class="menu-item" href="https://linkedin.com/company/alphabravogov/" rel="noopener noreffer" target="_blank"><i class='fab fa-linkedin fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search" id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a class="menu-item" href="/index.xml" title="RSS"><i class="fas fa-rss fa-fw" title="RSS"></i> </a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="AB Engineering Blog"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/assets/alphabravo-logoonly-outline1.png"
+        data-srcset="/assets/alphabravo-logoonly-outline1.png, /assets/alphabravo-logoonly-outline1.png 1.5x, /assets/alphabravo-logoonly-outline1.png 2x"
+        data-sizes="auto"
+        alt="/assets/alphabravo-logoonly-outline1.png"
+        title="/assets/alphabravo-logoonly-outline1.png" /><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search" id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="https://blog.alphabravo.io" title="Blog Homepage" rel="noopener noreffer" target="_blank">Home</a><a class="menu-item" href="https://alphabravo.io" title="AlphaBravo Website" rel="noopener noreffer" target="_blank">AB Website</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="https://github.com/AlphaBravoCompany" title="" rel="noopener noreffer" target="_blank"><i class='fab fa-github-alt fa-fw'></i></a><a class="menu-item" href="https://linkedin.com/company/alphabravogov/" title="" rel="noopener noreffer" target="_blank"><i class='fab fa-linkedin fa-fw'></i></a><div class="menu-item"><a href="/index.xml" title="RSS"><i class="fas fa-rss fa-fw" title="RSS"></i> </a>
+                <span>&nbsp;|&nbsp;</span><a href="javascript:void(0);" class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div></div>
+    </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single" data-toc="disable"><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/2025/04/gov-k8s-series/04-14-25-k8s-gov-part2.jpg"
+        data-srcset="/assets/2025/04/gov-k8s-series/04-14-25-k8s-gov-part2.jpg, /assets/2025/04/gov-k8s-series/04-14-25-k8s-gov-part2.jpg 1.5x, /assets/2025/04/gov-k8s-series/04-14-25-k8s-gov-part2.jpg 2x"
+        data-sizes="auto"
+        alt="/assets/2025/04/gov-k8s-series/04-14-25-k8s-gov-part2.jpg"
+        title="A guide to planning a secure Kubernetes deployment in a government environment." /></div><div class="single-card" data-image="true"><h2 class="single-title animated flipInX">Planning a Kubernetes Deployment: Aligning with DoD Security Policies (Part 2)</h2><div class="post-meta">
+                <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>AB Engineering</a></span></div>
+                <div class="post-meta-line"><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2025-04-11">2025-04-11</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1592 words</span>&nbsp;
+                    <span><i class="far fa-clock fa-fw"></i>&nbsp;8 minutes</span>&nbsp;</div>
+            </div>
+            
+            <hr><div class="details toc" id="toc-static"  data-kept="">
+                    <div class="details-summary toc-title">
+                        <span>Contents</span>
+                        <span><i class="details-icon fas fa-angle-right"></i></span>
+                    </div>
+                    <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#understanding-the-dod-security-classification-framework">Understanding the DoD Security Classification Framework</a></li>
+    <li><a href="#navigating-dod-reference-architectures">Navigating DoD Reference Architectures</a></li>
+    <li><a href="#establishing-trust-boundaries-your-kubernetes-security-perimeter">Establishing Trust Boundaries: Your Kubernetes Security Perimeter</a></li>
+    <li><a href="#network-policies-your-kubernetes-internal-defense-system">Network Policies: Your Kubernetes Internal Defense System</a></li>
+    <li><a href="#multi-cluster-kubernetes-a-dod-necessity">Multi-Cluster Kubernetes: A DoD Necessity</a></li>
+    <li><a href="#immutable-infrastructure-preventing-configuration-drift">Immutable Infrastructure: Preventing Configuration Drift</a></li>
+    <li><a href="#rbac-implementation-when-need-to-know-meets-kubernetes">RBAC Implementation: When &ldquo;Need to Know&rdquo; Meets Kubernetes</a></li>
+    <li><a href="#secrets-management-because-base64-isnt-encryption">Secrets Management: Because Base64 Isn&rsquo;t Encryption</a></li>
+    <li><a href="#compliance-documentation-the-invisible-infrastructure">Compliance Documentation: The Invisible Infrastructure</a></li>
+    <li><a href="#a-realistic-deployment-timeline">A Realistic Deployment Timeline</a></li>
+    <li><a href="#security-automation-the-only-path-forward">Security Automation: The Only Path Forward</a></li>
+    <li><a href="#the-skills-gap-challenge">The Skills Gap Challenge</a></li>
+    <li><a href="#planning-for-the-real-world">Planning for the Real World</a></li>
+  </ul>
+</nav></div>
+                </div><div class="content" id="content"><h1 id="planning-a-kubernetes-deployment-aligning-with-dod-security-policies">Planning a Kubernetes Deployment: Aligning with DoD Security Policies</h1>
+<p>Like planning a mission to Mars while simultaneously filing your taxes correctly, aligning a Kubernetes deployment with Department of Defense security policies requires equal parts technical expertise, strategic planning, and bureaucratic endurance. The stakes are high: misconfigured clusters in government environments aren&rsquo;t just operational headaches—they&rsquo;re potential national security vulnerabilities.</p>
+<h2 id="understanding-the-dod-security-classification-framework">Understanding the DoD Security Classification Framework</h2>
+<p>Before diving into Kubernetes configurations, you must understand the security classification framework that governs DoD deployments. The DoD classifies cloud security using Impact Levels (IL) based on data sensitivity and potential compromise impact:</p>
+<ul>
+<li><strong>Impact Level 2 (IL2)</strong>: Non-controlled unclassified information</li>
+<li><strong>Impact Level 4 (IL4)</strong>: Controlled Unclassified Information (CUI)</li>
+<li><strong>Impact Level 5 (IL5)</strong>: Higher sensitivity CUI and National Security Systems</li>
+<li><strong>Impact Level 6 (IL6)</strong>: Classified information up to SECRET</li>
+</ul>
+<p>Each level imposes progressively stringent security controls on your Kubernetes implementation. And yes, implementing IL6 requirements is indeed as complex as it sounds – like teaching quantum physics to your cat while blindfolded.</p>
+<h2 id="navigating-dod-reference-architectures">Navigating DoD Reference Architectures</h2>
+<p>The CNCF Multi-Cluster Kubernetes Reference Design provides a blueprint for secure application platforms in DoD organizations. As stated in official documentation: &ldquo;This platform will allow these organizations to interconnect and share infrastructure services while maintaining the independence and flexibility to enact on their unique missions&rdquo;.</p>
+<p>This design accommodates workload mobility across cloud, on-premises, and even tactical environments. It&rsquo;s a bit like designing a spacecraft that needs to function equally well in space, underwater, and on land—technically possible but requiring meticulous planning.</p>
+<h2 id="establishing-trust-boundaries-your-kubernetes-security-perimeter">Establishing Trust Boundaries: Your Kubernetes Security Perimeter</h2>
+<p>Trust boundaries in Kubernetes are the invisible walls between system components that keep authorized entities in and unauthorized ones out. Rather than just having a wall around your Kubernetes city, you&rsquo;re establishing security checkpoints between neighborhoods.</p>
+<p>Effective boundary planning requires:</p>
+<ol>
+<li><strong>Component Classification</strong>: Identify which parts of your Kubernetes system are mission-critical or handle sensitive data.</li>
+<li><strong>Granular Access Controls</strong>: Implement RBAC that enforces the principle of least privilege—a concept the Pentagon understands well but struggles to implement.</li>
+<li><strong>Network Policy Implementation</strong>: Deploy traffic control rules that function as internal firewalls.</li>
+<li><strong>Continuous Monitoring</strong>: Establish robust logging and alerting to catch boundary violations.</li>
+</ol>
+<h2 id="network-policies-your-kubernetes-internal-defense-system">Network Policies: Your Kubernetes Internal Defense System</h2>
+<p>Network policies are your primary defense against lateral movement within a Kubernetes cluster. They function as rules controlling pod-to-pod communication, limiting potential attack paths if a breach occurs.</p>
+<p>Recent research reveals significant performance differences between CNI implementations. eBPF-based solutions like Cilium maintain throughput around 8.9K Mbps under complex Layer 3/4 policies, though this drops to 94 Mbps with Layer 7 processing. Contrastingly, Antrea achieves about 6.6K Mbps at Layer 7 through HTTP filtering.</p>
+<p>Under high pod loads, traditional iptables-based CNIs show 60-70% throughput reduction, while more modern approaches maintain performance within 10% of baseline. These metrics aren&rsquo;t just academic—they directly impact your cluster&rsquo;s operational capability under security constraints.</p>
+<p>Implementation best practices include:</p>
+<ol>
+<li>Default deny policies for all ingress and egress traffic</li>
+<li>Specific allow rules for necessary communications</li>
+<li>Proper namespace isolation and pod labeling</li>
+<li>Thorough policy testing before production deployment</li>
+</ol>
+<h2 id="multi-cluster-kubernetes-a-dod-necessity">Multi-Cluster Kubernetes: A DoD Necessity</h2>
+<p>DoD environments present unique connectivity challenges—many enclaves have limited or zero access to public networks, especially those on the Department of Defense Information Network (DODIN).</p>
+<p>The Multi-Cluster approach creates a global view across all enclaves, allowing workloads and tooling to be deployed where most appropriate: &ldquo;By creating a global view across all of the enclaves, workloads and developer tooling can be instantiated into the areas that make the most sense, and establish peering and connectivity around the complexity of the DoD environments&rdquo;.</p>
+<p>This enables critical capabilities for government deployments:</p>
+<ul>
+<li>Workload mobility across security boundaries</li>
+<li>Continuous reconciliation through global control planes</li>
+<li>Secure information transfer across classification levels</li>
+<li>Production paths accommodating disconnected environments</li>
+</ul>
+<h2 id="immutable-infrastructure-preventing-configuration-drift">Immutable Infrastructure: Preventing Configuration Drift</h2>
+<p>In DoD-compliant platforms, immutable infrastructure creates the foundation for consistent, secure environments. Rather than modifying systems in place—creating opportunities for configuration drift or persistent threats—immutable approaches provision entirely new environments when changes are needed.</p>
+<p>&ldquo;Mutating operating systems in place creates risk that changes will impact running workloads, allow configuration drift, or permit advanced persistent threats&rdquo;. By leveraging Kubernetes&rsquo; ability to cordon and remove nodes, along with proper disruption budgets, infrastructure remains consistent and verifiable.</p>
+<p>This approach addresses several DoD security requirements:</p>
+<ol>
+<li>Prevention of unauthorized modifications</li>
+<li>Protection against advanced persistent threats</li>
+<li>Creation of auditable, reproducible environments</li>
+<li>Clear separation between infrastructure versions</li>
+</ol>
+<h2 id="rbac-implementation-when-need-to-know-meets-kubernetes">RBAC Implementation: When &ldquo;Need to Know&rdquo; Meets Kubernetes</h2>
+<p>RBAC implementation in government environments often encounters cultural resistance. If you&rsquo;ve ever tried explaining to a colonel why they don&rsquo;t need cluster-admin privileges just to view deployment status, you understand the challenges.</p>
+<p>Effective RBAC planning requires:</p>
+<ol>
+<li>Role definitions based strictly on job functions</li>
+<li>Service account limitations to minimum required permissions</li>
+<li>Regular permission auditing against security baselines</li>
+<li>Integration with government identity management systems</li>
+</ol>
+<p>One Reddit commenter aptly noted that &ldquo;Info Sec should write policies and rules for others to follow and then audit their work. Basically treat K8s as an OS not a piece of software&rdquo;. This separation of duties is fundamental to DoD security models.</p>
+<h2 id="secrets-management-because-base64-isnt-encryption">Secrets Management: Because Base64 Isn&rsquo;t Encryption</h2>
+<p>Kubernetes native secrets are merely base64 encoded—hardly sufficient for sensitive government information. For DoD deployments, solutions like HashiCorp Vault with FedRAMP compliance are preferred.</p>
+<p>Proper secrets management in DoD contexts requires:</p>
+<ol>
+<li>External, encrypted secrets storage with hardware security module integration</li>
+<li>Regular credential rotation on mandated schedules</li>
+<li>Comprehensive access auditing</li>
+<li>Segregation by classification level</li>
+</ol>
+<h2 id="compliance-documentation-the-invisible-infrastructure">Compliance Documentation: The Invisible Infrastructure</h2>
+<p>Here&rsquo;s where reality intrudes on technical elegance: documentation and compliance will consume an astonishing portion of your deployment timeline. As one practitioner observed about regulated environments: &ldquo;The efficiency of deployment is nothing compared to the days (or weeks) waiting for approvals&rdquo;.</p>
+<p>Another candid assessment: &ldquo;Anyone can deploy a cluster within a day&rsquo;s work, but it takes MONTHS to launch your first secured, well-designed, highly available, production-grade cluster&hellip; Add in heavy compliance and regulatory requirements, and the timeline can balloon by years&rdquo;.</p>
+<p>Your Authority to Operate (ATO) package must demonstrate implementation of:</p>
+<ol>
+<li>DISA STIG requirements (91 rules for Kubernetes alone)</li>
+<li>CIS Kubernetes Benchmark compliance</li>
+<li>NIST SP 800-53 controls</li>
+<li>CMMC requirements at the appropriate level</li>
+<li>Impact Level-specific security measures</li>
+</ol>
+<h2 id="a-realistic-deployment-timeline">A Realistic Deployment Timeline</h2>
+<p>Based on real-world experiences, here&rsquo;s what to expect for a DoD Kubernetes deployment:</p>
+<ul>
+<li><strong>Month 1</strong>: Establish testbed with automated deployment</li>
+<li><strong>Month 2</strong>: Implement monitoring, logging, high availability, and reliable storage</li>
+<li><strong>Month 3</strong>: Begin production rollout (likely delayed by networking issues outside your control)</li>
+<li><strong>Months 4-6</strong>: Complete compliance documentation and ATO process</li>
+</ul>
+<p>As one Kubernetes practitioner shared: &ldquo;I&rsquo;ve dockerized an app or two, but now I&rsquo;m migrating our shitty CI/CD pipeline to a gitops workflow with Gitlab and that&rsquo;s a whole nother can of worms in an air gap&rdquo;. This sentiment captures the complexity of implementing modern tooling within DoD constraints.</p>
+<h2 id="security-automation-the-only-path-forward">Security Automation: The Only Path Forward</h2>
+<p>Manual security configuration in multi-cluster environments inevitably leads to inconsistencies across policies in different clusters. Automation becomes essential not just for efficiency but for security consistency.</p>
+<p>Implementing tools like Open Policy Agent (OPA) enables enforcement of security policies without recompiling or reconfiguring the Kubernetes API server. This allows custom policy enforcement while maintaining compliance with DoD requirements.</p>
+<p>Research shows automated network policy generation for multi-domain Kubernetes deployments significantly reduces configuration errors compared to manual approaches. When dealing with hundreds of microservices across multiple classification domains, automated policy management isn&rsquo;t a luxury—it&rsquo;s a necessity.</p>
+<h2 id="the-skills-gap-challenge">The Skills Gap Challenge</h2>
+<p>Successfully planning a DoD-compliant Kubernetes deployment requires expertise across numerous domains:</p>
+<ul>
+<li>Linux kernel and OS administration</li>
+<li>Container security and orchestration</li>
+<li>Software-defined networking</li>
+<li>Storage infrastructure</li>
+<li>PKI and cryptography</li>
+<li>ETCD and database administration</li>
+<li>Security policy design</li>
+</ul>
+<p>Finding people with even a subset of these skills has proven &ldquo;astonishingly difficult&rdquo; according to those who&rsquo;ve tried. Your planning must account for this skills gap through appropriate training, documentation, and possibly external expertise.</p>
+<h2 id="planning-for-the-real-world">Planning for the Real World</h2>
+<p>Despite these challenges, a methodical approach can make DoD-compliant Kubernetes deployments manageable:</p>
+<ol>
+<li>
+<p><strong>Begin with Impact Level Determination</strong>: Identify your data classification to establish baseline requirements.</p>
+</li>
+<li>
+<p><strong>Adopt a Reference Architecture</strong>: Use DoD&rsquo;s published designs as your foundation rather than creating from scratch.</p>
+</li>
+<li>
+<p><strong>Design Network Segmentation First</strong>: Network policies should reflect security boundaries from the beginning.</p>
+</li>
+<li>
+<p><strong>Establish GitOps Workflows</strong>: Implement policy-as-code to automate security controls through CI/CD pipelines.</p>
+</li>
+<li>
+<p><strong>Plan for Disconnected Operations</strong>: Design for limited connectivity with appropriate caching and synchronization.</p>
+</li>
+<li>
+<p><strong>Document Continuously</strong>: Capture design decisions and security controls as you implement them, not after.</p>
+</li>
+<li>
+<p><strong>Test Against Security Benchmarks</strong>: Use tools like kube-bench to verify CIS compliance throughout development.</p>
+</li>
+</ol>
+<p>When planning your deployment timeline, remember the Reddit commenter who noted they &ldquo;lost a month of work learning every minute detail about rke2-canal, k8s networking and how the NAT works, VIP aliases, etc…only to find that it was the VLAN issue&rdquo;. Government networks add layers of complexity that commercial deployments rarely encounter.</p>
+<p>Planning a Kubernetes deployment that aligns with DoD security policies isn&rsquo;t just a technical challenge—it&rsquo;s an exercise in navigating bureaucracy, managing expectations, and meticulously documenting every decision. The reward, however, is a containerized environment capable of securely supporting mission-critical workloads across the full spectrum of government operations.</p>
+<p>Next time, we&rsquo;ll tackle <strong>&ldquo;Selecting the Right Kubernetes Distribution for Government Use&rdquo;</strong> where we&rsquo;ll examine which distributions best meet federal requirements, how to evaluate them against your specific security needs, and why this decision could mean the difference between a smooth deployment and years of compliance headaches. We&rsquo;ll explore distributions specifically designed for government use, compare essential security features, and share real-world performance data from regulated environments.</p>
+<p>Until then, remember that in DoD Kubernetes deployments, technical skills may get you started, but patience and documentation will get you certified.</p></div><div class="post-footer" id="post-footer">
+    <div class="post-info"><div class="post-info-tag"><span><a href="/tags/devsecops/">Devsecops</a>
+                </span><span><a href="/tags/kubernetes/">Kubernetes</a>
+                </span><span><a href="/tags/government/">Government</a>
+                </span><span><a href="/tags/k8s/">K8s</a>
+                </span></div><div class="post-info-line"><div class="post-info-mod">
+                <span>Updated on 2025-04-11</span>
+            </div><div class="post-info-mod"></div>
+        </div></div><div class="post-nav"><a href="/posts/2025/k8s-gov-deep-dive-part3/" class="prev" rel="prev" title="Selecting the Right Kubernetes Distribution for Government Use (Part 3)"><i class="fas fa-angle-left fa-fw"></i>Previous Post</a>
+            <a href="/posts/2025/k8s-gov-deep-dive-part1/" class="next" rel="next" title="Kubernetes in the Classified Crowd: Orchestrating Containers Behind the Government Firewall (Part 1)">Next Post<i class="fas fa-angle-right fa-fw"></i></a></div></div>
+</div></article></div>
+            </main>
+            <footer class="footer"><div class="footer-container"><div class="footer-line">AlphaBravo</div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/"></a></span></div>
+</div>
+</footer>
+        </div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-chevron-up fa-fw"></i>
+            </a></div><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css' integrity='sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==' crossorigin='anonymous' referrerpolicy='no-referrer' /><link rel="stylesheet" href="/css/custom-icons.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/typeit/typeit.min.js"></script><script src="/lib/lightgallery/lightgallery.min.js"></script><script src="/lib/lightgallery/lg-thumbnail.min.js"></script><script src="/lib/lightgallery/lg-zoom.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/cookieconsent/cookieconsent.min.js"></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{},"cookieconsent":{"content":{"dismiss":"Ok","link":"https://alphabravo.io","message":"We use cookies and open-source, privacy-respecting analytics technologies to improve your browsing experience on our website, to analyze our website traffic, and to understand where our visitors are coming from."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"Engineering Blog","id-2":"Engineering Blog"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"typeit":{"cursorChar":null,"cursorSpeed":null,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":null,"speed":null}};</script><script src="/js/theme.min.js"></script></body></html>

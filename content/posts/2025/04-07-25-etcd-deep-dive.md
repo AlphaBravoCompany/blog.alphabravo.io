@@ -3,7 +3,7 @@ title: "ETCD and Kubernetes: A Deep Dive with K3s - Where Your Cluster's Secrets
 description: "A beginner's guide to etcd and Kubernetes with K3s."
 slug: "etcd-k3s-deep-dive"
 date: 2025-04-08T09:00:00Z
-draft: false
+draft: true
 featuredImage: /assets/2025/04/04-07-25-k3s-etcd.jpg
 featuredImagePreview: /assets/2025/04/04-07-25-k3s-etcd.jpg
 featuredImageAlt: "K3s and ETCD"

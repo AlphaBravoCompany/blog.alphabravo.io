@@ -3,7 +3,7 @@ title: "Containerized IBM Granite: Running Enterprise-Grade LLMs Locally with Ol
 description: "A guide to running IBM Granite models in containers for local deployment."
 slug: "ibm-granite-container"
 date: 2025-04-08T09:00:00Z
-draft: false
+draft: true
 featuredImage: /assets/2025/04/04-08-25-granite-container.png
 featuredImagePreview: /assets/2025/04/04-08-25-granite-container.png
 featuredImageAlt: "Containerized IBM Granite"

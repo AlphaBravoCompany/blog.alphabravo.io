@@ -3,7 +3,7 @@ title: "Kubernetes in the Classified Crowd: Orchestrating Containers Behind the 
 description: "A beginner's guide to Kubernetes and its deployment in government environments."
 slug: "k8s-gov-deep-dive-part1"
 date: 2025-04-14T09:00:00Z
-draft: true
+draft: false
 featuredImage: /assets/2025/04/gov-k8s-series/04-13-25-k8s-gov-part1.jpg
 featuredImagePreview: /assets/2025/04/gov-k8s-series/04-13-25-k8s-gov-part1.jpg
 featuredImageAlt: "Kubernetes in the Classified Crowd"

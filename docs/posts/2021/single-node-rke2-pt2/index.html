@@ -431,7 +431,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="sd">            field:
 </span></span></span><span class="line"><span class="cl"><span class="sd">            stats_result:
 </span></span></span><span class="line"><span class="cl"><span class="sd">            epoch:
-</span></span></span><span class="line"><span class="cl"><span class="sd">            exclude: False</span><span class="w">      
+</span></span></span><span class="line"><span class="cl"><span class="sd">            exclude: False</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">config_yml</span><span class="p">:</span><span class="w"> </span><span class="p">|-</span><span class="sd">
 </span></span></span><span class="line"><span class="cl"><span class="sd">      ---
 </span></span></span><span class="line"><span class="cl"><span class="sd">      client:
@@ -451,7 +451,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="sd">      #   loglevel: INFO
 </span></span></span><span class="line"><span class="cl"><span class="sd">      #   logfile:
 </span></span></span><span class="line"><span class="cl"><span class="sd">      #   logformat: default
-</span></span></span><span class="line"><span class="cl"><span class="sd">      #   blacklist: [&#39;elasticsearch&#39;, &#39;urllib3&#39;]</span><span class="w">      
+</span></span></span><span class="line"><span class="cl"><span class="sd">      #   blacklist: [&#39;elasticsearch&#39;, &#39;urllib3&#39;]</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">cronjob</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">annotations</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">concurrencyPolicy</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
@@ -1278,7 +1278,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="sd">        HTTP_Server On
 </span></span></span><span class="line"><span class="cl"><span class="sd">        HTTP_Listen 0.0.0.0
 </span></span></span><span class="line"><span class="cl"><span class="sd">        HTTP_Port {{ .Values.service.port }}
-</span></span></span><span class="line"><span class="cl"><span class="sd">        Health_Check On</span><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="sd">        Health_Check On</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c">## https://docs.fluentbit.io/manual/pipeline/inputs</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">inputs</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
@@ -1294,7 +1294,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="sd">        Name systemd
 </span></span></span><span class="line"><span class="cl"><span class="sd">        Tag host.*
 </span></span></span><span class="line"><span class="cl"><span class="sd">        Systemd_Filter _SYSTEMD_UNIT=kubelet.service
-</span></span></span><span class="line"><span class="cl"><span class="sd">        Read_From_Tail On</span><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="sd">        Read_From_Tail On</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c">## https://docs.fluentbit.io/manual/pipeline/filters</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">filters</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
@@ -1304,7 +1304,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="sd">        Merge_Log On
 </span></span></span><span class="line"><span class="cl"><span class="sd">        Keep_Log Off
 </span></span></span><span class="line"><span class="cl"><span class="sd">        K8S-Logging.Parser On
-</span></span></span><span class="line"><span class="cl"><span class="sd">        K8S-Logging.Exclude On</span><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="sd">        K8S-Logging.Exclude On</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c">## https://docs.fluentbit.io/manual/pipeline/outputs</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">outputs</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
@@ -1335,7 +1335,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="sd">        HTTP_User elastic
 </span></span></span><span class="line"><span class="cl"><span class="sd">        HTTP_Passwd lockitdown
 </span></span></span><span class="line"><span class="cl"><span class="sd">        tls on
-</span></span></span><span class="line"><span class="cl"><span class="sd">        tls.verify off</span><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="sd">        tls.verify off</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c">## https://docs.fluentbit.io/manual/pipeline/parsers</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">customParsers</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
@@ -1344,7 +1344,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="sd">        Format json
 </span></span></span><span class="line"><span class="cl"><span class="sd">        Time_Keep Off
 </span></span></span><span class="line"><span class="cl"><span class="sd">        Time_Key time
-</span></span></span><span class="line"><span class="cl"><span class="sd">        Time_Format %Y-%m-%dT%H:%M:%S.%L</span><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="sd">        Time_Format %Y-%m-%dT%H:%M:%S.%L</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># This allows adding more files with arbitary filenames to /fluent-bit/etc by providing key/value pairs.</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># The key becomes the filename, the value becomes the file content.</span><span class="w">

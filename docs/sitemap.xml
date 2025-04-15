@@ -2,14 +2,14 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://blog.alphabravo.io/</loc><lastmod>2025-04-16T09:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.alphabravo.io/posts/</loc><lastmod>2025-04-16T09:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.alphabravo.io/tags/devsecops/</loc><lastmod>2025-04-14T09:30:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.alphabravo.io/tags/government/</loc><lastmod>2025-04-14T09:30:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.alphabravo.io/tags/k8s/</loc><lastmod>2025-04-14T09:30:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.alphabravo.io/tags/kubernetes/</loc><lastmod>2025-04-14T09:30:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.alphabravo.io/posts/2025/k8s-gov-deep-dive-part2/</loc><lastmod>2025-04-14T09:30:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.alphabravo.io/tags/</loc><lastmod>2025-04-14T09:30:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.alphabravo.io/</loc><lastmod>2025-04-15T08:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.alphabravo.io/tags/devsecops/</loc><lastmod>2025-04-15T08:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.alphabravo.io/tags/government/</loc><lastmod>2025-04-15T08:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.alphabravo.io/tags/k8s/</loc><lastmod>2025-04-15T08:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.alphabravo.io/tags/kubernetes/</loc><lastmod>2025-04-15T08:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.alphabravo.io/posts/2025/k8s-gov-deep-dive-part2/</loc><lastmod>2025-04-15T08:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.alphabravo.io/posts/</loc><lastmod>2025-04-15T08:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.alphabravo.io/tags/</loc><lastmod>2025-04-15T08:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.alphabravo.io/posts/2025/k8s-gov-deep-dive-part1/</loc><lastmod>2025-04-14T09:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.alphabravo.io/tags/ai/</loc><lastmod>2025-04-03T09:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.alphabravo.io/tags/digital-assistants/</loc><lastmod>2025-04-03T09:00:00&#43;00:00</lastmod></url><url>

@@ -2,7 +2,7 @@
 title: "Planning a Kubernetes Deployment: Aligning with DoD Security Policies (Part 2)"
 description: "A guide to planning a secure Kubernetes deployment in a government environment."
 slug: "k8s-gov-deep-dive-part2"
-date: 2025-04-14T09:30:00Z
+date: 2025-04-15T08:00:00Z
 draft: false
 featuredImage: /assets/2025/04/gov-k8s-series/04-14-25-k8s-gov-part2.jpg
 featuredImagePreview: /assets/2025/04/gov-k8s-series/04-14-25-k8s-gov-part2.jpg
@@ -173,6 +173,6 @@ When planning your deployment timeline, remember the Reddit commenter who noted 
 
 Planning a Kubernetes deployment that aligns with DoD security policies isn't just a technical challenge—it's an exercise in navigating bureaucracy, managing expectations, and meticulously documenting every decision. The reward, however, is a containerized environment capable of securely supporting mission-critical workloads across the full spectrum of government operations.
 
-Next time, we'll tackle **"Selecting the Right Kubernetes Distribution for Government Use"** where we'll examine which distributions best meet federal requirements, how to evaluate them against your specific security needs, and why this decision could mean the difference between a smooth deployment and years of compliance headaches. We'll explore distributions specifically designed for government use, compare essential security features, and share real-world performance data from regulated environments.
+Next time, we'll tackle **"SK8s in Gov: The Distribution Dilemma - Selecting Kubernetes for Federal Use (Part 3)"** where we'll examine which distributions best meet federal requirements, how to evaluate them against your specific security needs, and why this decision could mean the difference between a smooth deployment and years of compliance headaches. We'll explore distributions specifically designed for government use, compare essential security features, and share real-world performance data from regulated environments.
 
 Until then, remember that in DoD Kubernetes deployments, technical skills may get you started, but patience and documentation will get you certified.

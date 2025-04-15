@@ -3,7 +3,7 @@ title: "K8s in Gov: The Distribution Dilemma - Selecting Kubernetes for Federal 
 description: "A guide to planning a secure Kubernetes deployment in a government environment."
 slug: "k8s-gov-deep-dive-part3"
 date: 2025-04-15T08:00:00Z
-draft: true
+draft: false
 featuredImage: /assets/2025/04/gov-k8s-series/04-15-25-k8s-gov-part3.jpg
 featuredImagePreview: /assets/2025/04/gov-k8s-series/04-15-25-k8s-gov-part3.jpg
 featuredImageAlt: "Selecting the Right Kubernetes Distribution for Government Use"

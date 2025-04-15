@@ -4,6 +4,14 @@
         <link>https://blog.alphabravo.io/tags/k8s/</link>
         <description>K8s - Tag - AB Engineering Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 15 Apr 2025 08:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.alphabravo.io/tags/k8s/" rel="self" type="application/rss+xml" /><item>
+    <title>K8s in Gov: The Distribution Dilemma - Selecting Kubernetes for Federal Use (Part 3)</title>
+    <link>https://blog.alphabravo.io/posts/2025/k8s-gov-deep-dive-part3/</link>
+    <pubDate>Tue, 15 Apr 2025 08:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2025/k8s-gov-deep-dive-part3/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/assets/2025/04/gov-k8s-series/04-15-25-k8s-gov-part3.jpg" referrerpolicy="no-referrer">
+            </div>A guide to planning a secure Kubernetes deployment in a government environment.]]></description>
+</item>
+<item>
     <title>Planning a Kubernetes Deployment: Aligning with DoD Security Policies (Part 2)</title>
     <link>https://blog.alphabravo.io/posts/2025/k8s-gov-deep-dive-part2/</link>
     <pubDate>Tue, 15 Apr 2025 08:00:00 &#43;0000</pubDate><guid>https://blog.alphabravo.io/posts/2025/k8s-gov-deep-dive-part2/</guid>
